@@ -12,6 +12,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
     <title>Gym System</title>
     </head>
+    <style>
+        .fa, .fas , .fa{
+            font-size: .9rem !important;
+        }
+        body{
+            position: relative;
+        }
+    </style>
     <body>
 
    <!-- Navbar -->
@@ -58,7 +66,7 @@
   </nav>
   <!-- /.navbar -->
  <!-- Main Sidebar Container -->
- <aside class="main-sidebar sidebar-dark-primary elevation-4" style="font-size: 14px;">
+ <aside class="main-sidebar sidebar-dark-primary elevation-4" style="font-size: 14px;width: 200px;">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link px-2">
       <span class="brand-text font-weight-light px-4">Gym System</span>
