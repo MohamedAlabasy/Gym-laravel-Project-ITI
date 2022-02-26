@@ -40,4 +40,5 @@
 </div>
 <!-- /.login-box -->
 </section>
+
 @endsection
