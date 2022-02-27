@@ -28,14 +28,14 @@
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block mt-2">Sign In</button>
           </div>
-          <!-- /.col -->
+          <!-- /.col  -->
         </div>
       </form>
       <p class="mt-2 mb-0">
         <a href="register.html" class="text-center d-block">Register a new membership</a>
       </p>
     </div>
-    <!-- /.login-card-body -->
+    <!-- /.login-card-body  -->
   </div>
 </div>
 <!-- /.login-box -->
