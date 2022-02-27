@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>All Users</h1>
+                    <h1>All Managers</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -41,7 +41,6 @@
                             <th> #</th>
                             <th> Project Name</th>
                             <th>Team Members</th>
-                            <th>Gender</th>
                             <th>Project Progress</th>
                             <th class="text-center">Status</th>
                             <th></th>
@@ -57,9 +56,6 @@
                             </td>
                             <td>
                                 <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td>
-                                <p>Fmail</p>
                             </td>
                             <td class="">
                                 <small>47% Complete</small>
@@ -87,7 +83,6 @@
                             <td>
                                 <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
                             </td>
-                            <td><p>Mail</p></td>
                             <td class="">
                                 <small>47% Complete</small>
                             </td>
@@ -113,9 +108,6 @@
                             </td>
                             <td>
                                 <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td>
-                                <p>Fmail</p>
                             </td>
                             <td class="">
                                 <small>47% Complete</small>
@@ -143,9 +135,6 @@
                             <td>
                                 <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
                             </td>
-                            <td>
-                                <p>Fmail</p>
-                            </td>
                             <td class="">
                                 <small>47% Complete</small>
                             </td>
@@ -167,6 +156,8 @@
             </div>
             <!-- /.card-body -->
         </div>
+        <!-- /.card -->
+
     </section>
 </div>
 <!-- /.content-wrapper -->
