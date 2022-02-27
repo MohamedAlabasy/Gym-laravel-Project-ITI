@@ -167,8 +167,6 @@
             </div>
             <!-- /.card-body -->
         </div>
-        <!-- /.card -->
-
     </section>
 </div>
 <!-- /.content-wrapper -->
