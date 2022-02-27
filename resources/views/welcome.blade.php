@@ -28,7 +28,7 @@
           <div class="col-12">
             <button type="submit" class="btn btn-primary btn-block mt-2">Sign In</button>
           </div>
-          <!-- /.col -->
+          <!-- /.col  -->
         </div>
       </form>
       <p class="mt-2 mb-0">
