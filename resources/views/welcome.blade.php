@@ -35,7 +35,7 @@
         <a href="register.html" class="text-center d-block">Register a new membership</a>
       </p>
     </div>
-    <!-- /.login-card-body -->
+    <!-- /.login-card-body  -->
   </div>
 </div>
 <!-- /.login-box -->
