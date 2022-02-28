@@ -16,9 +16,9 @@ class CreateRevenueTable extends Migration
         Schema::create('revenue', function (Blueprint $table) {
             $table->id();
             $table->double('price');
-            $table->int('payment_id');
-            $table->enum('statuses',['paid','pend','refund']);
-            $table->int('visa_number');
+            $table->integer('payment_id');
+            $table->enum('statuses',['paid','pend','refund'])->default('pend');
+            $table->integer('visa_number');
             $table->string('payment_method');
             $table->timestamps();
             $table->softDeletes();

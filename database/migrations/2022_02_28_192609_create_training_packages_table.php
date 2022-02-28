@@ -17,7 +17,7 @@ class CreateTrainingPackagesTable extends Migration
             $table->id();
             $table->string('name');
             $table->double('price');
-            $table->int('sessions_number');
+            $table->integer('sessions_number');
             $table->timestamps();
             $table->softDeletes();
         });
