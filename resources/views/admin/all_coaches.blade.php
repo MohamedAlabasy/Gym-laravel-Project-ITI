@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>All Coaches</h1>
+                    <h1>All Gyms</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Projects</li>
+                        <li class="breadcrumb-item active">Gyms</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Projects</h3>
+                <h3 class="card-title">Gyms</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -39,10 +39,11 @@
                     <thead>
                         <tr>
                             <th> #</th>
-                            <th> Project Name</th>
-                            <th>Team Members</th>
-                            <th>Project Progress</th>
-                            <th class="text-center">Status</th>
+                            <th> Coach Name</th>
+                            <th> Coach Email</th>
+                            <th>Coach City</th>
+                            <th>Created at</th>
+                            <th>Coach Image</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -51,43 +52,18 @@
                             <td> #</td>
                             <td>
                                 <a> AdminLTE v3 </a>
-                                <br />
-                                <small>Created 01.01.2019 </small>
+                            </td>
+                            <td class="project-state">
+                                <span class="badge badge-success">Email</span>
+                            </td>
+                            <td class="project-state">
+                                <span class="badge badge-success">City</span>
+                            </td>
+                            <td>
+                                <p>1/1/2022</p>
                             </td>
                             <td>
                                 <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td class="">
-                                <small>47% Complete</small>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Success</span>
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
-                                    <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>#</td>
-                            <td>
-                                <a> AdminLTE v3</a>
-                                <br />
-                                <small> Created 01.01.2019</small>
-                            </td>
-                            <td>
-                                <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td class="">
-                                <small>47% Complete</small>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Success</span>
                             </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-info btn-sm" href="#">
@@ -103,17 +79,18 @@
                             <td> #</td>
                             <td>
                                 <a> AdminLTE v3 </a>
-                                <br />
-                                <small>Created 01.01.2019 </small>
+                            </td>
+                            <td class="project-state">
+                                <span class="badge badge-success">Email</span>
+                            </td>
+                            <td class="project-state">
+                                <span class="badge badge-success">City</span>
+                            </td>
+                            <td>
+                                <p>1/1/2022</p>
                             </td>
                             <td>
                                 <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td class="">
-                                <small>47% Complete</small>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Success</span>
                             </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-info btn-sm" href="#">
@@ -128,18 +105,19 @@
                         <tr>
                             <td> #</td>
                             <td>
-                                <a> ffffAdminL </a>
-                                <br />
-                                <small>Created 01.01.2019 </small>
+                                <a> AdminLTE v3 </a>
+                            </td>
+                            <td class="project-state">
+                                <span class="badge badge-success">Email</span>
+                            </td>
+                            <td class="project-state">
+                                <span class="badge badge-success">City</span>
+                            </td>
+                            <td>
+                                <p>1/1/2022</p>
                             </td>
                             <td>
                                 <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td class="">
-                                <small>47% Complete</small>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Success</span>
                             </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-info btn-sm" href="#">
