@@ -15,12 +15,12 @@ class CreateVerificationTable extends Migration
     {
         Schema::create('verification', function (Blueprint $table) {
             $table->id();
-            $table->string('mail')->uniqid();
+            $table->string('mail')->uniqid()->index();;
             $table->string('code');
             $table->timestamp('send-code_at')->nullable();
             $table->timestamps();      
             $table->softDeletes();
-          });
+        });
     }
 
     /**

@@ -18,12 +18,12 @@ return new class extends Migration
             $table->string('name')->nullable();
 
             $table->string('email')->unique()->index();
-            $table->boolean('is_verifications')->nullable();
+            $table->boolean('is_verifications')->nullable()->default(0);
             $table->timestamp('email_verified_at')->nullable();
 
             $table->string('national_id')->unique()->nullable();
 
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->rememberToken();
 
             $table->enum('gender',['male','female'])->default('male');

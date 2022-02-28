@@ -16,8 +16,8 @@ class CreateTrainingPackagesTable extends Migration
         Schema::create('training_packages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->double('price');
-            $table->integer('sessions_number');
+            $table->string('price');
+            $table->string('sessions_number');
             $table->timestamps();
             $table->softDeletes();
         });
