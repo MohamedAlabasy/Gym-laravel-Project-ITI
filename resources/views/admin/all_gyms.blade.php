@@ -39,11 +39,10 @@
                     <thead>
                         <tr>
                             <th> #</th>
-                            <th> Coach Name</th>
-                            <th> Coach Email</th>
-                            <th>Coach City</th>
+                            <th> Gyms Name</th>
+                            <th>Gyms City</th>
                             <th>Created at</th>
-                            <th>Coach Image</th>
+                            <th>Gyms Cover Image</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -54,9 +53,6 @@
                                 <a> AdminLTE v3 </a>
                             </td>
                             <td class="project-state">
-                                <span class="badge badge-success">Email</span>
-                            </td>
-                            <td class="project-state">
                                 <span class="badge badge-success">City</span>
                             </td>
                             <td>
@@ -81,9 +77,6 @@
                                 <a> AdminLTE v3 </a>
                             </td>
                             <td class="project-state">
-                                <span class="badge badge-success">Email</span>
-                            </td>
-                            <td class="project-state">
                                 <span class="badge badge-success">City</span>
                             </td>
                             <td>
@@ -106,9 +99,6 @@
                             <td> #</td>
                             <td>
                                 <a> AdminLTE v3 </a>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Email</span>
                             </td>
                             <td class="project-state">
                                 <span class="badge badge-success">City</span>
