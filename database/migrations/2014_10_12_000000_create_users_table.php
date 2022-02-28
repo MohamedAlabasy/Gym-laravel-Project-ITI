@@ -27,14 +27,14 @@ return new class extends Migration
             $table->rememberToken();
 
             $table->enum('gender',['male','female'])->default('male');
-            $table->enum('type',['admin','city_manger','gym_manger','coach','user'])->default('admin');
+            // $table->enum('type',['admin','city_manger','gym_manger','coach','user'])->default('admin');
             
             $table->string('profile_image')->nullable();
             $table->date('birth_date')->nullable();
             
             $table->timestamp('last_login_at')->useCurrent();
             
-            $table->boolean('is_band')->nullable();
+            // $table->boolean('is_band')->nullable();
     
             $table->softDeletes();
             $table->timestamps();
