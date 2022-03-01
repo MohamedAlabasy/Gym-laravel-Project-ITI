@@ -60,9 +60,9 @@ body {
 
 <body>
     <!-- Preloader -->
-    <div class="preloader flex-column justify-content-center align-items-center">
+   <!--  <div class="preloader flex-column justify-content-center align-items-center">
         <img class="animation__shake" src="imgs/gym-icon.png" alt="GymSystemLogo" height="150" width="150">
-    </div>
+    </div> -->
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light" style="font-size: 14px;">
         <!-- Left navbar links -->
@@ -200,7 +200,7 @@ body {
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="pages/calendar.html" class="nav-link">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon far fa-calendar-alt"></i>
                             <p>
                                 Gyms
@@ -209,33 +209,15 @@ body {
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/examples/invoice.html" class="nav-link">
+                                <a href="/gym/create" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Invoice</p>
+                                    <p>Add Gym</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/examples/profile.html" class="nav-link">
+                                <a href="/gym/list" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Profile</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/examples/e-commerce.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>E-commerce</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/examples/projects.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Projects</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/examples/project-add.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Project Add</p>
+                                    <p>List Gyms</p>
                                 </a>
                             </li>
                         </ul>
@@ -479,13 +461,11 @@ body {
         <strong>Copyright &copy; 2021-2022 <a href="https://adminlte.io">Gym Ststem</a>.</strong> All rights reserved.
     </footer>
     <!-- jQuery -->
-    <script src="plugins/jquery/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
     <script>
     $.widget.bridge('uibutton', $.ui.button)
     </script>
-    <script src="plugins/chart.js/Chart.min.js"></script>
-
     <script src="plugins/sparklines/sparkline.js"></script>
     <script src="plugins/moment/moment.min.js"></script>
     <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
@@ -510,9 +490,6 @@ body {
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
     <script>
-    /* $(document).ready(function() {
-        $('#proj').DataTable();
-    }); */
     $(function() {
         $("#proj").DataTable({
             "responsive": true,

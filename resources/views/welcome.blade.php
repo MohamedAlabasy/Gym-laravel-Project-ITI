@@ -8,47 +8,60 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h4>City Manger Profile</h4>
+                    <h1>New Gym</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Profile City Manger</li>
+                        <li class="breadcrumb-item active">Create New Gym</li>
                     </ol>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
     </section>
     <!-- Main content -->
-    <!-- Profile Image -->
-    <div class="d-flex ">
-        <div class="card card-primary card-outline w-25 m-auto">
-            <div class="card-body box-profile">
-                <div class="text-center">
-                    <img class="profile-user-img img-fluid img-circle" src="imgs/avatar.png"
-                        alt="User profile picture">
+    <section class="content">
+        <form action="{{url('')}}" method="post" enctype="multipart/form-data" class="w-75 m-auto">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Create</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" class="form-control" value="" name="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <select id="city" class="form-control custom-select">
+                                    <option selected disabled>Select one</option>
+                                    <option>On Hold</option>
+                                    <option>Canceled</option>
+                                    <option>Success</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="image">Image Cover</label>
+                                <input type="file" class="form-control" id="image" name="image">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-                <p class="text-muted text-center">Software Engineer</p>
-
-                <ul class="list-group list-group-unbordered mb-3">
-                    <li class="list-group-item">
-                        <b>Followers</b> <a class="float-right">1,322</a>
-                    </li>
-                    <li class="list-group-item">
-                        <b>Following</b> <a class="float-right">543</a>
-                    </li>
-                    <li class="list-group-item">
-                        <b>Friends</b> <a class="float-right">13,287</a>
-                    </li>
-                </ul>
-
-                <a href="#" class="btn btn-primary btn-block"><b>Edit</b></a>
             </div>
-            <!-- /.card-body -->
-        </div>
-    </div>
+            <div class="row">
+                <div class="col-12">
+                    <a href="#" class="btn btn-secondary">Cancel</a>
+                    <input type="submit" value="Save Changes" class="btn btn-success float-right">
+                </div>
+            </div>
+        </form>
+    </section>
 </div>
 @endsection
