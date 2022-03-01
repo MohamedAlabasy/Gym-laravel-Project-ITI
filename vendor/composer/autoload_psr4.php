@@ -37,6 +37,7 @@ return array(
     'Symfony\\Component\\ErrorHandler\\' => array($vendorDir . '/symfony/error-handler'),
     'Symfony\\Component\\CssSelector\\' => array($vendorDir . '/symfony/css-selector'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
+    'Spatie\\Permission\\' => array($vendorDir . '/spatie/laravel-permission/src'),
     'Spatie\\LaravelIgnition\\' => array($vendorDir . '/spatie/laravel-ignition/src'),
     'Spatie\\Ignition\\' => array($vendorDir . '/spatie/ignition/src'),
     'Spatie\\FlareClient\\' => array($vendorDir . '/spatie/flare-client-php/src'),
