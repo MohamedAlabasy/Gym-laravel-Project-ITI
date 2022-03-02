@@ -80,6 +80,18 @@ body {
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
+            <li>
+                <a href="{{route('user.admin_profile')}}">
+                    <div class="media align-items-center">
+                        <img src="imgs/avatar.png" alt="User Avatar" class="mr-2 mt-1 img-size-32 img-circle mr-2">
+                        <div class="media-body">
+                          <h6 class="dropdown-item-title text-dark" style="font-size: 14px">
+                            Admin
+                          </h6>
+                        </div>
+                      </div>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                     <i class="fas fa-expand-arrows-alt"></i>
@@ -102,7 +114,7 @@ body {
                     <img src="imgs/avatar.png" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Admin</a>
+                    <a href="{{route('user.admin_profile')}}" class="d-block">Admin</a>
                 </div>
             </div>
             <!-- Sidebar Menu -->
