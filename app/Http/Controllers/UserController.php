@@ -22,14 +22,14 @@ class UserController extends Controller
 
         return redirect()->route('');
     }
-    public function show($postId)
+    public function show_profile()
     {
 
-        return view('');
+        return view('user.admin_profile');
     }
-    public function edit()
+    public function edit_profile()
     {
-        return view('');
+        return view('user.edit_admin_profile');
     }
     public function update()
     {
