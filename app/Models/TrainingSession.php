@@ -13,5 +13,6 @@ class TrainingSession extends Model
     #=======================================================================================#
     #			                    To allow insert in table                              	#
     #=======================================================================================#
-    protected $fillable = [];
+    protected $fillable = [ 'name','day', 'starts_at', 'finishes_at'];
 }
+

@@ -8,16 +8,16 @@ class GymController extends Controller
 {
     //List Functioin
     public function list(){
-        return view("gym/list");
+        return view("gym.list");
     }
         //Show Function
         public function show($id){
-        return view("show");
+        return view("gym.show");
     }
 
     //Create Function
     public function create(){
-        return view("gym\create");
+        return view("gym.create");
 
     }
 
@@ -28,7 +28,7 @@ class GymController extends Controller
 
     //Edit Function
     public function edit(){
-        return view("edit");
+        return view("gym.edit");
     }
 
      //Update Function
