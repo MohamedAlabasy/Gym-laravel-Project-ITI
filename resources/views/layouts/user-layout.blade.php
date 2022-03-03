@@ -296,9 +296,9 @@ body {
                                     <p>Create Session</p>
                                 </a>
                             </li>
-                          
-                          
-                          
+
+
+
                         </ul>
                     </li>
                     <li class="nav-item">
