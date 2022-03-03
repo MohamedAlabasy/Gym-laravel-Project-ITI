@@ -19,10 +19,7 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/gym/training', function () {
-    return view('gym.training_session')->name('gym.session');
-});
-
+//////****Gym Controller Routes*****////////
 
 Route::controller(GymController::class)->group(function () {
     Route::get('/gym/create', 'create')->name('gym.create');
@@ -33,8 +30,15 @@ Route::controller(GymController::class)->group(function () {
     Route::get('/gym/list', 'list')->name('gym.list');
     Route::get('/gym/show/{id}', 'show')->name('gym.show');
 });
+///***User Routes***///
 Route::get('/user/show-profile', [UserController::class, 'show_profile'])->name('user.admin_profile');
 Route::get('/user/edit-profile', [UserController::class, 'edit_profile'])->name('user.edit_admin_profile');
-
-Route::get('/gym/training_session', [TrainingController::class, 'create'])->name('gym.training_session');
+///***Training Routes***///
+Route::get('/gym/sessions', [TrainingController::class, 'index'])->name('gym.listSessions');
+Route::get('/gym/create_session', [TrainingController::class, 'create'])->name('gym.training_session');
+Route::post('/gym/sessions', [TrainingController::class, 'store'])->name('gym_session.store');
+Route::get('/gym/sessions/{session}', [TrainingController::class, 'show'])->name('gym.show_training_session');
+Route::get('/gym/sessions/{session}/edit', [TrainingController::class, 'edit'])->name('gym.edit_training_session');
+Route::delete('/gym/sessions/{session}',[TrainingController::class, 'destroy'])->name('gym.delete_session');
+Route::put('/gym/sessions/{session}', [TrainingController::class, 'update'])->name('gym.update_session');
 
