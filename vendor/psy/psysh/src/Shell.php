@@ -3,7 +3,7 @@
 /*
  * This file is part of Psy Shell.
  *
- * (c) 2012-2020 Justin Hileman
+ * (c) 2012-2022 Justin Hileman
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -48,7 +48,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class Shell extends Application
 {
-    const VERSION = 'v0.11.1';
+    const VERSION = 'v0.11.2';
 
     const PROMPT = '>>> ';
     const BUFF_PROMPT = '... ';
@@ -75,6 +75,7 @@ class Shell extends Application
     private $commandsMatcher;
     private $lastExecSuccess = true;
     private $nonInteractive = false;
+    private $errorReporting;
 
     /**
      * Create a new Psy Shell.
@@ -605,6 +606,8 @@ class Shell extends Application
      */
     public function onExecute(string $code): string
     {
+        $this->errorReporting = \error_reporting();
+
         foreach ($this->loopListeners as $listener) {
             if (($return = $listener->onExecute($this, $code)) !== null) {
                 $code = $return;
@@ -1298,8 +1301,12 @@ class Shell extends Application
             ErrorException::throwException($errno, $errstr, $errfile, $errline);
         }
 
+        // When errors are suppressed, the error_reporting value will differ
+        // from when we started executing. In that case, we won't log errors.
+        $errorsSuppressed = $this->errorReporting !== null && $this->errorReporting !== \error_reporting();
+
         // Otherwise log it and continue.
-        if ($errno & \error_reporting() || $errno & $this->config->errorLoggingLevel()) {
+        if ($errno & \error_reporting() || (!$errorsSuppressed && ($errno & $this->config->errorLoggingLevel()))) {
             $this->writeException(new ErrorException($errstr, 0, $errno, $errfile, $errline));
         }
     }
