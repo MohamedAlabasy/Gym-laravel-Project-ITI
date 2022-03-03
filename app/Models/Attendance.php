@@ -15,6 +15,13 @@ class Attendance extends Model
     #			                    To allow insert in table                              	#
     #=======================================================================================#
     protected $fillable = [
-        
     ];
+    // public function train()
+    // {
+    //     return $this->belongsTo(User::class);
+    // } 
+//     public function changeName(){
+//        return $this->belongsTo(user::class ,'attendance_id');
+//    }
+   
 }

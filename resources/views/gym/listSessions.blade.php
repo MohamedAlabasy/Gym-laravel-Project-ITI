@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>All Gyms</h1>
+                    <h1>All Sessions</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Gyms</li>
+                        <li class="breadcrumb-item active">Sessions</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Gyms</h3>
+                <h3 class="card-title">Sessions</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -38,43 +38,50 @@
                 <table class="table table-striped projects" id="proj">
                     <thead>
                         <tr>
-                            <th> id</th>
-                            <th> Gyms Name</th>
-                            <th>Gyms City</th>
-                            <th>Created at</th>
-                            <th>Gyms Cover Image</th>
-                            <th></th>
+                            <th>#</th>
+                            <th>Session Name</th>
+                            <th>Day</th>
+                            <th>Starts at</th>
+                            <th>Finishes at</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($gyms as $gym)
+                        @foreach ($trainingSessions as $trainingSession)
+
                         <tr>
-                            <th scope="row">{{$gym->id}}</th>
-                            
-                            <td>{{$gym->name}}</td>
-                               
-                            
-                            <td class="project-state">
-                                <span class="badge badge-success">Mansoura</span>
-                                
-                            </td>
-                            <td>{{$gym->created_at}}</td>
                             <td>
-                                <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
+                                {{$trainingSession->id}}
                             </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fa fa-eye"></i>
+                            <td>
+                                {{$trainingSession->name}}
+                            </td>
+                            <td class="project-state">
+                                <span class="badge badge-success">{{$trainingSession->day}}</span>
+                            </td>
+                            <td>
+                                {{$trainingSession->starts_at}}
+
+                            </td>
+                            <td>
+                                {{$trainingSession->finishes_at}}
+
+                            </td>
+                            <td class="project-actions"> 
+                                <a class="btn btn-info btn-sm" href="{{route('gym.show_training_session', $trainingSession['id'])}}">
+                                    <i class="fa fa-eye"> View</i>
                                 </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
-                                    <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
+                                <a class="btn btn-warning btn-sm text-white" href="{{route('gym.edit_training_session', $trainingSession['id'])}}">
+                                    <i class="fas fa-pencil-alt">Edit</i>
+                                </a>
+                                <a class="btn btn-danger btn-sm" href="">
+                                    <i class="fas fa-trash">Delete </i> 
+                                </a>
                             </td>
                         </tr>
                         @endforeach
-                    
-                        
+
+
                     </tbody>
                 </table>
             </div>
@@ -85,4 +92,5 @@
     </section>
 </div>
 <!-- /.content-wrapper -->
+
 @endsection

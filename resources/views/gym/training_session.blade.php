@@ -8,12 +8,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>New Gym</h1>
+                    <h1>New Training Session</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Create New Gym</li>
+                        <li class="breadcrumb-item active">Create New Session</li>
                     </ol>
                 </div>
             </div>
@@ -21,8 +21,9 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <form action="{{route('gym.store')}}" method="post" enctype="multipart/form-data" class="w-75 m-auto">
+        <form action="{{route('gym_session.store')}}" method="POST" enctype="multipart/form-data" class="w-75 m-auto">
             @csrf
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-primary">
@@ -39,31 +40,29 @@
                                 <label for="name">Name</label>
                                 <input type="text" id="name" class="form-control" value="" name="name">
                             </div>
+
                             <div class="form-group">
-                                <label for="city">City</label>
-                                <select id="city" class="form-control custom-select" >
-                                    <option selected disabled>Select one</option>
-                                    <option>On Hold</option>
-                                    <option>Canceled</option>
-                                    <option>Success</option>
+                                <label for="name">Day</label>
+                                <input type="date" id="name" class="form-control" value="" name="day">
+                            </div>
+                            <div class="form-group">
+                                <label for="coach">Coach</label>
+                                <select id="coach" class="form-control custom-select" name="coachname">
+                                    @foreach ($users as $user)
+                                    @if($user->user_type == 'coach')  <option value="{{$user->id}}">{{ $user->name }}</option> @endif
+                                    @endforeach
                                 </select>
                             </div>
-
                             <div class="form-group">
-                                <label class="form-label">User</label>
-                                <select class="form-control" name="user_id">
-                                    @foreach($users as $user)
-                                <option value="{{$user->id}}">{{$user->name}}</option>
-                                @endforeach
-                                </select>
+                                <label for="starts_at">Starts At</label>
+                                <input type="time" id="starts_at" class="form-control" value="" name="starts_at">
+                            </div>
+                            <div class="form-group">
+                                <label for="finishes_at">Finishes At</label>
+                                <input type="time" id="finishes_at" class="form-control" value="" name="finishes_at">
                             </div>
 
 
-
-                            <div class="form-group">
-                                <label class="form-label" for="image">Image Cover</label>
-                                <input type="file" class="form-control" id="image" name="image">
-                            </div>
                         </div>
                     </div>
                 </div>

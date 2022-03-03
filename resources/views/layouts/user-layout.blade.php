@@ -80,6 +80,18 @@ body {
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
+            <li>
+                <a href="{{route('user.admin_profile')}}">
+                    <div class="media align-items-center">
+                        <img src="imgs/avatar.png" alt="User Avatar" class="mr-2 mt-1 img-size-32 img-circle mr-2">
+                        <div class="media-body">
+                          <h6 class="dropdown-item-title text-dark" style="font-size: 14px">
+                            Admin
+                          </h6>
+                        </div>
+                      </div>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                     <i class="fas fa-expand-arrows-alt"></i>
@@ -102,7 +114,7 @@ body {
                     <img src="imgs/avatar.png" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Admin</a>
+                    <a href="{{route('user.admin_profile')}}" class="d-block">Admin</a>
                 </div>
             </div>
             <!-- Sidebar Menu -->
@@ -267,41 +279,26 @@ body {
                         <a href="pages/kanban.html" class="nav-link">
                             <i class="nav-icon fas fa-columns"></i>
                             <p>
-                                Kanban Board
+                                Training Session
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/examples/invoice.html" class="nav-link">
+                                <a href="{{route('gym.listSessions')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Invoice</p>
+                                    <p>All Sessions</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/examples/profile.html" class="nav-link">
+                                <a href="{{route('gym.training_session')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Profile</p>
+                                    <p>Create Session</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="pages/examples/e-commerce.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>E-commerce</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/examples/projects.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Projects</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/examples/project-add.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Project Add</p>
-                                </a>
-                            </li>
+
+
+
                         </ul>
                     </li>
                     <li class="nav-item">
