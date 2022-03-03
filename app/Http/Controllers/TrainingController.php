@@ -36,7 +36,7 @@ class TrainingController extends Controller
        
         TrainingSession::create($requestdata);
 
-        return redirect()->route('gym.training_session');
+        return redirect()->route('gym.listSessions');
     }
 
     public function show()

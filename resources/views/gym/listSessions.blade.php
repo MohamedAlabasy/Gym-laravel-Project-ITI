@@ -50,8 +50,9 @@
                         @foreach ($trainingSessions as $trainingSession)
 
                         <tr>
-
-                            <td>{{$trainingSession->id}}</td>
+                            <td>
+                                {{$trainingSession->id}}
+                            </td>
                             <td>
                                 {{$trainingSession->name}}
                             </td>
@@ -66,14 +67,15 @@
                                 {{$trainingSession->finishes_at}}
 
                             </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="">
-                                    <i class="fa fa-eye"></i>
+                            <td class="project-actions"> 
+                                <a class="btn btn-info btn-sm" href="{{route('gym.show_training_session', $trainingSession['id'])}}">
+                                    <i class="fa fa-eye"> View</i>
                                 </a>
-                                <a class="btn btn-warning btn-sm text-white" href="">
-                                    <i class="fas fa-pencil-alt"></i></a>
+                                <a class="btn btn-warning btn-sm text-white" href="{{route('gym.edit_training_session', $trainingSession['id'])}}">
+                                    <i class="fas fa-pencil-alt">Edit</i>
+                                </a>
                                 <a class="btn btn-danger btn-sm" href="">
-                                    <i class="fas fa-trash"> </i> 
+                                    <i class="fas fa-trash">Delete </i> 
                                 </a>
                             </td>
                         </tr>
@@ -90,4 +92,5 @@
     </section>
 </div>
 <!-- /.content-wrapper -->
+
 @endsection
