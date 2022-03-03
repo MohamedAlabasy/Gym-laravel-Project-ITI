@@ -3,44 +3,62 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 
 class UserController extends Controller
 {
+
     public function index()
     {
-
-        return view();
+        $users=User::all();
+        // ->where('user_type', '==', 'Admin')
+        // ->get()->toArray();
+        return view('layouts.user-layout',[
+           'users'=>$users,
+        ]);
     }
-    public function create()
+    public function show_profile($user_id)
     {
-
-        return view();
+        $user= User::find($user_id);
+        return view('user.admin_profile', [
+            'user' => $user,
+        ]);
     }
-    public function store()
+
+
+    public function edit_profile($user_id)
     {
-
-
-        return redirect()->route('');
+        return view('user.edit_admin_profile', [
+            'users' => User::find($user_id),
+        ]);
     }
-    public function show_profile()
+    public function update(Request $request, $user_id)
     {
+        User::where('id', $user_id)->update([
+            'name' => $request->all()['name'],
+            'email' => $request->all()['email'],
 
-        return view('user.admin_profile');
+
+        ]);
+        return redirect()->route('user.admin_profile',auth()->user()->id);
     }
-    public function edit_profile()
+    public function store(Request $request)
     {
-        return view('user.edit_admin_profile');
-    }
-    public function update()
-    {
+        $requestdata = request()->all();
+        User::create($requestdata);
 
-        return redirect()->route('');
+        return redirect()->route('user.admin_profile');
     }
 
-    public function destroy()
-    {
 
 
-        return redirect()->route('');
-    }
+
+    // public function destroy()
+    // {
+
+
+    //     return redirect()->route('');
+    // }
 }

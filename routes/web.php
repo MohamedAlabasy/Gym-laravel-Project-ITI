@@ -41,12 +41,14 @@ Route::get('/gym/create_session', [TrainingController::class, 'create'])->name('
 Route::post('/gym/sessions', [TrainingController::class, 'store'])->name('gym_session.store')->middleware('auth');
 Route::get('/gym/sessions/{session}', [TrainingController::class, 'show'])->name('gym.show_training_session')->middleware('auth');
 Route::get('/gym/sessions/{session}/edit', [TrainingController::class, 'edit'])->name('gym.edit_training_session')->middleware('auth');
-Route::delete('/gym/sessions/{session}',[TrainingController::class, 'destroy'])->name('gym.delete_session')->middleware('auth');
+Route::delete('/gym/sessions/{session}', [TrainingController::class, 'destroy'])->name('gym.delete_session')->middleware('auth');
 Route::put('/gym/sessions/{session}', [TrainingController::class, 'update'])->name('gym.update_session')->middleware('auth');
 
 ///***User Routes***///
-Route::get('/user/show-profile', [UserController::class, 'show_profile'])->name('user.admin_profile')->middleware('auth');
-Route::get('/user/edit-profile', [UserController::class, 'edit_profile'])->name('user.edit_admin_profile')->middleware('auth');
+Route::get('/user/{id}', [UserController::class, 'show_profile'])->name('user.admin_profile')->middleware('auth');
+Route::get('/user/{users}/edit-profile', [UserController::class, 'edit_profile'])->name('user.edit_admin_profile')->middleware('auth');
+Route::put('/user/{users}', [UserController::class, 'update'])->name('user.update')->middleware('auth');
+Route::get('/user', [UserController::class, 'index'])->name('layouts.user-layout')->middleware('auth');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

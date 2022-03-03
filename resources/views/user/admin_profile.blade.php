@@ -29,21 +29,22 @@
                         alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center">Nina Mcintire</h3>
+                <h3 class="profile-username text-center">Nina Mcin</h3>
 
                 <p class="text-muted text-center">Software Engineer</p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
-                        <b>Name</b> <a class="float-right">1,322</a>
+
+                     <b>Name</b> <a class="float-right">{{$user->name }}</a>
                     </li>
                     <li class="list-group-item">
-                        <b>Email</b> <a class="float-right">543</a>
+                        <b>Email</b> <a class="float-right">{{ $user->email }}</a>
                     </li>
 
                 </ul>
 
-                <a href="{{route('user.edit_admin_profile') }}" class="btn btn-primary btn-block"><b>Edit</b></a>
+                <a href="{{ route('user.edit_admin_profile',auth()->user()->id )}}" class="btn btn-primary btn-block"><b>Edit</b></a>
             </div>
             <!-- /.card-body -->
         </div>

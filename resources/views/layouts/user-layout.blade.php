@@ -81,12 +81,13 @@ body {
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
             <li>
-                <a href="{{route('user.admin_profile')}}">
+                {{--  {{route('user.admin_profile')}}  --}}
+                <a href="#">
                     <div class="media align-items-center">
                         <img src="imgs/avatar.png" alt="User Avatar" class="mr-2 mt-1 img-size-32 img-circle mr-2">
                         <div class="media-body">
                           <h6 class="dropdown-item-title text-dark" style="font-size: 14px">
-                            Admin
+                            {{ auth()->user()->name }}
                           </h6>
                         </div>
                       </div>
@@ -114,7 +115,8 @@ body {
                     <img src="imgs/avatar.png" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="{{route('user.admin_profile')}}" class="d-block">Admin</a>
+                    <a href="{{ route('user.admin_profile',auth()->user()->id )}}" class="d-block"> {{ auth()->user()->name }}
+                    </a>
                 </div>
             </div>
             <!-- Sidebar Menu -->
