@@ -31,6 +31,11 @@ class GymController extends Controller
     //Store Function
     public function store(Request $request){
        
+        $request->validate([
+            'name' => ['required','unique','string','min:2'],
+            
+        ]);
+        
         Gym::create($request->all());
         return redirect()->route('gym.list');
 
