@@ -37,17 +37,32 @@ class GymController extends Controller
     }
 
     //Edit Function
-    public function edit(){
-        return view("gym.edit");
+    public function edit($id){
+        $users =User::all();
+        $singleGym=Gym::find($id);
+        return view("gym.edit",['gym' => $singleGym,'users'=>$users]);
     }
 
      //Update Function
-    public function update(){
-
-    }
+     public function update(Request $request, $id)
+     {
+         
+         Gym::where('id', $id)->update([
+             'name' => $request->all()['name'],
+             'user_id'=> $request->user_id,
+             
+             
+         ]);
+         return redirect()->route('gym.list');
+     }
 
     //Delete Function
-    public function delete(){
+    public function delete($id)
+    {
+           
+            $singleGym=Gym::find($id);
+            $singleGym->delete();
+            return redirect(route('gym.list'));
 
     }
 }

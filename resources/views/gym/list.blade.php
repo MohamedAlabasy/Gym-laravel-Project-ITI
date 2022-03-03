@@ -66,12 +66,19 @@
                                 <a class="btn btn-info btn-sm" href="#">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
-                                    <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
-                            </td>
-                        </tr>
+
+                                <td><a href="{{route('gym.edit', $gym['id'])}}" class="btn btn-info">Edit</a></td>
+
+                                <td>
+                                <form id="myform" action="{{ route('gym.delete', $gym->id) }}" method="POST" style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete it ?');">
+                                     @method('delete')
+                                    @csrf
+                                    <input type="submit" class="btn btn-danger delete "  title='Delete'  value="Delete">
+                                
+                                </form>
+                           
+                                </td>
+                             </tr>
                         @endforeach
                     
                         
