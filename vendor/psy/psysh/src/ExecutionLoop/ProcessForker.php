@@ -3,7 +3,7 @@
 /*
  * This file is part of Psy Shell.
  *
- * (c) 2012-2020 Justin Hileman
+ * (c) 2012-2022 Justin Hileman
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -99,7 +99,7 @@ class ProcessForker extends AbstractListener
     }
 
     /**
-     * Forks into a master and a loop process.
+     * Forks into a main and a loop process.
      *
      * The loop process will handle the evaluation of all instructions, then
      * return its state via a socket upon completion.
@@ -266,6 +266,14 @@ class ProcessForker extends AbstractListener
             // Resources and Closures don't error, but they don't serialize well either.
             if (\is_resource($value) || $value instanceof \Closure) {
                 continue;
+            }
+
+            if (\version_compare(\PHP_VERSION, '8.1', '>=') && $value instanceof \UnitEnum) {
+                // Enums defined in the REPL session can't be unserialized.
+                $ref = new \ReflectionObject($value);
+                if (\strpos($ref->getFileName(), ": eval()'d code") !== false) {
+                    continue;
+                }
             }
 
             try {

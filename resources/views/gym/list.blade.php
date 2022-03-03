@@ -38,7 +38,7 @@
                 <table class="table table-striped projects" id="proj">
                     <thead>
                         <tr>
-                            <th> #</th>
+                            <th> id</th>
                             <th> Gyms Name</th>
                             <th>Gyms City</th>
                             <th>Created at</th>
@@ -47,17 +47,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($gyms as $gym)
                         <tr>
-                            <td> #</td>
-                            <td>
-                                <a> AdminLTE v3 </a>
-                            </td>
+                            <th scope="row">{{$gym->id}}</th>
+                            
+                            <td>{{$gym->name}}</td>
+                               
+                            
                             <td class="project-state">
-                                <span class="badge badge-success">City</span>
+                                <span class="badge badge-success">Mansoura</span>
+                                
                             </td>
-                            <td>
-                                <p>1/1/2022</p>
-                            </td>
+                            <td>{{$gym->created_at}}</td>
                             <td>
                                 <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
                             </td>
@@ -71,54 +72,9 @@
                                     <i class="fas fa-trash"> </i> </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td> #</td>
-                            <td>
-                                <a> AdminLTE v3 </a>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">City</span>
-                            </td>
-                            <td>
-                                <p>1/1/2022</p>
-                            </td>
-                            <td>
-                                <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
-                                    <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> #</td>
-                            <td>
-                                <a> AdminLTE v3 </a>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">City</span>
-                            </td>
-                            <td>
-                                <p>1/1/2022</p>
-                            </td>
-                            <td>
-                                <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
-                                    <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
-                            </td>
-                        </tr>
+                        @endforeach
+                    
+                        
                     </tbody>
                 </table>
             </div>

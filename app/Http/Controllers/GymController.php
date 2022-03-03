@@ -3,26 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Model\Gym;
+//use Illuminate\Database\Eloquent\Model\Gym;
+use App\Models\Gym;
+use App\Models\User;
 class GymController extends Controller
 {
     //List Functioin
     public function list(){
-        return view("gym.list");
+        $gymsFromDB=Gym::all();
+        
+        return view("gym.list",['gyms'=>$gymsFromDB]);
     }
         //Show Function
         public function show($id){
+        $singleGym=Gym::find($id);
         return view("gym.show");
     }
 
     //Create Function
-    public function create(){
-        return view("gym.create");
-
+    public function create()
+    {
+        return view('gym.create',[
+            'users' => User::all(),
+        ]);
     }
 
     //Store Function
     public function store(Request $request){
+       
+        Gym::create($request->all());
+        return redirect()->route('gym.list');
 
     }
 
