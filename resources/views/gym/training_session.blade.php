@@ -21,7 +21,9 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <form action="{{url('')}}" method="post" enctype="multipart/form-data" class="w-75 m-auto">
+        <form action="{{route('gym_session.store')}}" method="POST" enctype="multipart/form-data" class="w-75 m-auto">
+            @csrf
+
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-primary">
@@ -38,17 +40,17 @@
                                 <label for="name">Name</label>
                                 <input type="text" id="name" class="form-control" value="" name="name">
                             </div>
+
                             <div class="form-group">
                                 <label for="name">Day</label>
-                                <input type="date" id="name" class="form-control" value="" name="name">
+                                <input type="date" id="name" class="form-control" value="" name="day">
                             </div>
                             <div class="form-group">
                                 <label for="coach">Coach</label>
-                                <select id="coach" class="form-control custom-select" name = "name">
-                                    <option selected disabled>Select one</option>
-                                    <option>Coach one</option>
-                                    <option>Coach two</option>
-                                    <option>Coach three</option>
+                                <select id="coach" class="form-control custom-select" name="coachname">
+                                    @foreach ($users as $user)
+                                    @if($user->user_type == 'coach')  <option value="{{$user->id}}">{{ $user->name }}</option> @endif
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
@@ -60,7 +62,7 @@
                                 <input type="time" id="finishes_at" class="form-control" value="" name="finishes_at">
                             </div>
 
-                          
+
                         </div>
                     </div>
                 </div>
