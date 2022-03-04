@@ -1,16 +1,8 @@
 @extends('layouts.user-layout')
 @section('content')
 
-@if ($errors->any())
-<div class="w-4/8 m-auto text-center">
-    @foreach ($errors->all() as $error)
-    <li class="text-red-500 list-none">
-        {{$error}}
-    </li>
-    @endforeach
 
-</div>
-@endif
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper pb-4">
     <!-- Content Header (Page header) -->
@@ -31,6 +23,7 @@
     </section>
     <!-- Main content -->
     <section class="content">
+    
         <form action="{{route('gym.store')}}" method="post" enctype="multipart/form-data" class="w-75 m-auto">
             @csrf
             <div class="row">
@@ -48,16 +41,18 @@
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" id="name" class="form-control" value="" name="name">
+
+                                @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
                             </div>
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <select id="city" class="form-control custom-select" >
-                                    <option selected disabled>Select one</option>
-                                    <option>On Hold</option>
-                                    <option>Canceled</option>
-                                    <option>Success</option>
-                                </select>
-                            </div>
+                            
 
                             <div class="form-group">
                                 <label class="form-label">User</label>

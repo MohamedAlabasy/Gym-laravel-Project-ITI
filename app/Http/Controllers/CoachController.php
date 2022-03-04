@@ -3,14 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use Illuminate\Database\Eloquent\Model\Gym;
-
-use App\Http\Requests\GymRequest;
-use App\Http\Requests\UpdateGymRequest;
 
 use App\Models\Gym;
 use App\Models\User;
-class GymController extends Controller
+
+class CoachController extends Controller
 {
     //List Functioin
     public function list(){
@@ -79,4 +76,4 @@ class GymController extends Controller
 
     }
 }
-
+    

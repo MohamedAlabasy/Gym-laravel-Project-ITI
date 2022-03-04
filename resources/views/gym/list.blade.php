@@ -40,7 +40,6 @@
                         <tr>
                             <th> id</th>
                             <th> Gyms Name</th>
-                            <th>Gyms City</th>
                             <th>Created at</th>
                             <th>Gyms Cover Image</th>
                             <th></th>
@@ -54,10 +53,7 @@
                             <td>{{$gym->name}}</td>
                                
                             
-                            <td class="project-state">
-                                <span class="badge badge-success">Mansoura</span>
-                                
-                            </td>
+                            
                             <td>{{$gym->created_at}}</td>
                             <td>
                                 <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
@@ -67,13 +63,18 @@
                                     <i class="fa fa-eye"></i>
                                 </a>
 
-                                <td><a href="{{route('gym.edit', $gym['id'])}}" class="btn btn-info">Edit</a></td>
+                               
 
-                                <td>
-                                <form id="myform" action="{{ route('gym.delete', $gym->id) }}" method="POST" style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete it ?');">
+                                <a class="btn btn-warning btn-sm text-white" href="{{route('gym.edit', $gym['id'])}}">
+                                    <i class="fas fa-pencil-alt"></i></a>
+                                
+                                    
+
+                               
+                                <form id="myform" action="{{ route('gym.delete', $gym['id']) }}" method="POST" style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete it ?');">
                                      @method('delete')
                                     @csrf
-                                    <input type="submit" class="btn btn-danger delete "  title='Delete'  value="Delete">
+                                    <input type="submit" class="btn btn-danger delete  fas fa-trash btn-sm" value="Delete" title='Delete' >
                                 
                                 </form>
                            
@@ -84,6 +85,7 @@
                         
                     </tbody>
                 </table>
+                
             </div>
             <!-- /.card-body -->
         </div>
