@@ -16,7 +16,7 @@ class GymsManagerSeeder extends Seeder
     public function run()
     {
         User::factory(40)->create();
-        //to get last 50 row add in DB
+        //to get last 40 row add in DB
         $gymsManager = User::latest()->take(40)->get();
 
         //give them role => gymManager

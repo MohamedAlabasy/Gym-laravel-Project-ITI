@@ -20,7 +20,6 @@ class UserFactory extends Factory
         return [
 
             // $faker->numerify'###-###-####'), "766-620-7004"
-
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'is_verifications' => 1,

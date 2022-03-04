@@ -25,8 +25,8 @@ class AdminSeeder extends Seeder
             'password' => bcrypt('123456')
         ]);
         // $admin = User::find(1);
-        $makeAdmin = User::latest()->first(); //to get last row add in DB and make it admin
-        $makeAdmin->assignRole('admin');
+        // $makeAdmin = User::latest()->first(); //to get last row add in DB and make it admin
+        // $makeAdmin->assignRole('admin');
 
         User::firstOrCreate([
             'name' => 'admona',
@@ -34,7 +34,14 @@ class AdminSeeder extends Seeder
             'gender' => 'female',
             'password' => bcrypt('123456')
         ]);
-        $makeAdmin = User::latest()->first(); //to get last row add in DB and make it admin
-        $makeAdmin->assignRole('admin');
+        // $makeAdmona = User::latest()->first(); //to get last row add in DB and make it admin
+        // $makeAdmona->assignRole('admin');
+
+
+
+        $makeAdmins = User::latest()->take(2)->get();
+        foreach ($makeAdmins as $adminRole) {
+            $adminRole->assignRole('admin');
+        }
     }
 }

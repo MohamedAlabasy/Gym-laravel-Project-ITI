@@ -16,7 +16,7 @@ class CitiesManagerSeeder extends Seeder
     public function run()
     {
         User::factory(20)->create();
-        //to get last 50 row add in DB
+        //to get last 20 row add in DB
         $citiesManager = User::latest()->take(20)->get();
 
         //give them role => cityManager
