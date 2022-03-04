@@ -27,6 +27,7 @@ class PermissionsSeeder extends Seeder
         #=======================================================================================#
         $loginPermission = Permission::create(['name' => 'login']);
         $updateProfilePermission = Permission::create(['name' => 'updateProfile']);
+        $showTrainingSessionsPermission = Permission::create(['name' => 'showTrainingSessions']);
         $showAttendanceHistoryPermission = Permission::create(['name' => 'showAttendanceHistory']);
         $attendTrainingSessionPermission = Permission::create(['name' => 'attendTrainingSession']);
         $showRemainingSessionsPermission = Permission::create(['name' => 'showRemainingSessions']);
@@ -60,6 +61,7 @@ class PermissionsSeeder extends Seeder
         #=======================================================================================#
         $adminRole->givePermissionTo($loginPermission);
         $adminRole->givePermissionTo($updateProfilePermission);
+        $adminRole->givePermissionTo($showTrainingSessionsPermission);
         $adminRole->givePermissionTo($crudUserPermission);
         $adminRole->givePermissionTo($banUsersPermission);
         $adminRole->givePermissionTo($assignCoachPermission);
@@ -82,6 +84,7 @@ class PermissionsSeeder extends Seeder
         #=======================================================================================#
         $cityManagerRole->givePermissionTo($loginPermission);
         $cityManagerRole->givePermissionTo($updateProfilePermission);
+        $cityManagerRole->givePermissionTo($showTrainingSessionsPermission);
         $cityManagerRole->givePermissionTo($crudUserPermission);
         $cityManagerRole->givePermissionTo($banUsersPermission);
         $cityManagerRole->givePermissionTo($assignCoachPermission);
@@ -100,6 +103,7 @@ class PermissionsSeeder extends Seeder
         #=======================================================================================#
         $gymManagerRole->givePermissionTo($loginPermission);
         $gymManagerRole->givePermissionTo($updateProfilePermission);
+        $gymManagerRole->givePermissionTo($showTrainingSessionsPermission);
         $gymManagerRole->givePermissionTo($crudUserPermission);
         $gymManagerRole->givePermissionTo($banUsersPermission);
         $gymManagerRole->givePermissionTo($assignCoachPermission);
@@ -115,6 +119,7 @@ class PermissionsSeeder extends Seeder
         #=======================================================================================#
         $userRole->givePermissionTo($loginPermission);
         $userRole->givePermissionTo($updateProfilePermission);
+        $userRole->givePermissionTo($showTrainingSessionsPermission);
         $userRole->givePermissionTo($showAttendanceHistoryPermission);
         $userRole->givePermissionTo($attendTrainingSessionPermission);
         $userRole->givePermissionTo($showRemainingSessionsPermission);
@@ -123,5 +128,6 @@ class PermissionsSeeder extends Seeder
         #=======================================================================================#
         $coachRole->givePermissionTo($loginPermission);
         $coachRole->givePermissionTo($updateProfilePermission);
+        $coachRole->givePermissionTo($showTrainingSessionsPermission);
     }
 }
