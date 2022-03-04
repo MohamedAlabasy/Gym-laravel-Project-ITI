@@ -38,12 +38,17 @@ class CreateAdminCommand extends Command
      */
     public function handle()
     {
+        #=======================================================================================#
+        #			                   To add admin from command                               	#
+        #=======================================================================================#
         $adminName = explode("@", $this->option('email'));
         User::create([
             'name' => $adminName[0],
             'email' =>  $this->option('email'),
             'password' => bcrypt($this->option('password'))
         ]);
+        $makeAdmin = User::latest()->first(); //to get last row add in DB and make it admin
+        $makeAdmin->assignRole('admin');
         $this->info("$adminName[0] has been created successfully");
     }
 }
