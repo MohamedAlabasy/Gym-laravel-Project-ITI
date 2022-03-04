@@ -1,8 +1,8 @@
 # DataBase ERD :
 ![Gym-DataBase-ERD-Project-ITI](https://user-images.githubusercontent.com/93389016/156074474-3c987824-f599-4829-984e-bf4c31c4a001.jpg)
 
-## Databas Permissions			
-![image](https://user-images.githubusercontent.com/93389016/156697366-b6c1e8c1-822f-4f5a-b60d-16310058a978.png)
+## Databas Permissions					
+![image](https://user-images.githubusercontent.com/93389016/156699460-01f82d88-9ec3-4d2c-9de0-9a68f0815171.png)
 
 
 
