@@ -30,12 +30,13 @@ Route::controller(GymController::class)->group(function () {
     Route::post('/gym/store', 'store')->name('gym.store')->middleware('auth');
     Route::get('/gym/edit/{gym}', 'edit')->name('gym.edit')->middleware('auth');
     Route::put('/gym/update/{gym}', 'update')->name('gym.update')->middleware('auth');
-    Route::delete('/gym/delete/{id}', 'delete')->name('gym.delete')->middleware('auth');
+
+    Route::delete('/gym/delete/{gym}', 'delete')->name('gym.delete')->middleware('auth');
+
     Route::get('/gym/list', 'list')->name('gym.list')->middleware('auth');
     Route::get('/gym/show/{id}', 'show')->name('gym.show')->middleware('auth');
 });
 
-<<<<<<< HEAD
 
 Route::controller(CoachController::class)->group(function () {
     Route::get('/coach/create', 'create')->name('coach.create')->middleware('auth');
@@ -52,7 +53,7 @@ Route::get('/user/show-profile', [UserController::class, 'show_profile'])->name(
 Route::get('/user/edit-profile', [UserController::class, 'edit_profile'])->name('user.edit_admin_profile')->middleware('auth');
 
 Route::get('/gym/training_session', [TrainingController::class, 'create'])->name('gym.training_session')->middleware('auth');
-=======
+
 ///***Training Routes***///
 Route::get('/gym/sessions', [TrainingController::class, 'index'])->name('gym.listSessions')->middleware('auth');
 Route::get('/gym/create_session', [TrainingController::class, 'create'])->name('gym.training_session')->middleware('auth');
@@ -61,7 +62,7 @@ Route::get('/gym/sessions/{session}', [TrainingController::class, 'show'])->name
 Route::get('/gym/sessions/{session}/edit', [TrainingController::class, 'edit'])->name('gym.edit_training_session')->middleware('auth');
 Route::delete('/gym/sessions/{session}', [TrainingController::class, 'destroy'])->name('gym.delete_session')->middleware('auth');
 Route::put('/gym/sessions/{session}', [TrainingController::class, 'update'])->name('gym.update_session')->middleware('auth');
->>>>>>> ee1d150688fd24bdafa12a660c6abde972147e16
+
 
 ///***User Routes***///
 Route::get('/user/{id}', [UserController::class, 'show_profile'])->name('user.admin_profile')->middleware('auth');

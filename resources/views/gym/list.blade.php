@@ -39,7 +39,9 @@
                     <thead>
                         <tr>
                             <th> id</th>
+
                             <th> Gyms Name</th>
+
                             <th>Created at</th>
                             <th>Gyms Cover Image</th>
                             <th></th>
@@ -50,19 +52,16 @@
                         <tr>
                             <th scope="row">{{$gym->id}}</th>
 
-                            <td>{{$gym->name}}</td>
-<<<<<<< HEAD
-                               
-                            
-                            
-=======
+                            <td>{{$gym->name}}</td>        
+
+
 
 
                             <td class="project-state">
                                 <span class="badge badge-success">Mansoura</span>
 
                             </td>
->>>>>>> ee1d150688fd24bdafa12a660c6abde972147e16
+
                             <td>{{$gym->created_at}}</td>
                             <td>
                                 <img alt="Avatar" class="table-avatar" src="{{$gym->cover_image}}">
