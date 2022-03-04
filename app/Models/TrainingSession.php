@@ -17,7 +17,8 @@ class TrainingSession extends Model
         'name',
         'day',
         'starts_at',
-        'finishes_at'
+        'finishes_at',
+        'training_package_id',
     ];
 
     public function trainingPackage()

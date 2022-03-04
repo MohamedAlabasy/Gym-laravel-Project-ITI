@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\TrainingSession;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -24,6 +25,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(CoachesSeeder::class);
         // $this->call(UsersSeeder::class);
         // $this->call(TrainingPackagesSeeder::class);
-        $this->call(RevenueSeeder::class);
+        // $this->call(RevenueSeeder::class);
+        $this->call(TrainingSessionSeeder::class);
     }
 }
