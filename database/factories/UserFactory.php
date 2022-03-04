@@ -18,11 +18,20 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
+
+            // $faker->numerify'###-###-####'), "766-620-7004"
+
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
+            'is_verifications' => 1,
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'national_id' => $this->faker->numerify('##############'), // "3579786681"
+            'password' => bcrypt('123456'),
             'remember_token' => Str::random(10),
+            'gender' => rand(1, 2),
+            'profile_image' => $this->faker->text(100),
+            'birth_date' => $this->faker->dateTimeBetween('1990-01-01', '2012-12-31')->format('Y/m/d'), // outputs something like 17/09/2001
+            'last_login_at' => now(),
         ];
     }
 
