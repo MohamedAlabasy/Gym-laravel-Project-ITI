@@ -22,10 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CitiesManagerSeeder::class);
         $this->call(GymsManagerSeeder::class);
         $this->call(CoachesSeeder::class);
-
-
-
-
         $this->call(UsersSeeder::class);
+        $this->call(TrainingPackagesSeeder::class);
     }
 }

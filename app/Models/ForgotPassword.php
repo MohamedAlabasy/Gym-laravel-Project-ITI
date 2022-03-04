@@ -13,5 +13,9 @@ class ForgotPassword extends Model
     #=======================================================================================#
     #			                    To allow insert in table                              	#
     #=======================================================================================#
-    protected $fillable = [];
+    protected $fillable = [
+        'mail',
+        'code',
+        'send-code_at',
+    ];
 }
