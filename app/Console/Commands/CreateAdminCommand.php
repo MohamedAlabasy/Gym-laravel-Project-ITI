@@ -13,7 +13,7 @@ class CreateAdminCommand extends Command
      * @var string
      */
     protected $signature = 'create:admin {--email=admin20@admin.com} {--password=123456}';
-
+    // php artisan create:admin --email=admin2@admin.com --password=123456
     /**
      * The console command description.
      *
