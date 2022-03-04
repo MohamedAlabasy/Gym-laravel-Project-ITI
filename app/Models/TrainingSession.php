@@ -13,13 +13,15 @@ class TrainingSession extends Model
     #=======================================================================================#
     #			                    To allow insert in table                              	#
     #=======================================================================================#
-    protected $fillable = ['name', 'day', 'starts_at', 'finishes_at'];
-    //     public function train()
-    //     {
-    //         return $this->belongsTo(User::class);
-    //     } 
-    // //     public function changeName(){
-    //        return $this->belongsTo(user::class ,'attendance_id');
-    //    }
+    protected $fillable = [
+        'name',
+        'day',
+        'starts_at',
+        'finishes_at'
+    ];
 
+    public function trainingPackage()
+    {
+        return $this->belongsTo(TrainingPackage::class);
+    }
 }

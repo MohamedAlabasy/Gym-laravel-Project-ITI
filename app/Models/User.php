@@ -37,6 +37,15 @@ class User extends Authenticatable
         'gym_id',
     ];
 
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
+    public function gym()
+    {
+        return $this->belongsTo(Gym::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

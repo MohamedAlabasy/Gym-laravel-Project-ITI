@@ -18,4 +18,8 @@ class TrainingPackage extends Model
         'sessions_number',
         'user_id',
     ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
