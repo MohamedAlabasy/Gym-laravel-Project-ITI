@@ -18,7 +18,7 @@ class GymFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'cover_image' => $this->faker->text(100),
+            'cover_image' => $this->faker->imageUrl($width = 200, $height = 200),
             'city_id' => rand(1, 24),
         ];
     }
