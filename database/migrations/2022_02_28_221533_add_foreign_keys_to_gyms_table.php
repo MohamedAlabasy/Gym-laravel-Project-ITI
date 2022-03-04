@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('gyms', function (Blueprint $table) {
             // $table->foreignId('user_id')->nullable()->constrained();
-            $table->unsignedBigInteger('city_id');
+            $table->unsignedBigInteger('city_id')->nullable();
             $table->foreign('city_id')->references('id')->on('cities')->onUpdate('cascade')->onDelete('cascade');
         });
     }

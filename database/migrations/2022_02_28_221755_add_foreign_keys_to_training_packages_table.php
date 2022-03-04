@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::table('training_packages', function (Blueprint $table) {
             // $table->foreignId('training_session_id')->nullable()->constrained();
 
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
