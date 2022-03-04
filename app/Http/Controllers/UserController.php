@@ -3,44 +3,73 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+
 
 class UserController extends Controller
 {
+
+    #=======================================================================================#
+    #			                             index                                         	#
+    #=======================================================================================#
     public function index()
     {
-
-        return view();
+        $users = User::all();
+        // ->where('user_type', '==', 'Admin')
+        // ->get()->toArray();
+        return view('layouts.user-layout', [
+            'users' => $users,
+        ]);
     }
-    public function create()
+    #=======================================================================================#
+    #			                        show_profile                                      	#
+    #=======================================================================================#
+    public function show_profile($user_id)
     {
-
-        return view();
+        $user = User::find($user_id);
+        return view('user.admin_profile', [
+            'user' => $user,
+        ]);
     }
-    public function store()
+
+    #=======================================================================================#
+    #			                         edit_profile                                  	    #
+    #=======================================================================================#
+    public function edit_profile($user_id)
     {
-
-
-        return redirect()->route('');
+        return view('user.edit_admin_profile', [
+            'users' => User::find($user_id),
+        ]);
     }
-    public function show_profile()
+    #=======================================================================================#
+    #			                             update                                        	#
+    #=======================================================================================#
+    public function update(Request $request, $user_id)
     {
-
-        return view('user.admin_profile');
+        User::where('id', $user_id)->update([
+            'name' => $request->all()['name'],
+            'email' => $request->all()['email'],
+        ]);
+        return redirect()->route('user.admin_profile', auth()->user()->id);
     }
-    public function edit_profile()
+    #=======================================================================================#
+    #			                             store                                         	#
+    #=======================================================================================#
+    public function store(Request $request)
     {
-        return view('user.edit_admin_profile');
-    }
-    public function update()
-    {
-
-        return redirect()->route('');
+        $requestData = request()->all();
+        User::create($requestData);
+        return redirect()->route('user.admin_profile');
     }
 
-    public function destroy()
-    {
 
 
-        return redirect()->route('');
-    }
+    #=======================================================================================#
+    #			                             destroy                                       	#
+    #=======================================================================================#
+    // public function destroy()
+    // {
+    //     return redirect()->route('');
+    // }
 }

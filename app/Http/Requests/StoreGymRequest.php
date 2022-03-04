@@ -24,7 +24,17 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
+<<<<<<< HEAD:app/Http/Requests/StoreGymRequest.php
             'name' => ['required','string','min:2'],
+=======
+
+
+            //
+>>>>>>> ee1d150688fd24bdafa12a660c6abde972147e16:app/Http/Requests/StoreRequest.php
         ];
+    }
+    public function messages()
+    {
+        return [];
     }
 }

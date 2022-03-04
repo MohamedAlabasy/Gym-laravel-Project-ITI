@@ -49,14 +49,23 @@
                         @foreach($gyms as $gym)
                         <tr>
                             <th scope="row">{{$gym->id}}</th>
-                            
+
                             <td>{{$gym->name}}</td>
+<<<<<<< HEAD
                                
                             
                             
+=======
+
+
+                            <td class="project-state">
+                                <span class="badge badge-success">Mansoura</span>
+
+                            </td>
+>>>>>>> ee1d150688fd24bdafa12a660c6abde972147e16
                             <td>{{$gym->created_at}}</td>
                             <td>
-                                <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
+                                <img alt="Avatar" class="table-avatar" src="{{$gym->cover_image}}">
                             </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-info btn-sm" href="#">
@@ -81,8 +90,8 @@
                                 </td>
                              </tr>
                         @endforeach
-                    
-                        
+
+
                     </tbody>
                 </table>
                 

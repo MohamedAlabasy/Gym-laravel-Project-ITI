@@ -21,7 +21,10 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <form action="{{url('')}}" method="post" enctype="multipart/form-data" class="w-75 m-auto">
+
+        <form action="{{route('user.update',['users'=>$users['id']])}}" method="post" enctype="multipart/form-data" class="w-75 m-auto">
+           @csrf
+           @method('PUT')
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-primary">
