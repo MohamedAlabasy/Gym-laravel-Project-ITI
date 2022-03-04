@@ -17,7 +17,9 @@ class GymFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'cover_image' => $this->faker->text(100),
+            'city_id' => rand(1, 24),
         ];
     }
 }

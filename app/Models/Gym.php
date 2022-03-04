@@ -8,18 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Gym extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
     #=======================================================================================#
     #			                    To allow insert in table                              	#
     #=======================================================================================#
     protected $fillable = [
-
         'name',
-        'user_id',
-        'image',
-
-
+        'cover_image',
+        'city_id',
     ];
     public function user()
     {

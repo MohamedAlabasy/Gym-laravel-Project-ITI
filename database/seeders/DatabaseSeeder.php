@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         // $this->call(PermissionsSeeder::class);            
         $this->call(CitiesSeeder::class);
+        $this->call(GymsSeeder::class);
         // $this->call(AdminSeeder::class);                  
         // $this->call(CitiesManagerSeeder::class);
         // $this->call(GymsManagerSeeder::class);
