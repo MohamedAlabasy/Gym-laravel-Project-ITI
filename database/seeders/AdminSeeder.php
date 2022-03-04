@@ -27,5 +27,14 @@ class AdminSeeder extends Seeder
         // $admin = User::find(1);
         $makeAdmin = User::latest()->first(); //to get last row add in DB and make it admin
         $makeAdmin->assignRole('admin');
+
+        User::firstOrCreate([
+            'name' => 'admona',
+            'email' => 'admona@admin.com',
+            'gender' => 'female',
+            'password' => bcrypt('123456')
+        ]);
+        $makeAdmin = User::latest()->first(); //to get last row add in DB and make it admin
+        $makeAdmin->assignRole('admin');
     }
 }
