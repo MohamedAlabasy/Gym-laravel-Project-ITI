@@ -1,6 +1,8 @@
 @extends('layouts.user-layout')
 @section('content')
 
+
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper pb-4">
     <!-- Content Header (Page header) -->
@@ -40,16 +42,19 @@
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" id="name" class="form-control" value="{{$gym->name}}" name="name">
+
+                                @if ($errors->any())
+<div class="w-4/8 m-auto text-center">
+    @foreach ($errors->all() as $error)
+    <li class="text-red-500 list-none">
+        {{$error}}
+    </li>
+    @endforeach
+
+</div>
+@endif
                             </div>
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <select id="city" class="form-control custom-select" >
-                                    <option selected disabled>Select one</option>
-                                    <option>On Hold</option>
-                                    <option>Canceled</option>
-                                    <option>Success</option>
-                                </select>
-                            </div>
+                           
 
                              <div class="form-group">
                                 <label class="form-label">User</label>
@@ -73,7 +78,7 @@
             <div class="row">
                 <div class="col-12">
                     <a href="#" class="btn btn-secondary">Cancel</a>
-                    <input type="submit" value="Save Changes" class="btn btn-success float-right">
+                    <input type="submit" value="Update" class="btn btn-success float-right">
                 </div>
             </div>
         </form>
