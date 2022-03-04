@@ -16,12 +16,14 @@ class AdminSeeder extends Seeder
     public function run()
     {
         #=======================================================================================#
-        #			                To add admin from laravel seeders                          	#
+        #			                   To add admin from  seeders                           	#
         #=======================================================================================#
         User::firstOrCreate([
             'name' => 'admin',
             'email' => 'admin@admin.com',
             'password' => bcrypt('123456')
         ]);
+        // $admin = User::find(1);
+        // $admin->assignRole('admin');
     }
 }

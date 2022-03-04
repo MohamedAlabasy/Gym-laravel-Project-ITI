@@ -6,49 +6,61 @@ use Illuminate\Http\Request;
 //use Illuminate\Database\Eloquent\Model\Gym;
 use App\Models\Gym;
 use App\Models\User;
+
 class GymController extends Controller
 {
-    //List Functioin
-    public function list(){
-        $gymsFromDB=Gym::all();
-        
-        return view("gym.list",['gyms'=>$gymsFromDB]);
+    #=======================================================================================#
+    #			                          List Function                                   	#
+    #=======================================================================================#
+    public function list()
+    {
+        $gymsFromDB = Gym::all();
+
+        return view("gym.list", ['gyms' => $gymsFromDB]);
     }
-        //Show Function
-        public function show($id){
-        $singleGym=Gym::find($id);
+    #=======================================================================================#
+    #			                            Show Function                                 	#
+    #=======================================================================================#
+    public function show($id)
+    {
+        $singleGym = Gym::find($id);
         return view("gym.show");
     }
-
-    //Create Function
+    #=======================================================================================#
+    #			                           Create Function                              	#
+    #=======================================================================================#
     public function create()
     {
-        return view('gym.create',[
+        return view('gym.create', [
             'users' => User::all(),
         ]);
     }
+    #=======================================================================================#
+    #			                           Store Function                                 	#
+    #=======================================================================================#
+    public function store(Request $request)
+    {
 
-    //Store Function
-    public function store(Request $request){
-       
         Gym::create($request->all());
         return redirect()->route('gym.list');
-
     }
-
-    //Edit Function
-    public function edit(){
+    #=======================================================================================#
+    #			                            Edit Function                             	    #
+    #=======================================================================================#
+    public function edit()
+    {
         return view("gym.edit");
     }
-
-     //Update Function
-    public function update(){
-
+    #=======================================================================================#
+    #			                            Update Function                              	#
+    #=======================================================================================#
+    public function update()
+    {
     }
-
-    //Delete Function
-    public function delete(){
-
+    #=======================================================================================#
+    #			                            Delete Function                              	#
+    #=======================================================================================#
+    public function delete()
+    {
     }
 }
-

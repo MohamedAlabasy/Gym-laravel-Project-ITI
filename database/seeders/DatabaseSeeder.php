@@ -16,5 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call(AdminSeeder::class); // for add admin this must be number 1
+
+
+        $this->call(PermissionsSeeder::class); //for add Permission on database make it last one 
     }
 }

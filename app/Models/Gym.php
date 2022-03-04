@@ -14,12 +14,11 @@ class Gym extends Model
     #			                    To allow insert in table                              	#
     #=======================================================================================#
     protected $fillable = [
-        
+
         'name',
-        
         'user_id',
         'image',
-        
+
 
     ];
     public function user()
