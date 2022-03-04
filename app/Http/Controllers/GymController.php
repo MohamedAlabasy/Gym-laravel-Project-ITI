@@ -56,7 +56,7 @@ class GymController extends Controller
     #=======================================================================================#
     #			                            Edit Function                             	    #
     #=======================================================================================#
-    public function edit()
+    public function edit($id)
 
     {
         $users = User::all();

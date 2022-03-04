@@ -38,21 +38,15 @@ Route::controller(GymController::class)->group(function () {
 });
 
 
-Route::controller(CoachController::class)->group(function () {
-    Route::get('/coach/create', 'create')->name('coach.create')->middleware('auth');
-    Route::post('/coach/store', 'store')->name('coach.store')->middleware('auth');
-    Route::get('/coach/edit/{coach}', 'edit')->name('coach.edit')->middleware('auth');
-    Route::put('/coach/update/{coach}', 'update')->name('coach.update')->middleware('auth');
-    Route::delete('/coach/delete/{id}', 'delete')->name('coach.delete')->middleware('auth');
-    Route::get('/coach/list', 'list')->name('coach.list')->middleware('auth');
-    Route::get('/coach/show/{id}', 'show')->name('coach.show')->middleware('auth');
-});
+
+
 
 
 Route::get('/user/show-profile', [UserController::class, 'show_profile'])->name('user.admin_profile')->middleware('auth');
 Route::get('/user/edit-profile', [UserController::class, 'edit_profile'])->name('user.edit_admin_profile')->middleware('auth');
 
 Route::get('/gym/training_session', [TrainingController::class, 'create'])->name('gym.training_session')->middleware('auth');
+
 
 ///***Training Routes***///
 Route::get('/gym/sessions', [TrainingController::class, 'index'])->name('gym.listSessions')->middleware('auth');
