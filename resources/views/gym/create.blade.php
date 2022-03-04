@@ -38,16 +38,18 @@
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" id="name" class="form-control" value="" name="name">
+
+                                @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
                             </div>
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <select id="city" class="form-control custom-select" >
-                                    <option selected disabled>Select one</option>
-                                    <option>On Hold</option>
-                                    <option>Canceled</option>
-                                    <option>Success</option>
-                                </select>
-                            </div>
+                            
 
                             <div class="form-group">
                                 <label class="form-label">User</label>
