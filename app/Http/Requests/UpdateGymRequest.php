@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreRequest extends FormRequest
+class UpdateGymRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class StoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,12 +25,10 @@ class StoreRequest extends FormRequest
     {
         return [
 
-
-            //
+            
+            // 'name' => ['required','string', 'min:2'],
+            // 'user_id' => 'required|exists:users,id',
+            
         ];
-    }
-    public function messages()
-    {
-        return [];
     }
 }

@@ -40,7 +40,6 @@
                         <tr>
                             <th> id</th>
                             <th> Gyms Name</th>
-                            <th>Gyms City</th>
                             <th>Created at</th>
                             <th>Gyms Cover Image</th>
                             <th></th>
@@ -52,12 +51,18 @@
                             <th scope="row">{{$gym->id}}</th>
 
                             <td>{{$gym->name}}</td>
+<<<<<<< HEAD
+                               
+                            
+                            
+=======
 
 
                             <td class="project-state">
                                 <span class="badge badge-success">Mansoura</span>
 
                             </td>
+>>>>>>> ee1d150688fd24bdafa12a660c6abde972147e16
                             <td>{{$gym->created_at}}</td>
                             <td>
                                 <img alt="Avatar" class="table-avatar" src="{{$gym->cover_image}}">
@@ -66,17 +71,30 @@
                                 <a class="btn btn-info btn-sm" href="#">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
+
+                               
+
+                                <a class="btn btn-warning btn-sm text-white" href="{{route('gym.edit', $gym['id'])}}">
                                     <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
-                            </td>
-                        </tr>
+                                
+                                    
+
+                               
+                                <form id="myform" action="{{ route('gym.delete', $gym['id']) }}" method="POST" style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete it ?');">
+                                     @method('delete')
+                                    @csrf
+                                    <input type="submit" class="btn btn-danger delete  fas fa-trash btn-sm" value="Delete" title='Delete' >
+                                
+                                </form>
+                           
+                                </td>
+                             </tr>
                         @endforeach
 
 
                     </tbody>
                 </table>
+                
             </div>
             <!-- /.card-body -->
         </div>
