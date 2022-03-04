@@ -44,6 +44,7 @@ class GymController extends Controller
     #=======================================================================================#
     public function store(Request $request)
     {
+
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
         ]);
@@ -52,10 +53,11 @@ class GymController extends Controller
     }
 
 
-
-
-    //Edit Function
+    #=======================================================================================#
+    #			                            Edit Function                             	    #
+    #=======================================================================================#
     public function edit($id)
+
     {
         $users = User::all();
         $singleGym = Gym::find($id);
@@ -80,8 +82,10 @@ class GymController extends Controller
     //Delete Function
     public function delete($id)
     {
+
         $singleGym = Gym::find($id);
         $singleGym->delete();
         return redirect(route('gym.list'));
+
     }
 }
