@@ -938,16 +938,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v9.3.0",
+            "version": "v9.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d442195be0c1a95324522d733e2369e406db51d1"
+                "reference": "c1c4404511b83fbf90ccbcdf864d4a85537f35e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d442195be0c1a95324522d733e2369e406db51d1",
-                "reference": "d442195be0c1a95324522d733e2369e406db51d1",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/c1c4404511b83fbf90ccbcdf864d4a85537f35e4",
+                "reference": "c1c4404511b83fbf90ccbcdf864d4a85537f35e4",
                 "shasum": ""
             },
             "require": {
@@ -1033,7 +1033,7 @@
                 "mockery/mockery": "^1.4.4",
                 "orchestra/testbench-core": "^7.1",
                 "pda/pheanstalk": "^4.0",
-                "phpstan/phpstan": "^1.0",
+                "phpstan/phpstan": "^1.4.7",
                 "phpunit/phpunit": "^9.5.8",
                 "predis/predis": "^1.1.9",
                 "symfony/cache": "^6.0"
@@ -1113,7 +1113,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-03-02T14:37:13+00:00"
+            "time": "2022-03-03T15:15:10+00:00"
         },
         {
             "name": "laravel/sanctum",
@@ -2833,16 +2833,16 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "5.5.0",
+            "version": "5.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "6a3ed627cee28a552b5176c172ae0abc5eb30925"
+                "reference": "6c46b4e7dc5445ebb36a44b00ee08d0838f580b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/6a3ed627cee28a552b5176c172ae0abc5eb30925",
-                "reference": "6a3ed627cee28a552b5176c172ae0abc5eb30925",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/6c46b4e7dc5445ebb36a44b00ee08d0838f580b0",
+                "reference": "6c46b4e7dc5445ebb36a44b00ee08d0838f580b0",
                 "shasum": ""
             },
             "require": {
@@ -2903,7 +2903,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-permission/issues",
-                "source": "https://github.com/spatie/laravel-permission/tree/5.5.0"
+                "source": "https://github.com/spatie/laravel-permission/tree/5.5.1"
             },
             "funding": [
                 {
@@ -2911,7 +2911,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-11T15:06:21+00:00"
+            "time": "2022-03-03T17:57:16+00:00"
         },
         {
             "name": "symfony/console",
@@ -5271,29 +5271,30 @@
     "packages-dev": [
         {
             "name": "doctrine/instantiator",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "d56bf6102915de5702778fe20f2de3b2fe570b5b"
+                "reference": "10dcfce151b967d20fde1b34ae6640712c3891bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/d56bf6102915de5702778fe20f2de3b2fe570b5b",
-                "reference": "d56bf6102915de5702778fe20f2de3b2fe570b5b",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/10dcfce151b967d20fde1b34ae6640712c3891bc",
+                "reference": "10dcfce151b967d20fde1b34ae6640712c3891bc",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1 || ^8.0"
             },
             "require-dev": {
-                "doctrine/coding-standard": "^8.0",
+                "doctrine/coding-standard": "^9",
                 "ext-pdo": "*",
                 "ext-phar": "*",
-                "phpbench/phpbench": "^0.13 || 1.0.0-alpha2",
-                "phpstan/phpstan": "^0.12",
-                "phpstan/phpstan-phpunit": "^0.12",
-                "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0"
+                "phpbench/phpbench": "^0.16 || ^1",
+                "phpstan/phpstan": "^1.4",
+                "phpstan/phpstan-phpunit": "^1",
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
+                "vimeo/psalm": "^4.22"
             },
             "type": "library",
             "autoload": {
@@ -5320,7 +5321,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/instantiator/issues",
-                "source": "https://github.com/doctrine/instantiator/tree/1.4.0"
+                "source": "https://github.com/doctrine/instantiator/tree/1.4.1"
             },
             "funding": [
                 {
@@ -5336,7 +5337,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-11-10T18:47:58+00:00"
+            "time": "2022-03-03T08:28:38+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -5714,16 +5715,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.10.3",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "c6a951b75d684fd43fbbd69617488e1e2e8924ba"
+                "reference": "14daed4296fae74d9e3201d2c4925d1acb7aa614"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/c6a951b75d684fd43fbbd69617488e1e2e8924ba",
-                "reference": "c6a951b75d684fd43fbbd69617488e1e2e8924ba",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/14daed4296fae74d9e3201d2c4925d1acb7aa614",
+                "reference": "14daed4296fae74d9e3201d2c4925d1acb7aa614",
                 "shasum": ""
             },
             "require": {
@@ -5761,7 +5762,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
-                "source": "https://github.com/myclabs/DeepCopy/tree/1.10.3"
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.11.0"
             },
             "funding": [
                 {
@@ -5769,7 +5770,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-03-02T14:16:47+00:00"
+            "time": "2022-03-03T13:19:32+00:00"
         },
         {
             "name": "nunomaduro/collision",
