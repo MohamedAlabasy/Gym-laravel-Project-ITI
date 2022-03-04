@@ -1,6 +1,8 @@
 @extends('layouts.user-layout')
 @section('content')
 
+
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper pb-4">
     <!-- Content Header (Page header) -->
@@ -21,6 +23,7 @@
     </section>
     <!-- Main content -->
     <section class="content">
+    
         <form action="{{route('gym.store')}}" method="post" enctype="multipart/form-data" class="w-75 m-auto">
             @csrf
             <div class="row">
@@ -77,6 +80,8 @@
                 </div>
             </div>
         </form>
+        
     </section>
 </div>
+
 @endsection
