@@ -21,7 +21,6 @@ class UserFactory extends Factory
         return [
 
             // $faker->numerify'###-###-####'), "766-620-7004"
-
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'is_verifications' => 1,
@@ -33,6 +32,8 @@ class UserFactory extends Factory
             'profile_image' => $this->faker->text(100),
             'birth_date' => $this->faker->dateTimeBetween('1990-01-01', '2012-12-31')->format('Y/m/d'), // outputs something like 17/09/2001
             'last_login_at' => now(),
+            'city_id' => rand(1, 24),
+            'gym_id' => rand(1, 50),
         ];
     }
 

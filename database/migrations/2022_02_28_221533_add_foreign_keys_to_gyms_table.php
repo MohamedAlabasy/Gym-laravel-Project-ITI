@@ -14,11 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('gyms', function (Blueprint $table) {
-              // $table->foreignId('user_id')->nullable()->constrained();
-            
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            
+            // $table->foreignId('user_id')->nullable()->constrained();
+            $table->unsignedBigInteger('city_id')->nullable();
+            $table->foreign('city_id')->references('id')->on('cities')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
