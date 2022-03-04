@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('cities', function (Blueprint $table) {
-               // $table->foreignId('user_id')->nullable()->constrained();
-            
+        Schema::table('attendance', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            
-            $table->unsignedBigInteger('gym_id');
-            $table->foreign('gym_id')->references('id')->on('gyms')->onUpdate('cascade')->onDelete('cascade');
-            
+
+            $table->unsignedBigInteger('training_session_id');
+            $table->foreign('training_session_id')->references('id')->on('training_sessions')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -32,7 +29,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('cities', function (Blueprint $table) {
+        Schema::table('attendance', function (Blueprint $table) {
             //
         });
     }

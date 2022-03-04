@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('gyms_training_packages', function (Blueprint $table) {
-            $table->unsignedBigInteger('gym_id');
-            $table->foreign('gym_id')->references('id')->on('gyms')->onUpdate('cascade')->onDelete('cascade');
+        Schema::table('revenues', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 
             $table->unsignedBigInteger('training_package_id');
             $table->foreign('training_package_id')->references('id')->on('training_packages')->onUpdate('cascade')->onDelete('cascade');
-
-            $table->primary(['gym_id', 'training_package_id']);
         });
     }
 
@@ -31,6 +29,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_gyms_training_packages');
+        Schema::table('revenues', function (Blueprint $table) {
+            //
+        });
     }
 };

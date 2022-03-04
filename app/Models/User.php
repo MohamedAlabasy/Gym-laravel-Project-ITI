@@ -33,6 +33,8 @@ class User extends Authenticatable
         'profile_image',
         'birth_date',
         'last_login_at',
+        'city_id',
+        'gym_id',
     ];
 
     /**
