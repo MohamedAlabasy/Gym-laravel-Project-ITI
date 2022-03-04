@@ -13,5 +13,22 @@ class Revenue extends Model
     #=======================================================================================#
     #			                    To allow insert in table                              	#
     #=======================================================================================#
-    protected $fillable = [];
+    protected $fillable = [
+        'price',
+        'payment_id',
+        'statuses',
+        'visa_number',
+        'payment_method',
+        'user_id',
+        'training_package_id',
+    ];
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function trainingPackage()
+    {
+        return $this->belongsTo(TrainingPackage::class);
+    }
 }

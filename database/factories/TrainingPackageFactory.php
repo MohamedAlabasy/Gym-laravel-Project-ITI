@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Gym>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TrainingPackage>
  */
-class GymFactory extends Factory
+class TrainingPackageFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,8 +18,9 @@ class GymFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'cover_image' => $this->faker->imageUrl($width = 200, $height = 200),
-            'city_id' => rand(1, 24),
+            'price' => $this->faker->numberBetween(10000, 1000000),
+            'sessions_number' => rand(10, 50),
+            'user_id' => rand(1, 2),
         ];
     }
 }
