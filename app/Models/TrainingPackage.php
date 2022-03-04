@@ -22,4 +22,9 @@ class TrainingPackage extends Model
     {
         return $this->belongsTo(User::class);
     }
+    //for many to many with 
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }

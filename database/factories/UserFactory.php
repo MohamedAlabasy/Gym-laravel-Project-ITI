@@ -19,12 +19,11 @@ class UserFactory extends Factory
     {
         return [
 
-            // $faker->numerify'###-###-####'), "766-620-7004"
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'is_verifications' => 1,
             'email_verified_at' => now(),
-            'national_id' => $this->faker->numerify('##############'), // "3579786681"
+            'national_id' => $this->faker->numerify('##############'), // "14"
             'password' => bcrypt('123456'),
             'remember_token' => Str::random(10),
             'gender' => rand(1, 2),
