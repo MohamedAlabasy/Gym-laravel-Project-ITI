@@ -80,19 +80,37 @@ body {
 
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
-            <li>
-                {{--  {{route('user.admin_profile')}}  --}}
-                <a href="#">
-                    <div class="media align-items-center">
-                        <img src="imgs/avatar.png" alt="User Avatar" class="mr-2 mt-1 img-size-32 img-circle mr-2">
-                        <div class="media-body">
-                          <h6 class="dropdown-item-title text-dark" style="font-size: 14px">
+            <li class="dropdown user user-menu" style="cursor:pointer;">
+                <div class="media align-items-center">
+                    <img src="imgs/avatar.png" alt="User Avatar" class="mr-2 mt-1 img-size-32 img-circle mr-2">
+                    <div class="media-body">
+                        <h6 class="dropdown-item-title text-dark" style="font-size: 14px">
                             {{ auth()->user()->name }}
-                          </h6>
-                        </div>
-                      </div>
-                </a>
-            </li>
+                        </h6>
+                    </div>
+                </div>
+            <ul class="dropdown-menu" style="width:200px">
+                <li class="user-header mb-1" style="height: 140px;">
+                    <img src="imgs/avatar.png" class="img-circle" alt="User Image">
+                    <p class="mb-0">
+                    {{ auth()->user()->name }}
+                    </p>
+                </li>
+                <li class="user-footer d-flex justify-content-between">
+                    <div class="pull-left">
+                        <a href="{{ route('user.admin_profile',auth()->user()->id )}}" class="btn btn-default btn-flat">Profile</a>
+                    </div>
+                    <div class="pull-right">
+
+                        <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">Sign out</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </li>
             <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                     <i class="fas fa-expand-arrows-alt"></i>
@@ -487,6 +505,7 @@ body {
     <script src="../../plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="dist/js/main.js"></script>
     <script>
     $(function() {
         $("#proj").DataTable({
