@@ -3,65 +3,63 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper pb-4">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>New Gym</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Create New Gym</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-    <!-- Main content -->
-    <section class="content">
-        <form action="{{url('')}}" method="post" enctype="multipart/form-data" class="w-75 m-auto">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Create</h3>
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" class="form-control" value="" name="name">
-                            </div>
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <select id="city" class="form-control custom-select">
-                                    <option selected disabled>Select one</option>
-                                    <option>On Hold</option>
-                                    <option>Canceled</option>
-                                    <option>Success</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="image">Image Cover</label>
-                                <input type="file" class="form-control" id="image" name="image">
-                            </div>
-                        </div>
+    <div class="container-fluid pt-5">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>150</h3>
+                        <p>Revenue</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-dollar-sign" style="font-size: 50px !important"></i>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <a href="#" class="btn btn-secondary">Cancel</a>
-                    <input type="submit" value="Save Changes" class="btn btn-success float-right">
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>53<sup style="font-size: 20px"></sup></h3>
+                        <p>Coaches</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-dumbbell" style="font-size: 50px !important"></i>
+                    </div>
                 </div>
             </div>
-        </form>
-    </section>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>44</h3>
+                        <p>Users</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-users" style="font-size: 50px !important"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- ./col -->
+            <div class="col-lg-3 col-6">
+                <!-- small box -->
+                <div class="small-box bg-danger">
+                    <div class="inner">
+                        <h3>65</h3>
+                        <p>Cities</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-city" style="font-size: 50px !important"></i>
+                    </div>
+                </div>
+            </div>
+            <!-- ./col -->
+        </div>
+        <!-- /.row -->
+    </div>
 </div>
 @endsection
