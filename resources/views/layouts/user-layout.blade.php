@@ -449,10 +449,8 @@ body {
         </div>
         <!-- /.sidebar -->
     </aside>
-<div class="container">
 
 @yield('content')
-</div>
    
 
     <div id="sidebar-overlay"></div>
