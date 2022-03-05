@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use App\Http\Controllers\Api\SessionsController;
 use App\Http\Controllers\Api\PackagesController;
+use App\Http\Controllers\Api\AuthController;
 use App\Models\User;
 use App\Models\TrainingSession;
 use App\Models\TrainingPackage;
@@ -23,6 +24,16 @@ use App\Models\TrainingPackage;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::controller(AuthController::class)->group(function () {
+    Route::post('login', 'login');
+    Route::post('signup', 'signup');
+    Route::get('logout', 'logout')->middleware('auth:sanctum');
+    Route::get('user', 'user');
+});
+
+
 
 //Traning Sessions Routes
 Route::get('sessions',[SessionsController::class,'index'])->middleware('auth:sanctum');
