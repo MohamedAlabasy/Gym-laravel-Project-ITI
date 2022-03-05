@@ -28,7 +28,7 @@ class CoachController extends Controller
     //Create Function
     public function create()
     {
-        return view('gym.create',[
+        return view('coach.create',[
             'users' => User::all(),
         ]);
     }
@@ -45,7 +45,7 @@ class CoachController extends Controller
         User::create($request->all());
 
         
-        return redirect()->route('gym.list');
+        return redirect()->route('coach.list');
 
     }
 
@@ -56,7 +56,7 @@ class CoachController extends Controller
         $singleGym=User::find($id);
 
 
-        return view("gym.edit",['gym' => $singleGym,'users'=>$users]);
+        return view("coach.edit",['coach' => $singleGym,'users'=>$users]);
     }
 
      //Update Function
@@ -75,7 +75,7 @@ class CoachController extends Controller
              
              
          ]);
-         return redirect()->route('gym.list');
+         return redirect()->route('coach.list');
      }
 
     //Delete Function
@@ -87,7 +87,7 @@ class CoachController extends Controller
 
 
             $singleGym->delete();
-            return redirect(route('gym.list'));
+            return redirect(route('coach.list'));
 
     }
 }
