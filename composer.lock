@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f88d9bc0fdcf25387097e5031bfc25d9",
+    "content-hash": "32b2992e75d0e91195a9ba0a8c7530bf",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -1555,16 +1555,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.0.10",
+            "version": "3.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "bbc5026adb5a423dfcdcecec74c7e15943ff6115"
+                "reference": "1ca148713c23cadeb9d7526973f81fb4a04090a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/bbc5026adb5a423dfcdcecec74c7e15943ff6115",
-                "reference": "bbc5026adb5a423dfcdcecec74c7e15943ff6115",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/1ca148713c23cadeb9d7526973f81fb4a04090a3",
+                "reference": "1ca148713c23cadeb9d7526973f81fb4a04090a3",
                 "shasum": ""
             },
             "require": {
@@ -1625,7 +1625,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.0.10"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.0.11"
             },
             "funding": [
                 {
@@ -1641,7 +1641,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-02-26T11:09:13+00:00"
+            "time": "2022-03-04T16:40:17+00:00"
         },
         {
             "name": "league/mime-type-detection",
@@ -7710,29 +7710,16 @@
         },
         {
             "name": "spatie/ignition",
-<<<<<<< HEAD
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/ignition.git",
-                "reference": "9d4e3ccf04acfe67d6caea43913c1fecf859b488"
+                "reference": "090518ff676e17a038dfe77490018363ff66af20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ignition/zipball/9d4e3ccf04acfe67d6caea43913c1fecf859b488",
-                "reference": "9d4e3ccf04acfe67d6caea43913c1fecf859b488",
-=======
-            "version": "1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/ignition.git",
-                "reference": "5c554067887b7080bc58977fa30a488624d85d20"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ignition/zipball/5c554067887b7080bc58977fa30a488624d85d20",
-                "reference": "5c554067887b7080bc58977fa30a488624d85d20",
->>>>>>> 6763a56cbb71902c863787bd2d1aa7591d0458dc
+                "url": "https://api.github.com/repos/spatie/ignition/zipball/090518ff676e17a038dfe77490018363ff66af20",
+                "reference": "090518ff676e17a038dfe77490018363ff66af20",
                 "shasum": ""
             },
             "require": {
@@ -7790,11 +7777,7 @@
                     "type": "github"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2022-03-04T12:12:35+00:00"
-=======
-            "time": "2022-03-02T10:51:55+00:00"
->>>>>>> 6763a56cbb71902c863787bd2d1aa7591d0458dc
+            "time": "2022-03-04T12:52:17+00:00"
         },
         {
             "name": "spatie/laravel-ignition",
