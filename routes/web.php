@@ -66,3 +66,23 @@ Route::get('/user', [UserController::class, 'index'])->name('layouts.user-layout
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+///***City Manager Routes***///
+Route::controller(CityManagerController::class)->group(function () {
+   
+    Route::get('/cityManager/create', 'create')->name('cityManager.create')->middleware('auth');
+    Route::post('/cityManager/store', 'store')->name('cityManager.store')->middleware('auth');
+    Route::get('/cityManager/list', 'list')->name('cityManager.list')->middleware('auth');
+
+
+    Route::get('/cityManager/edit/{coach}', 'edit')->name('cityManager.edit')->middleware('auth');
+    Route::put('/cityManager/update/{coach}', 'update')->name('cityManager.update')->middleware('auth');
+    Route::delete('/cityManager/delete/{id}', 'delete')->name('cityManager.delete')->middleware('auth');
+    Route::get('/cityManager/show/{id}', 'show')->name('cityManager.show')->middleware('auth');
+  
+  
+
+});
