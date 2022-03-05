@@ -13,7 +13,7 @@ class CreateAttendanceTable extends Migration
      */
     public function up()
     {
-        Schema::create('attendance', function (Blueprint $table) {
+        Schema::create('attendances', function (Blueprint $table) {
             $table->id();
             $table->timestamp('attendance_at')->nullable();
             $table->timestamps();

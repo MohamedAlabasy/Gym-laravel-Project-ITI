@@ -1,12 +1,25 @@
 @extends('layouts.user-layout')
 @section('content')
 
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper pb-4">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+
+
                 <div class="col-sm-6">
                     <h1>New Coach</h1>
                 </div>
@@ -21,7 +34,8 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <form action="{{url('')}}" method="post" enctype="multipart/form-data" class="w-75 m-auto">
+        <form action="{{route('coach.store')}}" method="post" enctype="multipart/form-data" class="w-75 m-auto">
+            @csrf
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-primary">
@@ -37,10 +51,12 @@
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" id="name" class="form-control" value="" name="name">
+                               
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input type="email" id="email" class="form-control" value="" name="email">
+
                             </div>
                             <div class="form-group">
                                 <label for="city">City</label>
