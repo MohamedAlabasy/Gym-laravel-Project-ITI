@@ -78,9 +78,6 @@ Route::put('/user/{users}', [UserController::class, 'update'])->name('user.updat
 Route::get('/user', [UserController::class, 'index'])->name('layouts.user-layout')->middleware('auth');
 
 Auth::routes();
-<<<<<<< HEAD
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
 
 
 ///***City Manager Routes***///
@@ -95,9 +92,4 @@ Route::controller(CityManagerController::class)->group(function () {
     Route::put('/cityManager/update/{coach}', 'update')->name('cityManager.update')->middleware('auth');
     Route::delete('/cityManager/delete/{id}', 'delete')->name('cityManager.delete')->middleware('auth');
     Route::get('/cityManager/show/{id}', 'show')->name('cityManager.show')->middleware('auth');
-
-
-
 });
-
->>>>>>> origin/main
