@@ -38,7 +38,7 @@
                 <table class="table table-striped projects" id="proj">
                     <thead>
                         <tr>
-                            <th> #</th>
+                            <th> id</th>
                             <th> Coach Name</th>
                             <th> Coach Email</th>
                             <th>Coach City</th>
@@ -48,87 +48,38 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($coaches as $coach)
                         <tr>
-                            <td> #</td>
-                            <td>
-                                <a> AdminLTE v3 </a>
+                                <th scope="row">{{$coach->id}}</th>
+                                <td>{{$coach->name}}</td> 
+                           
+                            <td class="project-state">
+                                <span class="badge badge-success">{{$coach->email}}</span>
                             </td>
                             <td class="project-state">
-                                <span class="badge badge-success">Email</span>
+                                <span class="badge badge-success">Cairo</span>
                             </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">City</span>
-                            </td>
+                            <td>{{$coach->created_at}}</td>
                             <td>
-                                <p>1/1/2022</p>
-                            </td>
-                            <td>
-                                <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
+                                <img alt="Avatar" class="table-avatar" src="{{$coach->cover_image}}">
                             </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-info btn-sm" href="#">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
+                                <a class="btn btn-warning btn-sm text-white" href="{{route('coach.edit', $coach['id'])}}">
                                     <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
+
+                                    <form id="myform" action="{{ route('coach.delete', $coach['id']) }}" method="POST" style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete it ?');">
+                                        @method('delete')
+                                       @csrf
+                                       <input type="submit" class="btn btn-danger delete  fas fa-trash btn-sm" value="Delete" title='Delete' >
+                                   
+                                   </form>
                             </td>
                         </tr>
-                        <tr>
-                            <td> #</td>
-                            <td>
-                                <a> AdminLTE v3 </a>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Email</span>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">City</span>
-                            </td>
-                            <td>
-                                <p>1/1/2022</p>
-                            </td>
-                            <td>
-                                <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
-                                    <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> #</td>
-                            <td>
-                                <a> AdminLTE v3 </a>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Email</span>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">City</span>
-                            </td>
-                            <td>
-                                <p>1/1/2022</p>
-                            </td>
-                            <td>
-                                <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
-                                    <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
-                            </td>
-                        </tr>
+                        @endforeach
+                       
                     </tbody>
                 </table>
             </div>
