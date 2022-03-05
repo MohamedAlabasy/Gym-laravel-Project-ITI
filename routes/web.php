@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('welcome');
 })->middleware('auth');
+
 Route::get('/gym/training', function () {
     return view('gym.training_session')->name('gym.session');
 })->middleware('auth');
@@ -77,9 +78,6 @@ Route::put('/user/{users}', [UserController::class, 'update'])->name('user.updat
 Route::get('/user', [UserController::class, 'index'])->name('layouts.user-layout')->middleware('auth');
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
 
 
 ///***City Manager Routes***///
