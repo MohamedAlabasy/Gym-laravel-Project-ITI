@@ -59,75 +59,86 @@ class PermissionsSeeder extends Seeder
         #=======================================================================================#
         #			                      give admin permissions                             	#
         #=======================================================================================#
-        $adminRole->givePermissionTo($loginPermission);
-        $adminRole->givePermissionTo($updateProfilePermission);
-        $adminRole->givePermissionTo($showTrainingSessionsPermission);
-        $adminRole->givePermissionTo($crudUserPermission);
-        $adminRole->givePermissionTo($banUsersPermission);
-        $adminRole->givePermissionTo($assignCoachPermission);
-        $adminRole->givePermissionTo($buyPackageForUserPermission);
-        $adminRole->givePermissionTo($crudCoachPermission);
-        $adminRole->givePermissionTo($banCoachPermission);
-        $adminRole->givePermissionTo($showPurchasesHistoryPermission);
-        $adminRole->givePermissionTo($showRevenuePermission);
-        $adminRole->givePermissionTo($crudAttendancePermission);
-        $adminRole->givePermissionTo($crudTrainingSessionsPermission);
-        $adminRole->givePermissionTo($crudGymPermission);
-        $adminRole->givePermissionTo($banGymManagerPermission);
-        $adminRole->givePermissionTo($crudGymManagerPermission);
-        $adminRole->givePermissionTo($crudCityPermission);
-        $adminRole->givePermissionTo($banCityManagerPermission);
-        $adminRole->givePermissionTo($crudCityManagerPermission);
-        $adminRole->givePermissionTo($crudTrainingPackagePermission);
+        $adminRole->syncPermissions([
+            $loginPermission,
+            $updateProfilePermission,
+            $showTrainingSessionsPermission,
+            $crudUserPermission,
+            $banUsersPermission,
+            $assignCoachPermission,
+            $buyPackageForUserPermission,
+            $crudCoachPermission,
+            $banCoachPermission,
+            $showPurchasesHistoryPermission,
+            $showRevenuePermission,
+            $crudAttendancePermission,
+            $crudTrainingSessionsPermission,
+            $crudGymPermission,
+            $banGymManagerPermission,
+            $crudGymManagerPermission,
+            $crudCityPermission,
+            $banCityManagerPermission,
+            $crudCityManagerPermission,
+            $crudTrainingPackagePermission
+        ]);
+
         #=======================================================================================#
         #			                    give city Manager permissions                           #
         #=======================================================================================#
-        $cityManagerRole->givePermissionTo($loginPermission);
-        $cityManagerRole->givePermissionTo($updateProfilePermission);
-        $cityManagerRole->givePermissionTo($showTrainingSessionsPermission);
-        $cityManagerRole->givePermissionTo($crudUserPermission);
-        $cityManagerRole->givePermissionTo($banUsersPermission);
-        $cityManagerRole->givePermissionTo($assignCoachPermission);
-        $cityManagerRole->givePermissionTo($buyPackageForUserPermission);
-        $cityManagerRole->givePermissionTo($crudCoachPermission);
-        $cityManagerRole->givePermissionTo($banCoachPermission);
-        $cityManagerRole->givePermissionTo($showPurchasesHistoryPermission);
-        $cityManagerRole->givePermissionTo($showRevenuePermission);
-        $cityManagerRole->givePermissionTo($crudAttendancePermission);
-        $cityManagerRole->givePermissionTo($crudTrainingSessionsPermission);
-        $cityManagerRole->givePermissionTo($crudGymPermission);
-        $cityManagerRole->givePermissionTo($banGymManagerPermission);
-        $cityManagerRole->givePermissionTo($crudGymManagerPermission);
+        $cityManagerRole->syncPermissions([
+            $loginPermission,
+            $updateProfilePermission,
+            $showTrainingSessionsPermission,
+            $crudUserPermission,
+            $banUsersPermission,
+            $assignCoachPermission,
+            $buyPackageForUserPermission,
+            $crudCoachPermission,
+            $banCoachPermission,
+            $showPurchasesHistoryPermission,
+            $showRevenuePermission,
+            $crudAttendancePermission,
+            $crudTrainingSessionsPermission,
+            $crudGymPermission,
+            $banGymManagerPermission,
+            $crudGymManagerPermission
+        ]);
         #=======================================================================================#
-        #			                    give gym Manager permissions                             #
+        #			                    give gym Manager permissions                            #
         #=======================================================================================#
-        $gymManagerRole->givePermissionTo($loginPermission);
-        $gymManagerRole->givePermissionTo($updateProfilePermission);
-        $gymManagerRole->givePermissionTo($showTrainingSessionsPermission);
-        $gymManagerRole->givePermissionTo($crudUserPermission);
-        $gymManagerRole->givePermissionTo($banUsersPermission);
-        $gymManagerRole->givePermissionTo($assignCoachPermission);
-        $gymManagerRole->givePermissionTo($buyPackageForUserPermission);
-        $gymManagerRole->givePermissionTo($crudCoachPermission);
-        $gymManagerRole->givePermissionTo($banCoachPermission);
-        $gymManagerRole->givePermissionTo($showPurchasesHistoryPermission);
-        $gymManagerRole->givePermissionTo($showRevenuePermission);
-        $gymManagerRole->givePermissionTo($crudAttendancePermission);
-        $gymManagerRole->givePermissionTo($crudTrainingSessionsPermission);
+        $gymManagerRole->syncPermissions([
+            $loginPermission,
+            $updateProfilePermission,
+            $showTrainingSessionsPermission,
+            $crudUserPermission,
+            $banUsersPermission,
+            $assignCoachPermission,
+            $buyPackageForUserPermission,
+            $crudCoachPermission,
+            $banCoachPermission,
+            $showPurchasesHistoryPermission,
+            $showRevenuePermission,
+            $crudAttendancePermission,
+            $crudTrainingSessionsPermission,
+        ]);
         #=======================================================================================#
         #			                      give user permissions                             	#
         #=======================================================================================#
-        $userRole->givePermissionTo($loginPermission);
-        $userRole->givePermissionTo($updateProfilePermission);
-        $userRole->givePermissionTo($showTrainingSessionsPermission);
-        $userRole->givePermissionTo($showAttendanceHistoryPermission);
-        $userRole->givePermissionTo($attendTrainingSessionPermission);
-        $userRole->givePermissionTo($showRemainingSessionsPermission);
+        $userRole->syncPermissions([
+            $loginPermission,
+            $updateProfilePermission,
+            $showTrainingSessionsPermission,
+            $showAttendanceHistoryPermission,
+            $attendTrainingSessionPermission,
+            $showRemainingSessionsPermission,
+        ]);
         #=======================================================================================#
         #			                      give coach permissions                             	#
         #=======================================================================================#
-        $coachRole->givePermissionTo($loginPermission);
-        $coachRole->givePermissionTo($updateProfilePermission);
-        $coachRole->givePermissionTo($showTrainingSessionsPermission);
+        $coachRole->syncPermissions([
+            $loginPermission,
+            $updateProfilePermission,
+            $showTrainingSessionsPermission,
+        ]);
     }
 }
