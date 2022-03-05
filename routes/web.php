@@ -62,13 +62,13 @@ Route::get('/gym/training_session', [TrainingController::class, 'create'])->name
 
 ///***Training Routes***///
 Route::get('/gym/sessions', [TrainingController::class, 'index'])->name('gym.listSessions')->middleware('auth');
+Route::get('gym/listing', [TrainingController::class, 'getSession'])->name('gym.listing');
 Route::get('/gym/create_session', [TrainingController::class, 'create'])->name('gym.training_session')->middleware('auth');
 Route::post('/gym/sessions', [TrainingController::class, 'store'])->name('gym_session.store')->middleware('auth');
 Route::get('/gym/sessions/{session}', [TrainingController::class, 'show'])->name('gym.show_training_session')->middleware('auth');
 Route::get('/gym/sessions/{session}/edit', [TrainingController::class, 'edit'])->name('gym.edit_training_session')->middleware('auth');
 Route::delete('/gym/sessions/{session}', [TrainingController::class, 'destroy'])->name('gym.delete_session')->middleware('auth');
 Route::put('/gym/sessions/{session}', [TrainingController::class, 'update'])->name('gym.update_session')->middleware('auth');
-
 
 ///***User Routes***///
 Route::get('/user/{id}', [UserController::class, 'show_profile'])->name('user.admin_profile')->middleware('auth');

@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+    @yield('dataTable')
     <title>Gym System</title>
 </head>
 <style>
@@ -448,8 +449,11 @@ body {
         </div>
         <!-- /.sidebar -->
     </aside>
+<div class="container">
 
-    @yield('content')
+@yield('content')
+</div>
+   
 
     <div id="sidebar-overlay"></div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -498,6 +502,7 @@ body {
         }).buttons().container().appendTo('#proj_wrapper .col-md-6:eq(0)');
     });
     </script>
+    @yield('dataTableScript')
 </body>
 
 </html>
