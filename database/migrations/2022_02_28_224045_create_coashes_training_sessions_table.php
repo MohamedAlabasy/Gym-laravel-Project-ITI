@@ -14,13 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('coaches_training_sessions', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedBigInteger('coach_id');
+            $table->foreign('coach_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 
             $table->unsignedBigInteger('training_session_id');
             $table->foreign('training_session_id')->references('id')->on('training_sessions')->onUpdate('cascade')->onDelete('cascade');
 
-            $table->primary(['user_id', 'training_session_id']);
+            $table->primary(['coach_id', 'training_session_id']);
         });
     }
 
