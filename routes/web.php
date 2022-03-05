@@ -78,9 +78,12 @@ Route::get('/user', [UserController::class, 'index'])->name('layouts.user-layout
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> a4635fed25d38037b40063dd79fe2695cfad1047
 
 ///***City Manager Routes***///
 Route::controller(CityManagerController::class)->group(function () {
