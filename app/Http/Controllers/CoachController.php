@@ -15,14 +15,14 @@ class CoachController extends Controller
         $gymsFromDB=User::all();
 
        
-        return view("gym.list",['gyms'=>$gymsFromDB]);
+        return view("coach.list",['coaches'=>$gymsFromDB]);
     }
         //Show Function
         public function show($id){
 
         $singleGym=User::find($id);
 
-        return view("gym.show");
+        return view("coach.show");
     }
 
     //Create Function
@@ -38,8 +38,11 @@ class CoachController extends Controller
        
         $request->validate([
             'name' => ['required','string','min:2'],
+            'email' => ['required'],
+            
            
         ]);
+        
         
 
         User::create($request->all());
