@@ -218,13 +218,13 @@ body {
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/examples/profile.html" class="nav-link">
+                                <a href="coach/list" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Coaches</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/examples/invoice.html" class="nav-link">
+                                <a href="coach/create" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add new</p>
                                 </a>

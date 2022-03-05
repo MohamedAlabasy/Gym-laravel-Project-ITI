@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GymController;
+use App\Http\Controllers\CoachController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -37,7 +38,18 @@ Route::controller(GymController::class)->group(function () {
     Route::get('/gym/show/{id}', 'show')->name('gym.show')->middleware('auth');
 });
 
+//////****Goach Controller Routes*****////////
 
+
+Route::controller(CoachController::class)->group(function () {
+    Route::get('/coach/create', 'create')->name('coach.create')->middleware('auth');
+    Route::post('/coach/store', 'store')->name('coach.store')->middleware('auth');
+    Route::get('/coach/edit/{coach}', 'edit')->name('coach.edit')->middleware('auth');
+    Route::put('/coach/update/{coach}', 'update')->name('coach.update')->middleware('auth');
+    Route::delete('/coach/delete/{id}', 'delete')->name('coach.delete')->middleware('auth');
+    Route::get('/coach/list', 'list')->name('coach.list')->middleware('auth');
+    Route::get('/coach/show/{id}', 'show')->name('coach.show')->middleware('auth');
+});
 
 
 
