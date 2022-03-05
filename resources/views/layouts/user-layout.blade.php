@@ -407,7 +407,6 @@ body {
                             <i class="nav-icon far fa-plus-square"></i>
                             <p>
                                 Revenue
-                                <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
                     </li>
@@ -418,7 +417,7 @@ body {
         <!-- /.sidebar -->
     </aside>
 
-        @yield('content')   
+        @yield('content')
 
     <div id="sidebar-overlay"></div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
