@@ -450,8 +450,7 @@ body {
         <!-- /.sidebar -->
     </aside>
 
-@yield('content')
-   
+        @yield('content')   
 
     <div id="sidebar-overlay"></div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
