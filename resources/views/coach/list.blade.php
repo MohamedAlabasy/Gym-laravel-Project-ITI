@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>All Gyms</h1>
+                    <h4>All Coaches</h4>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Gyms</li>
+                        <li class="breadcrumb-item active">Coaches</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,7 @@
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Gyms</h3>
+                <h3 class="card-title">Coaches</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -39,61 +39,50 @@
                     <thead>
                         <tr>
                             <th> id</th>
-
-                            <th> Gyms Name</th>
-
+                            <th> Coach Name</th>
+                            <th> Coach Email</th>
+                            <th>Coach City</th>
                             <th>Created at</th>
-                            <th>Gyms Cover Image</th>
+                            <th>Coach Image</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($gyms as $gym)
+                        @foreach($coaches as $coach)
+                        {{-- @dd($coach->city) --}}
                         <tr>
-                            <th scope="row">{{$gym->id}}</th>
-
-                            <td>{{$gym->name}}</td>        
-
-
-
-
+                                <th scope="row">{{$coach->id}}</th>
+                                <td>{{$coach->name}}</td> 
+                           
                             <td class="project-state">
-                                <span class="badge badge-success">Mansoura</span>
-
+                                <span class="badge badge-success">{{$coach->email}}</span>
                             </td>
-
-                            <td>{{$gym->created_at->format('d - M - Y')}}</td>
+                            <td class="project-state">
+                                <span class="badge badge-success">{{$coach->city}}</span>
+                            </td>
+                            <td>{{$coach->created_at->format('d - M - Y')}}</td>
                             <td>
-                                <img alt="Avatar" class="table-avatar" src="{{$gym->cover_image}}">
+                                <img alt="Avatar" class="table-avatar" src="{{$coach->profile_image}}">
                             </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-info btn-sm" href="#">
                                     <i class="fa fa-eye"></i>
                                 </a>
-
-                               
-
-                                <a class="btn btn-warning btn-sm text-white" href="{{route('gym.edit', $gym['id'])}}">
+                                <a class="btn btn-warning btn-sm text-white" href="{{route('coach.edit', $coach['id'])}}">
                                     <i class="fas fa-pencil-alt"></i></a>
-                                
-                                    
 
-                               
-                                <form id="myform" action="{{ route('gym.delete', $gym['id']) }}" method="POST" style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete it ?');">
-                                     @method('delete')
-                                    @csrf
-                                    <input type="submit" class="btn btn-danger delete  fas fa-trash btn-sm" value="Delete" title='Delete' >
-                                
-                                </form>
-                           
-                                </td>
-                         </tr>
-                           @endforeach
-
-
+                                    <form id="myform" action="{{ route('coach.delete', $coach['id']) }}" method="POST" style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete it ?');">
+                                        @method('delete')
+                                       @csrf
+                                       <input type="submit" class="btn btn-danger delete  fas fa-trash btn-sm" value="Delete" title='Delete' >
+                                   
+                                   </form>
+                            </td>
+                        </tr>
+                        @endforeach
+                       
                     </tbody>
                 </table>
-                
             </div>
             <!-- /.card-body -->
         </div>

@@ -21,7 +21,9 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <form action="{{url('')}}" method="post" enctype="multipart/form-data" class="w-75 m-auto">
+        <form action="{{route('coach.update',['coach' => $coach['id']])}}" method="post" enctype="multipart/form-data" class="w-75 m-auto">
+            @csrf
+            @method('PUT')
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-primary">
@@ -36,7 +38,18 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" id="name" class="form-control" value="" name="name">
+                                <input type="text" id="name" class="form-control" value="{{$coach->name}}" name="name">
+
+                                @if ($errors->any())
+                        <div class="w-4/8 m-auto text-center">
+                            @foreach ($errors->all() as $error)
+                            <li class="text-red-500 list-none">
+                                {{$error}}
+                            </li>
+                            @endforeach
+
+                                </div>
+                            @endif
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
@@ -62,7 +75,7 @@
             <div class="row">
                 <div class="col-12">
                     <a href="#" class="btn btn-secondary">Cancel</a>
-                    <input type="submit" value="Save Changes" class="btn btn-warning float-right">
+                    <input type="submit" value="update" class="btn btn-warning float-right">
                 </div>
             </div>
         </form>
