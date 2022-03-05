@@ -8,20 +8,25 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Attendance extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     #=======================================================================================#
     #			                    To allow insert in table                              	#
     #=======================================================================================#
-    protected $fillable = [];
+    protected $fillable = [
+        'attendance_at',
+        'user_id',
+        'training_session_id',
+    ];
 
-    public function user() //name is very important
+
+    // one-to-many relationship
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function trainingSession() //name is very important
+    public function trainingSession()
     {
         return $this->belongsTo(TrainingSession::class);
     }
