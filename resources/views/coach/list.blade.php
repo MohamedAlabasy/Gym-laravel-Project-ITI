@@ -49,6 +49,7 @@
                     </thead>
                     <tbody>
                         @foreach($coaches as $coach)
+                        {{-- @dd($coach->city) --}}
                         <tr>
                                 <th scope="row">{{$coach->id}}</th>
                                 <td>{{$coach->name}}</td> 
@@ -57,11 +58,11 @@
                                 <span class="badge badge-success">{{$coach->email}}</span>
                             </td>
                             <td class="project-state">
-                                <span class="badge badge-success">Cairo</span>
+                                <span class="badge badge-success">{{$coach->city}}</span>
                             </td>
-                            <td>{{$coach->created_at}}</td>
+                            <td>{{$coach->created_at->format('d - M - Y')}}</td>
                             <td>
-                                <img alt="Avatar" class="table-avatar" src="{{$coach->cover_image}}">
+                                <img alt="Avatar" class="table-avatar" src="{{$coach->profile_image}}">
                             </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-info btn-sm" href="#">

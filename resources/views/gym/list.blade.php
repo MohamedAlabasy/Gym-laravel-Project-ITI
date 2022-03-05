@@ -62,7 +62,7 @@
 
                             </td>
 
-                            <td>{{$gym->created_at}}</td>
+                            <td>{{$gym->created_at->format('d - M - Y')}}</td>
                             <td>
                                 <img alt="Avatar" class="table-avatar" src="{{$gym->cover_image}}">
                             </td>
