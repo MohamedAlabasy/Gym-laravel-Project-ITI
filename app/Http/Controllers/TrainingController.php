@@ -7,6 +7,8 @@ use App\Models\Attendance;
 use Illuminate\Http\Request;
 use App\Models\TrainingSession;
 use App\Models\User;
+use Yajra\DataTables\Facades\DataTables;
+
 
 class TrainingController extends Controller
 {
@@ -14,12 +16,24 @@ class TrainingController extends Controller
     #=======================================================================================#
     #			                             index                                         	#
     #=======================================================================================#
-    public function index()
-    {
-        $trainingSessions = TrainingSession::paginate(5);
-        return view('gym.listSessions', [
-            'trainingSessions' => $trainingSessions,
-        ]);
+    public function index() {
+        return view('gym.listSessions');
+    }
+    
+    public function getSession(Request $request) {
+        if($request->ajax()) {
+            $data = TrainingSession::latest()->get();
+            return DataTables::of($data)
+            ->addIndexColumn()
+            ->addColumn('action', function() {
+                $actionBtn = '<a href="#" class = "btn btn-danger btn-sm">Delete</a>
+                <a href="#" class = "btn btn-info btn-sm">View</a>
+                <a href="#" class = "btn btn-success btn-sm">Update</a>';
+                return $actionBtn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+        }
     }
     #=======================================================================================#
     #			                             create                                        	#

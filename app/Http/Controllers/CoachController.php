@@ -15,20 +15,20 @@ class CoachController extends Controller
         $gymsFromDB=User::all();
 
        
-        return view("gym.list",['gyms'=>$gymsFromDB]);
+        return view("coach.list",['coaches'=>$gymsFromDB]);
     }
         //Show Function
         public function show($id){
 
         $singleGym=User::find($id);
 
-        return view("gym.show");
+        return view("coach.show");
     }
 
     //Create Function
     public function create()
     {
-        return view('gym.create',[
+        return view('coach.create',[
             'users' => User::all(),
         ]);
     }
@@ -38,14 +38,17 @@ class CoachController extends Controller
        
         $request->validate([
             'name' => ['required','string','min:2'],
+            'email' => ['required'],
+            
            
         ]);
+        
         
 
         User::create($request->all());
 
         
-        return redirect()->route('gym.list');
+        return redirect()->route('coach.list');
 
     }
 
@@ -56,7 +59,7 @@ class CoachController extends Controller
         $singleGym=User::find($id);
 
 
-        return view("gym.edit",['gym' => $singleGym,'users'=>$users]);
+        return view("coach.edit",['coach' => $singleGym,'users'=>$users]);
     }
 
      //Update Function
@@ -75,7 +78,7 @@ class CoachController extends Controller
              
              
          ]);
-         return redirect()->route('gym.list');
+         return redirect()->route('coach.list');
      }
 
     //Delete Function
@@ -87,7 +90,7 @@ class CoachController extends Controller
 
 
             $singleGym->delete();
-            return redirect(route('gym.list'));
+            return redirect(route('coach.list'));
 
     }
 }
