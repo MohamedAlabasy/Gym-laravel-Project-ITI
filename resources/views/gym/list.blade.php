@@ -49,9 +49,11 @@
                     </thead>
                     <tbody>
                         @foreach($gyms as $gym)
-                        <tr>
-                            <th scope="row">{{$gym->id}}</th>
+                        <tr id="gid{{$gym->id}}">
 
+                            
+                            
+                            <td>{{$gym->id}}</td>
                             <td>{{$gym->name}}</td>        
                              <td class="project-state">
                                 <span>mansoura</span>
@@ -66,26 +68,16 @@
                                 <a class="btn btn-info btn-sm" href="#">
                                     <i class="fa fa-eye"></i>
                                 </a>
-
-                               
-
                                 <a class="btn btn-warning btn-sm text-white" href="{{route('gym.edit', $gym['id'])}}">
                                     <i class="fas fa-pencil-alt"></i></a>
                                 
-                                    
-
-                               
-                                <form id="myform" action="{{ route('gym.delete', $gym['id']) }}" method="POST" style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete it ?');">
-                                     @method('delete')
-                                    @csrf
-                                    <input type="submit" class="btn btn-danger delete  fas fa-trash btn-sm" value="Delete" title='Delete' >
-                                
-                                </form>
-                           
+                                    <a href="javascript:void(0)" onclick="deleteGym({{$gym->id}})" class="btn btn-danger" >Delete</a>
+                                      
+                                       
                                 </td>
-                         </tr>
-                           @endforeach
-
+                            </tr>
+                              @endforeach      
+    
 
                     </tbody>
                 </table>
@@ -94,8 +86,27 @@
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
-
-    </section>
+        
+      </section>
 </div>
 <!-- /.content-wrapper -->
 @endsection
+
+<script>
+    function deleteGym(id){
+        if(confirm("Do you want to delete this record?"))
+        {
+            $.ajax({
+                url:'/gym/'+id,
+                type:'DELETE',
+                data:{
+                    _token : $("input[name=_token]").val()
+                },
+                success:function(response)
+                {
+                    $("#gid"+id).remove();
+                }
+            });
+        }
+    }
+  </script>  
