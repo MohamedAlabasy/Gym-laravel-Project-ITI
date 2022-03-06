@@ -44,7 +44,7 @@ class WelcomeController extends Controller
 
                 //get totalRevenue in cityManager city
                 foreach ($userOfCity as $usersID) {
-                    $this->totalRevenue += (Revenue::where('id', '=', $usersID['id'])->sum('price')) / 100;
+                    $this->totalRevenue += (Revenue::where('user_id', '=', $usersID['id'])->sum('price')) / 100;
                 }
                 $this->revenueInDollars = number_format($this->totalRevenue, 2, ',', '.');
 
@@ -63,13 +63,26 @@ class WelcomeController extends Controller
 
                 break;
             case 'gymManager':
-                // dd('gymManager', $userID, $userRole);
+                //get all user in gymManager gym
+                $userOfGym = Gym::find($this->userData['gym_id'])->users;
+
+                //get totalRevenue in gymManager gym
+                foreach ($userOfGym as $usersID) {
+                    $this->totalRevenue += (Revenue::where('user_id', '=', $usersID['id'])->sum('price')) / 100;
+                }
+                $this->revenueInDollars = number_format($this->totalRevenue, 2, ',', '.');
+
+                //get users by type in gymManager gym
+                foreach ($userOfGym as $singleUser) {
+                    if ($singleUser->hasRole('coach')) {
+                        $this->coaches++;
+                    } elseif ($singleUser->hasRole('user')) {
+                        $this->users++;
+                    }
+                }
                 break;
             case 'coach':
-                // dd('coach', $userID, $userRole);
-                break;
-            case 'user':
-                // dd('user', $userID, $userRole);
+               
                 break;
             default:
                 # code...
@@ -78,8 +91,8 @@ class WelcomeController extends Controller
         // dd(
         //     "id = $this->userID",
         //     $this->userRole['0'],
-        //     // "cities Number = $this->cities",
-        //     // "citiesManagers Number = $this->citiesManagers",
+        //     "cities Number = $this->cities",
+        //     "citiesManagers Number = $this->citiesManagers",
         //     "gyms Number= $this->gyms",
         //     "gymsManagers Number =$this->gymsManagers",
         //     "coaches Number=$this->coaches",

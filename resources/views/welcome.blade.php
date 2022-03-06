@@ -113,6 +113,24 @@
                         {{-- </a> --}}
                     </div>
                 @endrole
+
+                {{-- # ======================================= # if login Coaches  # ======================================= # --}}
+                @role('coach')
+                    {{-- <div class="col-lg-3 col-6">
+                        {{-- <a href="{{ route('layouts.user-layout') }}"> --}}
+                        <div class="small-box bg-dark">
+                            <div class="inner">
+                                <h3>{{ $users }}</h3>
+                                <p>Users</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-users text-white" style="font-size: 50px !important"></i>
+                            </div>
+                        </div>
+                        {{-- </a> --}}
+                    </div> --}}
+                @endrole
+
             </div>
         </div>
     </div>
