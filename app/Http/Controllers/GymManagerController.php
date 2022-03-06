@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\User;
 
-use Illuminate\Http\Request;
+
 
 class GymManagerController extends Controller
 {
@@ -11,6 +13,14 @@ class GymManagerController extends Controller
         public function create()
         {
             return view('gymManager.create');
+        }
+
+        // store Function
+        public function store(Request $request)
+        {
+            $requestData= request()->all();
+            user::create($requestData);
+            return redirect()->route('gymManager.list');
         }
 
 

@@ -13,7 +13,9 @@ class CityManagerController extends Controller
         //Create Function
         public function create()
         {
-            return view('cityManager.create');
+            return view('cityManager.create', [
+                'users' => User::all(),
+            ]);
         }
 
         //Store Function
