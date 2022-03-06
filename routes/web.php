@@ -44,7 +44,7 @@ Route::controller(CoachController::class)->group(function () {
     Route::post('/coach/store', 'store')->name('coach.store')->middleware('auth');
     Route::get('/coach/edit/{coach}', 'edit')->name('coach.edit')->middleware('auth');
     Route::put('/coach/update/{coach}', 'update')->name('coach.update')->middleware('auth');
-    Route::delete('/coach/delete/{id}', 'delete')->name('coach.delete')->middleware('auth');
+    Route::delete('/coach/{id}','deleteCoach')->name('coach.delete')->middleware('auth');
     Route::get('/coach/list', 'list')->name('coach.list')->middleware('auth');
     Route::get('/coach/show/{id}', 'show')->name('coach.show')->middleware('auth');
 });
