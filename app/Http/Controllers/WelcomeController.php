@@ -82,7 +82,32 @@ class WelcomeController extends Controller
                 }
                 break;
             case 'coach':
-               
+                //get all user in gymManager gym
+                $userOfGym = Gym::find($this->userData['gym_id'])->users;
+
+                //get totalRevenue in gymManager gym
+                foreach ($userOfGym as $usersID) {
+                    $this->totalRevenue += (Revenue::where('user_id', '=', $usersID['id'])->sum('price')) / 100;
+                }
+                $this->revenueInDollars = number_format($this->totalRevenue, 2, ',', '.');
+
+                //get users by type in gymManager gym
+                foreach ($userOfGym as $singleUser) {
+                    if ($singleUser->hasRole('coach')) {
+                        $this->coaches++;
+                    } elseif ($singleUser->hasRole('user')) {
+                        $this->users++;
+                    }
+                }
+                return view("welcome", [
+                    'cities' => $this->cities,
+                    'citiesManagers' => $this->citiesManagers,
+                    'gyms' => $this->gyms,
+                    'gymsManagers' => $this->gymsManagers,
+                    'coaches' => $this->coaches,
+                    'users' => $this->users,
+                    'revenueInDollars' => $this->revenueInDollars,
+                ]);
                 break;
             default:
                 # code...
