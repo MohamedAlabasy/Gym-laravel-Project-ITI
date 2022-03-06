@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\City;
 use App\Models\Gym;
 use App\Models\Revenue;
+use App\Models\TrainingSession;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -80,9 +81,12 @@ class WelcomeController extends Controller
                 break;
             case 'coach':
 
-                break;
-            default:
-                # code...
+                $userOfGym = User::with(['trainingSessions'])->where('id', 110)->first();
+                // dd($userOfGym);
+                // dd($userOfGym->trainingSessions);
+                return view("welcome", [
+                    'trainingSessions' => $userOfGym->trainingSessions,
+                ]);
                 break;
         }
         // dd(
