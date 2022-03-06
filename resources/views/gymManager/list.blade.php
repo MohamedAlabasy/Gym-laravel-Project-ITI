@@ -38,7 +38,7 @@
                 <table class="table table-striped projects" id="proj">
                     <thead>
                         <tr>
-                        <th>ID</th>
+                            <th>ID</th>
                             <th> Gym Manager Name</th>
                             <th>Email</th>
                             <th>Profile Picture</th>
