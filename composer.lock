@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "72da62c3be0840dc3277da875eefed50",
+    "content-hash": "002300f7395d2bfb00f042e88885eeb5",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -108,6 +108,90 @@
                 }
             ],
             "time": "2021-08-15T20:50:18+00:00"
+        },
+        {
+            "name": "cybercog/laravel-ban",
+            "version": "4.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cybercog/laravel-ban.git",
+                "reference": "ca1ed953c2456db7896d66bb839cba51fbaedc9a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cybercog/laravel-ban/zipball/ca1ed953c2456db7896d66bb839cba51fbaedc9a",
+                "reference": "ca1ed953c2456db7896d66bb839cba51fbaedc9a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^5.5|^6.0|^7.0|^8.0|^9.0",
+                "illuminate/events": "^5.5|^6.0|^7.0|^8.0|^9.0",
+                "illuminate/support": "^5.5|^6.0|^7.0|^8.0|^9.0",
+                "php": "^7.1.3|^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "orchestra/database": "^3.5|^4.0|^5.0|^6.0|^7.0",
+                "orchestra/testbench": "^3.5|^4.0|^5.0|^6.0|^7.0",
+                "phpunit/phpunit": "^7.5|^8.0|^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Cog\\Laravel\\Ban\\Providers\\BanServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Cog\\Laravel\\Ban\\": "src/",
+                    "Cog\\Contracts\\Ban\\": "contracts/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Komarev",
+                    "email": "anton@komarev.com",
+                    "homepage": "https://komarev.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Ban simplify blocking and banning Eloquent models.",
+            "homepage": "https://komarev.com/sources/laravel-ban",
+            "keywords": [
+                "Justice",
+                "arrest",
+                "ban",
+                "block",
+                "cog",
+                "cybercog",
+                "eloquent",
+                "forbid",
+                "jail",
+                "laravel",
+                "restrict",
+                "trait",
+                "user"
+            ],
+            "support": {
+                "docs": "https://github.com/cybercog/laravel-ban/wiki",
+                "email": "open@cybercog.su",
+                "issues": "https://github.com/cybercog/laravel-ban/issues",
+                "source": "https://github.com/cybercog/laravel-ban",
+                "wiki": "https://github.com/cybercog/laravel-ban/wiki"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/antonkomarev",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-02-05T17:12:26+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
