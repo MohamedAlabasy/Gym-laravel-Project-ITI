@@ -46,15 +46,15 @@ Route::get('/gym/training', function () {
 #			                    Coach Controller Routes                              	#
 #=======================================================================================#
 Route::controller(CoachController::class)->group(function () {
-    Route::get('/coach/create', 'create')->name('coach.create')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::post('/coach/store', 'store')->name('coach.store')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::get('/coach/edit/{coach}', 'edit')->name('coach.edit')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::put('/coach/update/{coach}', 'update')->name('coach.update')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::delete('/coach/delete/{id}', 'delete')->name('coach.delete')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::get('/coach/list', 'list')->name('coach.list')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::get('/coach/show/{id}', 'show')->name('coach.show')->middleware('auth')->middleware('logs-out-banned-user');
-});
+    Route::get('/coach/create', 'create')->name('coach.create')->middleware('auth');
+    Route::post('/coach/store', 'store')->name('coach.store')->middleware('auth');
+    Route::get('/coach/edit/{coach}', 'edit')->name('coach.edit')->middleware('auth');
+    Route::put('/coach/update/{coach}', 'update')->name('coach.update')->middleware('auth');
+    Route::delete('/coach/{id}','deleteCoach')->name('coach.delete')->middleware('auth');
+    Route::get('/coach/list', 'list')->name('coach.list')->middleware('auth');
+    Route::get('/coach/show/{id}', 'show')->name('coach.show')->middleware('auth');
 
+});
 
 #=======================================================================================#
 #			                          Admin Routes                                  	#

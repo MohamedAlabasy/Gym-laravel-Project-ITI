@@ -84,15 +84,12 @@ class CoachController extends Controller
      }
 
     //Delete Function
-    public function delete($id)
+    public function deleteCoach($id)
     {
-           
 
-            $singleCoach=User::find($id);
-
-
-            $singleCoach->delete();
-            return redirect(route('coach.list'));
-
+        $singleCoach = User::find($id);
+        $singleCoach->delete();
+        return response()->json(['success' => 'Record deleted successfully!']); 
     }
+
 }
