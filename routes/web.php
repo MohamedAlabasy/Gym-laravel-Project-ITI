@@ -97,4 +97,6 @@ Route::controller(CityManagerController::class)->group(function () {
     Route::put('/cityManager/update/{coach}', 'update')->name('cityManager.update')->middleware('auth');
     Route::delete('/cityManager/delete/{id}', 'delete')->name('cityManager.delete')->middleware('auth');
     Route::get('/cityManager/show/{id}', 'show')->name('cityManager.show')->middleware('auth');
+
 });
+
