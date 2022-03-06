@@ -60,12 +60,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="city">City</label>
-                                <select id="city" class="form-control custom-select">
-                                    <option selected disabled>Select one</option>
-                                    <option>On Hold</option>
-                                    <option>Canceled</option>
-                                    <option>Success</option>
-                                </select>
+                                <input type="text" id="city" class="form-control" value="" name="city"> 
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="image">Image Cover</label>
