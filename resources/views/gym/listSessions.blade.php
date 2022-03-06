@@ -7,22 +7,64 @@
 @endsection
 @section('content')
 <!-- Content Wrapper. Contains page content -->
-<div class="container">
+
     <!-- <h2 class="mb-4">Lorem, ipsum dolor.</h2> -->
-    <table class="table table-bordered yajra-datatable">
-        <thead>
-            <tr>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>All Sessions</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Sessions</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Sessions</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped  table-bordered yajra-datatable">
+                    <thead>
+                    <tr>
                 <th>No</th>
                 <th>Name</th>
                 <th>Day</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+                <th class="text-center">Actions</th>
+                  </tr>
+                    </thead>
+                    <tbody>
+                       
+                    </tbody>
+                </table>
+                
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
 
-        </tbody>
-    </table>
-</div>
+    </section>
+    </div>
+
 @endsection
 <!-- @section('script') -->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
@@ -66,3 +108,6 @@
     });
 </script>
 @endsection
+
+
+
