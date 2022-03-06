@@ -15,9 +15,9 @@ class CitiesManagerSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(20)->create();
+        User::factory(24)->create();
         //to get last 20 row add in DB
-        $citiesManager = User::latest()->take(20)->get();
+        $citiesManager = User::latest()->take(24)->get();
 
         //give them role => cityManager
         foreach ($citiesManager as $cityManagerRole) {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 use Auth;
+/* use Carbon/Carbon; */
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -21,9 +22,12 @@ class AuthController extends Controller
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'gender' =>$request->gender,
+            'birth_date' =>$request->birth_date,
+            'profile_image'=>$request->profile_image
         ]);
-
+        $user->assignRole('user');
         $user->save();
 
         return response()->json([
