@@ -29,17 +29,17 @@
                         alt="User profile picture">
                 </div>
 
-                <h3 class="profile-username text-center">Nina Mcin</h3>
+                <h3 class="profile-username text-center">{{ auth()->user()->name }}</h3>
 
-                <p class="text-muted text-center">Software Engineer</p>
+                <p class="text-muted text-center">{{ auth()->user()->role }}</p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
 
-                     <b>Name</b> <a class="float-right">{{$user->name }}</a>
+                     <b>Name</b> <a class="float-right">{{auth()->user()->name }}</a>
                     </li>
                     <li class="list-group-item">
-                        <b>Email</b> <a class="float-right">{{ $user->email }}</a>
+                        <b>Email</b> <a class="float-right">{{ auth()->user()->email}}</a>
                     </li>
 
                 </ul>
