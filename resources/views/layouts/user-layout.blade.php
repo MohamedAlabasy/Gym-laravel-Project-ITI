@@ -28,35 +28,36 @@
     <title>Gym System</title>
 </head>
 <style>
-.fa,
-.fas,
-.fa {
-    font-size: .9rem !important;
-}
-
-body {
-    position: relative;
-}
-
-.dataTables_wrapper .dataTables_length {
-    margin-left: 20px !important;
-    margin-top: 10px !important;
-}
-
-.dataTables_wrapper .dataTables_filter,
-.dataTables_wrapper .dataTables_info,
-.dataTables_wrapper .dataTables_paginate {
-    margin: 10px 20px !important;
-}
-
-@media (min-width: 768px) {
-
-    body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .content-wrapper,
-    body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-footer,
-    body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-header {
-        margin-left: 200px;
+    .fa,
+    .fas,
+    .fa {
+        font-size: .9rem !important;
     }
-}
+
+    body {
+        position: relative;
+    }
+
+    .dataTables_wrapper .dataTables_length {
+        margin-left: 20px !important;
+        margin-top: 10px !important;
+    }
+
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_paginate {
+        margin: 10px 20px !important;
+    }
+
+    @media (min-width: 768px) {
+
+        body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .content-wrapper,
+        body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-footer,
+        body:not(.sidebar-mini-md):not(.sidebar-mini-xs):not(.layout-top-nav) .main-header {
+            margin-left: 200px;
+        }
+    }
+
 </style>
 
 <body>
@@ -90,28 +91,30 @@ body {
                         </h6>
                     </div>
                 </div>
-            <ul class="dropdown-menu" style="width:200px">
-                <li class="user-header mb-1" style="height: 140px;">
-                    <img src="imgs/avatar.png" class="img-circle" alt="User Image">
-                    <p class="mb-0">
-                    {{ auth()->user()->name }}
-                    </p>
-                </li>
-                <li class="user-footer d-flex justify-content-between">
-                    <div class="pull-left">
-                        <a href="{{ route('user.admin_profile',auth()->user()->id )}}" class="btn btn-default btn-flat">Profile</a>
-                    </div>
-                    <div class="pull-right">
+                <ul class="dropdown-menu" style="width:200px">
+                    <li class="user-header mb-1" style="height: 140px;">
+                        <img src="imgs/avatar.png" class="img-circle" alt="User Image">
+                        <p class="mb-0">
+                            {{ auth()->user()->name }}
+                        </p>
+                    </li>
+                    <li class="user-footer d-flex justify-content-between">
+                        <div class="pull-left">
+                            <a href="{{ route('user.admin_profile', auth()->user()->id) }}"
+                                class="btn btn-default btn-flat">Profile</a>
+                        </div>
+                        <div class="pull-right">
 
-                        <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
+                            <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">Sign out</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-            </ul>
-        </li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                     <i class="fas fa-expand-arrows-alt"></i>
@@ -134,7 +137,8 @@ body {
                     <img src="imgs/avatar.png" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="{{ route('user.admin_profile',auth()->user()->id )}}" class="d-block"> {{ auth()->user()->name }}
+                    <a href="{{ route('user.admin_profile', auth()->user()->id) }}" class="d-block">
+                        {{ auth()->user()->name }}
                     </a>
                 </div>
             </div>
@@ -306,13 +310,13 @@ body {
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('gym.listSessions')}}" class="nav-link">
+                                <a href="{{ route('gym.listSessions') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Sessions</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('gym.training_session')}}" class="nav-link">
+                                <a href="{{ route('gym.training_session') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Create Session</p>
                                 </a>
@@ -410,6 +414,14 @@ body {
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('user.listBanned') }}" class="nav-link">
+                            <i class="nav-icon far fa-plus-square"></i>
+                            <p>
+                                Baned
+                            </p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -417,7 +429,7 @@ body {
         <!-- /.sidebar -->
     </aside>
 
-        @yield('content')
+    @yield('content')
 
     <div id="sidebar-overlay"></div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -431,7 +443,7 @@ body {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
     <script>
-    $.widget.bridge('uibutton', $.ui.button)
+        $.widget.bridge('uibutton', $.ui.button)
     </script>
     <script src="plugins/sparklines/sparkline.js"></script>
     <script src="plugins/moment/moment.min.js"></script>
@@ -455,14 +467,14 @@ body {
     <script src="../../plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <script src="dist/js/main.js"></script>
     <script>
-    $(function() {
-        $("#proj").DataTable({
-            "responsive": true,
-            "lengthChange": false,
-            "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-        }).buttons().container().appendTo('#proj_wrapper .col-md-6:eq(0)');
-    });
+        $(function() {
+            $("#proj").DataTable({
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#proj_wrapper .col-md-6:eq(0)');
+        });
     </script>
     @yield('dataTableScript')
 </body>

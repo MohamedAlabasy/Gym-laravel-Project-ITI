@@ -15,9 +15,11 @@ use Cog\Laravel\Ban\Traits\Bannable;
 
 
 
+
 class User extends Authenticatable implements BannableContract
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes, HasRoles, Bannable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -39,6 +41,7 @@ class User extends Authenticatable implements BannableContract
         'last_login_at',
         'city_id',
         'gym_id',
+        'updated_at',
     ];
 
 
@@ -50,6 +53,20 @@ class User extends Authenticatable implements BannableContract
     {
         return $this->belongsTo(Gym::class);
     }
+
+
+    /**
+     * Determine if BannedAtScope should be applied by default.
+     *
+     * @return bool
+     */
+    public function shouldApplyBannedAtScope()
+    {
+        return true;
+    }
+
+
+
     /**
      * The attributes that should be hidden for serialization.
      *

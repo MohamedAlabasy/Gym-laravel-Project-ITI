@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
- use App\Http\Controllers\Auth;
+use App\Http\Controllers\Auth;
 use App\Http\Requests\StoreRequest;
 
 class UserController extends Controller
@@ -73,4 +73,40 @@ class UserController extends Controller
     // {
     //     return redirect()->route('');
     // }
+
+
+
+    #=======================================================================================#
+    #			                            Ban User                              	        #
+    #=======================================================================================#
+    public function listBanned()
+    {
+
+        // for ($i = 100; $i < 120; $i++) {
+        //     $user = User::find($i);
+        //     $user->ban([
+        //         'comment' => 'كيفي كدا',
+        //         // 'expired_at' => '2025-03-28 00:00:00',
+        //         'expired_at' => '+3 month',
+        //     ]);
+        // }
+        // $users = User::onlyBanned()->get();
+        // $users = User::withBanned()->get();
+        // $users = User::withoutBanned()->get();
+        // dd($users);
+        return view('user.showBanned', [
+            'banUsers' => User::onlyBanned()->get(),
+        ]);
+    }
+
+    public function unBan($userID)
+    {
+        $user = User::find($userID);
+        // // $user =  DB::table('bans')->where('bannable_id', '=', 100)->get();
+        // $user =  DB::table('users')->where('id', '=', 100)->get();
+        // $user->unban();
+        return view('user.showBanned', [
+            'banUsers' => User::onlyBanned()->get(),
+        ]);
+    }
 }
