@@ -41,7 +41,7 @@
                             <th> id</th>
 
                             <th> Gyms Name</th>
-
+                            <th>Gym City</th>
                             <th>Created at</th>
                             <th>Gyms Cover Image</th>
                             <th></th>
@@ -53,13 +53,9 @@
                             <th scope="row">{{$gym->id}}</th>
 
                             <td>{{$gym->name}}</td>        
-
-
-
-
-                            <td class="project-state">
-                                <span class="badge badge-success">Mansoura</span>
-
+                             <td class="project-state">
+                                <span>mansoura</span>
+                                {{-- <span>{{$gym->city}}</span> --}}
                             </td>
 
                             <td>{{$gym->created_at->format('d - M - Y')}}</td>

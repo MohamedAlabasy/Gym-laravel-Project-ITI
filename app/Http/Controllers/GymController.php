@@ -73,7 +73,7 @@ class GymController extends Controller
 
         Gym::where('id', $id)->update([
             'name' => $request->all()['name'],
-            'user_id' => $request->user_id,
+            'id' => $request->user_id,
         ]);
         return redirect()->route('gym.list');
     }
