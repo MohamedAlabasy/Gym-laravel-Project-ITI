@@ -27,6 +27,7 @@ class CityManagerController extends Controller
         //List Function
         public function list(){
             $usersFromDB=User::all();
+            // $usersFromDB =  User::role('cityManager')->get();
             return view("cityManager.list",['users'=>$usersFromDB]);
 
         }
