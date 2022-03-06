@@ -150,7 +150,7 @@ body {
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/examples/profile.html" class="nav-link">
+                                <a href="cityManager/list" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All City Managers</p>
                                 </a>
