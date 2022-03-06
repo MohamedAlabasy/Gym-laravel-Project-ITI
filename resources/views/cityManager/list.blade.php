@@ -38,7 +38,7 @@
                 <table class="table table-striped projects" id="proj">
                     <thead>
                         <tr>
-                            <th> #</th>
+                            <th>ID</th>
                             <th> Project Name</th>
                             <th>Team Members</th>
                             <th>Project Progress</th>
