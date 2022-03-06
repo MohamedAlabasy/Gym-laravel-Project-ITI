@@ -6,6 +6,8 @@ use App\Http\Controllers\CoachController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\CityManagerController;
+use App\Http\Controllers\GymManagerController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
