@@ -49,7 +49,7 @@
                 <th>No</th>
                 <th>Name</th>
                 <th>Day</th>
-                <th class="text-center">Actions</th>
+                <th class="text-center centered">Actions</th>
                   </tr>
                     </thead>
                     <tbody>
