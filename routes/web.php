@@ -5,6 +5,7 @@ use App\Http\Controllers\GymController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,7 @@ use Illuminate\Support\Facades\Auth;
 #=======================================================================================#
 #			                           Home Route                               	    #
 #=======================================================================================#
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('auth');
-
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome')->middleware('auth');
 #=======================================================================================#
 #			                        Gym Controller Routes                              	#
 #=======================================================================================#
