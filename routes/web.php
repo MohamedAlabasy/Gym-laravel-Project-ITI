@@ -82,16 +82,27 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-///***City Manager Routes***///
+///***City Managers Routes***///
 Route::controller(CityManagerController::class)->group(function () {
    
     Route::get('/cityManager/create', 'create')->name('cityManager.create')->middleware('auth');
     Route::post('/cityManager/store', 'store')->name('cityManager.store')->middleware('auth');
     Route::get('/cityManager/list', 'list')->name('cityManager.list')->middleware('auth');
-    Route::get('/cityManager/edit/{coach}', 'edit')->name('cityManager.edit')->middleware('auth');
-    Route::put('/cityManager/update/{coach}', 'update')->name('cityManager.update')->middleware('auth');
+    Route::get('/cityManager/edit/{city}', 'edit')->name('cityManager.edit')->middleware('auth');
+    Route::put('/cityManager/update/{city}', 'update')->name('cityManager.update')->middleware('auth');
     Route::delete('/cityManager/delete/{id}', 'delete')->name('cityManager.delete')->middleware('auth');
     Route::get('/cityManager/show/{id}', 'show')->name('cityManager.show')->middleware('auth');
    
-
+});
+///***Gym Managers Routes***///
+Route::controller(GymManagerController::class)->group(function () {
+   
+    Route::get('/gymManager/create', 'create')->name('gymManager.create')->middleware('auth');
+    Route::post('/gymManager/store', 'store')->name('gymManager.store')->middleware('auth');
+    Route::get('/gymManager/list', 'list')->name('gymManager.list')->middleware('auth');
+    Route::get('/gymManager/edit/{gym}', 'edit')->name('gymManager.edit')->middleware('auth');
+    Route::put('/gymManager/update/{gym}', 'update')->name('gymManager.update')->middleware('auth');
+    Route::delete('/gymManager/delete/{id}', 'delete')->name('gymManager.delete')->middleware('auth');
+    Route::get('/gymManager/show/{id}', 'show')->name('gymManager.show')->middleware('auth');
+   
 });
