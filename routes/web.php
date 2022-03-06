@@ -112,7 +112,6 @@ Route::controller(GymManagerController::class)->group(function () {
     Route::put('/gymManager/update/{gym}', 'update')->name('gymManager.update')->middleware('auth')->middleware('logs-out-banned-user');
     Route::delete('/gymManager/delete/{id}', 'delete')->name('gymManager.delete')->middleware('auth')->middleware('logs-out-banned-user');
     Route::get('/gymManager/show/{id}', 'show')->name('gymManager.show')->middleware('auth')->middleware('logs-out-banned-user');
-});
 
 #=======================================================================================#
 #			                            Ban User                              	        #
