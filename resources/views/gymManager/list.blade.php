@@ -38,119 +38,37 @@
                 <table class="table table-striped projects" id="proj">
                     <thead>
                         <tr>
-                            <th> #</th>
-                            <th> Project Name</th>
-                            <th>Team Members</th>
-                            <th>Project Progress</th>
-                            <th class="text-center">Status</th>
+                            <th>ID</th>
+                            <th> Gym Manager Name</th>
+                            <th>Email</th>
+                            <th>Profile Picture</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach($users as $user)
                         <tr>
-                            <td> #</td>
-                            <td>
-                                <a> AdminLTE v3 </a>
-                                <br />
-                                <small>Created 01.01.2019 </small>
-                            </td>
-                            <td>
-                                <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td class="">
-                                <small>47% Complete</small>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Success</span>
-                            </td>
+                            <td>{{$user->id}}</td>
+                            <td>{{$user->name}} </td>
+                            <td>{{$user->email}} </td>
+                            <td><img alt="Avatar" class="table-avatar" src="{{$user->profile_image}}"></td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="#">
+                                <a class="btn btn-info btn-sm" href="{{route('gymManager.show', $user['id'])}}">
+
                                     <i class="fa fa-eye"></i>
                                 </a>
                                 <a class="btn btn-warning btn-sm text-white" href="#">
                                     <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
+
+                                    <form id="myform" action="{{ route('gymManager.delete', $user['id']) }}" method="POST" style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete it ?');">
+                                        @method('delete')
+                                        @csrf
+                                       <input type="submit" class="btn btn-danger delete  fas fa-trash btn-sm" value="Delete" title='Delete' >
+                                   
+                                   </form>
                             </td>
                         </tr>
-                        <tr>
-                            <td>#</td>
-                            <td>
-                                <a> AdminLTE v3</a>
-                                <br />
-                                <small> Created 01.01.2019</small>
-                            </td>
-                            <td>
-                                <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td class="">
-                                <small>47% Complete</small>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Success</span>
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
-                                    <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> #</td>
-                            <td>
-                                <a> AdminLTE v3 </a>
-                                <br />
-                                <small>Created 01.01.2019 </small>
-                            </td>
-                            <td>
-                                <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td class="">
-                                <small>47% Complete</small>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Success</span>
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
-                                    <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> #</td>
-                            <td>
-                                <a> ffffAdminL </a>
-                                <br />
-                                <small>Created 01.01.2019 </small>
-                            </td>
-                            <td>
-                                <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td class="">
-                                <small>47% Complete</small>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Success</span>
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
-                                    <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

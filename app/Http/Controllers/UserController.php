@@ -91,29 +91,47 @@ class UserController extends Controller
     // {
     //     return redirect()->route('');
     // }
-}
+
+
 
 /*
 
-function update(Request $request, $id){
-        $validated = $request->validate([
-            'name' => 'required|unique:blogs|max:20',
-            'desc' => 'required',
+
+
+
+
+    #=======================================================================================#
+    #			                            Ban User                              	        #
+    #=======================================================================================#
+    public function listBanned()
+    {
+
+        // for ($i = 100; $i < 120; $i++) {
+        //     $user = User::find($i);
+        //     $user->ban([
+        //         'comment' => 'كيفي كدا',
+        //         // 'expired_at' => '2025-03-28 00:00:00',
+        //         'expired_at' => '+3 month',
+        //     ]);
+        // }
+        // $users = User::onlyBanned()->get();
+        // $users = User::withBanned()->get();
+        // $users = User::withoutBanned()->get();
+        // dd($users);
+        return view('user.showBanned', [
+            'banUsers' => User::onlyBanned()->get(),
         ]);
-        $blog=Blog::find($id);
-        $blog->name=$request->name;
-        $blog->desc=$request->desc;
-        if($request->hasFile('image')){
-            $image=$request->file('image');
-            $name=time().\Str::random(30).'.'.$image->getClientOriginalExtension();
-            $destinationPath=public_path('/images');
-            $image->move($destinationPath,$name);
-            $imageName='images/'.$name;
-            if(isset( $blog->image))
-                unlink( $blog->image);
-                $blog->image=$imageName;
-        }
-        $blog->save();
-        return redirect('/blog/list');
     }
-*/
+
+    public function unBan($userID)
+    {
+        $user = User::find($userID);
+        // // $user =  DB::table('bans')->where('bannable_id', '=', 100)->get();
+        // $user =  DB::table('users')->where('id', '=', 100)->get();
+        // $user->unban();
+        return view('user.showBanned', [
+            'banUsers' => User::onlyBanned()->get(),
+        ]);
+    }
+}
+

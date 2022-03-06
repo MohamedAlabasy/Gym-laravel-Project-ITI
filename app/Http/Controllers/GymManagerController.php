@@ -9,27 +9,63 @@ use App\Models\User;
 
 class GymManagerController extends Controller
 {
-        //Create Function
-        public function create()
-        {
-            return view('gymManager.create');
-        }
+    #=======================================================================================#
+    #			                           Create Function                              	#
+    #=======================================================================================#
+    public function create()
+    {
+        return view('gymManager.create', [
+            'users' => User::all(),
+        ]);
+    }
+#=======================================================================================#
+#			                           Store Function                                	#
+#=======================================================================================#
+    public function store(Request $request){
 
-        // store Function
-        public function store(Request $request)
-        {
-            $requestData= request()->all();
-            user::create($requestData);
-            return redirect()->route('gymManager.list');
-        }
+        $requestData = request()->all();
+        User::create($requestData);
+        return redirect()->route('gymManager.list');
+    }
 
+#=======================================================================================#
+#			                           List Function                                	#
+#=======================================================================================#
+    public function list(){
+        $usersFromDB=User::all();
+        // $usersFromDB =  User::role('cityManager')->get();
+        return view("gymManager.list",['users'=>$usersFromDB]);
 
+    }
+#=======================================================================================#
+#			                           Show Function                                	#
+#=======================================================================================#
+    public function show($id){
+            $singleUser=User::findorfail($id);
+            return view("gymManager.show",['singleUser' => $singleUser]);
 
-        //List Function
-        public function list(){
-            $usersFromDB=User::all();
-            // $usersFromDB =  User::role('cityManager')->get();
-            return view("gymManager.list",['users'=>$usersFromDB]);
+    }
+#=======================================================================================#
+#			                           Edit Function                                	#
+#=======================================================================================#
+    public function edit(){
+ 
+    }
 
-        }
+#=======================================================================================#
+#			                           Update Function                                	#
+#=======================================================================================#
+    public function update(){
+
+    }
+
+#=======================================================================================#
+#			                           Delete Function                                	#
+#=======================================================================================#
+    public function delete($id){
+        $singleUser=User::findorfail($id);
+        $singleUser->delete();
+        return redirect()->route('gymManager.list');
+
+    }
 }

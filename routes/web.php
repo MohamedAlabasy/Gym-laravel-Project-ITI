@@ -27,13 +27,14 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome')->middlewar
 #			                        Gym Controller Routes                              	#
 #=======================================================================================#
 Route::controller(GymController::class)->group(function () {
-    Route::get('/gym/create', 'create')->name('gym.create')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::post('/gym/store', 'store')->name('gym.store')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::get('/gym/edit/{gym}', 'edit')->name('gym.edit')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::put('/gym/update/{gym}', 'update')->name('gym.update')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::delete('/gym/delete/{gym}', 'delete')->name('gym.delete')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::get('/gym/list', 'list')->name('gym.list')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::get('/gym/show/{id}', 'show')->name('gym.show')->middleware('auth')->middleware('logs-out-banned-user');
+
+    Route::get('/gym/create', 'create')->name('gym.create')->middleware('auth');
+    Route::post('/gym/store', 'store')->name('gym.store')->middleware('auth');
+    Route::get('/gym/edit/{gym}', 'edit')->name('gym.edit')->middleware('auth');
+    Route::put('/gym/update/{gym}', 'update')->name('gym.update')->middleware('auth');
+    Route::delete('/gym/{id}', 'deleteGym')->name('gym.delete')->middleware('auth');
+    Route::get('/gym/list', 'list')->name('gym.list')->middleware('auth');
+    Route::get('/gym/show/{id}', 'show')->name('gym.show')->middleware('auth');
 });
 
 Route::get('/gym/training', function () {
@@ -44,15 +45,14 @@ Route::get('/gym/training', function () {
 #			                    Coach Controller Routes                              	#
 #=======================================================================================#
 Route::controller(CoachController::class)->group(function () {
-    Route::get('/coach/create', 'create')->name('coach.create')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::post('/coach/store', 'store')->name('coach.store')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::get('/coach/edit/{coach}', 'edit')->name('coach.edit')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::put('/coach/update/{coach}', 'update')->name('coach.update')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::delete('/coach/delete/{id}', 'delete')->name('coach.delete')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::get('/coach/list', 'list')->name('coach.list')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::get('/coach/show/{id}', 'show')->name('coach.show')->middleware('auth')->middleware('logs-out-banned-user');
+    Route::get('/coach/create', 'create')->name('coach.create')->middleware('auth');
+    Route::post('/coach/store', 'store')->name('coach.store')->middleware('auth');
+    Route::get('/coach/edit/{coach}', 'edit')->name('coach.edit')->middleware('auth');
+    Route::put('/coach/update/{coach}', 'update')->name('coach.update')->middleware('auth');
+    Route::delete('/coach/{id}', 'deleteCoach')->name('coach.delete')->middleware('auth');
+    Route::get('/coach/list', 'list')->name('coach.list')->middleware('auth');
+    Route::get('/coach/show/{id}', 'show')->name('coach.show')->middleware('auth');
 });
-
 
 #=======================================================================================#
 #			                          Admin Routes                                  	#
@@ -111,3 +111,8 @@ Route::controller(GymManagerController::class)->group(function () {
     Route::delete('/gymManager/delete/{id}', 'delete')->name('gymManager.delete')->middleware('auth')->middleware('logs-out-banned-user');
     Route::get('/gymManager/show/{id}', 'show')->name('gymManager.show')->middleware('auth')->middleware('logs-out-banned-user');
 });
+#=======================================================================================#
+#			                            Ban User                              	        #
+#=======================================================================================#
+Route::get('/listBanned', [UserController::class, 'listBanned'])->name('user.listBanned')->middleware('auth')->middleware('logs-out-banned-user');
+Route::PATCH('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
