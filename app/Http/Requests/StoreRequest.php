@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use illuminate\Support\Facades\Auth;
 
 class StoreRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class StoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -24,12 +25,20 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required','string','min:2'],
-            //
+            'name' => ['required', 'min:5', 'email' => 'unique:App\Models\User,email'],
+
+            'email' => ['required'],
+            'profile_image' => 'mimes:jpg,jpeg',
         ];
     }
+
     public function messages()
     {
-        return [];
+        return [
+            // 'name.required' => 'Overrided required msg',
+            // 'name.min' => 'min rule msg changed',
+
+        ];
     }
+
 }

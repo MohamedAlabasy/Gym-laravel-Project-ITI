@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
     <!-- summernote -->
     <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+    @yield('dataTable')
     <title>Gym System</title>
 </head>
 <style>
@@ -149,13 +150,13 @@ body {
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/examples/profile.html" class="nav-link">
+                                <a href="cityManager/list" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All City Managers</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/examples/invoice.html" class="nav-link">
+                                <a href="cityManager/create" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add new</p>
                                 </a>
@@ -172,13 +173,13 @@ body {
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/examples/profile.html" class="nav-link">
+                                <a href="gymManager/list" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Managers</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/examples/invoice.html" class="nav-link">
+                                <a href="gymManager/create" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add new</p>
                                 </a>
@@ -402,45 +403,12 @@ body {
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/" class="nav-link">
                             <i class="nav-icon far fa-plus-square"></i>
                             <p>
                                 Revenue
-                                <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="pages/examples/invoice.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Invoice</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/examples/profile.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Profile</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/examples/e-commerce.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>E-commerce</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/examples/projects.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Projects</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/examples/project-add.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Project Add</p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
             </nav>
@@ -449,7 +417,7 @@ body {
         <!-- /.sidebar -->
     </aside>
 
-    @yield('content')
+        @yield('content')
 
     <div id="sidebar-overlay"></div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -470,9 +438,7 @@ body {
     <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <script src="plugins/daterangepicker/daterangepicker.js"></script>
     <script src="dist/js/adminlte.js"></script>
-    <script src="dist/js/demo.js"></script>
     <script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-
     <script src="plugins/summernote/summernote-bs4.min.js"></script>
     <!-- DataTables  & Plugins -->
     <script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
@@ -498,6 +464,7 @@ body {
         }).buttons().container().appendTo('#proj_wrapper .col-md-6:eq(0)');
     });
     </script>
+    @yield('dataTableScript')
 </body>
 
 </html>
