@@ -13,6 +13,12 @@ class SessionsController extends Controller
     }
     public function showSession($sessionId){
         $sessions=TrainingSession::find($sessionId);
-        return $sessions;
+        //return $sessions;
+        return ['name'=>$sessions->name,
+                'day'=>$sessions->day,
+                'starts_at'=>$sessions->starts_at,
+                'finishes_at'=>$sessions->finishes_at];
+
     }
 }
+

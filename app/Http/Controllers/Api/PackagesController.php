@@ -14,6 +14,7 @@ class PackagesController extends Controller
     }
     public function showPackage($packageId){
         $package=TrainingPackage::find($packageId);
-        return $package;
+        return ['name'=>$package->name,
+                'price'>$package->price];
     }
 }
