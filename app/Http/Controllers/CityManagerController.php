@@ -10,15 +10,18 @@ class CityManagerController extends Controller
 {
 
     
-        //Create Function
+    #=======================================================================================#
+    #			                           Create Function                              	#
+    #=======================================================================================#
         public function create()
         {
             return view('cityManager.create', [
                 'users' => User::all(),
             ]);
         }
-
-        //Store Function
+    #=======================================================================================#
+    #			                           Store Function                                	#
+    #=======================================================================================#
         public function store(Request $request){
 
             $requestData = request()->all();
@@ -26,16 +29,19 @@ class CityManagerController extends Controller
             return redirect()->route('cityManager.list');
         }
 
-        //List Function
+    #=======================================================================================#
+    #			                           List Function                                	#
+    #=======================================================================================#
         public function list(){
             $usersFromDB=User::all();
             // $usersFromDB =  User::role('cityManager')->get();
             return view("cityManager.list",['users'=>$usersFromDB]);
 
         }
-
-        //Show Function
-            public function show($id){
+    #=======================================================================================#
+    #			                           Show Function                                	#
+    #=======================================================================================#
+        public function show($id){
                 $singleUser=User::findorfail($id);
                 return view("cityManager.show",['singleUser' => $singleUser]);
 
