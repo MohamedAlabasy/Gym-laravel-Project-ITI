@@ -53,16 +53,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" class="form-control" value="" name="email">
+                                <input type="email" id="email" class="form-control" value="{{$coach->email}}" name="email"> 
+                               
                             </div>
                             <div class="form-group">
                                 <label for="city">City</label>
-                                <select id="city" class="form-control custom-select">
-                                    <option selected disabled>Select one</option>
-                                    <option>On Hold</option>
-                                    <option>Canceled</option>
-                                    <option>Success</option>
-                                </select>
+                                <input type="text" id="city" class="form-control" value="{{$coach->city->name}}" name="city"> 
+                               
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="image">Image Cover</label>

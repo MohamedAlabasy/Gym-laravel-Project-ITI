@@ -49,16 +49,15 @@
                     </thead>
                     <tbody>
                         @foreach($coaches as $coach)
-                        {{-- @dd($coach->city) --}}
                         <tr>
                                 <th scope="row">{{$coach->id}}</th>
                                 <td>{{$coach->name}}</td> 
                            
                             <td class="project-state">
-                                <span class="badge badge-success">{{$coach->email}}</span>
+                                <span>{{$coach->email}}</span>
                             </td>
                             <td class="project-state">
-                                <span class="badge badge-success">{{$coach->city}}</span>
+                                <span >{{$coach->city->name}}</span>
                             </td>
                             <td>{{$coach->created_at->format('d - M - Y')}}</td>
                             <td>
