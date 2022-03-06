@@ -7,32 +7,94 @@ use App\Models\Gym;
 use App\Models\Revenue;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WelcomeController extends Controller
 {
+    private $userID, $userRole, $cities = 0, $citiesManagers = 0, $gyms = 0, $gymsManagers = 0,
+        $coaches = 0, $users = 0, $totalRevenue = 0, $revenueInDollars = 0;
     #=======================================================================================#
     #			                               index                                       	#
     #=======================================================================================#
     public function index()
     {
-        $cities = count(City::get('name'));
-        $citiesManagers =  count(User::role('cityManager')->get());
-        $gyms =  count(Gym::get('name'));
-        $gymsManagers =  count(User::role('gymManager')->get());
-        $coaches = count(User::role('coach')->get());
-        $users = count(User::role('user')->get());
+        $this->userID = Auth::id();
+        $this->userData = User::find($this->userID);
+        // dd($this->userData['city_id']);
+        $this->userRole = Auth::user()->getRoleNames();
 
-        $totalRevenue = (Revenue::sum('price')) / 100;
-        $revenueInDollars = number_format($totalRevenue, 2, ',', '.');
+
+
+
+
+        switch ($this->userRole['0']) {
+            case 'admin':
+                $this->totalRevenue = (Revenue::sum('price')) / 100;
+                $this->revenueInDollars = number_format($this->totalRevenue, 2, ',', '.');
+                $this->cities = count(City::get('name'));
+                $this->citiesManagers =  count(User::role('cityManager')->get());
+                $this->gyms =  count(Gym::get('name'));
+                $this->gymsManagers =  count(User::role('gymManager')->get());
+                $this->coaches = count(User::role('coach')->get());
+                $this->users = count(User::role('user')->get());
+                break;
+            case 'cityManager':
+                //get all user in cityManager city
+                $userOfCity = City::find($this->userData['city_id'])->users;
+
+                //get totalRevenue in cityManager city
+                foreach ($userOfCity as $usersID) {
+                    $this->totalRevenue += (Revenue::where('id', '=', $usersID['id'])->sum('price')) / 100;
+                }
+                $this->revenueInDollars = number_format($this->totalRevenue, 2, ',', '.');
+
+                $this->gyms = count(Gym::where('city_id', '=', $this->userData['city_id'])->get());
+
+                //get users by type in cityManager city
+                foreach ($userOfCity as $singleUser) {
+                    if ($singleUser->hasRole('gymManager')) {
+                        $this->gymsManagers++;
+                    } elseif ($singleUser->hasRole('coach')) {
+                        $this->coaches++;
+                    } elseif ($singleUser->hasRole('user')) {
+                        $this->users++;
+                    }
+                }
+
+                break;
+            case 'gymManager':
+                // dd('gymManager', $userID, $userRole);
+                break;
+            case 'coach':
+                // dd('coach', $userID, $userRole);
+                break;
+            case 'user':
+                // dd('user', $userID, $userRole);
+                break;
+            default:
+                # code...
+                break;
+        }
+        // dd(
+        //     "id = $this->userID",
+        //     $this->userRole['0'],
+        //     // "cities Number = $this->cities",
+        //     // "citiesManagers Number = $this->citiesManagers",
+        //     "gyms Number= $this->gyms",
+        //     "gymsManagers Number =$this->gymsManagers",
+        //     "coaches Number=$this->coaches",
+        //     "users = $this->users",
+        //     "revenueInDollars =$this->revenueInDollars"
+        // );
 
         return view("welcome", [
-            'cities' => $cities,
-            'citiesManagers' => $citiesManagers,
-            'gyms' => $gyms,
-            'gymsManagers' => $gymsManagers,
-            'coaches' => $coaches,
-            'users' => $users,
-            'revenueInDollars' => $revenueInDollars,
+            'cities' => $this->cities,
+            'citiesManagers' => $this->citiesManagers,
+            'gyms' => $this->gyms,
+            'gymsManagers' => $this->gymsManagers,
+            'coaches' => $this->coaches,
+            'users' => $this->users,
+            'revenueInDollars' => $this->revenueInDollars,
         ]);
     }
 }

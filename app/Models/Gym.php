@@ -22,4 +22,8 @@ class Gym extends Model
     {
         return $this->belongsTo(City::class);
     }
+    // public function gyms()
+    // {
+    //     return $this->hasMany(Gym::class);
+    // }
 }
