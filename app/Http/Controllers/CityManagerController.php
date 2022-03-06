@@ -9,52 +9,63 @@ use App\Models\User;
 class CityManagerController extends Controller
 {
 
-    
-        //Create Function
-        public function create()
-        {
-            return view('cityManager.create', [
-                'users' => User::all(),
-            ]);
-        }
+     #=======================================================================================#
+    #			                           Create Function                              	#
+    #=======================================================================================#
+    public function create()
+    {
+        return view('cityManager.create', [
+            'users' => User::all(),
+        ]);
+    }
+#=======================================================================================#
+#			                           Store Function                                	#
+#=======================================================================================#
+    public function store(Request $request){
 
-        //Store Function
-        public function store(Request $request){
+        $requestData = request()->all();
+        User::create($requestData);
+        return redirect()->route('cityManager.list');
+    }
 
-            $requestData = request()->all();
-            User::create($requestData);
-            return redirect()->route('cityManager.list');
-        }
+#=======================================================================================#
+#			                           List Function                                	#
+#=======================================================================================#
+    public function list(){
+        $usersFromDB=User::all();
+        // $usersFromDB =  User::role('cityManager')->get();
+        return view("cityManager.list",['users'=>$usersFromDB]);
 
-        //List Function
-        public function list(){
-            $usersFromDB=User::all();
-            // $usersFromDB =  User::role('cityManager')->get();
-            return view("cityManager.list",['users'=>$usersFromDB]);
+    }
+#=======================================================================================#
+#			                           Show Function                                	#
+#=======================================================================================#
+    public function show($id){
+            $singleUser=User::findorfail($id);
+            return view("cityManager.show",['singleUser' => $singleUser]);
 
-        }
+    }
+#=======================================================================================#
+#			                           Edit Function                                	#
+#=======================================================================================#
+    public function edit(){
+ 
+    }
 
-        //Show Function
-            public function show($id){
-                $singleUser=User::findorfail($id);
-                return view("cityManager.show",['singleUser' => $singleUser]);
+#=======================================================================================#
+#			                           Update Function                                	#
+#=======================================================================================#
+    public function update(){
 
-        }
-    
+    }
 
-    
-        //Edit Function
-        public function edit(){
-     
-        }
-    
-         //Update Function
-        public function update(){
-    
-        }
-    
-        //Delete Function
-        public function delete(){
-    
-        }
+#=======================================================================================#
+#			                           Delete Function                                	#
+#=======================================================================================#
+    public function delete($id){
+        $singleUser=User::findorfail($id);
+        $singleUser->delete();
+        return redirect()->route('cityManager.list');
+
+    }
 }
