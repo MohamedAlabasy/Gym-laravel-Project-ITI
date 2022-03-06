@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
-
+ use App\Http\Controllers\Auth;
+use App\Http\Requests\StoreRequest;
 
 class UserController extends Controller
 {
@@ -16,10 +17,10 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        // ->where('user_type', '==', 'Admin')
-        // ->get()->toArray();
+
         return view('layouts.user-layout', [
             'users' => $users,
+
         ]);
     }
     #=======================================================================================#
@@ -45,7 +46,7 @@ class UserController extends Controller
     #=======================================================================================#
     #			                             update                                        	#
     #=======================================================================================#
-    public function update(Request $request, $user_id)
+    public function update(StoreRequest $request, $user_id)
     {
         User::where('id', $user_id)->update([
             'name' => $request->all()['name'],
@@ -56,7 +57,7 @@ class UserController extends Controller
     #=======================================================================================#
     #			                             store                                         	#
     #=======================================================================================#
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $requestData = request()->all();
         User::create($requestData);

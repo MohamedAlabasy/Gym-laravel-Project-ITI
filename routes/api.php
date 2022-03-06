@@ -37,11 +37,11 @@ Route::controller(AuthController::class)->group(function () {
 
 //Traning Sessions Routes
 Route::get('sessions',[SessionsController::class,'index'])->middleware('auth:sanctum');
-Route::get('sessions/{session}',[SessionsController::class,'show'])->middleware('auth:sanctum');
+Route::get('sessions/{session}',[SessionsController::class,'showSession'])->middleware('auth:sanctum');
 
 //Traning Packages Routes
 Route::get('packages',[PackagesController::class,'index'])->middleware('auth:sanctum');
-Route::get('packages/{package}',[PackagesController::class,'show'])->middleware('auth:sanctum');
+Route::get('packages/{package}',[PackagesController::class,'showPackage'])->middleware('auth:sanctum');
 
 //Api Sanctum Token
 Route::post('/sanctum/token', function (Request $request) {
