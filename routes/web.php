@@ -32,10 +32,9 @@ Route::controller(GymController::class)->group(function () {
     Route::post('/gym/store', 'store')->name('gym.store')->middleware('auth');
     Route::get('/gym/edit/{gym}', 'edit')->name('gym.edit')->middleware('auth');
     Route::put('/gym/update/{gym}', 'update')->name('gym.update')->middleware('auth');
-    Route::delete('/gym/{id}','deleteGym')->name('gym.delete')->middleware('auth');
+    Route::delete('/gym/{id}', 'deleteGym')->name('gym.delete')->middleware('auth');
     Route::get('/gym/list', 'list')->name('gym.list')->middleware('auth');
     Route::get('/gym/show/{id}', 'show')->name('gym.show')->middleware('auth');
-
 });
 
 Route::get('/gym/training', function () {
@@ -50,10 +49,9 @@ Route::controller(CoachController::class)->group(function () {
     Route::post('/coach/store', 'store')->name('coach.store')->middleware('auth');
     Route::get('/coach/edit/{coach}', 'edit')->name('coach.edit')->middleware('auth');
     Route::put('/coach/update/{coach}', 'update')->name('coach.update')->middleware('auth');
-    Route::delete('/coach/{id}','deleteCoach')->name('coach.delete')->middleware('auth');
+    Route::delete('/coach/{id}', 'deleteCoach')->name('coach.delete')->middleware('auth');
     Route::get('/coach/list', 'list')->name('coach.list')->middleware('auth');
     Route::get('/coach/show/{id}', 'show')->name('coach.show')->middleware('auth');
-
 });
 
 #=======================================================================================#
@@ -112,7 +110,7 @@ Route::controller(GymManagerController::class)->group(function () {
     Route::put('/gymManager/update/{gym}', 'update')->name('gymManager.update')->middleware('auth')->middleware('logs-out-banned-user');
     Route::delete('/gymManager/delete/{id}', 'delete')->name('gymManager.delete')->middleware('auth')->middleware('logs-out-banned-user');
     Route::get('/gymManager/show/{id}', 'show')->name('gymManager.show')->middleware('auth')->middleware('logs-out-banned-user');
-
+});
 #=======================================================================================#
 #			                            Ban User                              	        #
 #=======================================================================================#
