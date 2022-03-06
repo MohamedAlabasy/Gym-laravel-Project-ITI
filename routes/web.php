@@ -31,9 +31,7 @@ Route::controller(GymController::class)->group(function () {
     Route::post('/gym/store', 'store')->name('gym.store')->middleware('auth');
     Route::get('/gym/edit/{gym}', 'edit')->name('gym.edit')->middleware('auth');
     Route::put('/gym/update/{gym}', 'update')->name('gym.update')->middleware('auth');
-
-    Route::delete('/gym/delete/{gym}', 'delete')->name('gym.delete')->middleware('auth');
-
+    Route::delete('/gym/{id}','deleteGym')->name('gym.delete')->middleware('auth');
     Route::get('/gym/list', 'list')->name('gym.list')->middleware('auth');
     Route::get('/gym/show/{id}', 'show')->name('gym.show')->middleware('auth');
 });
