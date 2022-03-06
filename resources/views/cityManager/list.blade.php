@@ -59,8 +59,13 @@
                                 </a>
                                 <a class="btn btn-warning btn-sm text-white" href="#">
                                     <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
+
+                                    <form id="myform" action="{{ route('cityManager.delete', $user['id']) }}" method="POST" style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete it ?');">
+                                        @method('delete')
+                                        @csrf
+                                       <input type="submit" class="btn btn-danger delete  fas fa-trash btn-sm" value="Delete" title='Delete' >
+                                   
+                                   </form>
                             </td>
                         </tr>
                         @endforeach

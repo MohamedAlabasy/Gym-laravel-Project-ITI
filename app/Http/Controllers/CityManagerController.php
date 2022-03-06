@@ -46,21 +46,27 @@ class CityManagerController extends Controller
                 return view("cityManager.show",['singleUser' => $singleUser]);
 
         }
-    
-
-    
-        //Edit Function
+    #=======================================================================================#
+    #			                           Edit Function                                	#
+    #=======================================================================================#
         public function edit(){
      
         }
     
-         //Update Function
+    #=======================================================================================#
+    #			                           Update Function                                	#
+    #=======================================================================================#
         public function update(){
     
         }
     
-        //Delete Function
-        public function delete(){
+    #=======================================================================================#
+    #			                           Delete Function                                	#
+    #=======================================================================================#
+        public function delete($id){
+            $singleUser=User::findorfail($id);
+            $singleUser->delete();
+            return redirect()->route('cityManager.list');
     
         }
 }
