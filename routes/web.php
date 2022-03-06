@@ -5,6 +5,7 @@ use App\Http\Controllers\GymController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -16,16 +17,13 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('auth');
-Route::get('/gym/training', function () {
-    return view('gym.training_session')->name('gym.session');
-})->middleware('auth');
-
-//////****Gym Controller Routes*****////////
-
+#=======================================================================================#
+#			                           Home Route                               	    #
+#=======================================================================================#
+Route::get('/', [WelcomeController::class, 'index'])->name('welcome')->middleware('auth');
+#=======================================================================================#
+#			                        Gym Controller Routes                              	#
+#=======================================================================================#
 Route::controller(GymController::class)->group(function () {
     Route::get('/gym/create', 'create')->name('gym.create')->middleware('auth');
     Route::post('/gym/store', 'store')->name('gym.store')->middleware('auth');
@@ -38,9 +36,13 @@ Route::controller(GymController::class)->group(function () {
     Route::get('/gym/show/{id}', 'show')->name('gym.show')->middleware('auth');
 });
 
-//////****Goach Controller Routes*****////////
+Route::get('/gym/training', function () {
+    return view('gym.training_session')->name('gym.session');
+})->middleware('auth');
 
-
+#=======================================================================================#
+#			                    Coach Controller Routes                              	#
+#=======================================================================================#
 Route::controller(CoachController::class)->group(function () {
     Route::get('/coach/create', 'create')->name('coach.create')->middleware('auth');
     Route::post('/coach/store', 'store')->name('coach.store')->middleware('auth');
@@ -52,15 +54,17 @@ Route::controller(CoachController::class)->group(function () {
 });
 
 
-
+#=======================================================================================#
+#			                          Admin Routes                                  	#
+#=======================================================================================#
 
 Route::get('/user/show-profile', [UserController::class, 'show_profile'])->name('user.admin_profile')->middleware('auth');
 Route::get('/user/edit-profile', [UserController::class, 'edit_profile'])->name('user.edit_admin_profile')->middleware('auth');
-
 Route::get('/gym/training_session', [TrainingController::class, 'create'])->name('gym.training_session')->middleware('auth');
 
-
-///***Training Routes***///
+#=======================================================================================#
+#			                         Training Routes                                  	#
+#=======================================================================================#
 Route::get('/gym/sessions', [TrainingController::class, 'index'])->name('gym.listSessions')->middleware('auth');
 Route::get('gym/listing', [TrainingController::class, 'getSession'])->name('gym.listing');
 Route::get('/gym/create_session', [TrainingController::class, 'create'])->name('gym.training_session')->middleware('auth');
@@ -70,21 +74,23 @@ Route::get('/gym/sessions/{session}/edit', [TrainingController::class, 'edit'])-
 Route::delete('/gym/sessions/{session}', [TrainingController::class, 'destroy'])->name('gym.delete_session')->middleware('auth');
 Route::put('/gym/sessions/{session}', [TrainingController::class, 'update'])->name('gym.update_session')->middleware('auth');
 
-///***User Routes***///
+#=======================================================================================#
+#			                            User Routes                                   	#
+#=======================================================================================#
 Route::get('/user/{id}', [UserController::class, 'show_profile'])->name('user.admin_profile')->middleware('auth');
 Route::get('/user/{users}/edit-profile', [UserController::class, 'edit_profile'])->name('user.edit_admin_profile')->middleware('auth');
 Route::put('/user/{users}', [UserController::class, 'update'])->name('user.update')->middleware('auth');
 Route::get('/user', [UserController::class, 'index'])->name('layouts.user-layout')->middleware('auth');
-
+#=======================================================================================#
+#			                            Auth Routes                                  	#
+#=======================================================================================#
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-
-
-///***City Managers Routes***///
+#=======================================================================================#
+#			                           City Managers Routes                          	#
+#=======================================================================================#
 Route::controller(CityManagerController::class)->group(function () {
-   
     Route::get('/cityManager/create', 'create')->name('cityManager.create')->middleware('auth');
     Route::post('/cityManager/store', 'store')->name('cityManager.store')->middleware('auth');
     Route::get('/cityManager/list', 'list')->name('cityManager.list')->middleware('auth');
@@ -94,9 +100,10 @@ Route::controller(CityManagerController::class)->group(function () {
     Route::get('/cityManager/show/{id}', 'show')->name('cityManager.show')->middleware('auth');
    
 });
-///***Gym Managers Routes***///
+#=======================================================================================#
+#			                           Gym Managers Routes                          	#
+#=======================================================================================#
 Route::controller(GymManagerController::class)->group(function () {
-   
     Route::get('/gymManager/create', 'create')->name('gymManager.create')->middleware('auth');
     Route::post('/gymManager/store', 'store')->name('gymManager.store')->middleware('auth');
     Route::get('/gymManager/list', 'list')->name('gymManager.list')->middleware('auth');

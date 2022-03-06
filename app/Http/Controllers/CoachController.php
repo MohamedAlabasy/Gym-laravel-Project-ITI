@@ -5,22 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Gym;
+
 use App\Models\User;
 
 class CoachController extends Controller
 {
     //List Functioin
-    public function list(){
-
-        $gymsFromDB=User::all();
-
-       
-        return view("coach.list",['coaches'=>$gymsFromDB]);
+    public function list()
+    {
+        $coachesFromDB =  User::role('coach')->get();
+        return view("coach.list", ['coaches' => $coachesFromDB]);
     }
+
         //Show Function
         public function show($id){
 
-        $singleGym=User::find($id);
+        $singleCoach=User::find($id);
 
         return view("coach.show");
     }
@@ -28,6 +28,7 @@ class CoachController extends Controller
     //Create Function
     public function create()
     {
+        
         return view('coach.create',[
             'users' => User::all(),
         ]);
@@ -56,10 +57,10 @@ class CoachController extends Controller
     public function edit($id){
         $users =User::all();
 
-        $singleGym=User::find($id);
+        $singleCoach=User::find($id);
 
 
-        return view("coach.edit",['coach' => $singleGym,'users'=>$users]);
+        return view("coach.edit",['coach' => $singleCoach,'users'=>$users]);
     }
 
      //Update Function
@@ -74,7 +75,8 @@ class CoachController extends Controller
         User::where('id', $id)->update([
 
              'name' => $request->all()['name'],
-             'user_id'=> $request->user_id,
+             'email'=> $request->email,
+             
              
              
          ]);
@@ -86,10 +88,10 @@ class CoachController extends Controller
     {
            
 
-            $singleGym=User::find($id);
+            $singleCoach=User::find($id);
 
 
-            $singleGym->delete();
+            $singleCoach->delete();
             return redirect(route('coach.list'));
 
     }
