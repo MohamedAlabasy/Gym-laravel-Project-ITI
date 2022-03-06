@@ -26,9 +26,12 @@ class TrainingController extends Controller
             return DataTables::of($data)
             ->addIndexColumn()
             ->addColumn('action', function() {
-                $actionBtn = '<a href="#" class = "btn btn-danger btn-sm">Delete</a>
-                <a href="#" class = "btn btn-info btn-sm">View</a>
-                <a href="#" class = "btn btn-success btn-sm">Update</a>';
+                $actionBtn = '<div class = "text-center">
+                <a href="#" class = "btn btn-danger">Delete</a>
+                <a href="#" class = "btn btn-info">View</a>
+                <a href="#" class = "btn btn-success">Update</a>
+                </div>'
+               ;
                 return $actionBtn;
             })
             ->rawColumns(['action'])
