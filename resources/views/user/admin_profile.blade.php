@@ -25,8 +25,7 @@
         <div class="card card-primary card-outline w-25 m-auto">
             <div class="card-body box-profile">
                 <div class="text-center">
-                    <img class="profile-user-img img-fluid img-circle" src="imgs/avatar.png"
-                        alt="User profile picture">
+                    <img class="profile-user-img img-fluid img-circle" src="{{ asset(auth()->user()->profile_image) }}"alt="User profile picture">
                 </div>
 
                 <h3 class="profile-username text-center">{{ auth()->user()->name }}</h3>
