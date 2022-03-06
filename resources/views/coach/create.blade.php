@@ -59,7 +59,6 @@
 
                             </div>
                             <div class="form-group">
-
                                 <label for="city">City</label>
                                 <input type="text" id="city" class="form-control" value="" name="city"> 
                             </div>

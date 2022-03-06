@@ -39,9 +39,10 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th> City Manager Name</th>
-                            <th>Email</th>
-                            <th>Profile Picture</th>
+                            <th> Project Name</th>
+                            <th>Team Members</th>
+                            <th>Project Progress</th>
+                            <th class="text-center">Status</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -50,22 +51,17 @@
                         <tr>
                             <td>{{$user->id}}</td>
                             <td>{{$user->name}} </td>
-                            <td>{{$user->email}} </td>
-                            <td><img alt="Avatar" class="table-avatar" src="{{$user->profile_image}}"></td>
+                            <td><img alt="Avatar" class="table-avatar" src="imgs/avatar.png"></td>
+                            <td class=""> <small>47% Complete</small></td>
+                            <td class="project-state"> <span class="badge badge-success">Success</span></td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="{{route('cityManager.show', $user['id'])}}">
-
+                                <a class="btn btn-info btn-sm" href="#">
                                     <i class="fa fa-eye"></i>
                                 </a>
                                 <a class="btn btn-warning btn-sm text-white" href="#">
                                     <i class="fas fa-pencil-alt"></i></a>
-
-                                    <form id="myform" action="{{ route('cityManager.delete', $user['id']) }}" method="POST" style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete it ?');">
-                                        @method('delete')
-                                        @csrf
-                                       <input type="submit" class="btn btn-danger delete  fas fa-trash btn-sm" value="Delete" title='Delete' >
-                                   
-                                   </form>
+                                <a class="btn btn-danger btn-sm" href="#">
+                                    <i class="fas fa-trash"> </i> </a>
                             </td>
                         </tr>
                         @endforeach

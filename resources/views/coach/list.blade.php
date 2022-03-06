@@ -50,7 +50,7 @@
                     <tbody>
                         @foreach($coaches as $coach)
                         <tr>
-                            <tr id="cid{{$coach->id}}">
+                                <th scope="row">{{$coach->id}}</th>
                                 <td>{{$coach->name}}</td> 
                            
                             <td class="project-state">
@@ -70,7 +70,12 @@
                                 <a class="btn btn-warning btn-sm text-white" href="{{route('coach.edit', $coach['id'])}}">
                                     <i class="fas fa-pencil-alt"></i></a>
 
-                                    <a href="javascript:void(0)" onclick="deleteCoach({{$coach->id}})" class="btn btn-danger" >Delete</a>
+                                    <form id="myform" action="{{ route('coach.delete', $coach['id']) }}" method="POST" style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete it ?');">
+                                        @method('delete')
+                                       @csrf
+                                       <input type="submit" class="btn btn-danger delete  fas fa-trash btn-sm" value="Delete" title='Delete' >
+                                   
+                                   </form>
                             </td>
                         </tr>
                         @endforeach
@@ -86,21 +91,3 @@
 </div>
 <!-- /.content-wrapper -->
 @endsection
-<script>
-    function deleteCoach(id){
-        if(confirm("Do you want to delete this record?"))
-        {
-            $.ajax({
-                url:'/coach/'+id,
-                type:'DELETE',
-                data:{
-                    _token : $("input[name=_token]").val()
-                },
-                success:function(response)
-                {
-                    $("#cid"+id).remove();
-                }
-            });
-        }
-    }
-  </script>  
