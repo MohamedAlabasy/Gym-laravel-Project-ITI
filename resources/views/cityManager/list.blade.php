@@ -47,22 +47,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                    @foreach($users as $user)
                         <tr>
-                            <td> #</td>
-                            <td>
-                                <a> AdminLTE v3 </a>
-                                <br />
-                                <small>Created 01.01.2019 </small>
-                            </td>
-                            <td>
-                                <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td class="">
-                                <small>47% Complete</small>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Success</span>
-                            </td>
+                            <td>{{$user->id}}</td>
+                            <td>{{$user->name}} </td>
+                            <td><img alt="Avatar" class="table-avatar" src="imgs/avatar.png"></td>
+                            <td class=""> <small>47% Complete</small></td>
+                            <td class="project-state"> <span class="badge badge-success">Success</span></td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-info btn-sm" href="#">
                                     <i class="fa fa-eye"></i>
@@ -73,84 +64,7 @@
                                     <i class="fas fa-trash"> </i> </a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>#</td>
-                            <td>
-                                <a> AdminLTE v3</a>
-                                <br />
-                                <small> Created 01.01.2019</small>
-                            </td>
-                            <td>
-                                <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td class="">
-                                <small>47% Complete</small>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Success</span>
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
-                                    <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> #</td>
-                            <td>
-                                <a> AdminLTE v3 </a>
-                                <br />
-                                <small>Created 01.01.2019 </small>
-                            </td>
-                            <td>
-                                <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td class="">
-                                <small>47% Complete</small>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Success</span>
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
-                                    <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td> #</td>
-                            <td>
-                                <a> ffffAdminL </a>
-                                <br />
-                                <small>Created 01.01.2019 </small>
-                            </td>
-                            <td>
-                                <img alt="Avatar" class="table-avatar" src="imgs/avatar.png">
-                            </td>
-                            <td class="">
-                                <small>47% Complete</small>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success">Success</span>
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
-                                    <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
