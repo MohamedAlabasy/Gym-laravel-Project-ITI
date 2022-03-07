@@ -49,7 +49,7 @@
                     </thead>
                     <tbody>
                         @foreach($gyms as $gym)
-                        <tr id="gid{{$gym->id}}">
+                        {{-- <tr id="gid{{$gym->id}}"> --}}
 
                             
                             
@@ -71,7 +71,7 @@
                                 <a class="btn btn-warning btn-sm text-white" href="{{route('gym.edit', $gym['id'])}}">
                                     <i class="fas fa-pencil-alt"></i></a>
                                 
-                                    <a href="javascript:void(0)" onclick="deleteGym({{$gym->id}})" class="btn btn-danger" >Delete</a>
+                                    {{-- <a href="javascript:void(0)" onclick="deleteGym({{$gym->id}})" class="btn btn-danger" >Delete</a> --}}
                                       
                                        
                                 </td>
@@ -92,7 +92,7 @@
 <!-- /.content-wrapper -->
 @endsection
 
-<script>
+{{-- <script>
     function deleteGym(id){
         if(confirm("Do you want to delete this record?"))
         {
@@ -109,4 +109,4 @@
             });
         }
     }
-  </script>  
+  </script>   --}}
