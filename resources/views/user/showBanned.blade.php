@@ -1,3 +1,4 @@
+{{-- @dd($banUsers) --}}
 @extends('layouts.user-layout')
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -7,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h4>All Coaches</h4>
+                        <h4>All Banned Users</h4>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -24,7 +25,7 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Coaches</h3>
+                    <h3 class="card-title">Banned</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -38,50 +39,36 @@
                     <table class="table table-striped projects" id="proj">
                         <thead>
                             <tr>
-                                <th> id</th>
-                                <th> Coach Name</th>
-                                <th> Coach Email</th>
-                                <th>Coach City</th>
-                                <th>Created at</th>
-                                <th>Coach Image</th>
-                                <th></th>
+                                <th class="project-state">id</th>
+                                <th class="project-state">Name</th>
+                                <th class="project-state">Email</th>
+                                <th class="project-state">Profile Image</th>
+                                <th class="project-state">unBan</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($coaches as $coach)
+                            @foreach ($banUsers as $user)
+                                {{-- @dd($coach->banned_at) --}}
                                 <tr>
-                                    <th scope="row">{{ $coach->id }}</th>
-                                    <td>{{ $coach->name }}</td>
-
+                                    <th class="project-state" scope="row">{{ $user->id }}</th>
                                     <td class="project-state">
-                                        <span>{{ $coach->email }}</span>
+                                        <span>{{ $user->name }}</span>
                                     </td>
                                     <td class="project-state">
-                                        <span>{{ $coach->city->name }}</span>
+                                        <span>{{ $user->email }}</span>
                                     </td>
-                                    <td>{{ $coach->created_at->format('d - M - Y') }}</td>
-                                    <td>
-                                        <img alt="Avatar" class="table-avatar" src="{{ $coach->profile_image }}">
+                                    <td class="project-state">
+                                        <img alt="Avatar" class="table-avatar" src="{{ $user->profile_image }}">
                                     </td>
-                                    <td class="project-actions text-right">
-                                        <a class="btn btn-info btn-sm" href="#">
-                                            <i class="fa fa-eye"></i>
-                                        </a>
-                                        <a class="btn btn-warning btn-sm text-white"
-                                            href="{{ route('coach.edit', $coach['id']) }}">
-                                            <i class="fas fa-pencil-alt"></i></a>
-
-                                        <form id="myform" action="{{ route('coach.delete', $coach['id']) }}" method="POST"
+                                    <td class="project-actions text-center">
+                                        <form id="myform" action="{{ route('user.unBan', $user->id) }}" method="POST"
                                             style="display:inline;"
                                             onsubmit="return confirm('Are you sure you want to delete it ?');">
-                                            @method('delete')
                                             @csrf
-                                            <input type="submit" class="btn btn-danger delete  fas fa-trash btn-sm"
-                                                value="Delete" title='Delete'>
+                                            @method('PATCH')
+                                            <input type="submit" class="btn btn-dark delete  fas fa-trash btn-sm"
+                                                value="unban" title='unban'>
                                         </form>
-                                        <a class="btn btn-dark btn-sm" href="#">
-                                            <i class="fa fa-user-lock"></i>
-                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
