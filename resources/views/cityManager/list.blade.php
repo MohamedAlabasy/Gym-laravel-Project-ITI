@@ -47,7 +47,7 @@
                     </thead>
                     <tbody>
                     @foreach($users as $user)
-                        <tr>
+                        <tr id="did{{$user->id}}">
                             <td>{{$user->id}}</td>
                             <td>{{$user->name}} </td>
                             <td>{{$user->email}} </td>
@@ -57,15 +57,12 @@
 
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
+                                <a class="btn btn-warning btn-sm text-white" href="{{route('cityManager.edit', $user['id'])}}">
                                     <i class="fas fa-pencil-alt"></i></a>
 
-                                    <form id="myform" action="{{ route('cityManager.delete', $user['id']) }}" method="POST" style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete it ?');">
-                                        @method('delete')
-                                        @csrf
-                                       <input type="submit" class="btn btn-danger delete  fas fa-trash btn-sm" value="Delete" title='Delete' >
+                                 <a href="javascript:void(0)" onclick="deletecityManager({{$user->id}})" class="btn btn-danger" >Delete</a>
                                    
-                                   </form>
+                                   
                             </td>
                         </tr>
                         @endforeach
@@ -80,3 +77,24 @@
 </div>
 <!-- /.content-wrapper -->
 @endsection
+
+
+
+<script>
+    function deletecityManager(id){
+        if(confirm("Do you want to delete this record?"))
+        {
+            $.ajax({
+                url:'/cityManager/'+id,
+                type:'DELETE',
+                data:{
+                    _token : $("input[name=_token]").val()
+                },
+                success:function(response)
+                {
+                    $("#did"+id).remove();
+                }
+            });
+        }
+    }
+  </script>  

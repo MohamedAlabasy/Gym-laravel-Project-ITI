@@ -39,7 +39,6 @@
                     <thead>
                         <tr>
                             <th> id</th>
-
                             <th> Gyms Name</th>
                             <th>Gym City</th>
                             <th>Created at</th>
@@ -49,15 +48,16 @@
                     </thead>
                     <tbody>
                         @foreach($gyms as $gym)
-                        <tr>
-                            <th scope="row">{{$gym->id}}</th>
+
+                        <tr id="gid{{$gym->id}}">
+
+                            <td>{{$gym->id}}</td>
 
                             <td>{{$gym->name}}</td>        
                              <td class="project-state">
                                 <span>mansoura</span>
                                 {{-- <span>{{$gym->city}}</span> --}}
                             </td>
-
                             <td>{{$gym->created_at->format('d - M - Y')}}</td>
                             <td>
                                 <img alt="Avatar" class="table-avatar" src="{{$gym->cover_image}}">
@@ -72,16 +72,11 @@
                                 <a class="btn btn-warning btn-sm text-white" href="{{route('gym.edit', $gym['id'])}}">
                                     <i class="fas fa-pencil-alt"></i></a>
                                 
-                                    
 
-                               
-                                <form id="myform" action="{{ route('gym.delete', $gym['id']) }}" method="POST" style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete it ?');">
-                                     @method('delete')
-                                    @csrf
-                                    <input type="submit" class="btn btn-danger delete  fas fa-trash btn-sm" value="Delete" title='Delete' >
-                                
-                                </form>
-                           
+                                     <a href="javascript:void(0)" onclick="deleteGym({{$gym->id}})" class="btn btn-danger" >Delete</a> 
+                                      
+                                       
+
                                 </td>
                          </tr>
                            @endforeach
@@ -99,3 +94,23 @@
 </div>
 <!-- /.content-wrapper -->
 @endsection
+
+
+ <script>
+    function deleteGym(id){
+        if(confirm("Do you want to delete this record?"))
+        {
+            $.ajax({
+                url:'/gym/'+id,
+                type:'DELETE',
+                data:{
+                    _token : $("input[name=_token]").val()
+                },
+                success:function(response)
+                {
+                    $("#gid"+id).remove();
+                }
+            });
+        }
+    }
+  </script>   

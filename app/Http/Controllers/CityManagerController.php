@@ -33,7 +33,7 @@ class CityManagerController extends Controller
 #=======================================================================================#
     public function list(){
         $usersFromDB=User::all();
-        // $usersFromDB =  User::role('cityManager')->get();
+         $usersFromDB =  User::role('cityManager')->get();
         return view("cityManager.list",['users'=>$usersFromDB]);
 
     }
@@ -48,24 +48,46 @@ class CityManagerController extends Controller
 #=======================================================================================#
 #			                           Edit Function                                	#
 #=======================================================================================#
-    public function edit(){
+    public function edit($id){
+        $users =User::all();
+
+        $singleUser=User::find($id);
+
+        return view("cityManager.edit",['singleUser' => $singleUser,'users'=>$users]);
  
     }
 
 #=======================================================================================#
 #			                           Update Function                                	#
 #=======================================================================================#
-    public function update(){
+    public function update(Request $request, $id){
+        $request->validate([
+            'name' => ['required','string','min:2'],
+            'email' => ['required','string','unique:App\Models\User,email'],
+            
+        ]);
+
+
+        User::where('id', $id)->update([
+
+             'name' => $request->all()['name'],
+             'email'=> $request->email,
+             
+             
+             
+         ]);
+         return redirect()->route('cityManager.list');
 
     }
 
 #=======================================================================================#
 #			                           Delete Function                                	#
 #=======================================================================================#
-    public function delete($id){
+    public function deletecityManager($id){
+
         $singleUser=User::findorfail($id);
         $singleUser->delete();
-        return redirect()->route('cityManager.list');
+       return response()->json(['success' => 'Record deleted successfully!']);
 
     }
 }

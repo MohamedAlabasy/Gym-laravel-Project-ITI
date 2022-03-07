@@ -19,7 +19,7 @@
         <div class="card">
 
             <div class="card-body p-0">
-                <table class="table table-striped projects" id="proj">
+                <table class="table table-striped projects" >
                 <thead>
                         <tr>
                             <th>ID</th>

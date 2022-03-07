@@ -9,6 +9,8 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CityManagerController;
 use App\Http\Controllers\GymManagerController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\StripeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +24,9 @@ use Illuminate\Support\Facades\Auth;
 #=======================================================================================#
 #			                           Home Route                               	    #
 #=======================================================================================#
+Route::get('stripe', [StripeController::class, 'stripe']);
+Route::post('stripe', [StripeController::class, 'stripePost'])->name('stripe.post');
+
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome')->middleware('auth')->middleware('logs-out-banned-user');
 #=======================================================================================#
 #			                        Gym Controller Routes                              	#
@@ -32,7 +37,9 @@ Route::controller(GymController::class)->group(function () {
     Route::post('/gym/store', 'store')->name('gym.store')->middleware('auth');
     Route::get('/gym/edit/{gym}', 'edit')->name('gym.edit')->middleware('auth');
     Route::put('/gym/update/{gym}', 'update')->name('gym.update')->middleware('auth');
+
     Route::delete('/gym/{id}', 'deleteGym')->name('gym.delete')->middleware('auth');
+
     Route::get('/gym/list', 'list')->name('gym.list')->middleware('auth');
     Route::get('/gym/show/{id}', 'show')->name('gym.show')->middleware('auth');
 });
@@ -49,7 +56,9 @@ Route::controller(CoachController::class)->group(function () {
     Route::post('/coach/store', 'store')->name('coach.store')->middleware('auth');
     Route::get('/coach/edit/{coach}', 'edit')->name('coach.edit')->middleware('auth');
     Route::put('/coach/update/{coach}', 'update')->name('coach.update')->middleware('auth');
+
     Route::delete('/coach/{id}', 'deleteCoach')->name('coach.delete')->middleware('auth');
+
     Route::get('/coach/list', 'list')->name('coach.list')->middleware('auth');
     Route::get('/coach/show/{id}', 'show')->name('coach.show')->middleware('auth');
 });
@@ -94,9 +103,9 @@ Route::controller(CityManagerController::class)->group(function () {
     Route::get('/cityManager/create', 'create')->name('cityManager.create')->middleware('auth')->middleware('logs-out-banned-user');
     Route::post('/cityManager/store', 'store')->name('cityManager.store')->middleware('auth')->middleware('logs-out-banned-user');
     Route::get('/cityManager/list', 'list')->name('cityManager.list')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::get('/cityManager/edit/{city}', 'edit')->name('cityManager.edit')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::put('/cityManager/update/{city}', 'update')->name('cityManager.update')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::delete('/cityManager/delete/{id}', 'delete')->name('cityManager.delete')->middleware('auth')->middleware('logs-out-banned-user');
+    Route::get('/cityManager/edit/{id}', 'edit')->name('cityManager.edit')->middleware('auth')->middleware('logs-out-banned-user');
+    Route::put('/cityManager/update/{id}', 'update')->name('cityManager.update')->middleware('auth')->middleware('logs-out-banned-user');
+    Route::delete('/cityManager/{id}', 'deletecityManager')->name('cityManager.delete')->middleware('auth')->middleware('logs-out-banned-user');
     Route::get('/cityManager/show/{id}', 'show')->name('cityManager.show')->middleware('auth')->middleware('logs-out-banned-user');
 });
 #=======================================================================================#
@@ -108,7 +117,7 @@ Route::controller(GymManagerController::class)->group(function () {
     Route::get('/gymManager/list', 'list')->name('gymManager.list')->middleware('auth')->middleware('logs-out-banned-user');
     Route::get('/gymManager/edit/{gym}', 'edit')->name('gymManager.edit')->middleware('auth')->middleware('logs-out-banned-user');
     Route::put('/gymManager/update/{gym}', 'update')->name('gymManager.update')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::delete('/gymManager/delete/{id}', 'delete')->name('gymManager.delete')->middleware('auth')->middleware('logs-out-banned-user');
+    Route::delete('/gymManager/{id}', 'deletegymManager')->name('gymManager.delete')->middleware('auth')->middleware('logs-out-banned-user');
     Route::get('/gymManager/show/{id}', 'show')->name('gymManager.show')->middleware('auth')->middleware('logs-out-banned-user');
 });
 #=======================================================================================#

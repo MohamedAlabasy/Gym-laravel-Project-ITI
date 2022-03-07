@@ -125,7 +125,6 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                    <i class="fas fa-expand-arrows-alt"></i>
                 </a>
             </li>
         </ul>
@@ -155,11 +154,13 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                    @role('admin')     
+                     <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>City Managers <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
+                        @endrole
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="cityManager/list" class="nav-link">
@@ -424,7 +425,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('user.listBanned') }}" class="nav-link">
-                            <i class="nav-icon far fa-plus-square"></i>
+                            <i class="nav-icon fa fa-user-lock"></i>
                             <p>
                                 Baned
                             </p>
