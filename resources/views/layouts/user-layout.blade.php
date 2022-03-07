@@ -415,8 +415,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('user.listBanned') }}" class="nav-link">
-                            {{-- <i class="nav-icon  fa-user-unlock"></i> --}}
-                            <i class="nav-icon far fa-plus-square"></i>
+                            <i class="nav-icon fa fa-user-lock"></i>
                             <p>
                                 Baned
                             </p>
