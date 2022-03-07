@@ -155,11 +155,13 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                    @role('admin')     
+                     <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>City Managers <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
+                        @endrole
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="cityManager/list" class="nav-link">
