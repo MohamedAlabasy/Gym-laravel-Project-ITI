@@ -57,7 +57,7 @@
 
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
+                                <a class="btn btn-warning btn-sm text-white" href="{{route('cityManager.edit', $user['id'])}}">
                                     <i class="fas fa-pencil-alt"></i></a>
 
                                     <form id="myform" action="{{ route('cityManager.delete', $user['id']) }}" method="POST" style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete it ?');">
