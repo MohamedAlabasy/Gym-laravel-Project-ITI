@@ -25,4 +25,9 @@ class TrainingSession extends Model
     {
         return $this->belongsTo(TrainingPackage::class);
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

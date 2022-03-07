@@ -84,19 +84,26 @@
         <ul class="navbar-nav ml-auto">
             <li class="dropdown user user-menu" style="cursor:pointer;">
                 <div class="media align-items-center">
-                    <img src="imgs/avatar.png" alt="User Avatar" class="mr-2 mt-1 img-size-32 img-circle mr-2">
+                    <img src="{{ asset(auth()->user()->profile_image) }}" alt="User Avatar" class="mr-2 mt-1 img-size-32 img-circle mr-2">
+
                     <div class="media-body">
                         <h6 class="dropdown-item-title text-dark" style="font-size: 14px">
                             {{ auth()->user()->name }}
                         </h6>
                     </div>
                 </div>
-                <ul class="dropdown-menu" style="width:200px">
-                    <li class="user-header mb-1" style="height: 140px;">
-                        <img src="imgs/avatar.png" class="img-circle" alt="User Image">
-                        <p class="mb-0">
-                            {{ auth()->user()->name }}
-                        </p>
+
+            <ul class="dropdown-menu" style="width:200px">
+                <li class="user-header mb-1" style="height: 140px;">
+                    <img class="profile-user-img img-fluid img-circle" src="{{ asset(auth()->user()->profile_image) }}"alt="User profile picture">
+
+                    <p class="mb-0">
+                    {{ auth()->user()->name }}
+                    </p>
+                </li>
+
+
+
                     </li>
                     <li class="user-footer d-flex justify-content-between">
                         <div class="pull-left">
@@ -104,6 +111,7 @@
                                 class="btn btn-default btn-flat">Profile</a>
                         </div>
                         <div class="pull-right">
+
 
                             <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">Sign out</a>
@@ -134,7 +142,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="imgs/avatar.png" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{ asset(auth()->user()->profile_image) }}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="{{ route('user.admin_profile', auth()->user()->id) }}" class="d-block">

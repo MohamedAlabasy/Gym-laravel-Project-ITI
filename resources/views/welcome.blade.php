@@ -115,31 +115,29 @@
                 @endrole
 
                 {{-- # ======================================= # if login Coaches  # ======================================= # --}}
-
                 <div class="row justify-content-center">
                     @role('coach')
-                        {{-- hala add coach design her --}}
-                        <div class="col-lg-3 col-6 card mx-2">
-                            <div class="card-header border-0 text-center font-weight-bold"> Name </div>
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
-                                    <p class="d-flex flex-column text-center font-weight-bold">
-                                        Starts at
-                                        <span class="text-muted">time</span>
-                                    </p>
-                                    <p class="d-flex flex-column text-center font-weight-bold">
-                                        End AT
-                                        <span class="text-muted">Time</span>
-                                    </p>
+                        @foreach ($trainingSessions as $session)
+                            <div class="col-lg-3 col-6 card mx-2">
+                                <div class="card-header border-0 text-center font-weight-bold">{{ $session->name }}</div>
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center border-bottom mb-3">
+                                        <p class="d-flex flex-column text-center font-weight-bold">
+                                            Starts at
+                                            <span class="text-muted">{{ $session->starts_at }}</span>
+                                        </p>
+                                        <p class="d-flex flex-column text-center font-weight-bold">
+                                            End AT
+                                            <span class="text-muted">{{ $session->finishes_at }}</span>
+                                        </p>
+                                    </div>
+                                    <div class="d-flex justify-content-center align-items-center mb-0">
+                                        {{ $session->day }}</div>
                                 </div>
-                                <div class="d-flex justify-content-center align-items-center mb-0">Day</div>
                             </div>
-                        </div>
+                        @endforeach
                     @endrole
                 </div>
-
-
-
             </div>
         </div>
     </div>

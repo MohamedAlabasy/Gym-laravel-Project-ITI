@@ -53,6 +53,10 @@ class User extends Authenticatable implements BannableContract
     {
         return $this->belongsTo(Gym::class);
     }
+    public function TrainingSessions()
+    {
+        return $this->belongsToMany(TrainingSession::class);
+    }
 
 
     /**
