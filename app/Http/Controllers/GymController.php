@@ -85,7 +85,7 @@ class GymController extends Controller
 
         $singleGym = Gym::find($id);
         $singleGym->delete();
-        return redirect(route('gym.list'));
+        return response()->json(['success' => 'Record deleted successfully!']);
 
     }
 }
