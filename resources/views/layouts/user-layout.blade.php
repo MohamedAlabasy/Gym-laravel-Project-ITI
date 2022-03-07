@@ -117,7 +117,6 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                    <i class="fas fa-expand-arrows-alt"></i>
                 </a>
             </li>
         </ul>
@@ -416,6 +415,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('user.listBanned') }}" class="nav-link">
+                            {{-- <i class="nav-icon  fa-user-unlock"></i> --}}
                             <i class="nav-icon far fa-plus-square"></i>
                             <p>
                                 Baned

@@ -43,7 +43,8 @@
                                 <p>Cities Managers</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-users text-white" style="font-size: 50px !important"></i>
+                                {{-- <i class="fas fa-user-tie"></i> --}}
+                                <i class="fas fa-user-tie text-white" style="font-size: 50px !important"></i>
                             </div>
                         </div>
                         {{-- </a> --}}
@@ -91,7 +92,7 @@
                                     <p>Coaches</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fas fa-users text-dark" style="font-size: 50px !important"></i>
+                                    <i class="fas fa-user-ninja text-dark" style="font-size: 50px !important"></i>
                                 </div>
                             </div>
                         </a>
