@@ -10,6 +10,11 @@ use App\Http\Controllers\Api\AuthController;
 use App\Models\User;
 use App\Models\TrainingSession;
 use App\Models\TrainingPackage;
+
+
+use App\Http\Controllers\Api\EmailVerificationController;
+use App\Http\Controllers\Auth\VerificationController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -32,8 +37,9 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('logout', 'logout')->middleware('auth:sanctum');
 });
 
-
-
+Auth::routes(['verify'=>true]);
+Route::post('email/verification-notification', [EmailVerificationController::class, 'resend'])->middleware('auth:sanctum');
+Route::get('email/verify/{id}', [EmailVerificationController::class, 'verify'])->name('verification.verify');
 //Traning Sessions Routes
 Route::get('sessions',[SessionsController::class,'index'])->middleware('auth:sanctum');
 Route::get('sessions/{session}',[SessionsController::class,'showSession'])->middleware('auth:sanctum');

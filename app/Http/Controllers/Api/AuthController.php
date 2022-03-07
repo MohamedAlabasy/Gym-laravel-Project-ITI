@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
-use Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -32,11 +32,12 @@ class AuthController extends Controller
         ]);
         $user->assignRole('user');
         $user->save();
-        $user->notify((new WelcomeEmailNotification())->afterCommit());
 
+        $user->sendEmailVerificationNotification();
         return response()->json([
             'message' => 'Successfully created user!'
         ], 201);
+        $user->notify(new WelcomeEmailNotification());
     }
 
     public function login(Request $request){
