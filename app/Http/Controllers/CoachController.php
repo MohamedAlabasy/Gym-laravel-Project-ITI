@@ -83,7 +83,7 @@ class CoachController extends Controller
          return redirect()->route('coach.list');
      }
 
-    Delete Function
+    // Delete Function
 
     public function deleteCoach($id)
     {
