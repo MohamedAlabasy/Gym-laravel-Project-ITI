@@ -48,17 +48,36 @@ class GymManagerController extends Controller
 #=======================================================================================#
 #			                           Edit Function                                	#
 #=======================================================================================#
-    public function edit(){
- 
-    }
+public function edit($id){
+    $users =User::all();
+
+    $singleUser=User::find($id);
+
+    return view("gymManager.edit",['singleUser' => $singleUser,'users'=>$users]);
+
+}
 
 #=======================================================================================#
 #			                           Update Function                                	#
 #=======================================================================================#
-    public function update(){
+public function update(Request $request, $id){
+    $request->validate([
+        'name' => ['required','string','min:2'],
+        
+    ]);
 
-    }
 
+    User::where('id', $id)->update([
+
+         'name' => $request->all()['name'],
+         'email'=> $request->email,
+         
+         
+         
+     ]);
+     return redirect()->route('gymManager.list');
+
+}
 #=======================================================================================#
 #			                           Delete Function                                	#
 #=======================================================================================#
