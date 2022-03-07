@@ -38,7 +38,7 @@
                 <table class="table table-striped projects" id="proj">
                     <thead>
                         <tr>
-                        <th>ID</th>
+                            <th>ID</th>
                             <th> City Manager Name</th>
                             <th>Email</th>
                             <th>Profile Picture</th>
@@ -60,9 +60,7 @@
                                 <a class="btn btn-warning btn-sm text-white" href="{{route('cityManager.edit', $user['id'])}}">
                                     <i class="fas fa-pencil-alt"></i></a>
 
-                                 <a href="javascript:void(0)" onclick="deletecityManager({{$user->id}})" class="btn btn-danger" >Delete</a>
-                                   
-                                   
+                                    <a href="javascript:void(0)" onclick="deletecityManager({{$user->id}})" class="btn btn-danger" ><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -98,3 +96,4 @@
         }
     }
   </script>  
+
