@@ -86,7 +86,7 @@
 </div>
 <!-- /.content-wrapper -->
 @endsection
-<script>
+{{-- <script>
     function deleteCoach(id){
         if(confirm("Do you want to delete this record?"))
         {
@@ -103,4 +103,4 @@
             });
         }
     }
-  </script>  
+  </script>   --}}
