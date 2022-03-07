@@ -87,11 +87,11 @@ public function update(Request $request, $id){
     //     return redirect()->route('gymManager.list');
 
     // }
-    public function delete($id)
-    {
+    public function deletegymManager($id){
 
-        $singleUser = User::find($id);
+        $singleUser=User::findorfail($id);
         $singleUser->delete();
-        return response()->json(['success' => 'Record deleted successfully!']);
+       return response()->json(['success' => 'Record deleted successfully!']);
+
     }
 }
