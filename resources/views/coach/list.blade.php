@@ -96,7 +96,7 @@
                         <tbody>
                             @foreach ($coaches as $coach)
                                
-                                    <tr id="cid{{$gym->id}}">
+                                    <tr id="cid{{$coach->id}}">
                                     <td>{{ $coach->name }}</td>
 
                                     <td class="project-state">
@@ -113,14 +113,19 @@
                                         <a class="btn btn-info btn-sm" href="#">
                                             <i class="fa fa-eye"></i>
                                         </a>
-                                        <a class="btn btn-warning btn-sm text-white"
-                                            href="{{ route('coach.edit', $coach['id']) }}">
+        
+                                       
+        
+                                        <a class="btn btn-warning btn-sm text-white" href="{{route('coach.edit', $coach['id'])}}">
                                             <i class="fas fa-pencil-alt"></i></a>
-
-                                       <a href="javascript:void(0)" onclick="deleteGym({{$gym->id}})" class="btn btn-danger" >Delete</a>
                                         
-                                    </td>
-                                </tr>
+        
+                                             <a href="javascript:void(0)" onclick="deleteCoach({{$coach->id}})" class="btn btn-danger" >Delete</a> 
+                                              
+                                               
+        
+                                        </td>
+                                 </tr>
                             @endforeach
 
                         </tbody>
