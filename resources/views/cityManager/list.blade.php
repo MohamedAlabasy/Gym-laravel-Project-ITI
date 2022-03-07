@@ -60,10 +60,11 @@
                                 <a class="btn btn-warning btn-sm text-white" href="{{route('cityManager.edit', $user['id'])}}">
                                     <i class="fas fa-pencil-alt"></i></a>
 
-                                    <form id="myform" action="{{ route('cityManager.delete', $user['id']) }}" method="POST" style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete it ?');">
+                                    <!-- <form id="myform" action="{{ route('cityManager.delete', $user['id']) }}" method="POST" style="display:inline;"  onsubmit="return confirm('Are you sure you want to delete it ?');">
                                         @method('delete')
                                         @csrf
-                                       <input type="submit" class="btn btn-danger delete  fas fa-trash btn-sm" value="Delete" title='Delete' >
+                                       <input type="submit" class="btn btn-danger delete  fas fa-trash btn-sm" value="Delete" title='Delete' > -->
+                                       <a href="javascript:void(0)" onclick="deleteGym({{$user->id}})" class="btn btn-danger" >Delete</a>
                                    
                                    </form>
                             </td>

@@ -33,7 +33,7 @@ class CityManagerController extends Controller
 #=======================================================================================#
     public function list(){
         $usersFromDB=User::all();
-        // $usersFromDB =  User::role('cityManager')->get();
+         $usersFromDB =  User::role('cityManager')->get();
         return view("cityManager.list",['users'=>$usersFromDB]);
 
     }
@@ -63,6 +63,7 @@ class CityManagerController extends Controller
     public function update(Request $request, $id){
         $request->validate([
             'name' => ['required','string','min:2'],
+            'email' => ['required','string','unique:App\Models\User,email'],
             
         ]);
 
