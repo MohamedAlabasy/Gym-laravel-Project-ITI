@@ -1,11 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+
 use Auth;
-/* use Carbon/Carbon; */
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Notifications\Notification;
+use App\Notifications\WelcomeEmailNotification;
 class AuthController extends Controller
 {
     public function signup(Request $request){
@@ -29,6 +32,7 @@ class AuthController extends Controller
         ]);
         $user->assignRole('user');
         $user->save();
+        $user->notify((new WelcomeEmailNotification())->afterCommit());
 
         return response()->json([
             'message' => 'Successfully created user!'
@@ -36,40 +40,34 @@ class AuthController extends Controller
     }
 
     public function login(Request $request){
-
         $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-            'remember_me' => 'boolean'
+            'email' => 'required|email',
+            'password' => 'required',
+            'remember_me' => 'boolean',
+            'device_name' => 'required',
         ]);
-        $credentials = request(['email', 'password']);
-        if(!Auth::attempt($credentials))
-            return response()->json([
-                'message' => 'Unauthorized'
-            ], 401);
-        $user = $request->user();
-        $tokenResult = $user->createToken('Personal Access Token');
-        $token = $tokenResult->token;
-        if ($request->remember_me)
-            $token->expires_at = Carbon::now()->addWeeks(1);
-        $token->save();
-        return response()->json([
-            'access_token' => $tokenResult->accessToken,
-            'token_type' => 'Bearer',
-            'expires_at' => Carbon::parse(
-                $tokenResult->token->expires_at
-            )->toDateTimeString()
-        ]);
+        $user = User::where('email', $request->email)->first();
+
+        if (! $user || ! Hash::check($request->password, $user->password)) {
+            throw ValidationException::withMessages([
+                'email' => ['The provided credentials are incorrect.'],
+            ]);
+        }
+        else{
+            $token=$user->createToken('$request->device_name')->plainTextToken;
+            $response=[
+                'user'=>$user,
+                'token'=>$token,
+            ];
+            return response($response ,200);
+        }
     }
 
     public function logout(Request $request){
-        $request->user()->token()->revoke();
+        Auth()->user()->tokens()->delete();
         return response()->json([
             'message' => 'Successfully logged out'
         ]);
     }
 
-    public function user(Request $request){
-        return response()->json($request->user());
-    }
 }

@@ -38,30 +38,31 @@
                 <table class="table table-striped projects" id="proj">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th> Project Name</th>
-                            <th>Team Members</th>
-                            <th>Project Progress</th>
-                            <th class="text-center">Status</th>
+                        <th>ID</th>
+                            <th> City Manager Name</th>
+                            <th>Email</th>
+                            <th>Profile Picture</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($users as $user)
-                        <tr>
+                        <tr id="did{{$user->id}}">
                             <td>{{$user->id}}</td>
                             <td>{{$user->name}} </td>
-                            <td><img alt="Avatar" class="table-avatar" src="imgs/avatar.png"></td>
-                            <td class=""> <small>47% Complete</small></td>
-                            <td class="project-state"> <span class="badge badge-success">Success</span></td>
+                            <td>{{$user->email}} </td>
+                            <td><img alt="Avatar" class="table-avatar" src="{{$user->profile_image}}"></td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="#">
+                                <a class="btn btn-info btn-sm" href="{{route('cityManager.show', $user['id'])}}">
+
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a class="btn btn-warning btn-sm text-white" href="#">
+                                <a class="btn btn-warning btn-sm text-white" href="{{route('cityManager.edit', $user['id'])}}">
                                     <i class="fas fa-pencil-alt"></i></a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash"> </i> </a>
+
+                                 <a href="javascript:void(0)" onclick="deletecityManager({{$user->id}})" class="btn btn-danger" >Delete</a>
+                                   
+                                   
                             </td>
                         </tr>
                         @endforeach
@@ -76,3 +77,24 @@
 </div>
 <!-- /.content-wrapper -->
 @endsection
+
+
+
+<script>
+    function deletecityManager(id){
+        if(confirm("Do you want to delete this record?"))
+        {
+            $.ajax({
+                url:'/cityManager/'+id,
+                type:'DELETE',
+                data:{
+                    _token : $("input[name=_token]").val()
+                },
+                success:function(response)
+                {
+                    $("#did"+id).remove();
+                }
+            });
+        }
+    }
+  </script>  

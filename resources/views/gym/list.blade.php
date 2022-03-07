@@ -39,7 +39,6 @@
                     <thead>
                         <tr>
                             <th> id</th>
-
                             <th> Gyms Name</th>
                             <th>Gym City</th>
                             <th>Created at</th>
@@ -49,17 +48,16 @@
                     </thead>
                     <tbody>
                         @foreach($gyms as $gym)
-                        {{-- <tr id="gid{{$gym->id}}"> --}}
 
-                            
-                            
+                        <tr id="gid{{$gym->id}}">
+
                             <td>{{$gym->id}}</td>
+
                             <td>{{$gym->name}}</td>        
                              <td class="project-state">
                                 <span>mansoura</span>
                                 {{-- <span>{{$gym->city}}</span> --}}
                             </td>
-
                             <td>{{$gym->created_at->format('d - M - Y')}}</td>
                             <td>
                                 <img alt="Avatar" class="table-avatar" src="{{$gym->cover_image}}">
@@ -68,16 +66,21 @@
                                 <a class="btn btn-info btn-sm" href="#">
                                     <i class="fa fa-eye"></i>
                                 </a>
+
+                               
+
                                 <a class="btn btn-warning btn-sm text-white" href="{{route('gym.edit', $gym['id'])}}">
                                     <i class="fas fa-pencil-alt"></i></a>
                                 
-                                    {{-- <a href="javascript:void(0)" onclick="deleteGym({{$gym->id}})" class="btn btn-danger" >Delete</a> --}}
+
+                                     <a href="javascript:void(0)" onclick="deleteGym({{$gym->id}})" class="btn btn-danger" >Delete</a> 
                                       
                                        
+
                                 </td>
-                            </tr>
-                              @endforeach      
-    
+                         </tr>
+                           @endforeach
+
 
                     </tbody>
                 </table>
@@ -86,13 +89,14 @@
             <!-- /.card-body -->
         </div>
         <!-- /.card -->
-        
-      </section>
+
+    </section>
 </div>
 <!-- /.content-wrapper -->
 @endsection
 
-{{-- <script>
+
+ <script>
     function deleteGym(id){
         if(confirm("Do you want to delete this record?"))
         {
@@ -109,4 +113,4 @@
             });
         }
     }
-  </script>   --}}
+  </script>   
