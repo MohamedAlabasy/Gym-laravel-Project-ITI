@@ -74,7 +74,7 @@
                                         <a href="javascript:void(0)" onclick="deleteCoach({{ $coach->id }})"
                                             class="btn btn-danger">Delete</a>
                                         <a class="btn btn-dark btn-sm" href="#">
-                                            <i class="fa fa-user-lock"></i>
+                                            <i class="fa fa-user-lock"></i> 
                                         </a>
                                     </td>
                                 </tr>
