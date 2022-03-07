@@ -21,7 +21,9 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <form action="{{url('')}}" method="post" enctype="multipart/form-data" class="w-75 m-auto">
+        <form action="{{route('gymManager.update',[$singleUser['id']])}}" method="post" enctype="multipart/form-data" class="w-75 m-auto">
+        @method('PUT')
+        @csrf
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-primary">
@@ -36,15 +38,25 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" id="name" class="form-control" value="" name="name">
+                                <input type="text" id="name" class="form-control" value="{{$singleUser->name}}" name="name">
                             </div>
+                            @if ($errors->any())
+                        <div class="w-4/8 m-auto text-center">
+                            @foreach ($errors->all() as $error)
+                            <li class="text-red-500 list-none">
+                                {{$error}}
+                            </li>
+                            @endforeach
+
+                                </div>
+                            @endif
                             <div class="form-group">
                                 <label for="pass">Password</label>
-                                <input type="password" id="pass" class="form-control" value="" name="password">
+                                <input type="password" id="pass" class="form-control" value="{{$singleUser->password}}" name="password">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" class="form-control" value="" name="email">
+                                <input type="email" id="email" class="form-control" value="{{$singleUser->email}}" name="email">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="image">Upload Image</label>

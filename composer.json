@@ -7,13 +7,16 @@
     "require": {
         "php": "^8.0.2",
         "almasaeed2010/adminlte": "~3.2",
+        "browner12/helpers": "^3.4",
         "cybercog/laravel-ban": "^4.7",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.2",
+        "laravel/helpers": "^1.5",
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4",
         "spatie/laravel-permission": "^5.5",
+        "stripe/stripe-php": "^7.116",
         "yajra/laravel-datatables-oracle": "~9.0"
     },
     "require-dev": {

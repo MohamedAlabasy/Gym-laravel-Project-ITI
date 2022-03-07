@@ -25,10 +25,14 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'min:5', 'email' => 'unique:App\Models\User,email'],
+            'name' => ['required', 'min:5', ],
 
-            'email' => ['required'],
-            'profile_image' => 'mimes:jpg,jpeg',
+            'email' => ['required', 'email' => 'unique:App\Models\User,email'],
+            'profile_image' => ['required', 'mimes:jpg,jpeg'],
+
+            // 'profile_image' => 'mimes:jpg,jpeg',
+
+
         ];
     }
 
@@ -40,5 +44,4 @@ class StoreRequest extends FormRequest
 
         ];
     }
-
 }
