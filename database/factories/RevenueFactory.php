@@ -21,6 +21,7 @@ class RevenueFactory extends Factory
             'payment_id' => $this->faker->numerify('##########'), // "16",
             'statuses' => rand(1, 3),
             'visa_number' => $this->faker->numerify('################'), // "16",
+            'visa_number' => ('4242 4242 4242 4242'), // "16",
             'payment_method' => $this->faker->randomElement([
                 'PayPal', 'Amazon Pay', 'eBay Managed Payments', 'Google Pay', 'Apple Pay',
                 'Bank transfers', 'Prepaid cards', 'Digital currencies', 'bank'
