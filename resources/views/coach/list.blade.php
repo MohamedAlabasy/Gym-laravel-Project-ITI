@@ -79,9 +79,6 @@
                                             <input type="submit" class="btn btn-danger delete  fas fa-trash btn-sm"
                                                 value="Delete" title='Delete'>
                                         </form>
-                                        <a class="btn btn-dark btn-sm" href="#">
-                                            <i class="fa fa-user-lock"></i>
-                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
