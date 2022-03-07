@@ -9,6 +9,8 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CityManagerController;
 use App\Http\Controllers\GymManagerController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\StripeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +24,9 @@ use Illuminate\Support\Facades\Auth;
 #=======================================================================================#
 #			                           Home Route                               	    #
 #=======================================================================================#
+Route::get('stripe', [StripeController::class, 'stripe']);
+Route::post('stripe', [StripeController::class, 'stripePost'])->name('stripe.post');
+
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome')->middleware('auth')->middleware('logs-out-banned-user');
 #=======================================================================================#
 #			                        Gym Controller Routes                              	#
