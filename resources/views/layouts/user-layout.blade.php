@@ -101,19 +101,9 @@
                     {{ auth()->user()->name }}
                     </p>
                 </li>
-                <li class="user-footer d-flex justify-content-between">
-                    <div class="pull-left">
-                        <a href="{{ route('user.admin_profile',auth()->user()->id )}}" class="btn btn-default btn-flat">Profile</a>
-                    </div>
-                    <div class="pull-right">
 
-                <ul class="dropdown-menu" style="width:200px">
-                    <li class="user-header mb-1" style="height: 140px;">
-                    <img src="{{ asset(auth()->user()->profile_image) }}" alt="User Avatar" class="mr-2 mt-1 img-size-32 img-circle mr-2">
 
-                        <p class="mb-0">
-                            {{ auth()->user()->name }}
-                        </p>
+
                     </li>
                     <li class="user-footer d-flex justify-content-between">
                         <div class="pull-left">
