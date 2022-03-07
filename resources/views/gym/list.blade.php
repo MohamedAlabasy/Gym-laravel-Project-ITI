@@ -39,7 +39,6 @@
                     <thead>
                         <tr>
                             <th> id</th>
-
                             <th> Gyms Name</th>
                             <th>Gym City</th>
                             <th>Created at</th>
@@ -50,16 +49,12 @@
                     <tbody>
                         @foreach($gyms as $gym)
                         <tr id="gid{{$gym->id}}">
-
-                            
-                            
                             <td>{{$gym->id}}</td>
                             <td>{{$gym->name}}</td>        
                              <td class="project-state">
                                 <span>mansoura</span>
                                 {{-- <span>{{$gym->city}}</span> --}}
                             </td>
-
                             <td>{{$gym->created_at->format('d - M - Y')}}</td>
                             <td>
                                 <img alt="Avatar" class="table-avatar" src="{{$gym->cover_image}}">

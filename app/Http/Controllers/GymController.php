@@ -85,8 +85,6 @@ class GymController extends Controller
 
         $singleGym = Gym::find($id);
         $singleGym->delete();
-        return response()->json(['success' => 'Record deleted successfully!']); 
+        return response()->json(['success' => 'Record deleted successfully!']);
     }
-
-    
 }
