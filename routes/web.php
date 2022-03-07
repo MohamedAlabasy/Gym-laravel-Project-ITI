@@ -101,7 +101,7 @@ Route::controller(CityManagerController::class)->group(function () {
     Route::get('/cityManager/list', 'list')->name('cityManager.list')->middleware('auth')->middleware('logs-out-banned-user');
     Route::get('/cityManager/edit/{id}', 'edit')->name('cityManager.edit')->middleware('auth')->middleware('logs-out-banned-user');
     Route::put('/cityManager/update/{id}', 'update')->name('cityManager.update')->middleware('auth')->middleware('logs-out-banned-user');
-    Route::delete('/cityManager/delete/{id}', 'delete')->name('cityManager.delete')->middleware('auth')->middleware('logs-out-banned-user');
+    Route::delete('/cityManager/{id}', 'deletecityManager')->name('cityManager.delete')->middleware('auth')->middleware('logs-out-banned-user');
     Route::get('/cityManager/show/{id}', 'show')->name('cityManager.show')->middleware('auth')->middleware('logs-out-banned-user');
 });
 #=======================================================================================#

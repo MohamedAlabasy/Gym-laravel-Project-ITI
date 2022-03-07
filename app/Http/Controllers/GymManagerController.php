@@ -81,10 +81,17 @@ public function update(Request $request, $id){
 #=======================================================================================#
 #			                           Delete Function                                	#
 #=======================================================================================#
-    public function delete($id){
-        $singleUser=User::findorfail($id);
-        $singleUser->delete();
-        return redirect()->route('gymManager.list');
+    // public function delete($id){
+    //     $singleUser=User::findorfail($id);
+    //     $singleUser->delete();
+    //     return redirect()->route('gymManager.list');
 
+    // }
+    public function delete($id)
+    {
+
+        $singleUser = User::find($id);
+        $singleUser->delete();
+        return response()->json(['success' => 'Record deleted successfully!']);
     }
 }
