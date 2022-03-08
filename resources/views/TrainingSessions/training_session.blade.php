@@ -21,10 +21,12 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <form action="{{route('gym_session.store')}}" method="POST" enctype="multipart/form-data" class="w-75 m-auto">
+        <form action="{{route('TrainingSessions.store')}}" method="POST" enctype="multipart/form-data" class="w-75 m-auto">
             @csrf
+            
 
             <div class="row">
+                {{-- {{($coach)}} --}}
                 <div class="col-md-12">
                     <div class="card card-primary">
                         <div class="card-header">
@@ -47,9 +49,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="coach">Coach</label>
-                                <select id="coach" class="form-control custom-select" name="coachname">
-                                    @foreach ($users as $user)
-                                    @if($user->user_type == 'coach')  <option value="{{$user->id}}">{{ $user->name }}</option> @endif
+                                <select id="coach" class="form-control custom-select" name="name" >
+                                    @foreach ($coaches as $coach)
+                                   <option value="{{$coach->id}}"> {{ $coach->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

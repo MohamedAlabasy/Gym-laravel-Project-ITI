@@ -17,37 +17,45 @@ class TrainingController extends Controller
     #			                             index                                         	#
     #=======================================================================================#
     public function index() {
-        return view('gym.listSessions');
+        $trainingSessions = TrainingSession::all();
+
+        return view('TrainingSessions.listSessions' ,['trainingSessions' => $trainingSessions]);
     }
     
-    public function getSession(Request $request) {
-        if($request->ajax()) {
-            $data = TrainingSession::latest()->get();
-            return DataTables::of($data)
-            ->addIndexColumn()
-            ->addColumn('action', function() {
-                $actionBtn = '<div class = "text-center">
-                <a href="#" class = "btn btn-danger">Delete</a>
-                <a href="#" class = "btn btn-info">View</a>
-                <a href="#" class = "btn btn-success">Update</a>
-                </div>'
-               ;
-                return $actionBtn;
-            })
-            ->rawColumns(['action'])
-            ->make(true);
-        }
-    }
+    // public function getSession(Request $request) {
+    //     if($request->ajax()) {
+    //         $data = TrainingSession::latest()->get();
+    //         return DataTables::of($data)
+    //         ->addIndexColumn()
+    //         ->addColumn('action', function() {
+    //             $actionBtn = '<div class = "text-center">
+    //             <a href="#" class = "btn btn-danger">Delete</a>
+    //             <a href="#" class = "btn btn-info">View</a>
+    //             <a href="#" class = "btn btn-success">Update</a>
+    //             </div>'
+    //            ;
+    //             return $actionBtn;
+    //         })
+    //         ->rawColumns(['action'])
+    //         ->make(true);
+    //     }
+    // }
     #=======================================================================================#
     #			                             create                                        	#
     #=======================================================================================#
     public function create()
     {
         $trainingSessions = TrainingSession::all();
+        
         $users = User::all();
-        return view('gym.training_session', [
+        
+        foreach ($users as $user) {
+            if ($user->hasRole('coach')) {
+                $coaches[] = $user;
+            } 
+        }        return view('TrainingSessions.training_session', [
             'trainingSessions' => $trainingSessions,
-            'users' => $users,
+            'coaches' => $coaches,
         ]);
     }
     #=======================================================================================#
@@ -57,7 +65,7 @@ class TrainingController extends Controller
     {
         $requestData = request()->all();
         TrainingSession::create($requestData);
-        return redirect()->route('gym.listSessions');
+        return redirect()->route('TrainingSessions.listSessions');
     }
     #=======================================================================================#
     #			                             show                                         	#
@@ -83,8 +91,11 @@ class TrainingController extends Controller
     #=======================================================================================#
     #			                             destroy                                       	#
     #=======================================================================================#
-    public function destroy()
+    public function deleteSession()
     {
-        return redirect()->route('');
+        $trainingSession=TrainingSession::findorfail($id);
+        $trainingSession->delete();
+       return response()->json(['success' => 'Record deleted successfully!']);
+
     }
 }
