@@ -14,12 +14,15 @@ class CoachController extends Controller
     public function list()
     {
         $coachesFromDB =  User::role('coach')->withoutBanned()->get();
+        if (count($coachesFromDB) <= 0) { //for empty statement
+            return view('empty');
+        }
         return view("coach.list", ['coaches' => $coachesFromDB]);
     }
 
 
     //Show Function
-        public function show($id)
+    public function show($id)
     {
 
         $singleCoach = User::find($id);
