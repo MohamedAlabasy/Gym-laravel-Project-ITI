@@ -41,8 +41,10 @@ Auth::routes(['verify'=>true]);
 Route::post('email/verification-notification', [EmailVerificationController::class, 'resend'])->middleware('auth:sanctum');
 Route::get('email/verify/{id}', [EmailVerificationController::class, 'verify'])->name('verification.verify');
 //Traning Sessions Routes
-Route::get('0.',[SessionsController::class,'index'])->middleware('auth:sanctum');
+Route::get('sessions',[SessionsController::class,'index'])->middleware('auth:sanctum');
 Route::get('sessions/{session}',[SessionsController::class,'showSession'])->middleware('auth:sanctum');
+Route::get('remaining_sessions',[SessionsController::class,'remaining_training_sessions'])->middleware('auth:sanctum');
+Route::post('attendSession',[SessionsController::class,'attend_training_session'])->middleware('auth:sanctum');
 
 
 //Traning Packages Routes
