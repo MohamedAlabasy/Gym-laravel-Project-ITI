@@ -59,8 +59,8 @@
                                     </a>
                                     <a class="btn btn-warning btn-sm text-white" href="">
                                         <i class="fas fa-pencil-alt"></i></a>
-                                    <a href="javascript:void(0)" onclick="deleteGym({{ $gym->id }})"
-                                        class="btn btn-danger">Delete</a>
+                                    {{-- <a href="javascript:void(0)" onclick="deleteGym({{ $gym->id }})"
+                                        class="btn btn-danger">Delete</a> --}}
                                 </td>
                             </tr>
                         </tbody>
