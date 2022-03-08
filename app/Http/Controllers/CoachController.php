@@ -34,6 +34,8 @@ class CoachController extends Controller
     public function create()
     {
 
+
+
         return view('coach.create', [
             'users' => User::all(),
         ]);
@@ -53,8 +55,6 @@ class CoachController extends Controller
 
 
         User::create($request->all());
-
-
         return redirect()->route('coach.list');
     }
 
@@ -73,6 +73,7 @@ class CoachController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+
             'name' => ['required', 'string', 'min:2'],
 
         ]);
