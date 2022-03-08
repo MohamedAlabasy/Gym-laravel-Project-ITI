@@ -173,6 +173,6 @@ Route::delete('/city/{postID}', [CityController::class, 'destroy'])->name('city.
 #=======================================================================================#
 Route::get('/empty', [EmptyController::class, 'empty'])->name('empty.statement')->middleware('auth');
 #=======================================================================================#
-#			                            notFound route                                  #
+#			                           not Found route                                  #
 #=======================================================================================#
 Route::get('/unAuth', [EmptyController::class, 'unAuth'])->name('500')->middleware('auth')->middleware('logs-out-banned-user');
