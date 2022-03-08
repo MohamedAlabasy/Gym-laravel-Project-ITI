@@ -38,8 +38,8 @@
                     <table class="table table-striped projects" id="proj">
                         <thead>
                             <tr>
-                                <th> id</th>
-                                <th> Gyms Name</th>
+                                <th>id</th>
+                                <th>Gyms Name</th>
                                 <th>Gym City</th>
                                 <th>Created at</th>
                                 <th>Gyms Cover Image</th>
