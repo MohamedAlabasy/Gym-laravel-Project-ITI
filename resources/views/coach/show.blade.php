@@ -27,16 +27,20 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-sm-6">
-                        <h6 class="d-inline-block d-sm-none">City Name</h6>
+                        <h6 class="d-inline-block d-sm-none">Coach Name</h6>
                         <div class="col-12">
                             <img src="../../dist/img/prod-1.jpg" class="product-image" alt="Product Image">
                         </div>
                     </div>
                     <div class="col-12 col-sm-6 d-flex  align-items-center">
                         <div>
-                            <p class="my-3">City Manager</p>
-                            <p class="my-3">Gym Manager</p>
-                            <p class="my-3">Gym Manager</p>
+                            <p class="my-3">id</p>
+                            <p class="my-3">Coach Name</p>
+                            <p class="my-3">Coach Email</p>
+                            <p class="my-3">Coach City</p>
+                            <p class="my-3">Created at</p>
+                            <p class="my-3">Coach Image</p>
+                        
                             <div class="project-actions mt-5">
                                 <a class="btn btn-info btn-sm" href="#">
                                     <i class="fa fa-eye"></i>
