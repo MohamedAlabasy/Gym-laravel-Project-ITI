@@ -38,6 +38,8 @@ class User extends Authenticatable implements BannableContract, MustVerifyEmail
         'gender',
         'profile_image',
         'birth_date',
+        'total_sessions',
+        'remain_session',
         'last_login_at',
         'city_id',
         'gym_id',
