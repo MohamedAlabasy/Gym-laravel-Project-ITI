@@ -97,7 +97,6 @@ Route::get('/user', [UserController::class, 'index'])->name('layouts.user-layout
 #=======================================================================================#
 Auth::routes();
 
-
 #=======================================================================================#
 #			                           City Managers Routes                          	#
 #=======================================================================================#
@@ -129,7 +128,7 @@ Route::get('/banUser/{userID}', [UserController::class, 'banUser'])->name('user.
 Route::get('/listBanned', [UserController::class, 'listBanned'])->name('user.listBanned')->middleware('auth')->middleware('logs-out-banned-user');
 Route::PATCH('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
 #=======================================================================================#
-#			                           Traing packege                              	        #
+#			                           Training Packages                              	#
 #=======================================================================================#
 // Route::get('/trainingPackeges/list', [UserController::class, ''])->name('')->middleware('auth')->middleware('');
 
@@ -146,38 +145,38 @@ Route::get('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBa
 
 
 
+
 #=======================================================================================#
 #			                            City route                                      #
 #=======================================================================================#
 
-//GET, 	    /photos, 	    index,  	photos.index
-Route::get('/city', [CityController::class, 'index'])->name('city.home')->middleware('auth');
+//GET, 	    /photos, 	    index,  	city.index
+Route::get('/city', [CityController::class, 'list'])->name('city.list')->middleware('auth')->middleware('logs-out-banned-user');
 
 
-//GET, 	/photos/create, 	create, 	photos.create
-Route::get('/city/create', [CityController::class, 'create'])->name('city.create')->middleware('auth');
-//POST, 	/photos, 	store,       	photos.store
-Route::post('/city', [CityController::class, 'store'])->name('city.store')->middleware('auth');
+//GET, 	/photos/create, 	create, 	city.create
+Route::get('/city/create', [CityController::class, 'create'])->name('city.create')->middleware('auth')->middleware('logs-out-banned-user');
+//POST, 	/photos, 	store,       	city.store
+// Route::post('/city', [CityController::class, 'store'])->name('city.store')->middleware('auth')->middleware('logs-out-banned-user');
 
 
-//GET, 	/photos/{photo}, 	show,    	photos.show
-Route::get('/city/{postID}', [CityController::class, 'show'])->name('city.show')->middleware('auth');
+//GET, 	/photos/{photo}, 	show,    	city.show
+// Route::get('/city/{postID}', [CityController::class, 'show'])->name('city.show')->middleware('auth')->middleware('logs-out-banned-user');
 
 
-//GET 	/photos/{photo}/edit 	edit 	photos.edit
-Route::get('/city/{postID}/edit', [CityController::class, 'edit'])->name('city.edit')->middleware('auth');
-//PUT/PATCH, 	/photos/{photo}, 	update, 	photos.update
-Route::put('/city/{postID}', [CityController::class, 'update'])->name('city.update')->middleware('auth');
+//GET 	/photos/{photo}/edit 	edit 	city.edit
+// Route::get('/city/{postID}/edit', [CityController::class, 'edit'])->name('city.edit')->middleware('auth')->middleware('logs-out-banned-user');
+//PUT/PATCH, 	/photos/{photo}, 	update, 	city.update
+// Route::put('/city/{postID}', [CityController::class, 'update'])->name('city.update')->middleware('auth')->middleware('logs-out-banned-user');
 
-
-//DELETE 	/photos/{photo} 	destroy 	photos.destroy
-Route::delete('/city/{postID}', [CityController::class, 'destroy'])->name('city.destroy')->middleware('auth');
+//DELETE 	/photos/{photo} 	destroy 	city.destroy
+// Route::delete('/city/{postID}', [CityController::class, 'destroy'])->name('city.destroy')->middleware('auth')->middleware('logs-out-banned-user');
 
 #=======================================================================================#
 #			                            empty statement                                 #
 #=======================================================================================#
 Route::get('/empty', [EmptyController::class, 'empty'])->name('empty.statement')->middleware('auth');
 #=======================================================================================#
-#			                            notFound route                                  #
+#			                           not Found route                                  #
 #=======================================================================================#
 Route::get('/unAuth', [EmptyController::class, 'unAuth'])->name('500')->middleware('auth')->middleware('logs-out-banned-user');
