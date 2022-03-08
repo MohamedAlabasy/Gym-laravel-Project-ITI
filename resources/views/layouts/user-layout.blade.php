@@ -154,7 +154,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <li class="nav-item">
-                    @role('admin')     
+                    @role('admin')
                      <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>City Managers <i class="fas fa-angle-left right"></i>
@@ -413,6 +413,14 @@
                                 </a>
                             </li>
                         </ul>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="nav-icon far fa-plus-square"></i>
+                            <p>
+                                City
+                            </p>
                         </a>
                     </li>
                     <li class="nav-item">

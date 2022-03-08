@@ -176,8 +176,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-            //for str helper method
-            browner12\helpers\HelperServiceProvider::class,
+        //for str helper method
+        browner12\helpers\HelperServiceProvider::class,
 
         //for Ban
         Cog\Laravel\Ban\Providers\BanServiceProvider::class,

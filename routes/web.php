@@ -38,7 +38,9 @@ Route::controller(GymController::class)->group(function () {
     Route::post('/gym/store', 'store')->name('gym.store')->middleware('auth');
     Route::get('/gym/edit/{gym}', 'edit')->name('gym.edit')->middleware('auth');
     Route::put('/gym/update/{gym}', 'update')->name('gym.update')->middleware('auth');
+
     Route::delete('/gym/{id}', 'deleteGym')->name('gym.delete')->middleware('auth');
+
     Route::get('/gym/list', 'list')->name('gym.list')->middleware('auth');
     Route::get('/gym/show/{id}', 'show')->name('gym.show')->middleware('auth');
 });
@@ -55,7 +57,9 @@ Route::controller(CoachController::class)->group(function () {
     Route::post('/coach/store', 'store')->name('coach.store')->middleware('auth');
     Route::get('/coach/edit/{coach}', 'edit')->name('coach.edit')->middleware('auth');
     Route::put('/coach/update/{coach}', 'update')->name('coach.update')->middleware('auth');
+
     Route::delete('/coach/{id}', 'deleteCoach')->name('coach.delete')->middleware('auth');
+
     Route::get('/coach/list', 'list')->name('coach.list')->middleware('auth');
     Route::get('/coach/show/{id}', 'show')->name('coach.show')->middleware('auth');
 });
@@ -120,15 +124,18 @@ Route::controller(GymManagerController::class)->group(function () {
 #=======================================================================================#
 #			                            Ban User                              	        #
 #=======================================================================================#
+Route::get('/banUser/{userID}', [UserController::class, 'banUser'])->name('user.banUser')->middleware('auth')->middleware('logs-out-banned-user');
 Route::get('/listBanned', [UserController::class, 'listBanned'])->name('user.listBanned')->middleware('auth')->middleware('logs-out-banned-user');
 Route::PATCH('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
 
 
 #=======================================================================================#
-#			                            All users Route                          	    #
+#			                            All users Route                          	            #
 #=======================================================================================#
 Route::controller(AllUsersController::class)->group(function () {
 Route::get('/allUsers/list', 'list')->name('allUsers.list')->middleware('auth')->middleware('logs-out-banned-user');
 Route::get('/allUsers/show/{id}', 'show')->name('allUsers.show')->middleware('auth')->middleware('logs-out-banned-user');
 Route::delete('/allUsers/{id}', 'deletegymManager')->name('allUsers.delete')->middleware('auth')->middleware('logs-out-banned-user');
 });
+Route::get('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
+
