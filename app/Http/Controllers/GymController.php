@@ -19,12 +19,14 @@ class GymController extends Controller
     public function list()
     {
         $gymsFromDB = Gym::all();
+        
 
         return view("gym.list", ['gyms' => $gymsFromDB]);
     }
     #=======================================================================================#
     #			                            Show Function                                 	#
     #=======================================================================================#
+    
     public function show($id)
     {
         $singleGym = Gym::find($id);
