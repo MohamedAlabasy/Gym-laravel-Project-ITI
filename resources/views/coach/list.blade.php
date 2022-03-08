@@ -64,7 +64,7 @@
                                         <img alt="Avatar" class="table-avatar" src="{{ $coach->profile_image }}">
                                     </td>
                                     <td class="project-actions project-state">
-                                        <a class="btn btn-info btn-sm" href="#">
+                                        <a class="btn btn-info btn-sm" href="{{route('coach.show',$coach['id'])}}">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                         <a class="btn btn-warning btn-sm text-white"

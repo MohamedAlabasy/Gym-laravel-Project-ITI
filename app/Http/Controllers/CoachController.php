@@ -17,13 +17,14 @@ class CoachController extends Controller
         return view("coach.list", ['coaches' => $coachesFromDB]);
     }
 
+
     //Show Function
-    public function show($id)
+        public function show($id)
     {
 
         $singleCoach = User::find($id);
 
-        return view("coach.show");
+        return view("coach.show", ['singleCoach' => $singleCoach]);
     }
 
     //Create Function
