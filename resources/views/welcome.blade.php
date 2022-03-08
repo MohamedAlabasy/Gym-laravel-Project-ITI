@@ -76,7 +76,7 @@
                                 <p>Gyms Managers</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-users text-dark" style="font-size: 50px !important"></i>
+                                <i class="fas fa-user text-dark" style="font-size: 50px !important"></i>
                             </div>
                         </div>
                         {{-- </a> --}}

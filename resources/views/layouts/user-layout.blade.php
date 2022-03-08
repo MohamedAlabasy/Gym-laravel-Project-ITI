@@ -158,7 +158,7 @@
                     {{-- # ======================================= # Revenue # ======================================= # --}}
                     <li class="nav-item">
                         <a href="/" class="nav-link">
-                            <i class="nav-icon far fa-plus-square"></i>
+                            <i class="nav-icon fas fa-dollar-sign"></i>
                             <p>Revenue</p>
                         </a>
                     </li>
@@ -166,7 +166,7 @@
                     @role('admin')
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <i class="nav-icon fas fa-city"></i>
                                 <p> Cities
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
@@ -189,7 +189,7 @@
                         {{-- # ======================================= # City Managers # ======================================= # --}}
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
+                                <i class="nav-icon fas fa-user-tie"></i>
                                 <p> City Managers <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -212,7 +212,7 @@
                     {{-- # ======================================= # Gyms # ======================================= # --}}
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <i class="nav-icon fas fa-dumbbell"></i>
                             <p> Gyms
                                 <i class="fas fa-angle-left right"></i>
                             </p>
@@ -235,7 +235,7 @@
                     {{-- # ======================================= # Gym Managers # ======================================= # --}}
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-tree"></i>
+                            <i class="nav-icon fas fa-user"></i>
                             <p> Gym Managers
                                 <i class="fas fa-angle-left right"></i>
                             </p>
@@ -258,7 +258,7 @@
                     {{-- # ======================================= # Coaches # ======================================= # --}}
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-table"></i>
+                            <i class="nav-icon fas fa-user-ninja"></i>
                             <p> Coaches
                                 <i class="fas fa-angle-left right"></i>
                             </p>
@@ -281,7 +281,7 @@
                     {{-- # ======================================= # Users # ======================================= # --}}
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-edit"></i>
+                            <i class="nav-icon fas fa-users"></i>
                             <p> Users
                                 <i class="fas fa-angle-left right"></i>
                             </p>
@@ -304,7 +304,7 @@
                     {{-- # ======================================= # Training Packages # ======================================= # --}}
                     <li class="nav-item">
                         <a href="/" class="nav-link">
-                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <i class="nav-icon fas fa-cubes"></i>
                             <p> Training Packages
                                 <i class="fas fa-angle-left right"></i>
                             </p>
@@ -322,12 +322,18 @@
                                     <p> Add New </p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="/" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p> Buy Package </p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     {{-- # ======================================= # Training Session # ======================================= # --}}
                     <li class="nav-item">
                         <a href="pages/kanban.html" class="nav-link">
-                            <i class="nav-icon fas fa-columns"></i>
+                            <i class="nav-icon fas fa-cube"></i>
                             <p> Training Session
                                 <i class="fas fa-angle-left right"></i>
                             </p>
@@ -336,13 +342,13 @@
                             <li class="nav-item">
                                 <a href="{{ route('TrainingSessions.listSessions') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>All Sessions</p>
+                                    <p> All Sessions </p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('TrainingSessions.training_session') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Add New</p>
+                                    <p> Add New </p>
                                 </a>
                             </li>
                         </ul>
@@ -352,33 +358,6 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p> Attendance </p>
-                            <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="pages/mailbox/mailbox.html" class="nav-link">
-                                    <p>Inbox</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/mailbox/compose.html" class="nav-link">
-                                    <p>Compose</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/mailbox/read-mail.html" class="nav-link">
-                                    <p>Read</p>
-                                </a>
-                            </li>
-                        </ul>
-                        </a>
-                    </li>
-                    {{-- # ======================================= # Buy Package # ======================================= # --}}
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon far fa-plus-square"></i>
-                            <p> Buy Package </p>
                             <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
