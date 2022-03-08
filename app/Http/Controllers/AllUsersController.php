@@ -13,8 +13,9 @@ class AllUsersController extends Controller
     #=======================================================================================#
     public function list()
     {
-        $usersFromDB = User::all();
-        $usersFromDB =  User::role('user')->get();
+        $usersFromDB =  User::role('user')->withoutBanned()->get();
+        // $usersFromDB = User::all();
+        // $usersFromDB =  User::role('user')->get();
         if (count($usersFromDB) <= 0) { //for empty statement
             return view('empty');
         }
