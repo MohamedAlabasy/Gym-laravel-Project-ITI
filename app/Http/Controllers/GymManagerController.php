@@ -35,8 +35,9 @@ class GymManagerController extends Controller
     #=======================================================================================#
     public function list()
     {
-        $usersFromDB = User::all();
-        $usersFromDB =  User::role('gymManager')->get();
+        $usersFromDB =  User::role('gymManager')->withoutBanned()->get();
+        // $usersFromDB = User::all();
+        // $usersFromDB =  User::role('gymManager')->get();
         if (count($usersFromDB) <= 0) { //for empty statement
             return view('empty');
         }
