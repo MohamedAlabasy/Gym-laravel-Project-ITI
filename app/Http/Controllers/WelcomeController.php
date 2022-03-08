@@ -80,11 +80,10 @@ class WelcomeController extends Controller
                 }
                 break;
             case 'coach':
-
-                $userOfGym = User::with(['trainingSessions'])->where('id', 110)->first();
+                $userOfGym = User::with(['trainingSessions'])->where('id', $this->userID)->first();
                 // dd($userOfGym);
                 // dd($userOfGym->trainingSessions);
-                if (count($userOfGym) <= 0) { //for empty statement
+                if (count($userOfGym->trainingSessions) <= 0) { //for empty statement
                     return view('empty');
                 }
                 return view("welcome", [

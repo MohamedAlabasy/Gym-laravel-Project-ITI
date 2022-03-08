@@ -9,10 +9,10 @@ class CityController extends Controller
 {
     public function list()
     {
-        $gymsFromDB = City::all();
-        if (count($gymsFromDB) <= 0) { //for empty statement
+        $allCities = City::all();
+        if (count($allCities) <= 0) { //for empty statement
             return view('empty');
         }
-        return view("city.list", ['gyms' => $gymsFromDB]);
+        return view("city.list", ['allCities' => $allCities]);
     }
 }
