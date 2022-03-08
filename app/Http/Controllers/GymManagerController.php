@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -18,80 +19,85 @@ class GymManagerController extends Controller
             'users' => User::all(),
         ]);
     }
-#=======================================================================================#
-#			                           Store Function                                	#
-#=======================================================================================#
-    public function store(Request $request){
+    #=======================================================================================#
+    #			                           Store Function                                	#
+    #=======================================================================================#
+    public function store(Request $request)
+    {
 
         $requestData = request()->all();
         User::create($requestData);
         return redirect()->route('gymManager.list');
     }
 
-#=======================================================================================#
-#			                           List Function                                	#
-#=======================================================================================#
-    public function list(){
-        $usersFromDB=User::all();
-        $usersFromDB =  User::role('gymManager')->get();
-        return view("gymManager.list",['users'=>$usersFromDB]);
-
+    #=======================================================================================#
+    #			                           List Function                                	#
+    #=======================================================================================#
+    public function list()
+    {
+        $usersFromDB =  User::role('gymManager')->withoutBanned()->get();
+        // $usersFromDB = User::all();
+        // $usersFromDB =  User::role('gymManager')->get();
+        if (count($usersFromDB) <= 0) { //for empty statement
+            return view('empty');
+        }
+        return view("gymManager.list", ['users' => $usersFromDB]);
     }
-#=======================================================================================#
-#			                           Show Function                                	#
-#=======================================================================================#
-    public function show($id){
-            $singleUser=User::findorfail($id);
-            return view("gymManager.show",['singleUser' => $singleUser]);
-
+    #=======================================================================================#
+    #			                           Show Function                                	#
+    #=======================================================================================#
+    public function show($id)
+    {
+        $singleUser = User::findorfail($id);
+        return view("gymManager.show", ['singleUser' => $singleUser]);
     }
-#=======================================================================================#
-#			                           Edit Function                                	#
-#=======================================================================================#
-public function edit($id){
-    $users =User::all();
+    #=======================================================================================#
+    #			                           Edit Function                                	#
+    #=======================================================================================#
+    public function edit($id)
+    {
+        $users = User::all();
 
-    $singleUser=User::find($id);
+        $singleUser = User::find($id);
 
-    return view("gymManager.edit",['singleUser' => $singleUser,'users'=>$users]);
+        return view("gymManager.edit", ['singleUser' => $singleUser, 'users' => $users]);
+    }
 
-}
+    #=======================================================================================#
+    #			                           Update Function                                	#
+    #=======================================================================================#
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'min:2'],
 
-#=======================================================================================#
-#			                           Update Function                                	#
-#=======================================================================================#
-public function update(Request $request, $id){
-    $request->validate([
-        'name' => ['required','string','min:2'],
-        
-    ]);
+        ]);
 
 
-    User::where('id', $id)->update([
+        User::where('id', $id)->update([
 
-         'name' => $request->all()['name'],
-         'email'=> $request->email,
-         
-         
-         
-     ]);
-     return redirect()->route('gymManager.list');
+            'name' => $request->all()['name'],
+            'email' => $request->email,
 
-}
-#=======================================================================================#
-#			                           Delete Function                                	#
-#=======================================================================================#
+
+
+        ]);
+        return redirect()->route('gymManager.list');
+    }
+    #=======================================================================================#
+    #			                           Delete Function                                	#
+    #=======================================================================================#
     // public function delete($id){
     //     $singleUser=User::findorfail($id);
     //     $singleUser->delete();
     //     return redirect()->route('gymManager.list');
 
     // }
-    public function deletegymManager($id){
+    public function deletegymManager($id)
+    {
 
-        $singleUser=User::findorfail($id);
+        $singleUser = User::findorfail($id);
         $singleUser->delete();
-       return response()->json(['success' => 'Record deleted successfully!']);
-
+        return response()->json(['success' => 'Record deleted successfully!']);
     }
 }

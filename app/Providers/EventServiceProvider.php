@@ -18,7 +18,15 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
+        #=======================================================================================#
+        #			                    for update last login at                              	#
+        #=======================================================================================#        
+        'Illuminate\Auth\Events\Login' => [
+            'App\Listeners\LogSuccessfulLogin',
+        ],
     ];
+
 
     /**
      * Register any events for your application.
