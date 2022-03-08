@@ -30,7 +30,7 @@
 
                 <h3 class="profile-username text-center">{{ auth()->user()->name }}</h3>
 
-                <p class="text-muted text-center">{{ auth()->user()->role }}</p>
+                <p class="text-muted text-center"></p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">

@@ -11,9 +11,7 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-     #=======================================================================================#
-    #			                             create                                         	#
-    #=======================================================================================#
+    
 
     #=======================================================================================#
     #			                             index                                         	#
@@ -33,8 +31,7 @@ class UserController extends Controller
     public function show_profile($user_id)
     {
         $user = User::find($user_id);
-        /* $user->profile_image=$imageName;
-        $user->save(); */
+
         return view('user.admin_profile', [
             'user' => $user,
         ]);
@@ -67,6 +64,7 @@ class UserController extends Controller
             if(isset( $user->profile_image))
                 unlink( $user->profile_image);
                 $user->profile_image=$imageName;
+                // if( auth()->$user->isDirty('email'))
         }
         $user->save();
         return redirect()->route('user.admin_profile', auth()->user()->id);
@@ -87,10 +85,10 @@ class UserController extends Controller
     #=======================================================================================#
     #			                             destroy                                       	#
     #=======================================================================================#
-    // public function destroy()
-    // {
-    //     return redirect()->route('');
-    // }
+    public function destroy()
+    {
+        return redirect()->route('');
+    }
 
 
 

@@ -28,7 +28,7 @@ class CoachController extends Controller
     //Create Function
     public function create()
     {
-        
+
         return view('coach.create',[
             'users' => User::all(),
         ]);
@@ -36,19 +36,19 @@ class CoachController extends Controller
 
     //Store Function
     public function store(Request $request){
-       
+
         $request->validate([
             'name' => ['required','string','min:2'],
             'email' => ['required'],
-            
-           
+
+
         ]);
-        
-        
+
+
 
         User::create($request->all());
 
-        
+
         return redirect()->route('coach.list');
 
     }
@@ -68,7 +68,7 @@ class CoachController extends Controller
      {
         $request->validate([
             'name' => ['required','string','min:2'],
-            
+
         ]);
 
 
@@ -76,21 +76,21 @@ class CoachController extends Controller
 
              'name' => $request->all()['name'],
              'email'=> $request->email,
-             
-             
-             
+
+
+
          ]);
          return redirect()->route('coach.list');
      }
 
-    Delete Function
+  
 
     public function deleteCoach($id)
     {
 
         $singleCoach = User::find($id);
         $singleCoach->delete();
-        return response()->json(['success' => 'Record deleted successfully!']); 
+        return response()->json(['success' => 'Record deleted successfully!']);
     }
 
 }
