@@ -17,7 +17,7 @@ class AuthController extends Controller
             'email' => 'required|string|unique:users',
             'gender' => 'required',
             'birth_date'=> 'required',
-            'profile_image'=> 'required',
+            'profile_image'=> 'required|image|mimes:jpg,jpeg',
             'password' => 'required',
             'password_confirmation' => 'required|same:password'
         ]);
@@ -40,11 +40,10 @@ class AuthController extends Controller
         $user->notify(new WelcomeEmailNotification());
     }
 
-    public function login(Request $request){
+    public function signin(Request $request){
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
-            'remember_me' => 'boolean',
             'device_name' => 'required',
         ]);
         $user = User::where('email', $request->email)->first();
@@ -54,8 +53,9 @@ class AuthController extends Controller
                 'email' => ['The provided credentials are incorrect.'],
             ]);
         }
+
         else{
-            $token=$user->createToken('$request->device_name')->plainTextToken;
+            $token=$user->createToken($request->device_name)->plainTextToken;
             $response=[
                 'user'=>$user,
                 'token'=>$token,
