@@ -37,32 +37,29 @@
                     <table class="table table-striped projects" id="proj">
                         <thead>
                             <tr>
-                                <th> id</th>
-                                <th>City Name</th>
-                                <th>Gym Name</th>
-                                <th>Created at</th>
-                                <th>City Manager</th>
-                                <th>Gym Manager</th>
-                                <th></th>
+                                <th class="project-state"> ID </th>
+                                <th class="project-state"> City Name</th>
+                                <th class="project-state">Created at</th>
+                                <th class="project-state"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td class="project-actions text-right">
-                                    <a class="btn btn-info btn-sm" href="#">
-                                        <i class="fa fa-eye"></i>
-                                    </a>
-                                    <a class="btn btn-warning btn-sm text-white" href="">
-                                        <i class="fas fa-pencil-alt"></i></a>
-                                    {{-- <a href="javascript:void(0)" onclick="deleteGym({{ $gym->id }})"
+                            @foreach ($allCities as $city)
+                                <tr>
+                                    <td class="project-state">{{ $city->id }}</td>
+                                    <td class="project-state">{{ $city->name }}</td>
+                                    <td class="project-state">{{ $city->created_at }}</td>
+                                    <td class="project-actions project-state">
+                                        <a class="btn btn-info btn-sm" href="#">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                        <a class="btn btn-warning btn-sm text-white" href="">
+                                            <i class="fas fa-pencil-alt"></i></a>
+                                        {{-- <a href="javascript:void(0)" onclick="deleteGym({{ $gym->id }})"
                                         class="btn btn-danger">Delete</a> --}}
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
