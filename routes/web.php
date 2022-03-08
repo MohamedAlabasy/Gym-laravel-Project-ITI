@@ -126,12 +126,11 @@ Route::controller(GymManagerController::class)->group(function () {
 Route::get('/banUser/{userID}', [UserController::class, 'banUser'])->name('user.banUser')->middleware('auth')->middleware('logs-out-banned-user');
 Route::get('/listBanned', [UserController::class, 'listBanned'])->name('user.listBanned')->middleware('auth')->middleware('logs-out-banned-user');
 Route::PATCH('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
-<<<<<<< HEAD
 #=======================================================================================#
 #			                           Traing packege                              	        #
 #=======================================================================================#
-Route::get('/trainingPackeges/list', [UserController::class, ''])->name('')->middleware('auth')->middleware('');
-=======
+// Route::get('/trainingPackeges/list', [UserController::class, ''])->name('')->middleware('auth')->middleware('');
+
 
 /* notFound route */
 Route::get('/unAuth', [UserController::class, 'unAuth'])->name('500')->middleware('auth')->middleware('logs-out-banned-user');
@@ -145,4 +144,3 @@ Route::controller(AllUsersController::class)->group(function () {
     Route::delete('/allUsers/{id}', 'deletegymManager')->name('allUsers.delete')->middleware('auth')->middleware('logs-out-banned-user');
 });
 Route::get('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
->>>>>>> 587470a155106b2d53147cb1ee698cf81f96d660
