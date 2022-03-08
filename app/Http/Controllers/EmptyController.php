@@ -14,5 +14,6 @@ class EmptyController extends Controller
 
     public function unAuth()
     {
+        return view('500');
     }
 }
