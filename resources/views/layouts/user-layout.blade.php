@@ -60,7 +60,7 @@
 
 </style>
 
-<body>
+<body class="sidebar-collapse">
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
         <img class="animation__shake" src="imgs/gym-icon.png" alt="GymSystemLogo" height="150" width="150">
@@ -71,7 +71,7 @@
         <ul class="navbar-nav">
             @role('admin|cityManager|gymManager')
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button" id="asideIcon"><i class="fas fa-bars"></i></a>
                 </li>
             @endrole
             <li class="nav-item d-none d-sm-inline-block">
