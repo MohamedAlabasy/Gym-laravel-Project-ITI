@@ -148,24 +148,24 @@ Route::controller(AllUsersController::class)->group(function () {
 //GET, 	    /photos, 	    index,  	city.index
 Route::get('/city', [CityController::class, 'list'])->name('city.list')->middleware('auth')->middleware('logs-out-banned-user');
 
+//GET, 	/city/{photo}, 	show,    	city.show
+Route::get('/city/{cityID}', [CityController::class, 'show'])->name('city.show')->middleware('auth')->middleware('logs-out-banned-user');
 
-//GET, 	/photos/create, 	create, 	city.create
+//GET, 	/city/create, 	create, 	city.create
 Route::get('/city/create', [CityController::class, 'create'])->name('city.create')->middleware('auth')->middleware('logs-out-banned-user');
-//POST, 	/photos, 	store,       	city.store
+//POST, 	/city, 	store,       	city.store
 // Route::post('/city', [CityController::class, 'store'])->name('city.store')->middleware('auth')->middleware('logs-out-banned-user');
 
 
-//GET, 	/photos/{photo}, 	show,    	city.show
-// Route::get('/city/{postID}', [CityController::class, 'show'])->name('city.show')->middleware('auth')->middleware('logs-out-banned-user');
 
 
-//GET 	/photos/{photo}/edit 	edit 	city.edit
-// Route::get('/city/{postID}/edit', [CityController::class, 'edit'])->name('city.edit')->middleware('auth')->middleware('logs-out-banned-user');
-//PUT/PATCH, 	/photos/{photo}, 	update, 	city.update
-// Route::put('/city/{postID}', [CityController::class, 'update'])->name('city.update')->middleware('auth')->middleware('logs-out-banned-user');
+//GET 	/city/{cityID}/edit 	edit 	city.edit
+Route::get('/city/{cityID}/edit', [CityController::class, 'edit'])->name('city.edit')->middleware('auth')->middleware('logs-out-banned-user');
+//PUT/PATCH, 	/city/{photo}, 	update, 	city.update
+// Route::put('/city/{cityID}', [CityController::class, 'update'])->name('city.update')->middleware('auth')->middleware('logs-out-banned-user');
 
-//DELETE 	/photos/{photo} 	destroy 	city.destroy
-// Route::delete('/city/{postID}', [CityController::class, 'destroy'])->name('city.destroy')->middleware('auth')->middleware('logs-out-banned-user');
+//DELETE 	/city/{photo} 	destroy 	city.destroy
+// Route::delete('/city/{cityID}', [CityController::class, 'destroy'])->name('city.destroy')->middleware('auth')->middleware('logs-out-banned-user');
 
 #=======================================================================================#
 #			                            empty statement                                 #
