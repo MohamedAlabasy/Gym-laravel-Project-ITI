@@ -155,34 +155,88 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
+                    {{-- # ======================================= # Revenue # ======================================= # --}}
                     <li class="nav-item">
-                        @role('admin')
+                        <a href="/" class="nav-link">
+                            <i class="nav-icon far fa-plus-square"></i>
+                            <p>Revenue</p>
+                        </a>
+                    </li>
+                    {{-- # ======================================= # Cities # ======================================= # --}}
+                    @role('admin')
+                        <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
-                                <p>City Managers <i class="fas fa-angle-left right"></i>
+                                <i class="nav-icon far fa-calendar-alt"></i>
+                                <p> Cities
+                                    <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                        @endrole
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/gym/list" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> All Cities </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/gym/create" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> Add New </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        {{-- # ======================================= # City Managers # ======================================= # --}}
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p> City Managers <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="cityManager/list" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> All City Managers </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="cityManager/create" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> Add New </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endrole
+                    {{-- # ======================================= # Gyms # ======================================= # --}}
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <p> Gyms
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="cityManager/list" class="nav-link">
+                                <a href="/gym/list" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>All City Managers</p>
+                                    <p> List Gyms </p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="cityManager/create" class="nav-link">
+                                <a href="/gym/create" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Add new</p>
+                                    <p> Add New </p>
                                 </a>
                             </li>
                         </ul>
                     </li>
+                    {{-- # ======================================= # Gym Managers # ======================================= # --}}
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-tree"></i>
-                            <p>
-                                Gym Managers
+                            <p> Gym Managers
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -190,45 +244,22 @@
                             <li class="nav-item">
                                 <a href="gymManager/list" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>All Managers</p>
+                                    <p> All Gym Managers </p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="gymManager/create" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Add new</p>
+                                    <p> Add new </p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-edit"></i>
-                            <p>
-                                Users
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="/allUsers/list" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Users</p>
-                                </a>
-                            </li>
-                            <!-- <li class="nav-item">
-                                <a href="pages/examples/invoice.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add new</p>
-                                </a>
-                            </li> -->
-                        </ul>
-                    </li>
+                    {{-- # ======================================= # Coaches # ======================================= # --}}
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
-                            <p>
-                                Coaches
+                            <p> Coaches
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -236,86 +267,68 @@
                             <li class="nav-item">
                                 <a href="coach/list" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>All Coaches</p>
+                                    <p> All Coaches </p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="coach/create" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Add new</p>
+                                    <p> Add New </p>
                                 </a>
                             </li>
                         </ul>
                     </li>
+                    {{-- # ======================================= # Users # ======================================= # --}}
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon far fa-calendar-alt"></i>
-                            <p>
-                                Gyms
+                            <i class="nav-icon fas fa-edit"></i>
+                            <p> Users
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/gym/create" class="nav-link">
+                                <a href="/allUsers/list" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Add Gym</p>
+                                    <p> All Users </p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/gym/list" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>List Gyms</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/gallery.html" class="nav-link">
-                            <i class="nav-icon far fa-image"></i>
-                            <p>
-                                Training Packages
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a href="pages/examples/invoice.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Invoice</p>
+                                    <p> Add New </p>
+                                </a>
+                            </li> -->
+                        </ul>
+                    </li>
+                    {{-- # ======================================= # Training Packages # ======================================= # --}}
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">
+                            <i class="nav-icon far fa-calendar-alt"></i>
+                            <p> Training Packages
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p> List Packages </p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/examples/profile.html" class="nav-link">
+                                <a href="/" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Profile</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/examples/e-commerce.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>E-commerce</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/examples/projects.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Projects</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/examples/project-add.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Project Add</p>
+                                    <p> Add New </p>
                                 </a>
                             </li>
                         </ul>
                     </li>
+                    {{-- # ======================================= # Training Session # ======================================= # --}}
                     <li class="nav-item">
                         <a href="pages/kanban.html" class="nav-link">
                             <i class="nav-icon fas fa-columns"></i>
-                            <p>
-                                Training Session
+                            <p> Training Session
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -329,43 +342,16 @@
                             <li class="nav-item">
                                 <a href="{{ route('TrainingSessions.training_session') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Create Session</p>
-                                </a>
-                            </li>
-
-
-
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon far fa-envelope"></i>
-                            <p>
-                                Coaches
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>create coach</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/coach/list" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>list coaches</p>
+                                    <p>Add New</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
+                    {{-- # ======================================= # Attendance # ======================================= # --}}
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
-                            <p>
-                                Attendance
-                            </p>
+                            <p> Attendance </p>
                             <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -379,7 +365,6 @@
                                 <a href="pages/mailbox/compose.html" class="nav-link">
                                     <p>Compose</p>
                                 </a>
-
                             </li>
                             <li class="nav-item">
                                 <a href="pages/mailbox/read-mail.html" class="nav-link">
@@ -389,12 +374,11 @@
                         </ul>
                         </a>
                     </li>
+                    {{-- # ======================================= # Buy Package # ======================================= # --}}
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon far fa-plus-square"></i>
-                            <p>
-                                Buy Package
-                            </p>
+                            <p> Buy Package </p>
                             <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -417,28 +401,11 @@
                         </ul>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link">
-                            <i class="nav-icon far fa-plus-square"></i>
-                            <p>
-                                City
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/" class="nav-link">
-                            <i class="nav-icon far fa-plus-square"></i>
-                            <p>
-                                Revenue
-                            </p>
-                        </a>
-                    </li>
+                    {{-- # ======================================= # Banned Users # ======================================= # --}}
                     <li class="nav-item">
                         <a href="{{ route('user.listBanned') }}" class="nav-link">
                             <i class="nav-icon fa fa-user-lock"></i>
-                            <p>
-                                Baned
-                            </p>
+                            <p> Banned Users </p>
                         </a>
                     </li>
                 </ul>
@@ -454,9 +421,9 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.2.0
+            <b>Version</b> 1.0
         </div>
-        <strong>Copyright &copy; 2021-2022 <a href="https://adminlte.io">Gym Ststem</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2022-2023 <a href="https://adminlte.io">Gym Ststem</a>.</strong> All rights reserved.
     </footer>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
