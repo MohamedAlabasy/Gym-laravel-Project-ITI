@@ -84,7 +84,8 @@
         <ul class="navbar-nav ml-auto">
             <li class="dropdown user user-menu" style="cursor:pointer;">
                 <div class="media align-items-center">
-                    <img src="{{ asset(auth()->user()->profile_image) }}" alt="User Avatar" class="mr-2 mt-1 img-size-32 img-circle mr-2">
+                    <img src="{{ asset(auth()->user()->profile_image) }}" alt="User Avatar"
+                        class="mr-2 mt-1 img-size-32 img-circle mr-2">
 
                     <div class="media-body">
                         <h6 class="dropdown-item-title text-dark" style="font-size: 14px">
@@ -93,40 +94,40 @@
                     </div>
                 </div>
 
-            <ul class="dropdown-menu" style="width:200px">
-                <li class="user-header mb-1" style="height: 140px;">
-                    <img class="profile-user-img img-fluid img-circle" src="{{ asset(auth()->user()->profile_image) }}"alt="User profile picture">
+                <ul class="dropdown-menu" style="width:200px">
+                    <li class="user-header mb-1" style="height: 140px;">
+                        <img class="profile-user-img img-fluid img-circle"
+                            src="{{ asset(auth()->user()->profile_image) }}" alt="User profile picture">
 
-                    <p class="mb-0">
-                    {{ auth()->user()->name }}
-                    </p>
-                </li>
-
-
-
+                        <p class="mb-0">
+                            {{ auth()->user()->name }}
+                        </p>
                     </li>
-                    <li class="user-footer d-flex justify-content-between">
-                        <div class="pull-left">
-                            <a href="{{ route('user.admin_profile', auth()->user()->id) }}"
-                                class="btn btn-default btn-flat">Profile</a>
-                        </div>
-                        <div class="pull-right">
 
 
-                            <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
+
+            </li>
+            <li class="user-footer d-flex justify-content-between">
+                <div class="pull-left">
+                    <a href="{{ route('user.admin_profile', auth()->user()->id) }}"
+                        class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+
+
+                    <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">Sign out</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                </ul>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-                </a>
-            </li>
+        </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+            </a>
+        </li>
         </ul>
     </nav>
     <!-- /.navbar -->
@@ -141,7 +142,8 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{ asset(auth()->user()->profile_image) }}" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{ asset(auth()->user()->profile_image) }}" class="img-circle elevation-2"
+                        alt="User Image">
                 </div>
                 <div class="info">
                     <a href="{{ route('user.admin_profile', auth()->user()->id) }}" class="d-block">
@@ -154,12 +156,12 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <li class="nav-item">
-                    @role('admin')     
-                     <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-copy"></i>
-                            <p>City Managers <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
+                        @role('admin')
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>City Managers <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
                         @endrole
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
@@ -209,17 +211,17 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="pages/examples/profile.html" class="nav-link">
+                                <a href="/allUsers/list" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Users</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a href="pages/examples/invoice.html" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add new</p>
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -319,13 +321,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('gym.listSessions') }}" class="nav-link">
+                                <a href="{{ route('TrainingSessions.listSessions') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Sessions</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('gym.training_session') }}" class="nav-link">
+                                <a href="{{ route('TrainingSessions.training_session') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Create Session</p>
                                 </a>
@@ -413,6 +415,14 @@
                                 </a>
                             </li>
                         </ul>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="nav-icon far fa-plus-square"></i>
+                            <p>
+                                City
+                            </p>
                         </a>
                     </li>
                     <li class="nav-item">

@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CityManagerController;
 use App\Http\Controllers\GymManagerController;
+use App\Http\Controllers\AllUsersController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\StripeController;
 
@@ -74,14 +75,13 @@ Route::get('/gym/training_session', [TrainingController::class, 'create'])->name
 #=======================================================================================#
 #			                         Training Routes                                  	#
 #=======================================================================================#
-Route::get('/gym/sessions', [TrainingController::class, 'index'])->name('gym.listSessions')->middleware('auth')->middleware('logs-out-banned-user');
-Route::get('gym/listing', [TrainingController::class, 'getSession'])->name('gym.listing')->middleware('logs-out-banned-user');
-Route::get('/gym/create_session', [TrainingController::class, 'create'])->name('gym.training_session')->middleware('auth')->middleware('logs-out-banned-user');
-Route::post('/gym/sessions', [TrainingController::class, 'store'])->name('gym_session.store')->middleware('auth')->middleware('logs-out-banned-user');
-Route::get('/gym/sessions/{session}', [TrainingController::class, 'show'])->name('gym.show_training_session')->middleware('auth')->middleware('logs-out-banned-user');
-Route::get('/gym/sessions/{session}/edit', [TrainingController::class, 'edit'])->name('gym.edit_training_session')->middleware('auth')->middleware('logs-out-banned-user');
-Route::delete('/gym/sessions/{session}', [TrainingController::class, 'destroy'])->name('gym.delete_session')->middleware('auth')->middleware('logs-out-banned-user');
-Route::put('/gym/sessions/{session}', [TrainingController::class, 'update'])->name('gym.update_session')->middleware('auth')->middleware('logs-out-banned-user');
+Route::get('/TrainingSessions/index', [TrainingController::class, 'index'])->name('TrainingSessions.listSessions')->middleware('auth')->middleware('logs-out-banned-user');
+Route::get('/TrainingSessions/create_session', [TrainingController::class, 'create'])->name('TrainingSessions.training_session')->middleware('auth')->middleware('logs-out-banned-user');
+Route::post('/TrainingSessions/sessions', [TrainingController::class, 'store'])->name('TrainingSessions.store')->middleware('auth')->middleware('logs-out-banned-user');
+Route::get('/TrainingSessions/sessions/{session}', [TrainingController::class, 'show'])->name('TrainingSessions.show_training_session')->middleware('auth')->middleware('logs-out-banned-user');
+Route::get('/TrainingSessions/{session}/edit', [TrainingController::class, 'edit'])->name('TrainingSessions.edit_training_session')->middleware('auth')->middleware('logs-out-banned-user');
+Route::delete('/TrainingSessions/{session}  ', [TrainingController::class, 'deleteSession'])->name('TrainingSessions.delete_session')->middleware('auth')->middleware('logs-out-banned-user');
+Route::put('/TrainingSessions/{session}', [TrainingController::class, 'update'])->name('TrainingSessions.update_session')->middleware('auth')->middleware('logs-out-banned-user');
 
 #=======================================================================================#
 #			                            User Routes                                   	#
@@ -123,9 +123,26 @@ Route::controller(GymManagerController::class)->group(function () {
 #=======================================================================================#
 #			                            Ban User                              	        #
 #=======================================================================================#
+Route::get('/banUser/{userID}', [UserController::class, 'banUser'])->name('user.banUser')->middleware('auth')->middleware('logs-out-banned-user');
 Route::get('/listBanned', [UserController::class, 'listBanned'])->name('user.listBanned')->middleware('auth')->middleware('logs-out-banned-user');
 Route::PATCH('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
+<<<<<<< HEAD
 #=======================================================================================#
 #			                           Traing packege                              	        #
 #=======================================================================================#
 Route::get('/trainingPackeges/list', [UserController::class, ''])->name('')->middleware('auth')->middleware('');
+=======
+
+/* notFound route */
+Route::get('/unAuth', [UserController::class, 'unAuth'])->name('500')->middleware('auth')->middleware('logs-out-banned-user');
+
+#=======================================================================================#
+#			                            All users Route                          	    #
+#=======================================================================================#
+Route::controller(AllUsersController::class)->group(function () {
+    Route::get('/allUsers/list', 'list')->name('allUsers.list')->middleware('auth')->middleware('logs-out-banned-user');
+    Route::get('/allUsers/show/{id}', 'show')->name('allUsers.show')->middleware('auth')->middleware('logs-out-banned-user');
+    Route::delete('/allUsers/{id}', 'deletegymManager')->name('allUsers.delete')->middleware('auth')->middleware('logs-out-banned-user');
+});
+Route::get('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
+>>>>>>> 587470a155106b2d53147cb1ee698cf81f96d660

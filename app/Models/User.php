@@ -15,10 +15,10 @@ use Cog\Laravel\Ban\Traits\Bannable;
 
 
 
-
-class User extends Authenticatable implements BannableContract  , MustVerifyEmail
+class User extends Authenticatable implements BannableContract, MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, HasRoles, Bannable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes, HasRoles;
+    use Bannable;
 
 
     /**
@@ -38,12 +38,13 @@ class User extends Authenticatable implements BannableContract  , MustVerifyEmai
         'gender',
         'profile_image',
         'birth_date',
+        'total_sessions',
+        'remain_session',
         'last_login_at',
         'city_id',
         'gym_id',
         'updated_at',
     ];
-
 
     public function city()
     {
@@ -57,19 +58,6 @@ class User extends Authenticatable implements BannableContract  , MustVerifyEmai
     {
         return $this->belongsToMany(TrainingSession::class);
     }
-
-
-    /**
-     * Determine if BannedAtScope should be applied by default.
-     *
-     * @return bool
-     */
-    public function shouldApplyBannedAtScope()
-    {
-        return true;
-    }
-
-
 
     /**
      * The attributes that should be hidden for serialization.
