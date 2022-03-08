@@ -34,82 +34,36 @@
                         </button>
                     </div>
                 </div>
-
-            </div>
-            <div class="card-body p-0">
-                <table class="table table-striped projects" id="proj">
-                    <thead>
-                        <tr>
-                            <th> id</th>
-                            <th> Coach Name</th>
-                            <th> Coach Email</th>
-                            <th>Coach City</th>
-                            <th>Created at</th>
-                            <th>Coach Image</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($coaches as $coach)
-                        <tr>
-                            <tr id="cid{{$coach->id}}">
-                                <td>{{$coach->name}}</td> 
-                           
-                            <td class="project-state">
-                                <span>{{$coach->email}}</span>
-                            </td>
-                            <td class="project-state">
-                                <span >{{$coach->city->name}}</span>
-                            </td>
-                            <td>{{$coach->created_at->format('d - M - Y')}}</td>
-                            <td>
-                                <img alt="Avatar" class="table-avatar" src="{{$coach->profile_image}}">
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                                <a class="btn btn-warning btn-sm text-white" href="{{route('coach.edit', $coach['id'])}}">
-                                    <i class="fas fa-pencil-alt"></i></a>
-
-                                    {{-- <a href="javascript:void(0)" onclick="deleteCoach({{$coach->id}})" class="btn btn-danger" >Delete</a> --}}
-                            </td>
-                        </tr>
-                        @endforeach
-                       
-                    </tbody>
-                </table>
-
                 <div class="card-body p-0">
                     <table class="table table-striped projects" id="proj">
                         <thead>
                             <tr>
                                 <th> id</th>
-                                <th> Coach Name</th>
-                                <th> Coach Email</th>
-                                <th>Coach City</th>
-                                <th>Created at</th>
-                                <th>Coach Image</th>
+                                <th class="project-state"> Coach Name</th>
+                                <th class="project-state"> Coach Email</th>
+                                <th class="project-state">Coach City</th>
+                                <th class="project-state">Created at</th>
+                                <th class="project-state">Coach Image</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($coaches as $coach)
-                               
-                                    <tr id="cid{{$gym->id}}">
-                                    <td>{{ $coach->name }}</td>
+                                <tr id="cid{{ $coach->id }}">
+                                    <td class="project-state">{{ $coach->id }}</td>
+                                    <td class="project-state">{{ $coach->name }}</td>
 
                                     <td class="project-state">
-                                        <span>{{ $coach->email }}</span>
+                                        <span class="project-state">{{ $coach->email }}</span>
                                     </td>
                                     <td class="project-state">
-                                        <span>{{ $coach->city->name }}</span>
+                                        <span class="project-state">{{ $coach->city->name }}</span>
                                     </td>
-                                    <td>{{ $coach->created_at->format('d - M - Y') }}</td>
-                                    <td>
+                                    <td class="project-state">{{ $coach->created_at->format('d - M - Y') }}</td>
+                                    <td class="project-state">
                                         <img alt="Avatar" class="table-avatar" src="{{ $coach->profile_image }}">
                                     </td>
-                                    <td class="project-actions text-right">
+                                    <td class="project-actions project-state">
                                         <a class="btn btn-info btn-sm" href="#">
                                             <i class="fa fa-eye"></i>
                                         </a>
@@ -117,8 +71,11 @@
                                             href="{{ route('coach.edit', $coach['id']) }}">
                                             <i class="fas fa-pencil-alt"></i></a>
 
-                                       <a href="javascript:void(0)" onclick="deleteGym({{$gym->id}})" class="btn btn-danger" >Delete</a>
-                                        
+                                        <a href="javascript:void(0)" onclick="deleteCoach({{ $coach->id }})"
+                                            class="btn btn-danger">Delete</a>
+                                        <a class="btn btn-dark btn-sm" href=" {{ route('user.banUser', $coach->id) }}">
+                                            <i class="fa fa-user-lock"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -127,7 +84,6 @@
                     </table>
                 </div>
                 <!-- /.card-body -->
-
             </div>
             <!-- /.card -->
 
@@ -135,24 +91,19 @@
     </div>
     <!-- /.content-wrapper -->
 @endsection
-
- <script>
-    function deleteCoach(id){
-        if(confirm("Do you want to delete this record?"))
-        {
+<script>
+    function deleteCoach(id) {
+        if (confirm("Do you want to delete this record?")) {
             $.ajax({
-                url:'/coach/'+id,
-                type:'DELETE',
-                data:{
-                    _token : $("input[name=_token]").val()
+                url: '/coach/' + id,
+                type: 'DELETE',
+                data: {
+                    _token: $("input[name=_token]").val()
                 },
-                success:function(response)
-                {
-                    $("#cid"+id).remove();
+                success: function(response) {
+                    $("#cid" + id).remove();
                 }
             });
         }
     }
-
-  </script> 
-  
+</script>

@@ -16,6 +16,7 @@ class UserController extends Controller
         return view('500');
     }
      #=======================================================================================#
+    #=======================================================================================#
     #			                             create                                         	#
     #=======================================================================================#
 
@@ -59,18 +60,18 @@ class UserController extends Controller
     public function update(StoreRequest $request, $user_id)
     {
 
-        $user=User::find($user_id);
-        $user->name=$request->name;
-        $user->email=$request->email;
-        if($request->hasFile('profile_image')){
-            $image=$request->file('profile_image');
-            $name=time().\Str::random(30).'.'.$image->getClientOriginalExtension();
-            $destinationPath=public_path('/imgs');
-            $image->move($destinationPath,$name);
-            $imageName='imgs/'.$name;
-            if(isset( $user->profile_image))
-                unlink( $user->profile_image);
-                $user->profile_image=$imageName;
+        $user = User::find($user_id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if ($request->hasFile('profile_image')) {
+            $image = $request->file('profile_image');
+            $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/imgs');
+            $image->move($destinationPath, $name);
+            $imageName = 'imgs/' . $name;
+            if (isset($user->profile_image))
+                unlink($user->profile_image);
+            $user->profile_image = $imageName;
         }
         $user->save();
         return redirect()->route('user.admin_profile', auth()->user()->id);
@@ -79,13 +80,14 @@ class UserController extends Controller
     #			                             store                                         	#
     #=======================================================================================#
     public function store(StoreRequest $request)
- {     $requestData = request()->all();
-     User::create($requestData);
+    {
+        $requestData = request()->all();
+        User::create($requestData);
 
 
 
-     return redirect()->route('user.admin_profile');
-}
+        return redirect()->route('user.admin_profile');
+    }
 
 
     #=======================================================================================#
@@ -107,21 +109,22 @@ class UserController extends Controller
     #=======================================================================================#
     #			                            Ban User                              	        #
     #=======================================================================================#
-    public function listBanned()
+    public function banUser($userID)
     {
-
-        // for ($i = 100; $i < 120; $i++) {
-        //     $user = User::find($i);
-        //     $user->ban([
-        //         'comment' => 'كيفي كدا',
-        //         // 'expired_at' => '2025-03-28 00:00:00',
-        //         'expired_at' => '+3 month',
-        //     ]);
-        // }
+        User::find($userID)->ban([
+            'comment' => 'كيفي كدا',
+            'expired_at' => '+3 month',
+        ]);
         // $users = User::onlyBanned()->get();
         // $users = User::withBanned()->get();
         // $users = User::withoutBanned()->get();
         // dd($users);
+        // dd(User::findOrFail(102)->ban());
+        return back();
+    }
+    public function listBanned()
+    {
+
         return view('user.showBanned', [
             'banUsers' => User::onlyBanned()->get(),
         ]);
@@ -129,10 +132,7 @@ class UserController extends Controller
 
     public function unBan($userID)
     {
-        $user = User::find($userID);
-        // // $user =  DB::table('bans')->where('bannable_id', '=', 100)->get();
-        // $user =  DB::table('users')->where('id', '=', 100)->get();
-        // $user->unban();
+        User::find($userID)->unban();
         return view('user.showBanned', [
             'banUsers' => User::onlyBanned()->get(),
         ]);

@@ -13,14 +13,15 @@ class CoachController extends Controller
     //List Functioin
     public function list()
     {
-        $coachesFromDB =  User::role('coach')->get();
+        $coachesFromDB =  User::role('coach')->withoutBanned()->get();
         return view("coach.list", ['coaches' => $coachesFromDB]);
     }
 
-        //Show Function
-        public function show($id){
+    //Show Function
+    public function show($id)
+    {
 
-        $singleCoach=User::find($id);
+        $singleCoach = User::find($id);
 
         return view("coach.show");
     }
@@ -28,69 +29,69 @@ class CoachController extends Controller
     //Create Function
     public function create()
     {
-        
-        return view('coach.create',[
+
+        return view('coach.create', [
             'users' => User::all(),
         ]);
     }
 
     //Store Function
-    public function store(Request $request){
-       
+    public function store(Request $request)
+    {
+
         $request->validate([
-            'name' => ['required','string','min:2'],
+            'name' => ['required', 'string', 'min:2'],
             'email' => ['required'],
-            
-           
+
+
         ]);
-        
-        
+
+
 
         User::create($request->all());
 
-        
-        return redirect()->route('coach.list');
 
+        return redirect()->route('coach.list');
     }
 
     //Edit Function
-    public function edit($id){
-        $users =User::all();
+    public function edit($id)
+    {
+        $users = User::all();
 
-        $singleCoach=User::find($id);
+        $singleCoach = User::find($id);
 
 
-        return view("coach.edit",['coach' => $singleCoach,'users'=>$users]);
+        return view("coach.edit", ['coach' => $singleCoach, 'users' => $users]);
     }
 
-     //Update Function
-     public function update(Request $request, $id)
-     {
+    //Update Function
+    public function update(Request $request, $id)
+    {
         $request->validate([
-            'name' => ['required','string','min:2'],
-            
+            'name' => ['required', 'string', 'min:2'],
+
         ]);
 
 
         User::where('id', $id)->update([
 
-             'name' => $request->all()['name'],
-             'email'=> $request->email,
-             
-             
-             
-         ]);
-         return redirect()->route('coach.list');
-     }
+            'name' => $request->all()['name'],
+            'email' => $request->email,
 
-    Delete Function
+
+
+        ]);
+        return redirect()->route('coach.list');
+    }
+
+    // Delete Function
 
     public function deleteCoach($id)
     {
 
         $singleCoach = User::find($id);
         $singleCoach->delete();
-        return response()->json(['success' => 'Record deleted successfully!']); 
+        return response()->json(['success' => 'Record deleted successfully!']);
     }
-
 }
