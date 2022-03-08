@@ -321,13 +321,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('gym.listSessions') }}" class="nav-link">
+                                <a href="{{ route('TrainingSessions.listSessions') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Sessions</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('gym.training_session') }}" class="nav-link">
+                                <a href="{{ route('TrainingSessions.training_session') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Create Session</p>
                                 </a>
