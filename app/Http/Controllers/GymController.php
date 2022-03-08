@@ -69,8 +69,16 @@ class GymController extends Controller
     //Update Function
     public function update(Request $request, $id)
     {
+        // Validator::make($data, [
+        //     'email' => [
+        //     'required',
+        //     Rule::unique('users')->ignore($user->id),
+        //     ],
+         //]);
+         
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
+            
         ]);
 
         Gym::where('id', $id)->update([
