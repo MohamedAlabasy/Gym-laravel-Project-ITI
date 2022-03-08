@@ -16,12 +16,15 @@ class TrainingController extends Controller
     #=======================================================================================#
     #			                             index                                         	#
     #=======================================================================================#
-    public function index() {
+    public function index()
+    {
         $trainingSessions = TrainingSession::all();
-
-        return view('TrainingSessions.listSessions' ,['trainingSessions' => $trainingSessions]);
+        if (count($trainingSessions) <= 0) { //for empty statement
+            return view('empty');
+        }
+        return view('TrainingSessions.listSessions', ['trainingSessions' => $trainingSessions]);
     }
-    
+
     // public function getSession(Request $request) {
     //     if($request->ajax()) {
     //         $data = TrainingSession::latest()->get();
@@ -46,14 +49,15 @@ class TrainingController extends Controller
     public function create()
     {
         $trainingSessions = TrainingSession::all();
-        
+
         $users = User::all();
-        
+
         foreach ($users as $user) {
             if ($user->hasRole('coach')) {
                 $coaches[] = $user;
-            } 
-        }        return view('TrainingSessions.training_session', [
+            }
+        }
+        return view('TrainingSessions.training_session', [
             'trainingSessions' => $trainingSessions,
             'coaches' => $coaches,
         ]);
@@ -64,15 +68,11 @@ class TrainingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required','string','min:2'],
+            'name' => ['required', 'string', 'min:2'],
             'day' => ['required'],
-            'starts_at' => [
+            'starts_at' => [],
+            'finishes_at' => [],
 
-            ],
-            'finishes_at' => [
-
-            ],
-            
         ]);
         $requestData = request()->all();
         TrainingSession::create($requestData);
@@ -83,57 +83,57 @@ class TrainingController extends Controller
     #=======================================================================================#
     public function show($id)
     {
-        $trainingSession=TrainingSession::findorfail($id);
-        return view('TrainingSessions.show_training_session',['trainingSession' => $trainingSession]);
+        $trainingSession = TrainingSession::findorfail($id);
+        return view('TrainingSessions.show_training_session', ['trainingSession' => $trainingSession]);
     }
     #=======================================================================================#
     #			                             edit                                         	#
     #=======================================================================================#
     public function edit($id)
     {
-        $trainingSessions =TrainingSession::all();
+        $trainingSessions = TrainingSession::all();
 
-        $trainingSession=TrainingSession::find($id);
+        $trainingSession = TrainingSession::find($id);
 
-        return view('TrainingSessions.edit_training_session',['trainingSession' => $trainingSession,'trainingSessions'=>$trainingSessions]);
-     }
+        return view('TrainingSessions.edit_training_session', ['trainingSession' => $trainingSession, 'trainingSessions' => $trainingSessions]);
+    }
     #=======================================================================================#
     #			                             update                                         #
     #=======================================================================================#
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => ['required','string'],
-            'day' => ['required','string'],
+            'name' => ['required', 'string'],
+            'day' => ['required', 'string'],
             'starts_at' => [
-               'required'
+                'required'
             ],
             'finishes_at' => [
-              'required'
+                'required'
             ],
-            
+
         ]);
 
 
         TrainingSession::where('id', $id)->update([
 
-             'name' => $request->all()['name'],
-             'day'=> $request->day,
-             'starts_at'=> $request->starts_at,
-             'finishes_at'=> $request->finishes_at,
-             
-             
-             
-         ]);
-         return redirect()->route('TrainingSessions.listSessions');    }
+            'name' => $request->all()['name'],
+            'day' => $request->day,
+            'starts_at' => $request->starts_at,
+            'finishes_at' => $request->finishes_at,
+
+
+
+        ]);
+        return redirect()->route('TrainingSessions.listSessions');
+    }
     #=======================================================================================#
     #			                             destroy                                       	#
     #=======================================================================================#
     public function deleteSession($id)
     {
-        $trainingSession=TrainingSession::findorfail($id);
+        $trainingSession = TrainingSession::findorfail($id);
         $trainingSession->delete();
-       return response()->json(['success' => 'Record deleted successfully!']);
-
+        return response()->json(['success' => 'Record deleted successfully!']);
     }
 }
