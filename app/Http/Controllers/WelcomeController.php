@@ -84,6 +84,9 @@ class WelcomeController extends Controller
                 $userOfGym = User::with(['trainingSessions'])->where('id', 110)->first();
                 // dd($userOfGym);
                 // dd($userOfGym->trainingSessions);
+                if (count($userOfGym) <= 0) { //for empty statement
+                    return view('empty');
+                }
                 return view("welcome", [
                     'trainingSessions' => $userOfGym->trainingSessions,
                 ]);
@@ -100,7 +103,6 @@ class WelcomeController extends Controller
         //     "users = $this->users",
         //     "revenueInDollars =$this->revenueInDollars"
         // );
-
         return view("welcome", [
             'cities' => $this->cities,
             'citiesManagers' => $this->citiesManagers,
