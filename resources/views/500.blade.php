@@ -2,7 +2,7 @@
 @section('content')
 
 <!-- Main content -->
-<section class="content d-flex justify-content-center align-items-center" style="height:100vh;">
+<section class="content-wrapper content d-flex justify-content-center align-items-center" style="height:100vh;">
     <div class="error-page">
         <h2 class="headline text-danger">500</h2>
         <div class="error-content">
