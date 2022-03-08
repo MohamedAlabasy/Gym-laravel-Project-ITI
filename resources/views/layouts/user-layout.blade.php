@@ -195,13 +195,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="cityManager/list" class="nav-link">
+                                    <a href="{{ route('city.list') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p> All City Managers </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="cityManager/create" class="nav-link">
+                                    <a href="{{ route('city.create') }}" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p> Add New </p>
                                     </a>

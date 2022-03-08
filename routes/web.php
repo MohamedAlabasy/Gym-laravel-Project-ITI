@@ -145,7 +145,7 @@ Route::get('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBa
 #=======================================================================================#
 
 //GET, 	    /photos, 	    index,  	photos.index
-Route::get('/city', [CityController::class, 'index'])->name('city.home')->middleware('auth');
+Route::get('/city', [CityController::class, 'list'])->name('city.list')->middleware('auth');
 
 
 //GET, 	/photos/create, 	create, 	photos.create
