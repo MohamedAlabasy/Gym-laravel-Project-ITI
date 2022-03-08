@@ -167,3 +167,11 @@ Route::put('/city/{postID}', [CityController::class, 'update'])->name('posts.upd
 //DELETE 	/photos/{photo} 	destroy 	photos.destroy
 Route::delete('/city/{postID}', [CityController::class, 'destroy'])->name('posts.destroy')->middleware('auth');
 
+#=======================================================================================#
+#			                            empty statement                                 #
+#=======================================================================================#
+Route::get('/empty', [EmptyController::class, 'empty'])->name('empty.statement')->middleware('auth');
+#=======================================================================================#
+#			                            notFound route                                  #
+#=======================================================================================#
+Route::get('/unAuth', [EmptyController::class, 'unAuth'])->name('500')->middleware('auth')->middleware('logs-out-banned-user');
