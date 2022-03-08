@@ -67,7 +67,7 @@
                                         {{-- <form id="myform" action="{{ route('user.unBan', $user->id) }}" method="POST"
                                             style="display:inline;"
                                             onsubmit="return confirm('Are you sure you want to delete it ?');">
-                                            @csrf
+                                            @csrf-
                                             @method('PATCH')
                                             <input type="submit" class="btn btn-dark delete  fas fa-trash btn-sm"
                                                 value="unban" title='unban'>

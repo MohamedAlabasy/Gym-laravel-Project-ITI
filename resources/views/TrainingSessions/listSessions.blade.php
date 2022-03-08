@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>All City Managers</h1>
+                        <h1>All Sessions</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -39,30 +39,36 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th> City Manager Name</th>
-                                <th>Email</th>
-                                <th>Profile Picture</th>
-                                <th></th>
+                                <th> Session Name</th>
+                                <th>Day</th>
+                                <th>Starts At</th>
+                                <th>Finishes At</th>
+                                <th>Actions </th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
-                                <tr id="did{{ $user->id }}">
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }} </td>
-                                    <td>{{ $user->email }} </td>
-                                    <td><img alt="Avatar" class="table-avatar" src="{{ $user->profile_image }}"></td>
+                            @foreach ($trainingSessions as $trainingSession)
+                                <tr id="did{{ $trainingSession->id }}">
+                                    <td>{{ $trainingSession->id }}</td>
+                                    <td>{{ $trainingSession->name }} </td>
+                                    <td>{{ $trainingSession->day }} </td>
+                                    <td>{{ $trainingSession->starts_at }}</td>
+                                    <td>{{ $trainingSession->finishes_at }}</td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-info btn-sm" href="{{ route('cityManager.show', $user['id']) }}">
+                                        <a class="btn btn-info btn-sm"
+                                            href="{{ route('TrainingSessions.show_training_session', $trainingSession['id']) }}">
 
                                             <i class="fa fa-eye"></i>
                                         </a>
                                         <a class="btn btn-warning btn-sm text-white"
-                                            href="{{ route('cityManager.edit', $user['id']) }}">
+                                            href="{{ route('TrainingSessions.edit_training_session', $trainingSession['id']) }}">
                                             <i class="fas fa-pencil-alt"></i></a>
 
-                                        <a href="javascript:void(0)" onclick="deletecityManager({{ $user->id }})"
-                                            class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                        <a href="javascript:void(0)" onclick="deleteSession({{ $trainingSession->id }})"
+                                            class="btn btn-danger">Delete</a>
+
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -77,10 +83,10 @@
     </div>
     <!-- /.content-wrapper -->
     <script>
-        function deletecityManager(id) {
+        function deleteSession(id) {
             if (confirm("Do you want to delete this record?")) {
                 $.ajax({
-                    url: '/cityManager/' + id,
+                    url: '/TrainingSessions/' + id,
                     type: 'DELETE',
                     data: {
                         _token: $("input[name=_token]").val()

@@ -64,7 +64,7 @@
                                         <img alt="Avatar" class="table-avatar" src="{{ $coach->profile_image }}">
                                     </td>
                                     <td class="project-actions project-state">
-                                        <a class="btn btn-info btn-sm" href="{{route('coach.show',$coach['id'])}}">
+                                        <a class="btn btn-info btn-sm" href="{{ route('coach.show', $coach['id']) }}">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                         <a class="btn btn-warning btn-sm text-white"
@@ -90,20 +90,21 @@
         </section>
     </div>
     <!-- /.content-wrapper -->
-@endsection
-<script>
-    function deleteCoach(id) {
-        if (confirm("Do you want to delete this record?")) {
-            $.ajax({
-                url: '/coach/' + id,
-                type: 'DELETE',
-                data: {
-                    _token: $("input[name=_token]").val()
-                },
-                success: function(response) {
-                    $("#cid" + id).remove();
-                }
-            });
+
+    <script>
+        function deleteCoach(id) {
+            if (confirm("Do you want to delete this record?")) {
+                $.ajax({
+                    url: '/coach/' + id,
+                    type: 'DELETE',
+                    data: {
+                        _token: $("input[name=_token]").val()
+                    },
+                    success: function(response) {
+                        $("#cid" + id).remove();
+                    }
+                });
+            }
         }
-    }
-</script>
+    </script>
+@endsection

@@ -19,14 +19,15 @@ class GymController extends Controller
     public function list()
     {
         $gymsFromDB = Gym::all();
-        
-
+        if (count($gymsFromDB) <= 0) { //for empty statement
+            return view('empty');
+        }
         return view("gym.list", ['gyms' => $gymsFromDB]);
     }
     #=======================================================================================#
     #			                            Show Function                                 	#
     #=======================================================================================#
-    
+
     public function show($id)
     {
         $singleGym = Gym::find($id);
@@ -96,7 +97,6 @@ class GymController extends Controller
 
         $singleGym = Gym::find($id);
         $singleGym->delete();
-        return response()->json(['success' => 'Record deleted successfully!']); 
+        return response()->json(['success' => 'Record deleted successfully!']);
     }
-
 }

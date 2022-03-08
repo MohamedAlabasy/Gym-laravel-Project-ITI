@@ -32,7 +32,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::controller(AuthController::class)->group(function () {
-    Route::post('login', 'login');
+    Route::post('signin', 'signin');
     Route::post('signup', 'signup');
     Route::get('logout', 'logout')->middleware('auth:sanctum');
 });
@@ -43,13 +43,16 @@ Route::get('email/verify/{id}', [EmailVerificationController::class, 'verify'])-
 //Traning Sessions Routes
 Route::get('sessions',[SessionsController::class,'index'])->middleware('auth:sanctum');
 Route::get('sessions/{session}',[SessionsController::class,'showSession'])->middleware('auth:sanctum');
+Route::get('remaining_sessions',[SessionsController::class,'remaining_training_sessions'])->middleware('auth:sanctum');
+Route::post('attendSession',[SessionsController::class,'attend_training_session'])->middleware('auth:sanctum');
+
 
 //Traning Packages Routes
 Route::get('packages',[PackagesController::class,'index'])->middleware('auth:sanctum');
 Route::get('packages/{package}',[PackagesController::class,'showPackage'])->middleware('auth:sanctum');
 
 //Api Sanctum Token
-Route::post('/sanctum/token', function (Request $request) {
+Route::post('/sanctum/token', function (Request $request){
     $request->validate([
         'email' => 'required|email',
         'password' => 'required',
