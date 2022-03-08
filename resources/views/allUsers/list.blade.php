@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>All Managers</h1>
+                    <h1>All Users</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -39,7 +39,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th> Gym Manager Name</th>
+                            <th> User Name</th>
                             <th>Email</th>
                             <th>Profile Picture</th>
                             <th></th>
@@ -53,14 +53,14 @@
                             <td>{{$user->email}} </td>
                             <td><img alt="Avatar" class="table-avatar" src="{{$user->profile_image}}"></td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm" href="{{route('gymManager.show', $user['id'])}}">
+                                <a class="btn btn-info btn-sm" href="{{route('allUsers.show', $user['id'])}}">
 
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a class="btn btn-warning btn-sm text-white" href="{{route('gymManager.edit', $user['id'])}}">
-                                    <i class="fas fa-pencil-alt"></i></a>
+                                <!-- <a class="btn btn-warning btn-sm text-white" href="{{route('cityManager.edit', $user['id'])}}">
+                                    <i class="fas fa-pencil-alt"></i></a> -->
 
-                                    <a href="javascript:void(0)" onclick="deletegymManager({{$user->id}})" class="btn btn-danger" ><i class="fas fa-trash"></i></a>
+                                    <a href="javascript:void(0)" onclick="deleteUser({{$user->id}})" class="btn btn-danger" ><i class="fas fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -79,11 +79,11 @@
 
 
 <script>
-    function deletegymManager(id){
+    function deleteUser(id){
         if(confirm("Do you want to delete this record?"))
         {
             $.ajax({
-                url:'/gymManager/'+id,
+                url:'/allUsers/'+id,
                 type:'DELETE',
                 data:{
                     _token : $("input[name=_token]").val()
