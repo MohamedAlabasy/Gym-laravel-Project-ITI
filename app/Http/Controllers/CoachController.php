@@ -13,10 +13,9 @@ class CoachController extends Controller
     //List Functioin
     public function list()
     {
-        $coachesFromDB =  User::role('coach')->get();
+        $coachesFromDB =  User::role('coach')->withoutBanned()->get();
         return view("coach.list", ['coaches' => $coachesFromDB]);
     }
-
 
 
     //Show Function

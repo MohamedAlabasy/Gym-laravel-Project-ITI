@@ -33,7 +33,7 @@ class GymManagerController extends Controller
 #=======================================================================================#
     public function list(){
         $usersFromDB=User::all();
-        // $usersFromDB =  User::role('cityManager')->get();
+        $usersFromDB =  User::role('gymManager')->get();
         return view("gymManager.list",['users'=>$usersFromDB]);
 
     }

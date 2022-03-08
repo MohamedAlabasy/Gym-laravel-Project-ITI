@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\CityManagerController;
 use App\Http\Controllers\GymManagerController;
+use App\Http\Controllers\AllUsersController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\StripeController;
 
@@ -123,5 +124,20 @@ Route::controller(GymManagerController::class)->group(function () {
 #=======================================================================================#
 #			                            Ban User                              	        #
 #=======================================================================================#
+Route::get('/banUser/{userID}', [UserController::class, 'banUser'])->name('user.banUser')->middleware('auth')->middleware('logs-out-banned-user');
 Route::get('/listBanned', [UserController::class, 'listBanned'])->name('user.listBanned')->middleware('auth')->middleware('logs-out-banned-user');
 Route::PATCH('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
+
+/* notFound route */
+Route::get('/unAuth', [UserController::class, 'unAuth'])->name('500')->middleware('auth')->middleware('logs-out-banned-user');
+
+#=======================================================================================#
+#			                            All users Route                          	            #
+#=======================================================================================#
+Route::controller(AllUsersController::class)->group(function () {
+Route::get('/allUsers/list', 'list')->name('allUsers.list')->middleware('auth')->middleware('logs-out-banned-user');
+Route::get('/allUsers/show/{id}', 'show')->name('allUsers.show')->middleware('auth')->middleware('logs-out-banned-user');
+Route::delete('/allUsers/{id}', 'deletegymManager')->name('allUsers.delete')->middleware('auth')->middleware('logs-out-banned-user');
+});
+Route::get('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
+

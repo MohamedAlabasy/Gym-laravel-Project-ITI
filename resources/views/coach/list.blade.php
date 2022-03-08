@@ -73,8 +73,8 @@
 
                                         <a href="javascript:void(0)" onclick="deleteCoach({{ $coach->id }})"
                                             class="btn btn-danger">Delete</a>
-                                        <a class="btn btn-dark btn-sm" href="#">
-                                            <i class="fa fa-user-lock"></i> 
+                                        <a class="btn btn-dark btn-sm" href=" {{ route('user.banUser', $coach->id) }}">
+                                            <i class="fa fa-user-lock"></i>
                                         </a>
                                     </td>
                                 </tr>

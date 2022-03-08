@@ -61,14 +61,17 @@
                                         <img alt="Avatar" class="table-avatar" src="{{ $user->profile_image }}">
                                     </td>
                                     <td class="project-actions text-center">
-                                        <form id="myform" action="{{ route('user.unBan', $user->id) }}" method="POST"
+                                        <a class="btn btn-dark btn-sm" href=" {{ route('user.unBan', $user->id) }}">
+                                            <i class="fa fa-user-lock"></i>
+                                        </a>
+                                        {{-- <form id="myform" action="{{ route('user.unBan', $user->id) }}" method="POST"
                                             style="display:inline;"
                                             onsubmit="return confirm('Are you sure you want to delete it ?');">
                                             @csrf
                                             @method('PATCH')
                                             <input type="submit" class="btn btn-dark delete  fas fa-trash btn-sm"
                                                 value="unban" title='unban'>
-                                        </form>
+                                        </form> --}}
                                     </td>
                                 </tr>
                             @endforeach
