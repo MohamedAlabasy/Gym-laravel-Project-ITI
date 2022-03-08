@@ -125,3 +125,7 @@ Route::controller(GymManagerController::class)->group(function () {
 #=======================================================================================#
 Route::get('/listBanned', [UserController::class, 'listBanned'])->name('user.listBanned')->middleware('auth')->middleware('logs-out-banned-user');
 Route::PATCH('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
+
+/* notFound route */
+Route::get('/unAuth', [UserController::class, 'unAuth'])->name('500')->middleware('auth')->middleware('logs-out-banned-user');
+
