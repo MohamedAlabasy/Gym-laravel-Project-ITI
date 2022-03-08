@@ -128,7 +128,9 @@ Route::get('/banUser/{userID}', [UserController::class, 'banUser'])->name('user.
 Route::get('/listBanned', [UserController::class, 'listBanned'])->name('user.listBanned')->middleware('auth')->middleware('logs-out-banned-user');
 Route::PATCH('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
 
-/* notFound route */
+#=======================================================================================#
+#			                            notFound route                                  #
+#=======================================================================================#
 Route::get('/unAuth', [UserController::class, 'unAuth'])->name('500')->middleware('auth')->middleware('logs-out-banned-user');
 
 #=======================================================================================#
@@ -140,3 +142,32 @@ Route::controller(AllUsersController::class)->group(function () {
     Route::delete('/allUsers/{id}', 'deletegymManager')->name('allUsers.delete')->middleware('auth')->middleware('logs-out-banned-user');
 });
 Route::get('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
+
+
+#=======================================================================================#
+#			                            City route                                      #
+#=======================================================================================#
+
+//GET, 	    /photos, 	    index,  	photos.index
+Route::get('/city', [PostController::class, 'index'])->name('posts.home')->middleware('auth');
+
+
+//GET, 	/photos/create, 	create, 	photos.create
+Route::get('/city/create', [PostController::class, 'create'])->name('posts.create')->middleware('auth');
+//POST, 	/photos, 	store,       	photos.store
+Route::post('/city', [PostController::class, 'store'])->name('posts.store')->middleware('auth');
+
+
+//GET, 	/photos/{photo}, 	show,    	photos.show
+Route::get('/city/{postID}', [PostController::class, 'show'])->name('posts.show')->middleware('auth');
+
+
+//GET 	/photos/{photo}/edit 	edit 	photos.edit
+Route::get('/city/{postID}/edit', [PostController::class, 'edit'])->name('posts.edit')->middleware('auth');
+//PUT/PATCH, 	/photos/{photo}, 	update, 	photos.update
+Route::put('/city/{postID}', [PostController::class, 'update'])->name('posts.update')->middleware('auth');
+
+
+//DELETE 	/photos/{photo} 	destroy 	photos.destroy
+Route::delete('/city/{postID}', [PostController::class, 'destroy'])->name('posts.destroy')->middleware('auth');
+
