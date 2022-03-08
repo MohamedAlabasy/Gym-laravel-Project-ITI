@@ -11,6 +11,16 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
+
+    public function unAuth()
+    {
+        return view('500');
+    }
+    #=======================================================================================#
+    #			                             create                                         #
+    #=======================================================================================#
+
+
     #=======================================================================================#
     #			                             index                                         	#
     #=======================================================================================#
@@ -29,8 +39,7 @@ class UserController extends Controller
     public function show_profile($user_id)
     {
         $user = User::find($user_id);
-        /* $user->profile_image=$imageName;
-        $user->save(); */
+
         return view('user.admin_profile', [
             'user' => $user,
         ]);
@@ -51,18 +60,19 @@ class UserController extends Controller
     public function update(StoreRequest $request, $user_id)
     {
 
-        $user = User::find($user_id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        if ($request->hasFile('profile_image')) {
-            $image = $request->file('profile_image');
-            $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/imgs');
-            $image->move($destinationPath, $name);
-            $imageName = 'imgs/' . $name;
-            if (isset($user->profile_image))
-                unlink($user->profile_image);
-            $user->profile_image = $imageName;
+        $user=User::find($user_id);
+        $user->name=$request->name;
+        $user->email=$request->email;
+        if($request->hasFile('profile_image')){
+            $image=$request->file('profile_image');
+            $name=time().\Str::random(30).'.'.$image->getClientOriginalExtension();
+            $destinationPath=public_path('/imgs');
+            $image->move($destinationPath,$name);
+            $imageName='imgs/'.$name;
+            if(isset( $user->profile_image))
+                unlink( $user->profile_image);
+                $user->profile_image=$imageName;
+                // if( auth()->$user->isDirty('email'))
         }
         $user->save();
         return redirect()->route('user.admin_profile', auth()->user()->id);
@@ -84,10 +94,10 @@ class UserController extends Controller
     #=======================================================================================#
     #			                             destroy                                       	#
     #=======================================================================================#
-    // public function destroy()
-    // {
-    //     return redirect()->route('');
-    // }
+    public function destroy()
+    {
+        return redirect()->route('');
+    }
 
 
 
