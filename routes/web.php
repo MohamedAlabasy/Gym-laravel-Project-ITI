@@ -97,7 +97,6 @@ Route::get('/user', [UserController::class, 'index'])->name('layouts.user-layout
 #=======================================================================================#
 Auth::routes();
 
-
 #=======================================================================================#
 #			                           City Managers Routes                          	#
 #=======================================================================================#
@@ -129,7 +128,7 @@ Route::get('/banUser/{userID}', [UserController::class, 'banUser'])->name('user.
 Route::get('/listBanned', [UserController::class, 'listBanned'])->name('user.listBanned')->middleware('auth')->middleware('logs-out-banned-user');
 Route::PATCH('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
 #=======================================================================================#
-#			                           Traing packege                              	        #
+#			                           Training Packages                              	#
 #=======================================================================================#
 // Route::get('/trainingPackeges/list', [UserController::class, ''])->name('')->middleware('auth')->middleware('');
 
@@ -142,11 +141,6 @@ Route::controller(AllUsersController::class)->group(function () {
     Route::get('/allUsers/show/{id}', 'show')->name('allUsers.show')->middleware('auth')->middleware('logs-out-banned-user');
     Route::delete('/allUsers/{id}', 'deletegymManager')->name('allUsers.delete')->middleware('auth')->middleware('logs-out-banned-user');
 });
-Route::get('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
-=======
-Route::get('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
-
-
 #=======================================================================================#
 #			                            City route                                      #
 #=======================================================================================#
