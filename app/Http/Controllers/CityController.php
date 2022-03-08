@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class CityController extends Controller
 {
-    public function index()
+    public function list()
     {
         $gymsFromDB = City::all();
         if (count($gymsFromDB) <= 0) { //for empty statement

@@ -97,7 +97,6 @@ Route::get('/user', [UserController::class, 'index'])->name('layouts.user-layout
 #=======================================================================================#
 Auth::routes();
 
-
 #=======================================================================================#
 #			                           City Managers Routes                          	#
 #=======================================================================================#
@@ -129,7 +128,7 @@ Route::get('/banUser/{userID}', [UserController::class, 'banUser'])->name('user.
 Route::get('/listBanned', [UserController::class, 'listBanned'])->name('user.listBanned')->middleware('auth')->middleware('logs-out-banned-user');
 Route::PATCH('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
 #=======================================================================================#
-#			                           Traing packege                              	        #
+#			                           Training Packages                              	#
 #=======================================================================================#
 // Route::get('/trainingPackeges/list', [UserController::class, ''])->name('')->middleware('auth')->middleware('');
 
@@ -151,7 +150,7 @@ Route::get('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBa
 #=======================================================================================#
 
 //GET, 	    /photos, 	    index,  	photos.index
-Route::get('/city', [CityController::class, 'index'])->name('city.home')->middleware('auth');
+Route::get('/city', [CityController::class, 'list'])->name('city.list')->middleware('auth');
 
 
 //GET, 	/photos/create, 	create, 	photos.create
@@ -178,6 +177,6 @@ Route::delete('/city/{postID}', [CityController::class, 'destroy'])->name('city.
 #=======================================================================================#
 Route::get('/empty', [EmptyController::class, 'empty'])->name('empty.statement')->middleware('auth');
 #=======================================================================================#
-#			                            notFound route                                  #
+#			                           not Found route                                  #
 #=======================================================================================#
 Route::get('/unAuth', [EmptyController::class, 'unAuth'])->name('500')->middleware('auth')->middleware('logs-out-banned-user');
