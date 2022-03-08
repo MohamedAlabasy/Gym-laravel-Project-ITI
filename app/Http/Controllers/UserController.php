@@ -11,14 +11,6 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    public function unAuth()
-    {
-        return view('500');
-    }
-    #=======================================================================================#
-    #			                             create                                         #
-    #=======================================================================================#
-
     #=======================================================================================#
     #			                             index                                         	#
     #=======================================================================================#
@@ -123,17 +115,18 @@ class UserController extends Controller
     }
     public function listBanned()
     {
-
+        $allBannedUser = User::onlyBanned()->get();
+        if (count($allBannedUser) <= 0) { //for empty statement
+            return view('empty');
+        }
         return view('user.showBanned', [
-            'banUsers' => User::onlyBanned()->get(),
+            'banUsers' => $allBannedUser,
         ]);
     }
 
     public function unBan($userID)
     {
         User::find($userID)->unban();
-        return view('user.showBanned', [
-            'banUsers' => User::onlyBanned()->get(),
-        ]);
+        return $this->listBanned();
     }
 }
