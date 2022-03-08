@@ -24,13 +24,14 @@ class UserFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'is_verifications' => 1,
             'email_verified_at' => now(),
-            'national_id' => $this->faker->numerify('##############'), // "14"
+            'national_id' => $this->faker->numerify('##############'), // "14 Number"
             'password' => bcrypt('123456'),
             'remember_token' => Str::random(10),
             'gender' => rand(1, 2),
             'profile_image' => $this->faker->imageUrl($width = 200, $height = 200),
             'birth_date' => $this->faker->dateTimeBetween('1990-01-01', '2012-12-31')->format('Y/m/d'), // outputs something like 17/09/2001
             'last_login_at' => now(),
+            'total_sessions' => rand(80, 120),
             'city_id' => rand(1, 24),
             'gym_id' => rand(1, 50),
         ];
