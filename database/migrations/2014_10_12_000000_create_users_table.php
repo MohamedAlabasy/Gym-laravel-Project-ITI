@@ -32,6 +32,7 @@ return new class extends Migration
             $table->date('birth_date')->nullable();
 
             $table->string('total_sessions')->nullable();
+            $table->string('remain_session')->nullable();
 
             $table->timestamp('last_login_at')->useCurrent();
 
