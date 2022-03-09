@@ -75,11 +75,11 @@
                 </li>
             @endrole
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="index3.html" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Home</a>
             </li>
-            <li class="nav-item d-none d-sm-inline-block">
+            <!--  <li class="nav-item d-none d-sm-inline-block">
                 <a href="#" class="nav-link">Contact</a>
-            </li>
+            </li> -->
         </ul>
 
         <!-- Right navbar links -->
@@ -401,11 +401,8 @@
     @yield('content')
     <div id="sidebar-overlay"></div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-block">
-            <b>Version</b> 1.0
-        </div>
-        <strong>Copyright &copy; 2022-2023 <a href="https://adminlte.io">Gym Ststem</a>.</strong> All rights reserved.
+    <footer class="main-footer d-flex justify-content-center" style="font-size:13px;">
+        <span>Copyright &copy; 2022-2023 <span class="bg-primary px-2 py-1">Gym Ststem.</span></span> All rights reserved.
     </footer>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
