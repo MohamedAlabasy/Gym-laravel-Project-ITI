@@ -30,9 +30,9 @@ class CityManagerController extends Controller
                 $validated = $request->validate([
                 'name' => 'required|unique:users|max:20',
                 'password' => 'required |min:6',
-                'email' => 'required|string|unique:users',
+                'email' => 'required|string|unique:users,email,' . $user->id,
                 'national_id' =>'digits_between:10,17|required|numeric|unique:users',
-                'profile_image' => 'required|image',
+                'profile_image' => 'required|image|mimes:jpg,jpeg',
             ]);
             
             if ($request->hasFile('profile_image')) {
@@ -97,32 +97,16 @@ class CityManagerController extends Controller
     #=======================================================================================#
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'name' => ['required', 'string', 'min:2'],
-        //     'email' => ['required', 'string', 'unique:App\Models\User,email'],
-
-        // ]);
-
-
-        // User::where('id', $id)->update([
-
-        //     'name' => $request->all()['name'],
-        //     'email' => $request->email,
-
-
-
-        // ]);
-        // return redirect()->route('cityManager.list');
-
-
-        // $validated = $request->validate([
-        //     'name' => 'required|unique:users|max:20',
-        //     'password' => 'required |min:6',
-        //     'email' => 'required|string|unique:users',
-        //     'profile_image' => 'required|image',
-        // ]);
 
         $user=User::find($id);
+        $validated = $request->validate([
+            'name' => 'required|max:20',
+            'password' => 'required |min:6',
+            'email' => 'required|string|unique:users,email,' . $user->id,
+            'profile_image' => 'required|image|mimes:jpg,jpeg',
+        ]);
+
+       
         $user->name=$request->name;
         $user->password=$request->password;
         $user->email=$request->email;
