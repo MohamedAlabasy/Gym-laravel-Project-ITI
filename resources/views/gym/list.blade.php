@@ -67,8 +67,11 @@
                                             href="{{ route('gym.edit', $gym['id']) }}">
                                             <i class="fas fa-pencil-alt"></i></a>
                                         <a href="javascript:void(0)" onclick="deleteGym({{ $gym->id }})"
+
                                            class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                         </td>
+
+
                                 </tr>
                             @endforeach
 
