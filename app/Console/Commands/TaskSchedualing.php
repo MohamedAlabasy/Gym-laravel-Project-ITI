@@ -16,6 +16,8 @@ class TaskSchedualing extends Command implements ShouldQueue
      * @var string
      */
     protected $signature = 'notify:users-not-logged-in-for-month';
+    //signature is the command that will run (name foe command)
+
 
 
     /**
@@ -42,8 +44,10 @@ class TaskSchedualing extends Command implements ShouldQueue
      */
     public function handle()
     {
-        $user=User::whereDate('last_login_at' ,'<' ,Carbon::now()->subDays(30)->toDateTimeString())->get();
-        foreach ($user as $user ) {
+        $users=User::whereDate('last_login_at' ,'<' ,Carbon::now()->subDays(30)->toDateTimeString())->get();
+        //convert date time to string //to compare //carbon work to get time // to get date and time now
+
+        foreach ($users as $user ) {
             $user->notify(new MissUserNotification($user));
         }
 
