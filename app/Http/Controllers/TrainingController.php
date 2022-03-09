@@ -77,15 +77,29 @@ class TrainingController extends Controller
         }
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
-            'day' => ['required'],
-            'starts_at' => [
+            'day' => ['required','date','after_or_equal:today'],
+            'starts_at' => ['required'],
+            'finishes_at' => ['required'],
 
-            ],
-            'finishes_at' => [
-
+          
             ],
 
         ]);
+
+
+        $validate_old_seesions=TrainingSession::where('day', '=', $request->day)->where("starts_at","!=",null)->
+        where("finishes_at","!=",null) ->where(function($q) use ($request){
+            $q->where("starts_at",'=',$request->starts_at)->orwhere("finishes_at","=",$request->finishes_at)
+
+            ->orwhereRaw(" '$request->starts_at' between starts_at and finishes_at and '$request->finishes_at' between starts_at and finishes_at")
+            ->orwhereRaw("starts_at >=  '$request->starts_at' and finishes_at and '$request->finishes_at' between starts_at and finishes_at")
+            ->orwhereRaw("starts_at not between '$request->starts_at' and $request->finishes_at' and finishes_at not between
+            '$request->starts_at' and $request->finishes_at'");
+        })->get()->toArray();
+
+
+        if(count($validate_old_seesions) > 0)
+            dd($validate_old_seesions);
         $requestData = request()->all();
         TrainingSession::create($requestData);
         return redirect()->route('TrainingSessions.listSessions', [
