@@ -129,7 +129,7 @@
     @role('admin|cityManager|gymManager')
         <aside class="main-sidebar sidebar-dark-primary elevation-4" style="font-size: 14px;width: 200px;">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link px-2">
+            <a href="{{ route('welcome') }}" class="brand-link px-2">
                 <span class="brand-text font-weight-light px-4">Gym System</span>
             </a>
             <!-- Sidebar -->
