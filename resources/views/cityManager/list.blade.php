@@ -63,7 +63,7 @@
                                             <i class="fas fa-pencil-alt"></i></a>
 
                                         <a href="javascript:void(0)" onclick="deletecityManager({{ $user->id }})"
-                                            class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                            class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
