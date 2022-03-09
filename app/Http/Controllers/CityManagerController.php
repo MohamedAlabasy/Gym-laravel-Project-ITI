@@ -39,7 +39,7 @@ class CityManagerController extends Controller
                 $image->move($destinationPath, $name);
                 $imageName = 'imgs/' . $name;
             }
-            //dd($request->all());
+        
             $user=new User();
             $user->name=$request->name;
             $user->email=$request->email;
