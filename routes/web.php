@@ -64,7 +64,7 @@ Route::controller(CoachController::class)->group(function () {
     Route::delete('/coach/{id}', 'deleteCoach')->name('coach.delete')->middleware('auth');
 
     Route::get('/coach/list', 'list')->name('coach.list')->middleware('auth');
-    Route::get('/coach/show/{id}', 'show')->name('coach.show')->middleware('auth');
+    Route::get('/coach/show/{coach}', 'show')->name('coach.show')->middleware('auth');
 });
 
 #=======================================================================================#
