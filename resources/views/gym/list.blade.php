@@ -49,36 +49,29 @@
                         <tbody>
                             @foreach ($gyms as $gym)
                                 <tr id="gid{{ $gym->id }}">
-
-                                    <td>{{ $gym->id }}</td>
-
-                                    <td>{{ $gym->name }}</td>
-                                    <td class="project-state">
-                                        <span>mansoura</span>
-                                        {{-- <span>{{$gym->city}}</span> --}}
+                                    <td class="project-state">{{ $gym->id }}</td>
+                                    <td class="project-state">{{ $gym->name }}</td>
+                                     <td class="project-state">
+                                        <span class="project-state">mansoura</span>
+                                {{-- <span class="project-state">{{$gym->city}}</span> --}}
                                     </td>
-                                    <td>{{ $gym->created_at->format('d - M - Y') }}</td>
-                                    <td>
+                                    <td class="project-state">{{ $gym->created_at->format('d - M - Y') }}</td>
+                                    <td class="project-state">
                                         <img alt="Avatar" class="table-avatar" src="{{ $gym->cover_image }}">
                                     </td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-info btn-sm" href="#">
                                             <i class="fa fa-eye"></i>
                                         </a>
-
-
-
-                                        <a class="btn btn-warning btn-sm text-white"
+                                             <a class="btn btn-warning btn-sm text-white"
                                             href="{{ route('gym.edit', $gym['id']) }}">
                                             <i class="fas fa-pencil-alt"></i></a>
-
-
                                         <a href="javascript:void(0)" onclick="deleteGym({{ $gym->id }})"
-                                            class="btn btn-danger btn btn-info btn-sm"><i class="fas fa-trash"></i></a>
+
+                                           class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                        </td>
 
 
-
-                                    </td>
                                 </tr>
                             @endforeach
 

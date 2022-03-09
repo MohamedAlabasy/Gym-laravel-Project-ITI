@@ -71,7 +71,7 @@ class CoachController extends Controller
         $user->profile_image = $file;
         
         $user->save();
-        return redirect()->back()->with('status','picture added suceccfully');
+        return redirect()->route('gym.list');
 
     }
 
