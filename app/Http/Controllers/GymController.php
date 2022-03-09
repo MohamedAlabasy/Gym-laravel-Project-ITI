@@ -19,14 +19,15 @@ class GymController extends Controller
     public function list()
     {
         $gymsFromDB = Gym::all();
-        
-
+        if (count($gymsFromDB) <= 0) { //for empty statement
+            return view('empty');
+        }
         return view("gym.list", ['gyms' => $gymsFromDB]);
     }
     #=======================================================================================#
     #			                            Show Function                                 	#
     #=======================================================================================#
-    
+
     public function show($id)
     {
 
@@ -48,12 +49,32 @@ class GymController extends Controller
     #=======================================================================================#
     public function store(Request $request)
     {
-
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
+            'cover_image' => ['required'],
+
+
         ]);
-        Gym::create($request->all());
-        return redirect()->route('gym.list');
+
+        if ($request->hasFile('cover_image'))
+        {
+             $file=$request->file('cover_image');
+             $filename = time() .\Str::random(30).'.'.$file->getClientOriginalExtension();
+             $destination = $file->getClientOriginalExtension();
+             $file->move($destination,$filename);
+             $file='imgs'.$filename;
+             
+        }
+        
+
+
+        $gym = new Gym();
+        $gym->name = $request->name;
+        
+        $gym->cover_image = $file;
+        
+        $gym->save();
+        return redirect()->back()->with('status','picture added suceccfully');
     }
 
 
@@ -71,13 +92,6 @@ class GymController extends Controller
     //Update Function
     public function update(Request $request, $id)
     {
-        // Validator::make($data, [
-        //     'email' => [
-        //     'required',
-        //     Rule::unique('users')->ignore($user->id),
-        //     ],
-         //]);
-         
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
             
@@ -98,7 +112,6 @@ class GymController extends Controller
 
         $singleGym = Gym::find($id);
         $singleGym->delete();
-        return response()->json(['success' => 'Record deleted successfully!']); 
+        return response()->json(['success' => 'Record deleted successfully!']);
     }
-
 }

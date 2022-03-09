@@ -64,14 +64,14 @@
                                         <img alt="Avatar" class="table-avatar" src="{{ $coach->profile_image }}">
                                     </td>
                                     <td class="project-actions project-state">
-                                        <a class="btn btn-info btn-sm" href="{{route('coach.show',$coach['id'])}}">
+                                        <a class="btn btn-info btn-sm" href="{{ route('coach.show', $coach['id']) }}">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                         <a class="btn btn-warning btn-sm text-white"
                                             href="{{ route('coach.edit', $coach['id']) }}">
                                             <i class="fas fa-pencil-alt"></i></a>
 
-                                        <a href="javascript:void(0)" onclick="deleteCoach({{ $coach->id }})"class="btn btn-danger  btn-sm text-white">Delete</a>
+                                        <a href="javascript:void(0)" onclick="deleteCoach({{ $coach->id }})"class="btn btn-danger"><i class="fas fa-trash"></i></a>
                                         <a class="btn btn-dark btn-sm" href=" {{ route('user.banUser', $coach->id) }}">
                                             <i class="fa fa-user-lock"></i>
                                         </a>
@@ -89,20 +89,21 @@
         </section>
     </div>
     <!-- /.content-wrapper -->
-@endsection
-<script>
-    function deleteCoach(id) {
-        if (confirm("Do you want to delete this record?")) {
-            $.ajax({
-                url: '/coach/' + id,
-                type: 'DELETE',
-                data: {
-                    _token: $("input[name=_token]").val()
-                },
-                success: function(response) {
-                    $("#cid" + id).remove();
-                }
-            });
+
+    <script>
+        function deleteCoach(id) {
+            if (confirm("Do you want to delete this record?")) {
+                $.ajax({
+                    url: '/coach/' + id,
+                    type: 'DELETE',
+                    data: {
+                        _token: $("input[name=_token]").val()
+                    },
+                    success: function(response) {
+                        $("#cid" + id).remove();
+                    }
+                });
+            }
         }
-    }
-</script>
+    </script>
+@endsection
