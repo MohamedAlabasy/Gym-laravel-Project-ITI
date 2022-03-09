@@ -7,6 +7,17 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
+      <!-- Errors Section -->
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
                 <div class="col-sm-6">
                     <h1>Gym City Manger</h1>
                 </div>
