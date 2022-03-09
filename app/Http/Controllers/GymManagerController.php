@@ -103,6 +103,8 @@ class GymManagerController extends Controller
 
         ]);
         return redirect()->route('gymManager.list');
+
+        
     }
     #=======================================================================================#
     #			                           Delete Function                                	#
