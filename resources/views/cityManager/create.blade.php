@@ -48,23 +48,23 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" id="name" class="form-control" value="" name="name">
+                                <input type="text" id="name" class="form-control" value="{{old('name')}}" name="name">
                             </div>
                             <div class="form-group">
                                 <label for="pass">Password</label>
-                                <input type="password" id="pass" class="form-control" value="" name="password">
+                                <input type="password" id="pass" class="form-control" value="{{old('password')}}" name="password">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" class="form-control" value="" name="email">
+                                <input type="email" id="email" class="form-control" value="{{old('email')}}" name="email">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="image">Upload Image</label>
-                                <input type="file" class="form-control" id="image" name="profile_image">
+                                <input type="file" class="form-control" id="image" name="profile_image" value="{{old('profile_image')}}">
                             </div>
                             <div class="form-group">
                             <label for="nationalID">National ID</label>
-                            <input type="text" id="nationalID" class="form-control" value="" name="national_id">
+                            <input type="text" id="nationalID" class="form-control" name="national_id" value="{{old('national_id')}}" >
                             </div>
                         </div>
                     </div>

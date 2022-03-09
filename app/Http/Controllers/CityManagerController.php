@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
 
 class CityManagerController extends Controller
 {
@@ -95,21 +97,49 @@ class CityManagerController extends Controller
     #=======================================================================================#
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'min:2'],
-            'email' => ['required', 'string', 'unique:App\Models\User,email'],
+        // $request->validate([
+        //     'name' => ['required', 'string', 'min:2'],
+        //     'email' => ['required', 'string', 'unique:App\Models\User,email'],
 
-        ]);
-
-
-        User::where('id', $id)->update([
-
-            'name' => $request->all()['name'],
-            'email' => $request->email,
+        // ]);
 
 
+        // User::where('id', $id)->update([
 
-        ]);
+        //     'name' => $request->all()['name'],
+        //     'email' => $request->email,
+
+
+
+        // ]);
+        // return redirect()->route('cityManager.list');
+
+
+        // $validated = $request->validate([
+        //     'name' => 'required|unique:users|max:20',
+        //     'password' => 'required |min:6',
+        //     'email' => 'required|string|unique:users',
+        //     'profile_image' => 'required|image',
+        // ]);
+
+        $user=User::find($id);
+        $user->name=$request->name;
+        $user->password=$request->password;
+        $user->email=$request->email;
+    
+
+        if($request->hasFile('profile_image')){
+            $image=$request->file('profile_image');
+            $name=time().\Str::random(30).'.'.$image->getClientOriginalExtension();
+            $destinationPath=public_path('/imgs');
+            $image->move($destinationPath,$name);
+            $imageName='imgs/'.$name;
+            if(isset( $user->profile_image))
+                  File::delete(public_path('imgs/' . $user->profile_image));
+                $user->profile_image=$imageName;
+            
+        }
+        $user->save();
         return redirect()->route('cityManager.list');
     }
 
