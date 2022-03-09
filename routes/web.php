@@ -13,6 +13,7 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\EmptyController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\TrainingPackagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,8 @@ use App\Http\Controllers\StripeController;
 #=======================================================================================#
 #			                           Home Route                               	    #
 #=======================================================================================#
-Route::get('stripe', [StripeController::class, 'stripe']);
-Route::post('stripe', [StripeController::class, 'stripePost'])->name('stripe.post');
+Route::get('/PaymentPackage/stripe', [StripeController::class, 'stripe'])->name('stripe.index');
+Route::post('/PaymentPackage/stripe', [StripeController::class, 'stripePost'])->name('stripe.post');
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome')->middleware('auth')->middleware('logs-out-banned-user');
 #=======================================================================================#
@@ -84,6 +85,19 @@ Route::get('/TrainingSessions/sessions/{session}', [TrainingController::class, '
 Route::get('/TrainingSessions/{session}/edit', [TrainingController::class, 'edit'])->name('TrainingSessions.edit_training_session')->middleware('auth')->middleware('logs-out-banned-user');
 Route::delete('/TrainingSessions/{session}  ', [TrainingController::class, 'deleteSession'])->name('TrainingSessions.delete_session')->middleware('auth')->middleware('logs-out-banned-user');
 Route::put('/TrainingSessions/{session}', [TrainingController::class, 'update'])->name('TrainingSessions.update_session')->middleware('auth')->middleware('logs-out-banned-user');
+
+
+#=======================================================================================#
+#			                            Packages Routes                                 	#
+#=======================================================================================#
+Route::get('/trainingPackeges/index', [TrainingPackagesController::class, 'index'])->name('trainingPackeges.listPackeges')->middleware('auth')->middleware('logs-out-banned-user');
+Route::get('/trainingPackeges/create_package', [TrainingPackagesController::class, 'create'])->name('trainingPackeges.creatPackege')->middleware('auth')->middleware('logs-out-banned-user');
+Route::post('/trainingPackeges/package', [TrainingPackagesController::class, 'store'])->name('trainingPackeges.store')->middleware('auth')->middleware('logs-out-banned-user');
+Route::get('/trainingPackeges/package/{session}', [TrainingPackagesController::class, 'show'])->name('trainingPackeges.show_training_package')->middleware('auth')->middleware('logs-out-banned-user');
+Route::get('/trainingPackeges/{package}/edit', [TrainingPackagesController::class, 'edit'])->name('trainingPackeges.editPackege')->middleware('auth')->middleware('logs-out-banned-user');
+Route::delete('/trainingPackeges/{package}  ', [TrainingPackagesController::class, 'deletePackage'])->name('trainingPackeges.delete_package')->middleware('auth')->middleware('logs-out-banned-user');
+Route::put('/trainingPackeges/{package]}', [TrainingPackagesController::class, 'update'])->name('trainingPackeges.update_package')->middleware('auth')->middleware('logs-out-banned-user');
+
 
 #=======================================================================================#
 #			                            User Routes                                   	#
@@ -142,8 +156,6 @@ Route::controller(AllUsersController::class)->group(function () {
     Route::delete('/allUsers/{id}', 'deletegymManager')->name('allUsers.delete')->middleware('auth')->middleware('logs-out-banned-user');
 });
 Route::get('/unBan/{userID}', [UserController::class, 'unBan'])->name('user.unBan')->middleware('auth')->middleware('logs-out-banned-user');
-
-
 
 
 #=======================================================================================#

@@ -22,8 +22,9 @@ class MissUserNotification extends Notification implements ShouldQueue
      */
     public function __construct(User $user )
     {
-
+//take object from model user
         $this->user = $user;
+        //$user here is an object from user model
 
     }
 

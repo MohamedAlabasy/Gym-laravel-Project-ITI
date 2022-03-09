@@ -8,12 +8,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h4>Gym Manger</h4>
+                    <h4>Package</h4>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">New Gym Manger</li>
+                        <li class="breadcrumb-item active">New Package</li>
                     </ol>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                                 <input type="text" id="price" class="form-control" value="" name="price">
                             </div>
                             <div class="form-group">
-                                <label for="sessions_number">sessions_number</label>
+                                <label for="sessions_number">Number of Sessions</label>
                                 <input type="text" id="email" class="form-control" value="" name="sessions_number">
                             </div>
 
