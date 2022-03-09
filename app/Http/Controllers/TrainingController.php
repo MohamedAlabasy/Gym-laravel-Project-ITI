@@ -67,16 +67,30 @@ class TrainingController extends Controller
     #=======================================================================================#
     public function store(Request $request)
     {
+        $trainingSessions = TrainingSession::all();
+        foreach ($trainingSessions as $trainingSession) {
+            
+           $time[] = $trainingSession->starts_at;
+        }
+        foreach($time as $t) {
+            
+        }
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
             'day' => ['required'],
-            'starts_at' => [],
-            'finishes_at' => [],
+            'starts_at' => [
+
+            ],
+            'finishes_at' => [
+
+            ],
 
         ]);
         $requestData = request()->all();
         TrainingSession::create($requestData);
-        return redirect()->route('TrainingSessions.listSessions');
+        return redirect()->route('TrainingSessions.listSessions', [
+            'time' => $time
+        ]);
     }
     #=======================================================================================#
     #			                             show                                         	#
