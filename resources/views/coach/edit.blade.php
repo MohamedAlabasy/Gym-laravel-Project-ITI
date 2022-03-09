@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="image">Image Cover</label>
-                                    <input type="file" class="form-control" id="image" name="image">
+                                    <input type="file" class="form-control" id="image" name="profile_image">
                                 </div>
                             </div>
                         </div>
