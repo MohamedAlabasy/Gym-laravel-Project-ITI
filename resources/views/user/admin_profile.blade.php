@@ -2,6 +2,13 @@
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper pb-4">
+        @if (\Session::has('success'))
+            <div class="alert alert-success">
+                <ul>
+                    <li>{!! \Session::get('success') !!}</li>
+                </ul>
+            </div>
+        @endif
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">

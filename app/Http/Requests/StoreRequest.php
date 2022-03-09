@@ -24,15 +24,15 @@ class StoreRequest extends FormRequest
      */
     public function rules()
     {
+        $user=auth()->user();
         return [
-         
-            'name' => ['required', 'min:5', ],
 
-            'email' => ['required',],
+            'name' => ['required', 'min:5', ],
+            'email' => 'required|string|unique:users,email,' . $user->id,
             'profile_image' => ['required', 'mimes:jpg,jpeg'],
 
 
-            // 'profile_image' => 'mimes:jpg,jpeg',
+           
 
 
         ];
