@@ -28,7 +28,7 @@ use App\Http\Controllers\TrainingPackagesController;
 #=======================================================================================#
 #			                           Home Route                               	    #
 #=======================================================================================#
-Route::get('/PaymentPackage/stripe', [StripeController::class, 'stripe'])->name('stripe.index');
+Route::get('/PaymentPackage/stripe', [StripeController::class, 'stripe'])->name('PaymentPackage.stripe');
 Route::post('/PaymentPackage/stripe', [StripeController::class, 'stripePost'])->name('stripe.post');
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome')->middleware('auth')->middleware('logs-out-banned-user');

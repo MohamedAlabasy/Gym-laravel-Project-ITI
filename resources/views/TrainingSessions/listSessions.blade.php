@@ -34,6 +34,7 @@
                         </button>
                     </div>
                 </div>
+                {{-- @dd($trainingSessions) --}}
                 <div class="card-body p-0">
                     <table class="table table-striped projects" id="proj">
                         <thead>
