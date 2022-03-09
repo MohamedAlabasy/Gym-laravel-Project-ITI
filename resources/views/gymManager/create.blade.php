@@ -7,6 +7,18 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
+
+     <!-- Errors Section -->
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
                 <div class="col-sm-6">
                     <h4>Gym Manger</h4>
                 </div>
@@ -49,7 +61,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="image">Upload Image</label>
-                                <input type="file" class="form-control" id="image" name="image">
+                                <input type="file" class="form-control" id="image" name="profile_image">
                             </div>
                         </div>
                     </div>
