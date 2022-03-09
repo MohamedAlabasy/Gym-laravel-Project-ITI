@@ -62,6 +62,10 @@
                                 <label class="form-label" for="image">Upload Image</label>
                                 <input type="file" class="form-control" id="image" name="profile_image">
                             </div>
+                            <div class="form-group">
+                            <label for="nationalID">National ID</label>
+                            <input type="text" id="nationalID" class="form-control" value="" name="national_id">
+                            </div>
                         </div>
                     </div>
                 </div>
