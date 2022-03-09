@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Validation\Rule;
 
 class CityManagerController extends Controller
 {
@@ -23,8 +24,33 @@ class CityManagerController extends Controller
 #=======================================================================================#
     public function store(Request $request){
 
-        $requestData = request()->all();
-        User::create($requestData);
+        // $requestData = request()->all();
+    //   $newCityManager= User::create($requestData);
+    //    $newCityManager->assignRole('cityManager');
+    //dd($request->all());
+                $validated = $request->validate([
+                'name' => 'required|unique:users|max:20',
+                'password' => 'required',
+                'email' => 'required|string|unique:users',
+                'profile_image' => 'required|image',
+            ]);
+            
+            if ($request->hasFile('profile_image')) {
+                $image = $request->file('profile_image');
+                $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
+                $destinationPath = public_path('/imgs');
+                $image->move($destinationPath, $name);
+                $imageName = 'imgs/' . $name;
+            }
+            //dd($request->all());
+            $user=new User();
+            $user->name=$request->name;
+            $user->email=$request->email;
+            $user->password=$request->password;
+            $user->profile_image=$imageName;
+            $user->assignRole('cityManager');
+            $user->save();
+            
         return redirect()->route('cityManager.list');
     }
 
@@ -32,7 +58,7 @@ class CityManagerController extends Controller
 #			                           List Function                                	#
 #=======================================================================================#
     public function list(){
-        $usersFromDB=User::all();
+        // $usersFromDB=User::all();
          $usersFromDB =  User::role('cityManager')->get();
         return view("cityManager.list",['users'=>$usersFromDB]);
 
@@ -61,9 +87,11 @@ class CityManagerController extends Controller
 #			                           Update Function                                	#
 #=======================================================================================#
     public function update(Request $request, $id){
-        $request->validate([
+        
+          $request->validate([
             'name' => ['required','string','min:2'],
             'email' => ['required','string','unique:App\Models\User,email'],
+            // 'email' => ['required','string', Rule::unique('email')->ignore($request->$id)],
             
         ]);
 

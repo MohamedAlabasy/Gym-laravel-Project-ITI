@@ -49,7 +49,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="image">Upload Image</label>
-                                <input type="file" class="form-control" id="image" name="image">
+                                <input type="file" class="form-control" id="image" name="profile_image">
                             </div>
                         </div>
                     </div>
