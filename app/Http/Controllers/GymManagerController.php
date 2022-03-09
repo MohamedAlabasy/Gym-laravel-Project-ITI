@@ -24,10 +24,30 @@ class GymManagerController extends Controller
     #=======================================================================================#
     public function store(Request $request)
     {
-
-        $requestData = request()->all();
-        User::create($requestData);
-        return redirect()->route('gymManager.list');
+        $validated = $request->validate([
+            'name' => 'required|unique:users|max:20',
+            'password' => 'required',
+            'email' => 'required|string|unique:users',
+            'profile_image' => 'required|image',
+        ]);
+        
+        if ($request->hasFile('profile_image')) {
+            $image = $request->file('profile_image');
+            $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/imgs');
+            $image->move($destinationPath, $name);
+            $imageName = 'imgs/' . $name;
+        }
+    
+        $user=new User();
+        $user->name=$request->name;
+        $user->email=$request->email;
+        $user->password=$request->password;
+        $user->profile_image=$imageName;
+        $user->assignRole('gymManager');
+        $user->save();
+        
+    return redirect()->route('gymManager.list');
     }
 
     #=======================================================================================#
