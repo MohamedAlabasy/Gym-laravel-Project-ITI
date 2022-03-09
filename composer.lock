@@ -8062,6 +8062,7 @@
         },
         {
             "name": "spatie/ignition",
+
             "version": "1.2.3",
             "source": {
                 "type": "git",
@@ -8129,6 +8130,7 @@
                     "type": "github"
                 }
             ],
+
             "time": "2022-03-08T15:12:58+00:00"
         },
         {
