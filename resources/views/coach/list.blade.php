@@ -92,12 +92,11 @@
         </section>
     </div>
     <!-- /.content-wrapper -->
-
-    <script>
+<script>
         function deleteCoach(id) {
             if (confirm("Do you want to delete this record?")) {
                 $.ajax({
-                    url: `<?= route("'/coach/' + id,")?>`,
+                    url: '/coach/' + id,
                     type: 'DELETE',
                     data: {
                         _token: $("input[name=_token]").val()
@@ -105,7 +104,7 @@
                     success: function(response) {
                         $("#cid" + id).remove();
                     }
-                });~
+                });
             }
         }
     </script>
