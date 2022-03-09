@@ -38,11 +38,11 @@
                     <table class="table table-striped projects" id="proj">
                         <thead>
                             <tr>
-                                <th>id</th>
-                                <th>Gyms Name</th>
-                                <th>Gym City</th>
-                                <th>Created at</th>
-                                <th>Gyms Cover Image</th>
+                                <th class="project-state">id</th>
+                                <th class="project-state">Gyms Name</th>
+                                <th class="project-state">Gym City</th>
+                                <th class="project-state">Created at</th>
+                                <th class="project-state">Gyms Cover Image</th>
                                 <th></th>
                             </tr>
                         </thead>
