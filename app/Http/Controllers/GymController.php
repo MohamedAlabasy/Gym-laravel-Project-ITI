@@ -51,7 +51,7 @@ class GymController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
-            'cover_image' => ['required'],
+            'cover_image' => ['required', 'mimes:jpg,jpeg'],
 
 
         ]);

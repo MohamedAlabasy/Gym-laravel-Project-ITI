@@ -48,8 +48,7 @@ class CoachController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
             'email' => ['required'],
-            'profile_image' => ['required'],
-
+            'profile_image' => ['required', 'mimes:jpg,jpeg'],
 
         ]);
 
