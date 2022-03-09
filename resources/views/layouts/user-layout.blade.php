@@ -192,13 +192,13 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="{{ route('gymManager.list') }}" class="nav-link">
+                                        <a href="{{ route('cityManager.list') }}" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p> All City Managers </p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('gymManager.create') }}" class="nav-link">
+                                        <a href="{{ route('cityManager.create') }}" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p> Add New </p>
                                         </a>
