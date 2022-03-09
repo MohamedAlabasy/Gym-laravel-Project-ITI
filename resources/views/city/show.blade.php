@@ -1,63 +1,90 @@
 @extends('layouts.user-layout')
 @section('content')
-
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Show</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Show</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-        <!-- Default box -->
-        <div class="card card-solid">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-12 col-sm-6">
-                        <h6 class="d-inline-block d-sm-none">City Name</h6>
-                        <div class="col-12">
-                            <img src="../../dist/img/prod-1.jpg" class="product-image" alt="Product Image">
+    <div class="content-wrapper pb-4">
+        <div class="container-fluid pt-5">
+            <div class="row">
+                {{-- # ======================================= # Total Revenue # ======================================= # --}}
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>{{ $revenueInDollars }}</h3>
+                            <p>Total Revenue</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-dollar-sign text-white" style="font-size: 50px !important"></i>
                         </div>
                     </div>
-                    <div class="col-12 col-sm-6 d-flex  align-items-center">
-                        <div>
-                            <p class="my-3">City Manager</p>
-                            <p class="my-3">Gym Manager</p>
-                            <p class="my-3">Gym Manager</p>
-                            <div class="project-actions mt-5">
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                                <a class="btn btn-warning btn-sm text-white" href="">
-                                    <i class="fas fa-pencil-alt"></i></a>
-                                <a href="javascript:void(0)" onclick="deleteGym({{$gym->id}})"
-                                    class="btn btn-danger">Delete</a>
+                </div>
+                {{-- # ======================================= # Gyms # ======================================= # --}}
+                <div class="col-lg-3 col-6">
+                    <a href="{{ route('gym.list') }}">
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>{{ $gyms }}</h3>
+                                <p>Gyms</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-dumbbell text-white" style="font-size: 50px !important"></i>
                             </div>
                         </div>
+                    </a>
+                </div>
+                {{-- # ======================================= # Gyms Managers # ======================================= # --}}
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{ $gymsManagers }}<sup style="font-size: 20px"></sup></h3>
+                            <p>Gyms Managers</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-user text-dark" style="font-size: 50px !important"></i>
+                        </div>
                     </div>
                 </div>
+                {{-- # ======================================= # Coaches # ======================================= # --}}
+                <div class="col-lg-3 col-6">
+                    <a href="{{ route('coach.list') }}">
+                        <div class="small-box bg-light">
+                            <div class="inner">
+                                <h3>{{ $coaches }}<sup style="font-size: 20px"></sup></h3>
+                                <p>Coaches</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-user-ninja text-dark" style="font-size: 50px !important"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {{-- # ======================================= # Users # ======================================= # --}}
+                <div class="col-lg-3 col-6">
+                    <div class="small-box bg-dark">
+                        <div class="inner">
+                            <h3>{{ $users }}</h3>
+                            <p>Users</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-users text-white" style="font-size: 50px !important"></i>
+                        </div>
+                    </div>
+                </div>
+                {{-- # ======================================= # Cities Managers # ======================================= # --}}
+                <div class="col-lg-4 col-2">
+                    <div class="small-box bg-secondary">
+                        <div class="inner ">
+                            <p>Cities Managers Name</p>
+                            <h3>{{ $citiesManagers->name }}<sup style="font-size: 20px"></sup></h3>
+                            <p>Cities Managers Id</p>
+                            <h3>{{ $citiesManagers->id }}<sup style="font-size: 20px"></sup></h3>
+                            <p>Cities Managers Email</p>
+                            <h3>{{ $citiesManagers->email }}<sup style="font-size: 20px"></sup></h3>
+                            <figure>
+                                <img src="{{ $citiesManagers->profile_image }}" {{-- <i class="fas fa-user-tie"></i> --}} <i </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <!-- /.card-body -->
         </div>
-        <!-- /.card -->
-
-    </section>
-    <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
-
-
+    </div>
 @endsection

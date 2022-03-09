@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -17,8 +17,8 @@ class AuthController extends Controller
             'email' => 'required|string|unique:users',
             'gender' => 'required',
             'birth_date'=> 'required',
-            'profile_image'=> 'required',
-            'password' => 'required',
+            'profile_image'=> 'required|image|mimes:jpg,jpeg',
+            'password' => 'required|min:6',
             'password_confirmation' => 'required|same:password'
         ]);
 
@@ -40,11 +40,10 @@ class AuthController extends Controller
         $user->notify(new WelcomeEmailNotification());
     }
 
-    public function login(Request $request){
+    public function signin(Request $request){
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
-            'remember_me' => 'boolean',
             'device_name' => 'required',
         ]);
         $user = User::where('email', $request->email)->first();
@@ -54,8 +53,9 @@ class AuthController extends Controller
                 'email' => ['The provided credentials are incorrect.'],
             ]);
         }
+
         else{
-            $token=$user->createToken('$request->device_name')->plainTextToken;
+            $token=$user->createToken($request->device_name)->plainTextToken;
             $response=[
                 'user'=>$user,
                 'token'=>$token,
@@ -69,6 +69,45 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'Successfully logged out'
         ]);
+    }
+    public function updateProfile(Request $request)
+    {
+        $user= Auth()->user();
+        //get user id
+
+        $request->validate([
+            'name' => 'nullable',
+            'email' => 'nullable|string|unique:users,email,' . $user->id,
+            //accept any  request id apply this validation on it/except it
+            'gender' => 'nullable',
+            'birth_date'=> 'nullable',
+            'profile_image'=> 'nullable|image|mimes:jpg,jpeg',
+            'password' => 'nullable|min:6',
+            //we put here nullable cause user dosn't need to update his pasword every time
+        ]);
+            if($request->hasFile('profile_image')){
+
+                $image=$request->file('profile_image');
+                $name=time().\Str::random(30).'.'.$image->getClientOriginalExtension();
+                $destinationPath=public_path('/imgs');
+                $image->move($destinationPath,$name);
+                $imageName='imgs/'.$name;
+                if($user->profile_image)
+                    File::delete(public_path('imgs/' . $user->profile_image));
+                $user->profile_image=$imageName;
+
+        }
+        $user->name=$request->name ? $request->name:$user->name;
+        $user->email=$request->email ? $request->email:$user->email;
+        $user->gender=$request->gender ? $request->gender:$user->gender;
+        $user->birth_date=$request->birth_date ? $request->birth_date:$user->birth_date;
+        $user->password=$request->password ? $request->bcrypt($request->password):$user->password;
+        $user->profile_image=$request->profile_image;
+        $user->update();
+        return response()->json([
+            'message' => 'Successfully update'
+        ]);
+
     }
 
 }

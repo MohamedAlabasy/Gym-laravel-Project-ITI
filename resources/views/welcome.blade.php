@@ -32,9 +32,7 @@
                         </div>
                         {{-- </a> --}}
                     </div>
-                @endrole
-                {{-- # ======================================= # Cities Managers # ======================================= # --}}
-                @role('admin')
+                    {{-- # ======================================= # Cities Managers # ======================================= # --}}
                     <div class="col-lg-3 col-6">
                         {{-- <a href="{{ route('cityManager.list') }}"> --}}
                         <div class="small-box bg-secondary">
@@ -65,9 +63,7 @@
                             </div>
                         </a>
                     </div>
-                @endrole
-                {{-- # ======================================= # Gyms Managers # ======================================= # --}}
-                @role('admin|cityManager')
+                    {{-- # ======================================= # Gyms Managers # ======================================= # --}}
                     <div class="col-lg-3 col-6">
                         {{-- <a href="{{ route('#') }}"> --}}
                         <div class="small-box bg-warning">
@@ -76,7 +72,7 @@
                                 <p>Gyms Managers</p>
                             </div>
                             <div class="icon">
-                                <i class="fas fa-users text-dark" style="font-size: 50px !important"></i>
+                                <i class="fas fa-user text-dark" style="font-size: 50px !important"></i>
                             </div>
                         </div>
                         {{-- </a> --}}
@@ -97,9 +93,7 @@
                             </div>
                         </a>
                     </div>
-                @endrole
-                {{-- # ======================================= # Users # ======================================= # --}}
-                @role('admin|cityManager|gymManager')
+                    {{-- # ======================================= # Users # ======================================= # --}}
                     <div class="col-lg-3 col-6">
                         {{-- <a href="{{ route('layouts.user-layout') }}"> --}}
                         <div class="small-box bg-dark">
@@ -114,7 +108,6 @@
                         {{-- </a> --}}
                     </div>
                 @endrole
-
                 {{-- # ======================================= # if login Coaches  # ======================================= # --}}
                 <div class="row justify-content-center">
                     @role('coach')

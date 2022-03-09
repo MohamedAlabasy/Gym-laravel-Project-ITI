@@ -38,6 +38,9 @@
             @csrf
             <div class="row">
                 <div class="col-md-12">
+                    @if(session('status'))
+                        <h6 class="alart-success">{{session('status')}}</h6>
+                    @endif
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Create</h3>
@@ -64,7 +67,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="image">Image Cover</label>
-                                <input type="file" class="form-control" id="image" name="image">
+                                <input type="file" class="form-control" id="image" name="profile_image">
                             </div>
                         </div>
                     </div>

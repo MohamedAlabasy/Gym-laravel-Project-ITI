@@ -14,12 +14,15 @@ class CoachController extends Controller
     public function list()
     {
         $coachesFromDB =  User::role('coach')->withoutBanned()->get();
+        if (count($coachesFromDB) <= 0) { //for empty statement
+            return view('empty');
+        }
         return view("coach.list", ['coaches' => $coachesFromDB]);
     }
 
 
     //Show Function
-        public function show($id)
+    public function show($id)
     {
 
         $singleCoach = User::find($id);
@@ -30,6 +33,8 @@ class CoachController extends Controller
     //Create Function
     public function create()
     {
+
+
 
         return view('coach.create', [
             'users' => User::all(),
@@ -43,16 +48,31 @@ class CoachController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
             'email' => ['required'],
+            'profile_image' => ['required'],
 
 
         ]);
 
+        if ($request->hasFile('profile_image'))
+        {
+             $file=$request->file('profile_image');
+             $filename = time() .\Str::random(30).'.'.$file->getClientOriginalExtension();
+             $destination = $file->getClientOriginalExtension();
+             $file->move($destination,$filename);
+             $file='imgs'.$filename;
+             
+        }
+        
 
 
-        User::create($request->all());
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->profile_image = $file;
+        
+        $user->save();
+        return redirect()->route('gym.list');
 
-
-        return redirect()->route('coach.list');
     }
 
     //Edit Function
@@ -70,6 +90,7 @@ class CoachController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+
             'name' => ['required', 'string', 'min:2'],
 
         ]);
