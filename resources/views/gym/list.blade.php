@@ -74,7 +74,7 @@
 
 
                                         <a href="javascript:void(0)" onclick="deleteGym({{ $gym->id }})"
-                                            class="btn btn-danger btn btn-info btn-sm">Delete</a>
+                                            class="btn btn-danger btn btn-info btn-sm"><i class="fas fa-trash"></i></a>
 
 
 
