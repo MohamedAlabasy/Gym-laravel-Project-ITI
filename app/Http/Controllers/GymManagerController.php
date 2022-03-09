@@ -113,6 +113,9 @@ class GymManagerController extends Controller
     //     return redirect()->route('gymManager.list');
 
     // }
+
+
+    // using Ajax 
     public function deletegymManager($id)
     {
 
