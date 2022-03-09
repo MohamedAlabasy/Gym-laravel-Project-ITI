@@ -34,6 +34,7 @@
                         </button>
                     </div>
                 </div>
+                {{-- @dd($trainingSessions) --}}
                 <div class="card-body p-0">
                     <table class="table table-striped projects" id="proj">
                         <thead>
@@ -66,7 +67,7 @@
                                             <i class="fas fa-pencil-alt"></i></a>
 
                                         <a href="javascript:void(0)" onclick="deleteSession({{ $trainingSession->id }})"
-                                            class="btn btn-danger">Delete</a>
+                                            class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
 
 
                                     </td>

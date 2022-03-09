@@ -48,14 +48,31 @@ class CoachController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
             'email' => ['required'],
+            'profile_image' => ['required'],
 
 
         ]);
 
+        if ($request->hasFile('profile_image'))
+        {
+             $file=$request->file('profile_image');
+             $filename = time() .\Str::random(30).'.'.$file->getClientOriginalExtension();
+             $destination = $file->getClientOriginalExtension();
+             $file->move($destination,$filename);
+             $file='imgs'.$filename;
+             
+        }
+        
 
 
-        User::create($request->all());
-        return redirect()->route('coach.list');
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->profile_image = $file;
+        
+        $user->save();
+        return redirect()->route('gym.list');
+
     }
 
     //Edit Function
