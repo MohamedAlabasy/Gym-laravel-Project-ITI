@@ -15,10 +15,13 @@ class Kernel extends ConsoleKernel
      * @return void
      */
     protected $commands =[TaskSchedualing::class,];
+
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('notify:users-not-logged-in-for-month')->everyMinute();
-        // $schedule->command('notify:users-not-logged-in-for-month')->daily();
+        //create command will run every minute just run php artisan notify
+        
+
 
 
 
