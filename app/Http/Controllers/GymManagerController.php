@@ -26,7 +26,7 @@ class GymManagerController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|unique:users|max:20',
-            'password' => 'required',
+            'password' => 'required |min:6',
             'email' => 'required|string|unique:users',
             'profile_image' => 'required|image',
         ]);

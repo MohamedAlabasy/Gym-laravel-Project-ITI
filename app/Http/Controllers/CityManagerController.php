@@ -27,8 +27,9 @@ class CityManagerController extends Controller
 
                 $validated = $request->validate([
                 'name' => 'required|unique:users|max:20',
-                'password' => 'required',
+                'password' => 'required |min:6',
                 'email' => 'required|string|unique:users',
+                'national_id' =>'digits_between:10,17|required|numeric|unique:users',
                 'profile_image' => 'required|image',
             ]);
             
@@ -45,6 +46,7 @@ class CityManagerController extends Controller
             $user->email=$request->email;
             $user->password=$request->password;
             $user->profile_image=$imageName;
+            $user->national_id=$request->national_id;
             $user->assignRole('cityManager');
             $user->save();
             

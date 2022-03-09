@@ -42,6 +42,7 @@
                                 <th> City Manager Name</th>
                                 <th>Email</th>
                                 <th>Profile Picture</th>
+                                <th>National ID</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -52,6 +53,7 @@
                                     <td>{{ $user->name }} </td>
                                     <td>{{ $user->email }} </td>
                                     <td><img alt="Avatar" class="table-avatar" src="{{ asset($user->profile_image) }}"></td>
+                                    <td>{{ $user->national_id }} </td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-info btn-sm" href="{{ route('cityManager.show', $user['id']) }}">
                                             <i class="fa fa-eye"></i>
