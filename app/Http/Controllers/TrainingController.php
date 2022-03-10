@@ -78,12 +78,13 @@ class TrainingController extends Controller
 
         $validate_old_seesions=TrainingSession::where('day', '=', $request->day)->where("starts_at","!=",null)->
         where("finishes_at","!=",null) ->where(function($q) use ($request){
-            $q->where("starts_at",'=',$request->starts_at)->orwhere("finishes_at","=",$request->finishes_at)
+            $q->whereRaw("starts_at = '$request->starts_at' and finishes_at ='$request->finishes_at'")
+		->orwhereRaw("starts_at < '$request->starts_at' and finishes_at > '$request->finishes_at'")
+            ->orwhereRaw("starts_at > '$request->starts_at' and starts_at < '$request->finishes_at'")
+            ->orwhereRaw("finishes_at > '$request->starts_at' and finishes_at < '$request->finishes_at'")
 
-            ->orwhereRaw(" '$request->starts_at' between starts_at and finishes_at and '$request->finishes_at' between starts_at and finishes_at")
-            ->orwhereRaw("starts_at >=  '$request->starts_at' and finishes_at and '$request->finishes_at' between starts_at and finishes_at")
-            ->orwhereRaw("starts_at not between '$request->starts_at' and $request->finishes_at' and finishes_at not between
-            '$request->starts_at' and $request->finishes_at'");
+            ->orwhereRaw("starts_at > '$request->starts_at' and finishes_at < '$request->finishes_at'");
+
         })->get()->toArray();
 
 
