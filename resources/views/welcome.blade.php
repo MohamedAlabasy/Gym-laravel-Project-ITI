@@ -34,7 +34,7 @@
                     </div>
                     {{-- # ======================================= # Cities Managers # ======================================= # --}}
                     <div class="col-lg-3 col-6">
-                        {{-- <a href="{{ route('cityManager.list') }}"> --}}
+                        <a href="{{ route('cityManager.list') }}">
                         <div class="small-box bg-secondary">
                             <div class="inner">
                                 <h3>{{ $citiesManagers }}<sup style="font-size: 20px"></sup></h3>
@@ -45,7 +45,7 @@
                                 <i class="fas fa-user-tie text-white" style="font-size: 50px !important"></i>
                             </div>
                         </div>
-                        {{-- </a> --}}
+                        </a>
                     </div>
                 @endrole
                 {{-- # ======================================= # Gyms # ======================================= # --}}
