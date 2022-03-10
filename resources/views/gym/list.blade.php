@@ -52,8 +52,8 @@
                                     <td class="project-state">{{ $gym->id }}</td>
                                     <td class="project-state">{{ $gym->name }}</td>
                                      <td class="project-state">
-                                        <span class="project-state">mansoura</span>
-                                {{-- <span class="project-state">{{$gym->city}}</span> --}}
+                                        
+                                        <span class="project-state">{{ $gym->city->name }}</span>
                                     </td>
                                     <td class="project-state">{{ $gym->created_at->format('d - M - Y') }}</td>
                                     <td class="project-state">
@@ -68,7 +68,7 @@
                                             <i class="fas fa-pencil-alt"></i></a>
                                         <a href="javascript:void(0)" onclick="deleteGym({{ $gym->id }})"
 
-                                           class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                           class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                         </td>
 
 

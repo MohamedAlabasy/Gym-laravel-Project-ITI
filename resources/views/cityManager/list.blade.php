@@ -51,7 +51,7 @@
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }} </td>
                                     <td>{{ $user->email }} </td>
-                                    <td><img alt="Avatar" class="table-avatar" src="{{ $user->profile_image }}"></td>
+                                    <td><img alt="Avatar" class="table-avatar" src="{{ asset($user->profile_image) }}"></td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-info btn-sm" href="{{ route('cityManager.show', $user['id']) }}">
                                             <i class="fa fa-eye"></i>

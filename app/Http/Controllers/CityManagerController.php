@@ -25,10 +25,6 @@ class CityManagerController extends Controller
     public function store(Request $request)
     {
 
-        // $requestData = request()->all();
-    //   $newCityManager= User::create($requestData);
-    //    $newCityManager->assignRole('cityManager');
-    //dd($request->all());
                 $validated = $request->validate([
                 'name' => 'required|unique:users|max:20',
                 'password' => 'required',

@@ -28,7 +28,7 @@ use App\Http\Controllers\TrainingPackagesController;
 #=======================================================================================#
 #			                           Home Route                               	    #
 #=======================================================================================#
-Route::get('/PaymentPackage/stripe', [StripeController::class, 'stripe'])->name('stripe.index');
+Route::get('/PaymentPackage/stripe', [StripeController::class, 'stripe'])->name('PaymentPackage.stripe');
 Route::post('/PaymentPackage/stripe', [StripeController::class, 'stripePost'])->name('stripe.post');
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome')->middleware('auth')->middleware('logs-out-banned-user');
@@ -64,7 +64,7 @@ Route::controller(CoachController::class)->group(function () {
     Route::delete('/coach/{id}', 'deleteCoach')->name('coach.delete')->middleware('auth');
 
     Route::get('/coach/list', 'list')->name('coach.list')->middleware('auth');
-    Route::get('/coach/show/{id}', 'show')->name('coach.show')->middleware('auth');
+    Route::get('/coach/show/{coach}', 'show')->name('coach.show')->middleware('auth');
 });
 
 #=======================================================================================#

@@ -129,7 +129,7 @@
     @role('admin|cityManager|gymManager')
         <aside class="main-sidebar sidebar-dark-primary elevation-4" style="font-size: 14px;width: 200px;">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link px-2">
+            <a href="{{ route('welcome') }}" class="brand-link px-2">
                 <span class="brand-text font-weight-light px-4">Gym System</span>
             </a>
             <!-- Sidebar -->
@@ -192,13 +192,13 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="{{ route('gymManager.list') }}" class="nav-link">
+                                        <a href="{{ route('cityManager.list') }}" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p> All City Managers </p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('gymManager.create') }}" class="nav-link">
+                                        <a href="{{ route('cityManager.create') }}" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p> Add New </p>
                                         </a>
@@ -327,7 +327,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/" class="nav-link">
+                                <a href="{{ route('PaymentPackage.stripe') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p> Buy Package </p>
                                 </a>
