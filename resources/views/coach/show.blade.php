@@ -34,12 +34,12 @@
                     </div>
                     <div class="col-12 col-sm-6 d-flex  align-items-center">
                         <div>
-                            <p class="my-3">id</p>
-                            <p class="my-3">Coach Name</p>
-                            <p class="my-3">Coach Email</p>
-                            <p class="my-3">Coach City</p>
-                            <p class="my-3">Created at</p>
-                            <p class="my-3">Coach Image</p>
+                            <p class="my-3">{{$singleCoach->id}}</p>
+                            <p class="my-3">{{$singleCoach->name}}</p>
+                            <p class="my-3">{{$singleCoach->email}}</p>
+                            <p class="my-3">{{$singleCoach->city}}</p>
+                            <p class="my-3">{{$singleCoach->created_at}}</p>
+                            <p class="my-3">{{$singleCoach->profile_image}}</p>
                         
                             <div class="project-actions mt-5">
                                 <a class="btn btn-info btn-sm" href="#">

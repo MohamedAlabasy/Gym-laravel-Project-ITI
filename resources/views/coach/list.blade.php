@@ -57,7 +57,7 @@
                                         <span class="project-state">{{ $coach->email }}</span>
                                     </td>
                                     <td class="project-state">
-                                        <span class="project-state">{{ $coach->city->name }}</span>
+                                         {{-- <span class="project-state">{{ $coach->city->name }}</span>  --}}
                                     </td>
                                     <td class="project-state">{{ $coach->created_at->format('d - M - Y') }}</td>
                                     <td class="project-state">

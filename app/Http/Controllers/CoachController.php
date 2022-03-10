@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Gym;
 use App\Models\User;
+use App\Models\City;
 use Illuminate\Support\Facades\File;
 
 class CoachController extends Controller
@@ -32,10 +33,7 @@ class CoachController extends Controller
     //Create Function
     public function create()
     {
-
-
-
-        return view('coach.create', [
+            return view('coach.create', [
             'users' => User::all(),
         ]);
     }
@@ -43,6 +41,7 @@ class CoachController extends Controller
     //Store Function
     public function store(Request $request)
     {
+       
 
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
@@ -53,24 +52,21 @@ class CoachController extends Controller
 
         if ($request->hasFile('profile_image'))
         {
-            $file=$request->file('profile_image');
-            $filename = time() .\Str::random(30).'.'.$file->getClientOriginalExtension();
-            $destination = public_path('/imgs');
-            $file->move($destination,$filename);
-            $file='imgs'.$filename;
-             
+            $image = $request->file('profile_image');
+            $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/imgs');
+            $image->move($destinationPath, $name);
+            $imageName = 'imgs/' . $name;    
         }
         
-
-
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->profile_image = $file;
-        
+        //$user->city = $request->name;
+        $user->profile_image = $imageName;
+        $user->assignRole('coach');
         $user->save();
-        return redirect()->route('gym.list');
-
+        return redirect()->route('coach.list');
     }
 
     //Edit Function
@@ -98,20 +94,17 @@ class CoachController extends Controller
        
         $user->name=$request->name;
         $user->email=$request->email;
-       
         
-        if($request->hasFile('cover_image')){
-            $file=$request->file('profile_image');
-             $filename = time() .\Str::random(30).'.'.$file->getClientOriginalExtension();
-             $destination = public_path('/imgs');
-             $file->move($destination,$filename);
-             $file='imgs'.$filename;
-             
-             if(isset( $user->profile_image))
-             File::delete(public_path('imgs/' . $user->profile_image));
-            $user->profile_image=$filename;
-
-             
+        
+        if($request->hasFile('profile_image')){
+            $image=$request->file('profile_image');
+            $name=time().\Str::random(30).'.'.$image->getClientOriginalExtension();
+            $destinationPath=public_path('/imgs');
+            $image->move($destinationPath,$name);
+            $imageName='imgs/'.$name;
+            if(isset( $user->profile_image))
+                  File::delete(public_path('imgs/' . $user->profile_image));
+                $user->profile_image=$imageName;
             
         }
         $user->save();
