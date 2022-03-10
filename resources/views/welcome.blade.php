@@ -65,14 +65,17 @@
                     </div>
                     {{-- # ======================================= # Gyms Managers # ======================================= # --}}
                     <div class="col-lg-3 col-6">
-                        <a href="{{ route('gymManager.list') }}">
-                            <div class="small-box bg-warning">
-                                <div class="inner">
-                                    <h3>{{ $gymsManagers }}<sup style="font-size: 20px"></sup></h3>
-                                    <p>Gyms Managers</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fas fa-user text-dark" style="font-size: 50px !important"></i>
+
+                        {{-- <a href="{{ route('gymManger.list') }}"> --}}
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>{{ $gymsManagers }}<sup style="font-size: 20px"></sup></h3>
+                                <p>Gyms Managers</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-user text-dark" style="font-size: 50px !important"></i>
+
+ 
                                 </div>
                             </div>
                         </a>

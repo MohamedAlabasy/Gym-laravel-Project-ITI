@@ -62,6 +62,7 @@
                                         @else
                                             <span class="project-state">{{ $coach->city->name }}</span>
                                         @endif
+
                                     </td>
                                     <td class="project-state">{{ $coach->created_at->format('d - M - Y') }}</td>
                                     <td class="project-state">

@@ -1,14 +1,14 @@
 @extends('layouts.user-layout')
 @section('content')
 @if ($errors->any())
-<div class="w-4/8 m-auto text-center">
-    @foreach ($errors->all() as $error)
-        <li class="text-red-500 list-none">
-            {{ $error }}
-        </li>
-    @endforeach
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
 </div>
-    @endif
+@endif
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper pb-4">
     <!-- Content Header (Page header) -->
@@ -29,7 +29,7 @@
     </section>
     <!-- Main content -->
     <section class="content">
-    
+ 
         <form action="{{route('gym.update',['gym' => $gym['id']])}}" method="post" enctype="multipart/form-data" class="w-75 m-auto">
             @csrf
             @method('PUT')
@@ -47,8 +47,10 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" id="name" class="form-control" value="{{$gym->name}}" name="name">
-                        </div>
+                                <input type="text" id="name" class="form-control" value="{{old('name') ?? $gym->name}}" name="name">
+                            </div>
+
+        
                            <div class="form-group">
                                 <label class="form-label">User</label>
                                 <select class="form-control" name="user_id">
@@ -62,7 +64,7 @@
 
                             <div class="form-group">
                                 <label class="form-label" for="image">Image Cover</label>
-                                <input type="file" class="form-control" id="image" name="cover_image">
+                                <input type="file" class="form-control" id="image" name="cover_image" value="{{old('cover_image') ?? asset($gym->cover_image)}}">
                             </div>
                         </div>
                     </div>

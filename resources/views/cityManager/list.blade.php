@@ -38,22 +38,22 @@
                     <table class="table table-striped projects" id="proj">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th> City Manager Name</th>
-                                <th>Email</th>
-                                <th>Profile Picture</th>
-                                <th>National ID</th>
-                                <th></th>
+                                <th class="project-state">ID</th>
+                                <th class="project-state"> City Manager Name</th>
+                                <th class="project-state">Email</th>
+                                <th class="project-state">Profile Picture</th>
+                                <th class="project-state">National ID</th>
+                                <th class="project-state"></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($users as $user)
                                 <tr id="did{{ $user->id }}">
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }} </td>
-                                    <td>{{ $user->email }} </td>
-                                    <td><img alt="Avatar" class="table-avatar" src="{{ asset($user->profile_image) }}"></td>
-                                    <td>{{ $user->national_id }} </td>
+                                    <td class="project-state">{{ $user->id }}</td>
+                                    <td class="project-state">{{ $user->name }} </td>
+                                    <td class="project-state">{{ $user->email }} </td>
+                                    <td class="project-state"><img alt="Avatar" class="table-avatar" src="{{ asset($user->profile_image) }}"></td>
+                                    <td class="project-state">{{ $user->national_id }} </td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-info btn-sm" href="{{ route('cityManager.show', $user['id']) }}">
                                             <i class="fa fa-eye"></i>

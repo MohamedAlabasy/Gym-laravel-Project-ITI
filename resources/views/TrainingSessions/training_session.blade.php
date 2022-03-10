@@ -23,8 +23,6 @@
     <section class="content">
         <form action="{{route('TrainingSessions.store')}}" method="POST" enctype="multipart/form-data" class="w-75 m-auto">
             @csrf
-            
-
             <div class="row">
                 {{-- {{($coach)}} --}}
                 <div class="col-md-12">
@@ -49,7 +47,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="coach">Coach</label>
-                                <select id="coach" class="form-control custom-select" name="name" >
+                                <select id="coach" class="form-control custom-select" name="user_id" >
                                     @foreach ($coaches as $coach)
                                    <option value="{{$coach->id}}"> {{ $coach->name }}</option>
                                     @endforeach

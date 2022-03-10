@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\TrainingSession;
 use App\Models\User;
 use Yajra\DataTables\Facades\DataTables;
+use Session;
+use Illuminate\Support\Facades\Redirect;
 
 
 class TrainingController extends Controller
@@ -19,10 +21,12 @@ class TrainingController extends Controller
     public function index()
     {
         $trainingSessions = TrainingSession::all();
+      
         if (count($trainingSessions) <= 0) { //for empty statement
             return view('empty');
         }
-        return view('TrainingSessions.listSessions', ['trainingSessions' => $trainingSessions]);
+
+        return view('TrainingSessions.listSessions', ['trainingSessions' => $trainingSessions ]);
     }
 
     // public function getSession(Request $request) {
@@ -67,44 +71,39 @@ class TrainingController extends Controller
     #=======================================================================================#
     public function store(Request $request)
     {
-        $trainingSessions = TrainingSession::all();
-        foreach ($trainingSessions as $trainingSession) {
-            
-           $time[] = $trainingSession->starts_at;
-        }
-        foreach($time as $t) {
-            
-        }
+
+        // $user = User::find($request->coach_id);
+       dd($request);
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
             'day' => ['required','date','after_or_equal:today'],
             'starts_at' => ['required'],
             'finishes_at' => ['required'],
 
-          
-            ],
 
         ]);
 
 
         $validate_old_seesions=TrainingSession::where('day', '=', $request->day)->where("starts_at","!=",null)->
         where("finishes_at","!=",null) ->where(function($q) use ($request){
-            $q->where("starts_at",'=',$request->starts_at)->orwhere("finishes_at","=",$request->finishes_at)
+            $q->whereRaw("starts_at = '$request->starts_at' and finishes_at ='$request->finishes_at'")
+		->orwhereRaw("starts_at < '$request->starts_at' and finishes_at > '$request->finishes_at'")
+            ->orwhereRaw("starts_at > '$request->starts_at' and starts_at < '$request->finishes_at'")
+            ->orwhereRaw("finishes_at > '$request->starts_at' and finishes_at < '$request->finishes_at'")
 
-            ->orwhereRaw(" '$request->starts_at' between starts_at and finishes_at and '$request->finishes_at' between starts_at and finishes_at")
-            ->orwhereRaw("starts_at >=  '$request->starts_at' and finishes_at and '$request->finishes_at' between starts_at and finishes_at")
-            ->orwhereRaw("starts_at not between '$request->starts_at' and $request->finishes_at' and finishes_at not between
-            '$request->starts_at' and $request->finishes_at'");
+            ->orwhereRaw("starts_at > '$request->starts_at' and finishes_at < '$request->finishes_at'");
+
         })->get()->toArray();
 
 
         if(count($validate_old_seesions) > 0)
             dd($validate_old_seesions);
         $requestData = request()->all();
+        // $user = User::findOrFail($request->coach_id);
+        // $user->TrainingSessions()->attach($request->training_session_id); 
         TrainingSession::create($requestData);
-        return redirect()->route('TrainingSessions.listSessions', [
-            'time' => $time
-        ]);
+        return redirect()->route('TrainingSessions.listSessions');
+
     }
     #=======================================================================================#
     #			                             show                                         	#
