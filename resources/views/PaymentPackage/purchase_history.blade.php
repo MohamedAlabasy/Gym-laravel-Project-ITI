@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>All Packages</h1>
+                        <h1>Purchases</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -24,7 +24,7 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Projects</h3>
+                    <h3 class="card-title">Purchases</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -38,18 +38,19 @@
                     <table class="table table-striped projects" id="proj">
                         <thead>
                             <tr>
-                                <th>Package Id</th>
+                                <th>User Email</th>
+                                <th>User Name</th>
                                 <th>Package Name</th>
-                                <th>Price</th>
-                                <th>Number of sessions</th>
-                                <th>Creator</th>
+                                <th>Amount</th>
+                                <th>Gym Name</th>
+                                <th>City Name</th>
                                 <th class="text-center">Actions </th>
 
                             </tr>
                         </thead>
                         <tbody>
                             
-                            @foreach ($packages as $package)
+                            @foreach ($boughtPackages as $boughtPackage)
                                 <tr id="did{{ $package->id }}">
                                     <td>{{ $package->id }}</td>
                                     <td>{{ $package->name }} </td>
