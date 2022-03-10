@@ -51,7 +51,7 @@
                             <td class="project-state">{{ $city->deleted_at->format('d - M - Y') }}</td>
                             <td class="project-actions project-state">
                                 <a class="btn btn-danger btn-sm" href="{{ route('city.restored', $city->id) }}" data-toggle="modal" data-target="#modal-danger">
-                                    <i class="fa fa-eye"></i>
+                                    <i class="fas fa-unlock"></i>
                                 </a>
                             </td>
                         </tr>
