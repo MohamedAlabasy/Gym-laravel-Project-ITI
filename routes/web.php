@@ -168,7 +168,7 @@ Route::get('/cities', [CityController::class, 'list'])->name('city.list')->middl
 //GET, 	/city/create, 	create, 	city.create
 Route::get('/cities/create', [CityController::class, 'create'])->name('city.create')->middleware('auth')->middleware('logs-out-banned-user');
 //POST, 	/city, 	store,       	city.store
-// Route::post('/cities', [CityController::class, 'store'])->name('city.store')->middleware('auth')->middleware('logs-out-banned-user');
+Route::post('/cities', [CityController::class, 'store'])->name('city.store')->middleware('auth')->middleware('logs-out-banned-user');
 
 //GET, 	/city/{photo}, 	show,    	city.show
 Route::get('/cities/{cityID}', [CityController::class, 'show'])->name('city.show')->middleware('auth')->middleware('logs-out-banned-user');

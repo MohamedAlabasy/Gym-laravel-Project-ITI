@@ -76,4 +76,11 @@ class CityController extends Controller
             ->get();
         return view("city.create", ['cityManagers' => $cityManagers]);
     }
+    #=======================================================================================#
+    #			                          store Function                                   #
+    #=======================================================================================#
+    public function store()
+    {
+     
+    }
 }
