@@ -6,7 +6,7 @@ use App\Models\City;
 use Illuminate\Http\Request;
 use App\Models\Gym;
 use App\Models\User;
-use App\Models\City;
+
 use Illuminate\Support\Facades\File;
 
 class CoachController extends Controller
