@@ -64,12 +64,18 @@ class CoachController extends Controller
             $imageName = 'imgs/' . $name;    
         }
         
+
+
+
+
+        
+        
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
         //$user->city = $request->name;
         $user->profile_image = $imageName;
-        $user->assignRole('coach');
+        //$user->assignRole('coach');
         $user->save();
         return redirect()->route('coach.list');
     }
