@@ -1,22 +1,11 @@
 @extends('layouts.user-layout')
 @section('content')
-
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper pb-4">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                     <div class="col-sm-6">
                         <h1>New City</h1>
                     </div>
@@ -31,7 +20,7 @@
         </section>
         <!-- Main content -->
         <section class="content">
-            <form action="" method="post" class="w-75 m-auto">
+            <form action="{{ route('city.store') }}" method="post" class="w-75 m-auto">
                 @csrf
                 <div class="row">
                     <div class="col-md-12">
@@ -47,41 +36,43 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" id="name" class="form-control" name="name">
+                                    <label class="form-label" for="name">Name</label>
+                                    <input autofocus required minlength="3" maxlength="100" type="text" id="name"
+                                        name="name" class=" form-control @error('name') is-invalid @enderror">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="manager">Manger</label>
-                                    <select class="form-control" id="manager">
-                                        <option>Value 1</option>
-                                        <option>Value 2</option>
-                                        <option>Value 3</option>
+                                    <label for="manager_id">City Manger</label>
+                                    <label style="color: #aeb1b6; ">(optional)</label>
+                                    <select class=" form-control @error('manager_id') is-invalid @enderror"
+                                        name="manager_id" id="manager_id">
+                                        <optgroup label="Available City Managers">
+                                            <option value="0" hidden>optional</option>
+                                            @foreach ($cityManagers as $managers)
+                                                <option value={{ $managers->id }}>{{ $managers->name }}</option>
+                                            @endforeach
+                                        </optgroup>
                                     </select>
+                                    @error('manager_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="city_manager">City Manger</label>
-                                    <select class="form-control" id="city_manager">
-                                        <option>Value 1</option>
-                                        <option>Value 2</option>
-                                        <option>Value 3</option>
-                                    </select>
+                                <div class="col-12">
+                                    <a href="{{ url()->previous() }}" class="btn btn-secondary">Cancel</a>
+                                    <input type="submit" value="Add New City" class="btn btn-success float-right">
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="gym">Gym Name</label>
-                                <input type="text" id="gym" class="form-control" name="gym">
                             </div>
                         </div>
                     </div>
                 </div>
+            </form>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <a href="#" class="btn btn-secondary">Cancel</a>
-            <input type="submit" value="Save Changes" class="btn btn-success float-right">
-        </div>
-    </div>
-    </form>
     </section>
     </div>
 @endsection

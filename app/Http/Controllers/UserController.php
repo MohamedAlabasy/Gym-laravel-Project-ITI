@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Auth;
 use App\Http\Requests\StoreRequest;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\File;
+
 
 class UserController extends Controller
 {
@@ -69,13 +71,14 @@ class UserController extends Controller
             $destinationPath=public_path('/imgs');
             $image->move($destinationPath,$name);
             $imageName='imgs/'.$name;
-            if(isset( $user->profile_image))
-                unlink( $user->profile_image);
-                $user->profile_image=$imageName;
-                // if( auth()->$user->isDirty('email'))
+            if($user->profile_image)
+                File::delete(public_path('imgs/' . $user->profile_image));
+            $user->profile_image=$imageName;
         }
         $user->save();
-        return redirect()->route('user.admin_profile', auth()->user()->id);
+        return redirect()->route('user.admin_profile', auth()->user()->id)->with('success', 'Your data successfully updated');
+
+        // return redirect()->route('user.admin_profile', auth()->user()->id)back()->withErrors(['msg' => 'The Message']);
     }
     #=======================================================================================#
     #			                             store                                         	#

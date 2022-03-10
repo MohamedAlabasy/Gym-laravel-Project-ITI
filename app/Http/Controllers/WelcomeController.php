@@ -64,7 +64,7 @@ class WelcomeController extends Controller
                 //get all user in gymManager gym
                 $userOfGym = Gym::find($this->userData['gym_id'])->users;
 
-                //get totalRevenue in gymManager gym
+                //get totalRevenue in gymManager gyms
                 foreach ($userOfGym as $usersID) {
                     $this->totalRevenue += (Revenue::where('user_id', '=', $usersID['id'])->sum('price')) / 100;
                 }

@@ -26,6 +26,8 @@
                             <th> City Manager Name</th>
                             <th>Email</th>
                             <th>Profile Picture</th>
+                            <th>National ID</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -35,6 +37,7 @@
                             <td>{{$singleUser->name}} </td>
                             <td>{{$singleUser->email}} </td>
                             <td><img alt="Avatar" class="table-avatar" src="{{$singleUser->profile_image}}"></td>
+                            <td>{{ $singleUser->national_id }} </td>
                         </tr>
                     </tbody>
                     <tbody>

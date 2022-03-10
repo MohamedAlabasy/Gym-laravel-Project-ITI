@@ -7,6 +7,18 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
+
+            <!-- Errors Section -->
+                  @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
                 <div class="col-sm-6">
                     <h1>Gym City Manger</h1>
                 </div>
@@ -38,31 +50,20 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" id="name" class="form-control" value="{{$singleUser->name}}" name="name">
+                                <input type="text" id="name" class="form-control" value="{{old('name') ?? $singleUser->name}}" name="name">
                             </div>
 
-                            
-                            @if ($errors->any())
-                        <div class="w-4/8 m-auto text-center">
-                            @foreach ($errors->all() as $error)
-                            <li class="text-red-500 list-none">
-                                {{$error}}
-                            </li>
-                            @endforeach
-
-                                </div>
-                            @endif
                             <div class="form-group">
                                 <label for="pass">Password</label>
-                                <input type="password" id="pass" class="form-control" value="{{$singleUser->password}}" name="password">
+                                <input type="password" id="pass" class="form-control" value="{{old('password') ?? $singleUser->password}}" name="password">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" class="form-control" value="{{$singleUser->email}}" name="email">
+                                <input type="email" id="email" class="form-control" value="{{old('email') ?? $singleUser->email}}" name="email">
                             </div>
                             <div class="form-group">
                                 <label class="form-label" for="image">Upload Image</label>
-                                <input type="file" class="form-control" id="image" name="image">
+                                <input type="file" class="form-control" id="image" name="profile_image" value="{{old('profile_image') ?? asset($singleUser->profile_image)}}">
                             </div>
                         </div>
                     </div>

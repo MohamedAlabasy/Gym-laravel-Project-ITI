@@ -13,7 +13,8 @@ class City extends Model
     #			                    To allow insert in table                              	#
     #=======================================================================================#
     protected $fillable = [
-        'name'
+        'name',
+        'manager_id',
     ];
     public function users()
     {
