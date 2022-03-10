@@ -51,35 +51,25 @@
                                     <input type="text" id="name" class="form-control" name="name">
                                 </div>
                                 <div class="form-group">
-                                    <label for="manager">Manger</label>
-                                    <select class="form-control" id="manager">
-                                        <option>Value 1</option>
-                                        <option>Value 2</option>
-                                        <option>Value 3</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
                                     <label for="city_manager">City Manger</label>
+                                    <label style="color: #aeb1b6; ">(optional)</label>
                                     <select class="form-control" id="city_manager">
-                                        <option>Value 1</option>
-                                        <option>Value 2</option>
-                                        <option>Value 3</option>
+                                        <optgroup label="Available City Managers">
+                                            <option value="0" hidden>optional</option>
+                                            @foreach ($cityManagers as $managers)
+                                                <option>{{ $managers->name }}</option>
+                                            @endforeach
+                                        </optgroup>
                                     </select>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="gym">Gym Name</label>
-                                <input type="text" id="gym" class="form-control" name="gym">
+                                <div class="col-12">
+                                    <a href="#" class="btn btn-secondary">Cancel</a>
+                                    <input type="submit" value="Add New City" class="btn btn-success float-right">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <a href="#" class="btn btn-secondary">Cancel</a>
-            <input type="submit" value="Save Changes" class="btn btn-success float-right">
-        </div>
     </div>
     </form>
     </section>

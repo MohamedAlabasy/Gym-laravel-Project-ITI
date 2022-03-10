@@ -63,4 +63,17 @@ class CityController extends Controller
             'revenueInDollars' => $revenueInDollars,
         ]);
     }
+    #=======================================================================================#
+    #			                          create Function                                   #
+    #=======================================================================================#
+    public function create()
+    {
+        $cityManagers =  User::select('users.*', 'cities.manager_id')
+            ->role('cityManager')
+            ->withoutBanned()
+            ->leftJoin('cities', 'users.id', '=', 'cities.manager_id')
+            ->whereNull('cities.manager_id')
+            ->get();
+        return view("city.create", ['cityManagers' => $cityManagers]);
+    }
 }
