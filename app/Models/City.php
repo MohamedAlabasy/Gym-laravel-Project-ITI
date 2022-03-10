@@ -20,7 +20,7 @@ class City extends Model
     {
         return $this->hasMany(User::class);
     }
-    public function user()
+    public function manager()
     {
         return $this->belongsTo(User::class);
     }
