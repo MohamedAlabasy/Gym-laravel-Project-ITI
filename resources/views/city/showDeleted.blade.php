@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>All Cities</h1>
+                        <h1>Deleted Cities</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Cities</li>
+                            <li class="breadcrumb-item active">Deleted Cities</li>
                         </ol>
                     </div>
                 </div>
@@ -39,36 +39,20 @@
                             <tr>
                                 <th class="project-state"> ID </th>
                                 <th class="project-state"> City Name</th>
-                                <th class="project-state"> City Manager Name</th>
-                                <th class="project-state">Created at</th>
+                                <th class="project-state">Deleted at</th>
                                 <th class="project-state"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($allCities as $city)
+                            @foreach ($deletedCity as $city)
                                 <tr>
                                     <td class="project-state">{{ $city->id }}</td>
                                     <td class="project-state">{{ $city->name }}</td>
-                                    @if ($city->manager == null)
-                                        <td class="project-state">This city has no Manager</td>
-                                    @else
-                                        <td class="project-state">{{ $city->manager->name }}</td>
-                                    @endif
-                                    <td class="project-state">{{ $city->created_at->format('d - M - Y') }}</td>
+                                    <td class="project-state">{{ $city->deleted_at->format('d - M - Y') }}</td>
                                     <td class="project-actions project-state">
-                                        <a class="btn btn-info btn-sm" href="{{ route('city.show', $city->id) }}">
+                                        <a class="btn btn-danger btn-sm" href="{{ route('city.restored', $city->id) }}">
                                             <i class="fa fa-eye"></i>
                                         </a>
-                                        <a class="btn btn-warning btn-sm text-white"
-                                            href="{{ route('city.edit', $city->id) }}">
-                                            <i class="fas fa-pencil-alt"></i></a>
-                                        {{-- <a href="javascript:void(0)" onclick="deleteGym({{ $gym->id }})"
-                                            class="btn btn-danger">Delete</a> --}}
-                                        <form method="post" action="{{ route('city.destroy', $city->id) }}">
-                                            @csrf
-                                            @method('delete')
-                                            <input type='submit' class='btn btn-danger' />
-                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

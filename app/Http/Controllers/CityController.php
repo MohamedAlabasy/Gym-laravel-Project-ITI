@@ -115,12 +115,29 @@ class CityController extends Controller
     }
 
     #=======================================================================================#
-    #			                          edit Function                                     #
+    #			                          destroy Function                                  #
     #=======================================================================================#
     public function destroy($cityID)
     {
         City::find($cityID)->delete($cityID);
         return $this->list();
+    }
+    #=======================================================================================#
+    #			                 restored deleted Cities Function                           #
+    #=======================================================================================#
+    public function showDeleted()
+    {
+        $deletedCity = City::onlyTrashed()->get();
+        if (count($deletedCity) <= 0) { //for empty statement
+            return view('empty');
+        }
+        return view('city.showDeleted', ['deletedCity' => $deletedCity]);
+    }
+    
+    public function restore($cityID)
+    {
+        City::withTrashed()->find($cityID)->restore();
+        return $this->showDeleted();
     }
 
     #=======================================================================================#
