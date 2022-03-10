@@ -51,7 +51,8 @@
                                     <td class="project-state">{{ $user->id }}</td>
                                     <td class="project-state">{{ $user->name }} </td>
                                     <td class="project-state">{{ $user->email }} </td>
-                                    <td class="project-state"><img alt="Avatar" class="table-avatar" src="{{ asset($user->profile_image) }}"></td>
+                                    <td class="project-state"><img alt="Avatar" class="table-avatar"
+                                            src="{{ asset($user->profile_image) }}"></td>
                                     <td class="project-actions text-right">
                                         <a class="btn btn-info btn-sm" href="{{ route('gymManager.show', $user['id']) }}">
 
@@ -63,6 +64,9 @@
 
                                         <a href="javascript:void(0)" onclick="deletegymManager({{ $user->id }})"
                                             class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                        <a class="btn btn-dark btn-sm" href=" {{ route('user.banUser', $user->id) }}">
+                                            <i class="fa fa-user-lock"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
