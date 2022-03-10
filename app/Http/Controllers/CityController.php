@@ -119,7 +119,11 @@ class CityController extends Controller
     #=======================================================================================#
     public function destroy($cityID)
     {
-        City::find($cityID)->delete($cityID);
+        $city = City::find($cityID);
+        if ($city->manager_id > 0) {
+            dd("can not delete this city");
+        }
+        $city->delete($cityID);
         return $this->list();
     }
     #=======================================================================================#
@@ -133,7 +137,9 @@ class CityController extends Controller
         }
         return view('city.showDeleted', ['deletedCity' => $deletedCity]);
     }
-    
+    #=======================================================================================#
+    #			                 restore deleted Cities Function                            #
+    #=======================================================================================#
     public function restore($cityID)
     {
         City::withTrashed()->find($cityID)->restore();
