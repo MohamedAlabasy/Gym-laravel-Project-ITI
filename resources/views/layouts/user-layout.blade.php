@@ -71,7 +71,8 @@
         <ul class="navbar-nav">
             @role('admin|cityManager|gymManager')
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button" id="asideIcon"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button" id="asideIcon"><i
+                            class="fas fa-bars"></i></a>
                 </li>
             @endrole
             <li class="nav-item d-none d-sm-inline-block">
@@ -292,94 +293,94 @@
                                         <p> All Users </p>
                                     </a>
                                 </li>
-                    </ul>
-                    </li>
-                    {{-- # ======================================= # Training Packages # ======================================= # --}}
-                    <li class="nav-item">
-                        <a href="/" class="nav-link">
-                            <i class="nav-icon fas fa-cubes"></i>
-                            <p> Training Packages
+                            </ul>
+                        </li>
+                        {{-- # ======================================= # Training Packages # ======================================= # --}}
+                        <li class="nav-item">
+                            <a href="/" class="nav-link">
+                                <i class="nav-icon fas fa-cubes"></i>
+                                <p> Training Packages
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('trainingPackeges.listPackeges') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> List Packages </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('trainingPackeges.creatPackege') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> Add New </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('PaymentPackage.stripe') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> Buy Package </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        {{-- # ======================================= # Training Session # ======================================= # --}}
+                        <li class="nav-item">
+                            <a href="pages/kanban.html" class="nav-link">
+                                <i class="nav-icon fas fa-cube"></i>
+                                <p> Training Session
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('TrainingSessions.listSessions') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> All Sessions </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('TrainingSessions.training_session') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p> Add New </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        {{-- # ======================================= # Attendance # ======================================= # --}}
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p> Attendance </p>
                                 <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('trainingPackeges.listPackeges') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> List Packages </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('trainingPackeges.creatPackege') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> Add New </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('PaymentPackage.stripe') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> Buy Package </p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    {{-- # ======================================= # Training Session # ======================================= # --}}
-                    <li class="nav-item">
-                        <a href="pages/kanban.html" class="nav-link">
-                            <i class="nav-icon fas fa-cube"></i>
-                            <p> Training Session
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('TrainingSessions.listSessions') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> All Sessions </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('TrainingSessions.training_session') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p> Add New </p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    {{-- # ======================================= # Attendance # ======================================= # --}}
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p> Attendance </p>
-                            <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="pages/mailbox/mailbox.html" class="nav-link">
-                                    <p>Inbox</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/mailbox/compose.html" class="nav-link">
-                                    <p>Compose</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/mailbox/read-mail.html" class="nav-link">
-                                    <p>Read</p>
-                                </a>
-                            </li>
-                        </ul>
-                        </a>
-                    </li>
-                    {{-- # ======================================= # Banned Users # ======================================= # --}}
-                    <li class="nav-item">
-                        <a href="{{ route('user.listBanned') }}" class="nav-link">
-                            <i class="nav-icon fa fa-user-lock"></i>
-                            <p> Banned Users </p>
-                        </a>
-                    </li>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="pages/mailbox/mailbox.html" class="nav-link">
+                                        <p>Inbox</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pages/mailbox/compose.html" class="nav-link">
+                                        <p>Compose</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="pages/mailbox/read-mail.html" class="nav-link">
+                                        <p>Read</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            </a>
+                        </li>
+                        {{-- # ======================================= # Banned Users # ======================================= # --}}
+                        <li class="nav-item">
+                            <a href="{{ route('user.listBanned') }}" class="nav-link">
+                                <i class="nav-icon fa fa-user-lock"></i>
+                                <p> Banned Users </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -391,7 +392,8 @@
     <div id="sidebar-overlay"></div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <footer class="main-footer d-flex justify-content-center" style="font-size:13px;">
-        <span>Copyright &copy; 2022-2023 <span class="bg-primary px-2 py-1">Gym Ststem.</span></span> All rights reserved.
+        <span>Copyright &copy; 2022-2023 <span class="bg-primary px-2 py-1">Gym Ststem.</span></span> All rights
+        reserved.
     </footer>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
