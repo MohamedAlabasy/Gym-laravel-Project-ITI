@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\City;
 use App\Models\Gym;
 use App\Models\Revenue;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
@@ -32,7 +33,10 @@ class CityController extends Controller
         $coaches = 0;
         $users = 0;
 
-        $userOfCity = City::find($cityID)->users;
+        $cityData = City::find($cityID);
+        $userOfCity = $cityData->users;
+
+        $citiesManagers = User::find($cityData->manager_id);
 
         foreach ($userOfCity as $usersID) {
             $totalRevenue += (Revenue::where('user_id', '=', $usersID['id'])->sum('price')) / 100;
@@ -43,9 +47,7 @@ class CityController extends Controller
 
         //get users by type in cityManager city
         foreach ($userOfCity as $singleUser) {
-            if ($singleUser->hasRole('cityManager')) {
-                $citiesManagers = $singleUser;
-            } elseif ($singleUser->hasRole('gymManager')) {
+            if ($singleUser->hasRole('gymManager')) {
                 $gymsManagers++;
             } elseif ($singleUser->hasRole('coach')) {
                 $coaches++;
