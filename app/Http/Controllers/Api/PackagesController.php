@@ -8,13 +8,17 @@ use Illuminate\Http\Request;
 
 class PackagesController extends Controller
 {
-    public function index(){
-        $sessions=TrainingPackage::all();
+    public function index()
+    {
+        $sessions = TrainingPackage::all();
         return $sessions;
     }
-    public function showPackage($packageId){
-        $package=TrainingPackage::find($packageId);
-        return ['name'=>$package->name,
-                'price'>$package->price];
+    public function showPackage($packageId)
+    {
+        $package = TrainingPackage::find($packageId);
+        return [
+            'name' => $package->name,
+            'price' > $package->price
+        ];
     }
 }
