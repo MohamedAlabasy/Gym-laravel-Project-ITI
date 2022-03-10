@@ -1,15 +1,24 @@
 @extends('layouts.user-layout')
 @section('content')
 
-    <!-- Content Wrapper. Contains page content -->
+@if ($errors->any())
+<div class="w-4/8 m-auto text-center">
+    @foreach ($errors->all() as $error)
+        <li class="text-red-500 list-none">
+            {{ $error }}
+        </li>
+    @endforeach
+</div>
+    @endif
+<!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper pb-4">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-6">
+                   <div class="col-sm-6">  
                         <h1>Edit Coach</h1>
-                    </div>
+                      </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -40,30 +49,18 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input type="text" id="name" class="form-control" value="{{ $coach->name }}"
-                                        name="name">
-
-                                    @if ($errors->any())
-                                        <div class="w-4/8 m-auto text-center">
-                                            @foreach ($errors->all() as $error)
-                                                <li class="text-red-500 list-none">
-                                                    {{ $error }}
-                                                </li>
-                                            @endforeach
-
-                                        </div>
-                                    @endif
+                                    <input type="text" id="name" class="form-control" value="{{ $coach->name }}" name="name">
+                                 </div>
+                                   
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" id="email" class="form-control" value="{{ $coach->email }}"
-                                        name="email">
+                                    <input type="email" id="email" class="form-control" value="{{ $coach->email }}" name="email">
 
                                 </div>
                                 <div class="form-group">
                                     <label for="city">City</label>
-                                    <input type="text" id="city" class="form-control" value="{{ $coach->city->name }}"
-                                        name="city">
+                                    <input type="text" id="city" class="form-control" value="{{ $coach->city->name }}" name="city">
 
                                 </div>
                                 <div class="form-group">

@@ -24,8 +24,8 @@ class GymRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'user_id' => 'required|exists:users,id',
-            // 'name' => ['required','string', 'min:2'],
+            //  'user_id' => 'required|exists:users,id',
+            //  'name' => ['required','string', 'min:2'],
             
         ];
     }
