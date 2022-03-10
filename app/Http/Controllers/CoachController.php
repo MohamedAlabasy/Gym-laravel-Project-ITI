@@ -92,13 +92,15 @@ class CoachController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:50',
             'email' => 'required|string|unique:users,email,' . $user->id,
-            'profile_image' => 'required|image|mimes:jpg,jpeg',
+            'profile_image' => 'mimes:jpg,jpeg',
         ]);
 
        
         $user->name=$request->name;
         $user->email=$request->email;
-    
+       
+        
+        if($request->hasFile('cover_image')){
             $file=$request->file('profile_image');
              $filename = time() .\Str::random(30).'.'.$file->getClientOriginalExtension();
              $destination = public_path('/imgs');
@@ -107,11 +109,11 @@ class CoachController extends Controller
              
              if(isset( $user->profile_image))
              File::delete(public_path('imgs/' . $user->profile_image));
-            $user->profile_image=$file;
+            $user->profile_image=$filename;
 
              
             
-        
+        }
         $user->save();
         return redirect()->route('coach.list');
     }

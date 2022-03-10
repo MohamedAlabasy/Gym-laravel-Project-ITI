@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use Illuminate\Database\Eloquent\Model\Gym;
-
 use App\Http\Requests\GymRequest;
 use App\Http\Requests\UpdateGymRequest;
-
 use App\Models\Gym;
 use App\Models\User;
 use Illuminate\Support\Facades\File;
@@ -18,7 +15,7 @@ class GymController extends Controller
     #=======================================================================================#
     public function list()
     {
-        $gymsFromDB = Gym::all();
+        $gymsFromDB = Gym::all();//role('cityManager')->withoutBanned()->get();
         if (count($gymsFromDB) <= 0) { //for gym empty statement
             return view('empty');
         }
@@ -51,30 +48,23 @@ class GymController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
-            'cover_image' => ['required', 'mimes:jpg,jpeg'],
-
-
-        ]);
+            'cover_image' =>'required|image|mimes:jpg,jpeg',
+            ]);
 
         if ($request->hasFile('cover_image'))
         {
              $file=$request->file('cover_image');
              $filename = time() .\Str::random(30).'.'.$file->getClientOriginalExtension();
-             $destination = $file->getClientOriginalExtension();
+             $destination = public_path('/imgs');
              $file->move($destination,$filename);
              $file='imgs'.$filename;
              
         }
-        
-
-
         $gym = new Gym();
         $gym->name = $request->name;
-        
         $gym->cover_image = $file;
-        
         $gym->save();
-        return redirect()->back()->with('status','picture added suceccfully');
+        return redirect()->route('gym.list');
     }
 
 
@@ -87,43 +77,45 @@ class GymController extends Controller
         $users = User::all();
         $singleGym = Gym::find($id);
         return view("gym.edit", ['gym' => $singleGym, 'users' => $users]);
+        
     }
+    
 
     //Update Function
     public function update(Request $request, $id)
     {
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
-            'cover_image' => ['required', 'mimes:jpg,jpeg'],
+            'cover_image' => [ 'mimes:jpg,jpeg'],
             
         ]);
-        // $gym = new Gym();
-        // $gym->name = $request->name;
-// 
-        $file=$request->file('cover_image');
-        $filename = time() .\Str::random(30).'.'.$file->getClientOriginalExtension();
-        $destination = public_path('/imgs');
-        $file->move($destination,$filename);
-        $file='imgs'.$filename;
         
-        if(isset( $gym->cover_image))
-        File::delete(public_path('imgs/' . $gym->cover_image));
-        // $gym->cover_image=
-
-    // //    $gym->save();
-
-
-
-        //fetch request data
-        $fetchData = request()->all();
-        $flight = Gym::find($id);
-        $flight->name = $fetchData['name'];
-        $flight->cover_image = $file;
-        $flight->save();
-
-       
-       return redirect()->route('gym.list');
+        $gym=Gym::find($id);
+         $gym->name = $request->name;
+         //$user->user_id = $request->user_id;
+         
+         if($request->hasFile('cover_image')){
+            $file=$request->file('cover_image');
+            
+            $filename=time().\Str::random(30).'.'.$file->getClientOriginalExtension();
+            $destination=public_path('/imgs');
+            $file->move($destination,$filename);
+            $file='imgs'.$filename;
+            
+            if(isset( $gym->cover_image))
+            File::delete(public_path('imgs/' . $gym->cover_image));
+            $gym->cover_image=$filename;
+            
+        }
+        $gym->save();
+        return redirect()->route('gym.list');
     }
+
+
+    
+       
+    //    return redirect()->route('gym.list');
+    
 
 
     //Delete Function
