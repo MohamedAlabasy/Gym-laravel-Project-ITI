@@ -19,7 +19,7 @@ class GymController extends Controller
     public function list()
     {
         $gymsFromDB = Gym::all();
-        if (count($gymsFromDB) <= 0) { //for empty statement
+        if (count($gymsFromDB) <= 0) { //for gym empty statement
             return view('empty');
         }
         return view("gym.list", ['gyms' => $gymsFromDB]);
@@ -97,9 +97,9 @@ class GymController extends Controller
             'cover_image' => ['required', 'mimes:jpg,jpeg'],
             
         ]);
-        $gym = new Gym();
-        $gym->name = $request->name;
-
+        // $gym = new Gym();
+        // $gym->name = $request->name;
+// 
         $file=$request->file('cover_image');
         $filename = time() .\Str::random(30).'.'.$file->getClientOriginalExtension();
         $destination = public_path('/imgs');
@@ -108,9 +108,20 @@ class GymController extends Controller
         
         if(isset( $gym->cover_image))
         File::delete(public_path('imgs/' . $gym->cover_image));
-       $gym->cover_image=$file;
+        // $gym->cover_image=
 
-       $gym->save();
+    // //    $gym->save();
+
+
+
+        //fetch request data
+        $fetchData = request()->all();
+        $flight = Gym::find($id);
+        $flight->name = $fetchData['name'];
+        $flight->cover_image = $file;
+        $flight->save();
+
+       
        return redirect()->route('gym.list');
     }
 
