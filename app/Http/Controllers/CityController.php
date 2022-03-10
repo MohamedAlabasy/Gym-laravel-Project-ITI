@@ -118,7 +118,7 @@ class CityController extends Controller
     #=======================================================================================#
     private function selectCityManagers()
     {
-        return  User::select('users.*', 'cities.manager_id')
+        return User::select('users.*', 'cities.manager_id')
             ->role('cityManager')
             ->withoutBanned()
             ->leftJoin('cities', 'users.id', '=', 'cities.manager_id')

@@ -57,7 +57,12 @@
                                         <span class="project-state">{{ $coach->email }}</span>
                                     </td>
                                     <td class="project-state">
-                                         {{-- <span class="project-state">{{ $coach->city->name }}</span>  --}}
+                                        @if ($coach->city == null)
+                                            <span class="project-state">this coach has no city</span>
+                                        @else
+                                            <span class="project-state">{{ $coach->city->name }}</span>
+                                        @endif
+
                                     </td>
                                     <td class="project-state">{{ $coach->created_at->format('d - M - Y') }}</td>
                                     <td class="project-state">
@@ -92,7 +97,7 @@
         </section>
     </div>
     <!-- /.content-wrapper -->
-<script>
+    <script>
         function deleteCoach(id) {
             if (confirm("Do you want to delete this record?")) {
                 $.ajax({
