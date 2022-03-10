@@ -114,7 +114,14 @@ class CityController extends Controller
         return $this->list();
     }
 
-   
+    #=======================================================================================#
+    #			                          edit Function                                     #
+    #=======================================================================================#
+    public function destroy($cityID)
+    {
+        City::find($cityID)->delete($cityID);
+        return $this->list();
+    }
 
     #=======================================================================================#
     #			            private Function used in this controller                        #
