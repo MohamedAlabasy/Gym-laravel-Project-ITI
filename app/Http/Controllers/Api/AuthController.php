@@ -86,7 +86,6 @@ class AuthController extends Controller
             //we put here nullable cause user dosn't need to update his pasword every time
         ]);
             if($request->hasFile('profile_image')){
-
                 $image=$request->file('profile_image');
                 $name=time().\Str::random(30).'.'.$image->getClientOriginalExtension();
                 $destinationPath=public_path('/imgs');
