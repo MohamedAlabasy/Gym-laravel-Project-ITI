@@ -71,12 +71,11 @@ class TrainingPackagesController extends Controller
             
 
         ]);
-        // dd($request);
         // $requestData = request()->all();
         // TrainingPackage::create($requestData);
         $package = new TrainingPackage();
     	$package->name = $request->get('name');
-    	$package->price = $request->get('price');
+    	$package->price = $request->get('price') * 100;
     	$package->sessions_number = $request->get('sessions_number');
         $package->user_id = auth()->user()->id;
          $package->save();
