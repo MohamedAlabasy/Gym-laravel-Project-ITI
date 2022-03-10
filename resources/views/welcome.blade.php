@@ -65,7 +65,7 @@
                     </div>
                     {{-- # ======================================= # Gyms Managers # ======================================= # --}}
                     <div class="col-lg-3 col-6">
-                        {{-- <a href="{{ route('#') }}"> --}}
+                        {{-- <a href="{{ route('gymManger.list') }}"> --}}
                         <div class="small-box bg-warning">
                             <div class="inner">
                                 <h3>{{ $gymsManagers }}<sup style="font-size: 20px"></sup></h3>
