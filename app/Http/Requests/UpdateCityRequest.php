@@ -24,7 +24,7 @@ class UpdateCityRequest extends FormRequest
      */
     public function rules()
     {
-        $product = $this->route('product');
+        $product = $this->input('id');
         dd($product);
         // dd($this->manager_id);
         return [

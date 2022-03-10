@@ -21,6 +21,8 @@
         <!-- Main content -->
         <section class="content">
             <form action="{{ route('city.update', $cityData->id) }}" method="post" class="w-75 m-auto">
+
+
                 @csrf
                 @method('put')
                 <div class="row">
@@ -49,7 +51,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="manager_id">City Manger</label>
-                                    <select class=" form-control @error('manager_id') is-invalid @enderror"
+                                    <select required class=" form-control @error('manager_id') is-invalid @enderror"
                                         name="manager_id" id="manager_id">
                                         <option value="{{ $cityData->manager->id }}">
                                             {{ $cityData->manager->name }}
