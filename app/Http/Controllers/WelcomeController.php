@@ -102,6 +102,7 @@ class WelcomeController extends Controller
         //     "users = $this->users",
         //     "revenueInDollars =$this->revenueInDollars"
         // );
+
         return view("welcome", [
             'cities' => $this->cities,
             'citiesManagers' => $this->citiesManagers,

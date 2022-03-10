@@ -48,12 +48,13 @@
                                 <tr>
                                     <td class="project-state">{{ $city->id }}</td>
                                     <td class="project-state">{{ $city->name }}</td>
-                                    <td class="project-state">{{ $city->created_at }}</td>
+                                    <td class="project-state">{{ $city->created_at->format('d - M - Y') }}</td>
                                     <td class="project-actions project-state">
-                                        <a class="btn btn-info btn-sm" href="#">
+                                        <a class="btn btn-info btn-sm" href="{{ route('city.show', $city->id) }}">
                                             <i class="fa fa-eye"></i>
                                         </a>
-                                        <a class="btn btn-warning btn-sm text-white" href="">
+                                        <a class="btn btn-warning btn-sm text-white"
+                                            href="{{ route('city.edit', $city->id) }}">
                                             <i class="fas fa-pencil-alt"></i></a>
                                         {{-- <a href="javascript:void(0)" onclick="deleteGym({{ $gym->id }})"
                                         class="btn btn-danger">Delete</a> --}}

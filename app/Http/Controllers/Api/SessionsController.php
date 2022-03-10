@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TrainingSession;
+use App\Models\Attendance;
+use App\Models\User;
 class SessionsController extends Controller
 {
     public function index(){
@@ -20,25 +22,13 @@ class SessionsController extends Controller
                 'finishes_at'=>$sessions->finishes_at];
     }
 
-    public function attendTrainingSession($sessionId){
-        $request->validate([
-            'name'=>'required',
-            'day'=>'required',
-            'starts_at'=>'required',
-            'finishes_at'=>'required',
-            'training_package_id'=>'required',
-        ]);
-
-        $user = new User([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'gender' =>$request->gender,
-            'birth_date' =>$request->birth_date,
-            'profile_image'=>$request->profile_image
-        ]);
-        $user->assignRole('user');
-        $user->save();
+    public function remaining_training_sessions(){
+        return ['total_sessions'=>Auth()->user()->total_sessions,
+                'remain_session'=>Auth()->user()->remain_session];
     }
+    public function attend_training_session(){
+
+    }
+
 }
 

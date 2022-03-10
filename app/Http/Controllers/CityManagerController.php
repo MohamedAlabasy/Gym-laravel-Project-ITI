@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Validation\Rule;
 
 class CityManagerController extends Controller
 {
@@ -24,10 +25,34 @@ class CityManagerController extends Controller
     public function store(Request $request)
     {
 
-        $requestData = request()->all();
-        User::create($requestData);
+                $validated = $request->validate([
+                'name' => 'required|unique:users|max:20',
+                'password' => 'required |min:6',
+                'email' => 'required|string|unique:users',
+                'national_id' =>'digits_between:10,17|required|numeric|unique:users',
+                'profile_image' => 'required|image',
+            ]);
+            
+            if ($request->hasFile('profile_image')) {
+                $image = $request->file('profile_image');
+                $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
+                $destinationPath = public_path('/imgs');
+                $image->move($destinationPath, $name);
+                $imageName = 'imgs/' . $name;
+            }
+        
+            $user=new User();
+            $user->name=$request->name;
+            $user->email=$request->email;
+            $user->password=$request->password;
+            $user->profile_image=$imageName;
+            $user->national_id=$request->national_id;
+            $user->assignRole('cityManager');
+            $user->save();
+            
         return redirect()->route('cityManager.list');
     }
+
 
     #=======================================================================================#
     #			                           List Function                                	#
@@ -41,6 +66,7 @@ class CityManagerController extends Controller
             return view('empty');
         }
         return view("cityManager.list", ['users' => $usersFromDB]);
+
     }
     #=======================================================================================#
     #			                           Show Function                                	#
@@ -61,6 +87,8 @@ class CityManagerController extends Controller
 
         return view("cityManager.edit", ['singleUser' => $singleUser, 'users' => $users]);
     }
+
+   
 
     #=======================================================================================#
     #			                           Update Function                                	#

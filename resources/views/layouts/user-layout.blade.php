@@ -60,7 +60,7 @@
 
 </style>
 
-<body>
+<body class="sidebar-collapse">
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
         <img class="animation__shake" src="imgs/gym-icon.png" alt="GymSystemLogo" height="150" width="150">
@@ -71,15 +71,15 @@
         <ul class="navbar-nav">
             @role('admin|cityManager|gymManager')
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button" id="asideIcon"><i class="fas fa-bars"></i></a>
                 </li>
             @endrole
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="index3.html" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Home</a>
             </li>
-            <li class="nav-item d-none d-sm-inline-block">
+            <!--  <li class="nav-item d-none d-sm-inline-block">
                 <a href="#" class="nav-link">Contact</a>
-            </li>
+            </li> -->
         </ul>
 
         <!-- Right navbar links -->
@@ -129,7 +129,7 @@
     @role('admin|cityManager|gymManager')
         <aside class="main-sidebar sidebar-dark-primary elevation-4" style="font-size: 14px;width: 200px;">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link px-2">
+            <a href="{{ route('welcome') }}" class="brand-link px-2">
                 <span class="brand-text font-weight-light px-4">Gym System</span>
             </a>
             <!-- Sidebar -->
@@ -192,13 +192,13 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="{{ route('gymManager.list') }}" class="nav-link">
+                                        <a href="{{ route('cityManager.list') }}" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p> All City Managers </p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="{{ route('gymManager.create') }}" class="nav-link">
+                                        <a href="{{ route('cityManager.create') }}" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p> Add New </p>
                                         </a>
@@ -315,19 +315,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/" class="nav-link">
+                                <a href="{{ route('trainingPackeges.listPackeges') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p> List Packages </p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/" class="nav-link">
+                                <a href="{{ route('trainingPackeges.creatPackege') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p> Add New </p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/" class="nav-link">
+                                <a href="{{ route('PaymentPackage.stripe') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p> Buy Package </p>
                                 </a>
@@ -401,11 +401,8 @@
     @yield('content')
     <div id="sidebar-overlay"></div>
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-block">
-            <b>Version</b> 1.0
-        </div>
-        <strong>Copyright &copy; 2022-2023 <a href="https://adminlte.io">Gym Ststem</a>.</strong> All rights reserved.
+    <footer class="main-footer d-flex justify-content-center" style="font-size:13px;">
+        <span>Copyright &copy; 2022-2023 <span class="bg-primary px-2 py-1">Gym Ststem.</span></span> All rights reserved.
     </footer>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

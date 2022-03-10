@@ -9,6 +9,15 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
                 <div class="col-sm-6">
                     <h1>New Gym</h1>
                 </div>
@@ -28,6 +37,9 @@
             @csrf
             <div class="row">
                 <div class="col-md-12">
+                    @if(session('status'))
+                    <h6 class="alart-success ">{{session('status')}}</h6>
+                @endif
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Create</h3>
@@ -42,18 +54,8 @@
                                 <label for="name">Name</label>
                                 <input type="text" id="name" class="form-control" value="" name="name">
 
-                                @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+                               
                             </div>
-                            
-
                             <div class="form-group">
                                 <label class="form-label">User</label>
                                 <select class="form-control" name="user_id">
@@ -67,7 +69,7 @@
 
                             <div class="form-group">
                                 <label class="form-label" for="image">Image Cover</label>
-                                <input type="file" class="form-control" id="image" name="image">
+                                <input type="file" class="form-control" id="image" name="cover_image">
                             </div>
                         </div>
                     </div>
