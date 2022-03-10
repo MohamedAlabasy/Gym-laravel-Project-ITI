@@ -71,6 +71,7 @@ class TrainingController extends Controller
     #=======================================================================================#
     public function store(Request $request)
     {
+
         // $user = User::find($request->coach_id);
        dd($request);
         $request->validate([
@@ -79,6 +80,8 @@ class TrainingController extends Controller
             'day' => ['required','date','after_or_equal:today'],
             'starts_at' => ['required'],
             'finishes_at' => ['required'],
+
+
             ],
         ]);
 
@@ -102,8 +105,6 @@ class TrainingController extends Controller
         // $user->TrainingSessions()->attach($request->training_session_id); 
         TrainingSession::create($requestData);
         return redirect()->route('TrainingSessions.listSessions');
-
-
 
     }
     #=======================================================================================#
