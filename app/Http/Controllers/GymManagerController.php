@@ -27,8 +27,9 @@ class GymManagerController extends Controller
         $validated = $request->validate([
             'name' => 'required|unique:users|max:20',
             'password' => 'required |min:6',
-            'email' => 'required|string|unique:users',
-            'profile_image' => 'required|image',
+            'email' => 'required|string|unique:users,email,' . $user->id,
+            'national_id' =>'digits_between:10,17|required|numeric|unique:users',
+            'profile_image' => 'required|image|mimes:jpg,jpeg',
         ]);
         
         if ($request->hasFile('profile_image')) {
@@ -44,6 +45,7 @@ class GymManagerController extends Controller
         $user->email=$request->email;
         $user->password=$request->password;
         $user->profile_image=$imageName;
+        $user->national_id=$request->national_id;
         $user->assignRole('gymManager');
         $user->save();
         
@@ -88,21 +90,35 @@ class GymManagerController extends Controller
     #=======================================================================================#
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'min:2'],
-
+        $user=User::find($id);
+        $validated = $request->validate([
+            'name' => 'required|max:20',
+            'password' => 'required |min:6',
+            'email' => 'required|string|unique:users,email,' . $user->id,
+            'profile_image' => 'required|image|mimes:jpg,jpeg',
         ]);
 
+       
+        $user->name=$request->name;
+        $user->password=$request->password;
+        $user->email=$request->email;
+    
 
-        User::where('id', $id)->update([
-
-            'name' => $request->all()['name'],
-            'email' => $request->email,
-
-
-
-        ]);
+        if($request->hasFile('profile_image')){
+            $image=$request->file('profile_image');
+            $name=time().\Str::random(30).'.'.$image->getClientOriginalExtension();
+            $destinationPath=public_path('/imgs');
+            $image->move($destinationPath,$name);
+            $imageName='imgs/'.$name;
+            if(isset( $user->profile_image))
+                  File::delete(public_path('imgs/' . $user->profile_image));
+                $user->profile_image=$imageName;
+            
+        }
+        $user->save();
         return redirect()->route('gymManager.list');
+
+        
     }
     #=======================================================================================#
     #			                           Delete Function                                	#

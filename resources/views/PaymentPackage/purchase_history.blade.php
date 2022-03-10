@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>All City Managers</h1>
+                        <h1>Purchases</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -24,7 +24,7 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Projects</h3>
+                    <h3 class="card-title">Purchases</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>
@@ -38,32 +38,40 @@
                     <table class="table table-striped projects" id="proj">
                         <thead>
                             <tr>
-                                <th class="project-state">ID</th>
-                                <th class="project-state"> City Manager Name</th>
-                                <th class="project-state">Email</th>
-                                <th class="project-state">Profile Picture</th>
-                                <th class="project-state">National ID</th>
-                                <th class="project-state"></th>
+                                <th>User Email</th>
+                                <th>User Name</th>
+                                <th>Package Name</th>
+                                <th>Amount</th>
+                                <th>Gym Name</th>
+                                <th>City Name</th>
+                                <th class="text-center">Actions </th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $user)
-                                <tr id="did{{ $user->id }}">
-                                    <td class="project-state">{{ $user->id }}</td>
-                                    <td class="project-state">{{ $user->name }} </td>
-                                    <td class="project-state">{{ $user->email }} </td>
-                                    <td class="project-state"><img alt="Avatar" class="table-avatar" src="{{ asset($user->profile_image) }}"></td>
-                                    <td class="project-state">{{ $user->national_id }} </td>
+                            
+                            @foreach ($boughtPackages as $boughtPackage)
+                                <tr id="did{{ $package->id }}">
+                                    <td>{{ $package->id }}</td>
+                                    <td>{{ $package->name }} </td>
+                                    <td>{{ ($package->price) / 100 }} $ </td>
+                                    <td>{{ $package->sessions_number }}</td>
+                                    <td>{{$package->user? $package->user->name: "Not found"}}</td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-info btn-sm" href="{{ route('cityManager.show', $user['id']) }}">
+                                        <a class="btn btn-info btn-sm"
+                                            href="{{ route('trainingPackeges.show_training_package', $package['id']) }}">
+
                                             <i class="fa fa-eye"></i>
                                         </a>
                                         <a class="btn btn-warning btn-sm text-white"
-                                            href="{{ route('cityManager.edit', $user['id']) }}">
+                                            href="{{ route('trainingPackeges.editPackege', $package['id']) }}">
                                             <i class="fas fa-pencil-alt"></i></a>
+                                            <a href = "{{ route('PaymentPackage.stripe') }}" class="btn btn-info btn-sm" >Buy </a>
 
-                                        <a href="javascript:void(0)" onclick="deletecityManager({{ $user->id }})"
+                                        <a href="javascript:void(0)" onclick="deletePackage({{ $package->id }})"
                                             class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -78,10 +86,10 @@
     </div>
     <!-- /.content-wrapper -->
     <script>
-        function deletecityManager(id) {
+        function deletePackage(id) {
             if (confirm("Do you want to delete this record?")) {
                 $.ajax({
-                    url: '/cityManager/' + id,
+                    url: '/trainingPackeges/' + id,
                     type: 'DELETE',
                     data: {
                         _token: $("input[name=_token]").val()

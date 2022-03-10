@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\TrainingSession;
 use App\Models\User;
 use Yajra\DataTables\Facades\DataTables;
+use Session;
+use Illuminate\Support\Facades\Redirect;
 
 
 class TrainingController extends Controller
@@ -19,10 +21,12 @@ class TrainingController extends Controller
     public function index()
     {
         $trainingSessions = TrainingSession::all();
+      
         if (count($trainingSessions) <= 0) { //for empty statement
             return view('empty');
         }
-        return view('TrainingSessions.listSessions', ['trainingSessions' => $trainingSessions]);
+
+        return view('TrainingSessions.listSessions', ['trainingSessions' => $trainingSessions ]);
     }
 
     // public function getSession(Request $request) {
@@ -67,12 +71,18 @@ class TrainingController extends Controller
     #=======================================================================================#
     public function store(Request $request)
     {
+
+        // $user = User::find($request->coach_id);
+       dd($request);
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
+
             'day' => ['required','date','after_or_equal:today'],
             'starts_at' => ['required'],
             'finishes_at' => ['required'],
 
+
+            ],
         ]);
 
 
@@ -91,8 +101,11 @@ class TrainingController extends Controller
         if(count($validate_old_seesions) > 0)
             dd($validate_old_seesions);
         $requestData = request()->all();
+        // $user = User::findOrFail($request->coach_id);
+        // $user->TrainingSessions()->attach($request->training_session_id); 
         TrainingSession::create($requestData);
         return redirect()->route('TrainingSessions.listSessions');
+
     }
     #=======================================================================================#
     #			                             show                                         	#

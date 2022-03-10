@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CityRequest;
 use App\Models\City;
 use App\Models\Gym;
 use App\Models\Revenue;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
@@ -27,12 +29,14 @@ class CityController extends Controller
     public function show($cityID)
     {
         $totalRevenue = 0;
-        $citiesManagers = "";
         $gymsManagers = 0;
         $coaches = 0;
         $users = 0;
 
-        $userOfCity = City::find($cityID)->users;
+        $cityData = City::find($cityID);
+        $userOfCity = $cityData->users;
+
+        $citiesManagers = User::find($cityData->manager_id);
 
         foreach ($userOfCity as $usersID) {
             $totalRevenue += (Revenue::where('user_id', '=', $usersID['id'])->sum('price')) / 100;
@@ -43,9 +47,7 @@ class CityController extends Controller
 
         //get users by type in cityManager city
         foreach ($userOfCity as $singleUser) {
-            if ($singleUser->hasRole('cityManager')) {
-                $citiesManagers = $singleUser;
-            } elseif ($singleUser->hasRole('gymManager')) {
+            if ($singleUser->hasRole('gymManager')) {
                 $gymsManagers++;
             } elseif ($singleUser->hasRole('coach')) {
                 $coaches++;
@@ -61,5 +63,33 @@ class CityController extends Controller
             'users' => $users,
             'revenueInDollars' => $revenueInDollars,
         ]);
+    }
+    #=======================================================================================#
+    #			                          create Function                                   #
+    #=======================================================================================#
+    public function create()
+    {
+        $cityManagers =  User::select('users.*', 'cities.manager_id')
+            ->role('cityManager')
+            ->withoutBanned()
+            ->leftJoin('cities', 'users.id', '=', 'cities.manager_id')
+            ->whereNull('cities.manager_id')
+            ->get();
+        return view("city.create", ['cityManagers' => $cityManagers]);
+    }
+    #=======================================================================================#
+    #			                          store Function                                   #
+    #=======================================================================================#
+    public function store(CityRequest $request)
+    {
+        $requestData = request()->all();
+        if ($requestData['manager_id'] == 0) {
+            City::create([
+                'name' => $requestData['name'],
+            ]);
+        } else {
+            City::create($requestData);
+        }
+        return $this->list();
     }
 }

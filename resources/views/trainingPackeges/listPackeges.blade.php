@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>All Sessions</h1>
+                        <h1>All Packages</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -48,6 +48,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            
                             @foreach ($packages as $package)
                                 <tr id="did{{ $package->id }}">
                                     <td>{{ $package->id }}</td>
@@ -64,6 +65,7 @@
                                         <a class="btn btn-warning btn-sm text-white"
                                             href="{{ route('trainingPackeges.editPackege', $package['id']) }}">
                                             <i class="fas fa-pencil-alt"></i></a>
+                                            <a href = "{{ route('PaymentPackage.stripe') }}" class="btn btn-info btn-sm" >Buy </a>
 
                                         <a href="javascript:void(0)" onclick="deletePackage({{ $package->id }})"
                                             class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
