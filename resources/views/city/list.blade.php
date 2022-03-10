@@ -50,7 +50,7 @@
                                     <td class="project-state">{{ $city->id }}</td>
                                     <td class="project-state">{{ $city->name }}</td>
                                     @if ($city->manager == null)
-                                        <td class="project-state">This city has no manager</td>
+                                        <td class="project-state">This city has no Manager</td>
                                     @else
                                         <td class="project-state">{{ $city->manager->name }}</td>
                                     @endif
