@@ -3,6 +3,15 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper pb-4">
+    @if ($errors->any())
+    <div class="alert bg-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
