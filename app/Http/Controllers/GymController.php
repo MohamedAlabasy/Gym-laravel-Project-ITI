@@ -10,7 +10,7 @@ use App\Http\Requests\UpdateGymRequest;
 
 use App\Models\Gym;
 use App\Models\User;
-
+use Illuminate\Support\Facades\File;
 class GymController extends Controller
 {
     #=======================================================================================#
@@ -94,14 +94,24 @@ class GymController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
+            'cover_image' => ['required', 'mimes:jpg,jpeg'],
             
         ]);
+        $gym = new Gym();
+        $gym->name = $request->name;
 
-        Gym::where('id', $id)->update([
-            'name' => $request->all()['name'],
-            'id' => $request->user_id,
-        ]);
-        return redirect()->route('gym.list');
+        $file=$request->file('cover_image');
+        $filename = time() .\Str::random(30).'.'.$file->getClientOriginalExtension();
+        $destination = public_path('/imgs');
+        $file->move($destination,$filename);
+        $file='imgs'.$filename;
+        
+        if(isset( $gym->cover_image))
+        File::delete(public_path('imgs/' . $gym->cover_image));
+       $gym->cover_image=$file;
+
+       $gym->save();
+       return redirect()->route('gym.list');
     }
 
 

@@ -53,7 +53,7 @@
                                     <td class="project-state">{{ $gym->name }}</td>
                                      <td class="project-state">
                                         
-                                        <span class="project-state">{{ $gym->city->name }}</span>
+                                        {{-- <span class="project-state">{{ $gym->city->name }}</span> --}}
                                     </td>
                                     <td class="project-state">{{ $gym->created_at->format('d - M - Y') }}</td>
                                     <td class="project-state">

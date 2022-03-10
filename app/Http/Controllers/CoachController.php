@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Gym;
-
 use App\Models\User;
+use Illuminate\Support\Facades\File;
 
 class CoachController extends Controller
 {
@@ -54,11 +53,11 @@ class CoachController extends Controller
 
         if ($request->hasFile('profile_image'))
         {
-             $file=$request->file('profile_image');
-             $filename = time() .\Str::random(30).'.'.$file->getClientOriginalExtension();
-             $destination = $file->getClientOriginalExtension();
-             $file->move($destination,$filename);
-             $file='imgs'.$filename;
+            $file=$request->file('profile_image');
+            $filename = time() .\Str::random(30).'.'.$file->getClientOriginalExtension();
+            $destination = public_path('/imgs');
+            $file->move($destination,$filename);
+            $file='imgs'.$filename;
              
         }
         
@@ -88,24 +87,36 @@ class CoachController extends Controller
     //Update Function
     public function update(Request $request, $id)
     {
-        $request->validate([
 
-            'name' => ['required', 'string', 'min:2'],
-
+        $user=User::find($id);
+        $validated = $request->validate([
+            'name' => 'required|max:50',
+            'email' => 'required|string|unique:users,email,' . $user->id,
+            'profile_image' => 'required|image|mimes:jpg,jpeg',
         ]);
 
+       
+        $user->name=$request->name;
+        $user->email=$request->email;
+    
+            $file=$request->file('profile_image');
+             $filename = time() .\Str::random(30).'.'.$file->getClientOriginalExtension();
+             $destination = public_path('/imgs');
+             $file->move($destination,$filename);
+             $file='imgs'.$filename;
+             
+             if(isset( $user->profile_image))
+             File::delete(public_path('imgs/' . $user->profile_image));
+            $user->profile_image=$file;
 
-        User::where('id', $id)->update([
-
-            'name' => $request->all()['name'],
-            'email' => $request->email,
-
-
-
-        ]);
+             
+            
+        
+        $user->save();
         return redirect()->route('coach.list');
     }
 
+  
     // Delete Function
 
     public function deleteCoach($id)
