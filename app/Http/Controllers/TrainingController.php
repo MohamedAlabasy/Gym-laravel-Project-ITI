@@ -76,13 +76,11 @@ class TrainingController extends Controller
        dd($request);
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
-
             'day' => ['required','date','after_or_equal:today'],
             'starts_at' => ['required'],
             'finishes_at' => ['required'],
 
 
-            ],
         ]);
 
 
