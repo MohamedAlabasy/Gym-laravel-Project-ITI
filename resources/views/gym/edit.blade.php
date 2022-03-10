@@ -48,12 +48,8 @@
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" id="name" class="form-control" value="{{$gym->name}}" name="name">
-
-                               
-                            </div>
-                           
-
-                             <div class="form-group">
+                        </div>
+                           <div class="form-group">
                                 <label class="form-label">User</label>
                                 <select class="form-control" name="user_id">
                                      @foreach($users as $user) 

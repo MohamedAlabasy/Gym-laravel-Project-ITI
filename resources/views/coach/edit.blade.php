@@ -1,6 +1,5 @@
 @extends('layouts.user-layout')
 @section('content')
-
 @if ($errors->any())
 <div class="w-4/8 m-auto text-center">
     @foreach ($errors->all() as $error)
@@ -40,8 +39,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">Editing</h3>
                                 <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"
-                                        title="Collapse">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"title="Collapse">
                                         <i class="fas fa-minus"></i>
                                     </button>
                                 </div>
@@ -51,8 +49,6 @@
                                     <label for="name">Name</label>
                                     <input type="text" id="name" class="form-control" value="{{ $coach->name }}" name="name">
                                  </div>
-                                   
-                                </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <input type="email" id="email" class="form-control" value="{{ $coach->email }}" name="email">
