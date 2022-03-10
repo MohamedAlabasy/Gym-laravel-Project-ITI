@@ -1,29 +1,18 @@
 @extends('layouts.user-layout')
 @section('content')
-
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper pb-4">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                     <div class="col-sm-6">
-                        <h1>Edit City</h1>
+                        <h1>New City</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Edit City</li>
+                            <li class="breadcrumb-item active">Create New City</li>
                         </ol>
                     </div>
                 </div>
@@ -31,13 +20,16 @@
         </section>
         <!-- Main content -->
         <section class="content">
-            <form action="" method="post" class="w-75 m-auto">
+            <form action="{{ route('city.update', $cityData->id) }}" method="post" class="w-75 m-auto">
+
+
                 @csrf
+                @method('put')
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Edit</h3>
+                                <h3 class="card-title">Create</h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse"
                                         title="Collapse">
@@ -47,41 +39,46 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" id="name" class="form-control" name="name" value="">
+                                    <label class="form-label" for="name">Name</label>
+                                    <input required minlength="4" maxlength="100" type="text" id="name" name="name"
+                                        class=" form-control @error('name') is-invalid @enderror"
+                                        value="{{ $cityData->name }}">
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="manager">Manger</label>
-                                    <select class="form-control" id="manager" value="">
-                                        <option>Value 1</option>
-                                        <option>Value 2</option>
-                                        <option>Value 3</option>
+                                    <label for="manager_id">City Manger</label>
+                                    <select required class=" form-control @error('manager_id') is-invalid @enderror"
+                                        name="manager_id" id="manager_id">
+                                        <option value="{{ $cityData->manager->id }}">
+                                            {{ $cityData->manager->name }}
+                                        </option>
+                                        <option value='null'>Remove City Manager</option>
+                                        <optgroup label="Available City Managers">
+                                            @foreach ($cityManagers as $manager)
+                                                <option value={{ $manager->id }}>{{ $manager->name }}</option>
+                                            @endforeach
+                                        </optgroup>
                                     </select>
+                                    @error('manager_id')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="city_manager">City Manger</label>
-                                    <select class="form-control" id="city_manager" value="">
-                                        <option>Value 1</option>
-                                        <option>Value 2</option>
-                                        <option>Value 3</option>
-                                    </select>
+                                <div class="col-12">
+                                    <a href="{{ url()->previous() }}" class="btn btn-secondary">Cancel</a>
+                                    <input type="submit" value="Update" class="btn btn-primary float-right">
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="gym">Gym Name</label>
-                                <input type="text" id="gym" class="form-control" name="gym" value="">
                             </div>
                         </div>
                     </div>
                 </div>
+            </form>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <a href="#" class="btn btn-secondary">Cancel</a>
-            <input type="submit" value="Save Changes" class="btn btn-success float-right">
-        </div>
-    </div>
-    </form>
     </section>
     </div>
 @endsection

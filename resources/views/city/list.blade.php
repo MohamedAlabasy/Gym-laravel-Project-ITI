@@ -39,6 +39,7 @@
                             <tr>
                                 <th class="project-state"> ID </th>
                                 <th class="project-state"> City Name</th>
+                                <th class="project-state"> City Manager Name</th>
                                 <th class="project-state">Created at</th>
                                 <th class="project-state"></th>
                             </tr>
@@ -48,6 +49,11 @@
                                 <tr>
                                     <td class="project-state">{{ $city->id }}</td>
                                     <td class="project-state">{{ $city->name }}</td>
+                                    @if ($city->manager == null)
+                                        <td class="project-state">This city has no Manager</td>
+                                    @else
+                                        <td class="project-state">{{ $city->manager->name }}</td>
+                                    @endif
                                     <td class="project-state">{{ $city->created_at->format('d - M - Y') }}</td>
                                     <td class="project-actions project-state">
                                         <a class="btn btn-info btn-sm" href="{{ route('city.show', $city->id) }}">

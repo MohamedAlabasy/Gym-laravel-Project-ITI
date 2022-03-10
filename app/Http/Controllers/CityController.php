@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CityRequest;
+use App\Http\Requests\UpdateCityRequest;
 use App\Models\City;
 use App\Models\Gym;
 use App\Models\Revenue;
@@ -69,12 +70,7 @@ class CityController extends Controller
     #=======================================================================================#
     public function create()
     {
-        $cityManagers =  User::select('users.*', 'cities.manager_id')
-            ->role('cityManager')
-            ->withoutBanned()
-            ->leftJoin('cities', 'users.id', '=', 'cities.manager_id')
-            ->whereNull('cities.manager_id')
-            ->get();
+        $cityManagers = $this->selectCityManagers();
         return view("city.create", ['cityManagers' => $cityManagers]);
     }
     #=======================================================================================#
@@ -91,5 +87,42 @@ class CityController extends Controller
             City::create($requestData);
         }
         return $this->list();
+    }
+    #=======================================================================================#
+    #			                          edit Function                                     #
+    #=======================================================================================#
+    public function edit($cityID)
+    // (CityRequest $request)
+    {
+        $cityData = City::find($cityID);
+        $cityManagers = $this->selectCityManagers();
+        return view('city.edit', ['cityData' => $cityData, 'cityManagers' => $cityManagers]);
+    }
+    #=======================================================================================#
+    #			                          edit Function                                     #
+    #=======================================================================================#
+    public function update($cityID, UpdateCityRequest $request)
+    {
+        $fetchData = request()->all();
+        $flight = City::find($cityID);
+        $flight->name = $fetchData['name'];
+        if ($fetchData['manager_id'] == 'null') {
+            $flight->manager_id = null;
+        }
+        $flight->manager_id = $fetchData['manager_id'];
+        $flight->save();
+        return $this->list();
+    }
+    #=======================================================================================#
+    #			            private Function used in this controller                        #
+    #=======================================================================================#
+    private function selectCityManagers()
+    {
+        return User::select('users.*', 'cities.manager_id')
+            ->role('cityManager')
+            ->withoutBanned()
+            ->leftJoin('cities', 'users.id', '=', 'cities.manager_id')
+            ->whereNull('cities.manager_id')
+            ->get();
     }
 }

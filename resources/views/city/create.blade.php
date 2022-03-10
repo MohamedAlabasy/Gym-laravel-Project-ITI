@@ -37,7 +37,7 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label class="form-label" for="name">Name</label>
-                                    <input autofocus required minlength="3" maxlength="100" type="text" id="name"
+                                    <input autofocus required minlength="4" maxlength="100" type="text" id="name"
                                         name="name" class=" form-control @error('name') is-invalid @enderror">
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -52,8 +52,8 @@
                                         name="manager_id" id="manager_id">
                                         <optgroup label="Available City Managers">
                                             <option value="0" hidden>optional</option>
-                                            @foreach ($cityManagers as $managers)
-                                                <option value={{ $managers->id }}>{{ $managers->name }}</option>
+                                            @foreach ($cityManagers as $city)
+                                                <option value={{ $manager->id }}>{{ $manager->name }}</option>
                                             @endforeach
                                         </optgroup>
                                     </select>

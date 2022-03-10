@@ -2,11 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Models\City;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class CityRequest extends FormRequest
+class UpdateCityRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,14 +24,19 @@ class CityRequest extends FormRequest
      */
     public function rules()
     {
+        $product = $this->input('id');
+        dd($product);
+        // dd($this->manager_id);
         return [
             'name' => [
-                'required', 'min:4', 'max:100', 'unique:cities,name',
+                'required', 'min:4', 'max:100',
+                // Rule::unique('cities', 'id')->ignore($this->id),
                 //                'not_regex:<\s*a[^>]*>(.*?)<\s*/\s*a>'
             ],
             'manager_id' => [
-                'unique:cities,manager_id', 'exists:users,id',
-                //     //    'not_regex:<\s*a[^>]*>(.*?)<\s*/\s*a>'
+                'exists:users,id',
+                Rule::unique('cities', 'manager_id')->ignore(2),
+                //'not_regex:<\s*a[^>]*>(.*?)<\s*/\s*a>'
             ],
         ];
     }

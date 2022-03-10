@@ -61,7 +61,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="image">Image Cover</label>
-                                    <input type="file" class="form-control" id="image" name="profile_image">
+                                    <input type="file" class="form-control" id="image" name="profile_image" value="{{old('profile_image') ?? asset($coach->profile_image)}}">
                                 </div>
                             </div>
                         </div>
