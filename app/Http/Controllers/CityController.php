@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CityRequest;
 use App\Models\City;
 use App\Models\Gym;
 use App\Models\Revenue;
@@ -79,8 +80,16 @@ class CityController extends Controller
     #=======================================================================================#
     #			                          store Function                                   #
     #=======================================================================================#
-    public function store()
+    public function store(CityRequest $request)
     {
-     
+        $requestData = request()->all();
+        if ($requestData['manager_id'] == 0) {
+            City::create([
+                'name' => $requestData['name'],
+            ]);
+        } else {
+            City::create($requestData);
+        }
+        return $this->list();
     }
 }
