@@ -119,11 +119,6 @@ class UserController extends Controller
             'comment' => 'كيفي كدا',
             'expired_at' => '+3 month',
         ]);
-        // $users = User::onlyBanned()->get();
-        // $users = User::withBanned()->get();
-        // $users = User::withoutBanned()->get();
-        // dd($users);
-        // dd(User::findOrFail(102)->ban());
         return back();
     }
     public function listBanned()
@@ -132,7 +127,7 @@ class UserController extends Controller
         if (count($allBannedUser) <= 0) { //for empty statement
             return view('empty');
         }
-        return view('user.showBanned', [
+        return view('ban.showBanned', [
             'banUsers' => $allBannedUser,
         ]);
     }
