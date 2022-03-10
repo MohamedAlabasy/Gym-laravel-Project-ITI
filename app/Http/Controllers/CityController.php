@@ -92,4 +92,19 @@ class CityController extends Controller
         }
         return $this->list();
     }
+    #=======================================================================================#
+    #			                          edit Function                                   #
+    #=======================================================================================#
+    public function edit(CityRequest $request)
+    {
+        $requestData = request()->all();
+        if ($requestData['manager_id'] == 0) {
+            City::create([
+                'name' => $requestData['name'],
+            ]);
+        } else {
+            City::create($requestData);
+        }
+        return $this->list();
+    }
 }
