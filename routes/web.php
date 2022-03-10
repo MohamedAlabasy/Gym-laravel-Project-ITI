@@ -180,7 +180,7 @@ Route::get('/cities/{cityID}/edit', [CityController::class, 'edit'])->name('city
 Route::put('/cities/{cityID}', [CityController::class, 'update'])->name('city.update')->middleware('auth')->middleware('logs-out-banned-user');
 
 //DELETE 	/city/{cityID} 	destroy 	city.destroy
-// Route::delete('/cities/{cityID}', [CityController::class, 'destroy'])->name('city.destroy')->middleware('auth')->middleware('logs-out-banned-user');
+Route::delete('/cities/{cityID}', [CityController::class, 'destroy'])->name('city.destroy')->middleware('auth')->middleware('logs-out-banned-user');
 
 #=======================================================================================#
 #			                            empty statement                                 #

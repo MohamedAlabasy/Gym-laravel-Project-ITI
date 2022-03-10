@@ -106,13 +106,16 @@ class CityController extends Controller
         $fetchData = request()->all();
         $flight = City::find($cityID);
         $flight->name = $fetchData['name'];
-        if ($fetchData['manager_id'] == 'null') {
+        if ($fetchData['manager_id'] == 'null')
             $flight->manager_id = null;
-        }
-        $flight->manager_id = $fetchData['manager_id'];
+        else
+            $flight->manager_id = $fetchData['manager_id'];
         $flight->save();
         return $this->list();
     }
+
+   
+
     #=======================================================================================#
     #			            private Function used in this controller                        #
     #=======================================================================================#

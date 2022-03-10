@@ -52,7 +52,7 @@
                                         name="manager_id" id="manager_id">
                                         <optgroup label="Available City Managers">
                                             <option value="0" hidden>optional</option>
-                                            @foreach ($cityManagers as $city)
+                                            @foreach ($cityManagers as $manager)
                                                 <option value={{ $manager->id }}>{{ $manager->name }}</option>
                                             @endforeach
                                         </optgroup>
