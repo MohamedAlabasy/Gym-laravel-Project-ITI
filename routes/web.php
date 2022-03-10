@@ -176,7 +176,7 @@ Route::get('/cities/{cityID}', [CityController::class, 'show'])->name('city.show
 //GET 	/city/{cityID}/edit 	edit 	city.edit
 Route::get('/cities/{cityID}/edit', [CityController::class, 'edit'])->name('city.edit')->middleware('auth')->middleware('logs-out-banned-user');
 //PUT/PATCH, 	/city/{cityID}, 	update, 	city.update
-// Route::put('/cities/{cityID}', [CityController::class, 'update'])->name('city.update')->middleware('auth')->middleware('logs-out-banned-user');
+Route::put('/cities/{cityID}', [CityController::class, 'update'])->name('city.update')->middleware('auth')->middleware('logs-out-banned-user');
 
 //DELETE 	/city/{cityID} 	destroy 	city.destroy
 // Route::delete('/cities/{cityID}', [CityController::class, 'destroy'])->name('city.destroy')->middleware('auth')->middleware('logs-out-banned-user');
