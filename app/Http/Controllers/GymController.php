@@ -50,19 +50,18 @@ class GymController extends Controller
             'name' => ['required', 'string', 'min:2'],
             'cover_image' =>'required|image|mimes:jpg,jpeg',
             ]);
+            if ($request->hasFile('cover_image')) {
+                $image = $request->file('cover_image');
+                $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
+                $destinationPath = public_path('/imgs');
+                $image->move($destinationPath, $name);
+                $imageName = 'imgs/' . $name;
+            }
+        
 
-        if ($request->hasFile('cover_image'))
-        {
-             $file=$request->file('cover_image');
-             $filename = time() .\Str::random(30).'.'.$file->getClientOriginalExtension();
-             $destination = public_path('/imgs');
-             $file->move($destination,$filename);
-             $file='imgs'.$filename;
-             
-        }
         $gym = new Gym();
         $gym->name = $request->name;
-        $gym->cover_image = $file;
+        $gym->cover_image = $imageName;
         $gym->save();
         return redirect()->route('gym.list');
     }
@@ -84,39 +83,36 @@ class GymController extends Controller
     //Update Function
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'min:2'],
-            'cover_image' => [ 'mimes:jpg,jpeg'],
-            
-        ]);
-        
         $gym=Gym::find($id);
-         $gym->name = $request->name;
-         //$user->user_id = $request->user_id;
-         
-         if($request->hasFile('cover_image')){
-            $file=$request->file('cover_image');
-            
-            $filename=time().\Str::random(30).'.'.$file->getClientOriginalExtension();
-            $destination=public_path('/imgs');
-            $file->move($destination,$filename);
-            $file='imgs'.$filename;
-            
+        $validated = $request->validate([
+            'name' => 'required|max:20',
+           
+            'cover_image' => 'required|image|mimes:jpg,jpeg',
+        ]);
+
+       
+        $gym->name=$request->name;
+       
+       
+    
+
+        if($request->hasFile('cover_image')){
+            $image=$request->file('cover_image');
+            $name=time().\Str::random(30).'.'.$image->getClientOriginalExtension();
+            $destinationPath=public_path('/imgs');
+            $image->move($destinationPath,$name);
+            $imageName='imgs/'.$name;
             if(isset( $gym->cover_image))
-            File::delete(public_path('imgs/' . $gym->cover_image));
-            $gym->cover_image=$filename;
+                  File::delete(public_path('imgs/' . $gym->cover_image));
+                $gym->cover_image=$imageName;
             
         }
         $gym->save();
         return redirect()->route('gym.list');
+
+
+        
     }
-
-
-    
-       
-    //    return redirect()->route('gym.list');
-    
-
 
     //Delete Function
 

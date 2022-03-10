@@ -38,7 +38,7 @@
                             <p class="my-3">{{$singleGym->name}}</p>
                             <p class="my-3">{{$singleGym->city->name}}</p>
                             <p class="my-3">{{$singleGym->created_at}}</p>
-                            <p><img alt="Avatar" class="table-avatar" src="{{$singleGym->cover_image}}"></p>
+                            <p><img alt="Avatar" src="{{$singleGym->cover_image}}"></p>
                         <div class="project-actions mt-5">
                                 <a class="btn btn-info btn-sm" href="#">
                                     <i class="fa fa-eye"></i>
