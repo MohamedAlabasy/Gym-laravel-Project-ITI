@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use Illuminate\Http\Request;
 use App\Models\Gym;
 use App\Models\User;
@@ -33,8 +34,11 @@ class CoachController extends Controller
     //Create Function
     public function create()
     {
-            return view('coach.create', [
-            'users' => User::all(),
+        $coaches = User::all();
+        $cities = City::all();
+        return view('coach.create', [
+            'users' => $coaches,
+            'cities' => $cities,
         ]);
     }
 
@@ -49,6 +53,7 @@ class CoachController extends Controller
             'profile_image' => ['required', 'mimes:jpg,jpeg'],
 
         ]);
+
 
         if ($request->hasFile('profile_image'))
         {
@@ -90,13 +95,12 @@ class CoachController extends Controller
     public function update(Request $request, $id)
     {
 
-        $user=User::find($id);
+        $user = User::find($id);
         $validated = $request->validate([
             'name' => 'required|max:50',
             'email' => 'required|string|unique:users,email,' . $user->id,
             'profile_image' => 'mimes:jpg,jpeg',
         ]);
-
        
         $user->name=$request->name;
         $user->email=$request->email;
@@ -117,7 +121,7 @@ class CoachController extends Controller
         return redirect()->route('coach.list');
     }
 
-  
+
     // Delete Function
 
     public function deleteCoach($id)
