@@ -53,7 +53,11 @@
                                     <td class="project-state">{{ $gym->name }}</td>
                                      <td class="project-state">
                                         
-                                        {{-- <span class="project-state">{{ $gym->city->name }}</span> --}}
+                                        @if ($gym->city == null)
+                                        <span class="project-state">this gym has no city</span>
+                                    @else
+                                        <span class="project-state">{{ $gym->city->name }}</span>
+                                    @endif
                                     </td>
                                     <td class="project-state">{{ $gym->created_at->format('d - M - Y') }}</td>
                                     <td class="project-state">
