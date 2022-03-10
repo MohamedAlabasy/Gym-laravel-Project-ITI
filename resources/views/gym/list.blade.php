@@ -53,14 +53,15 @@
                                     <td class="project-state">{{ $gym->name }}</td>
                                      <td class="project-state">
                                         
-                                        <span class="project-state">{{ $gym->city->name }}</span>
+                                        {{-- <span class="project-state">{{ $gym->city->name }}</span> --}}
                                     </td>
                                     <td class="project-state">{{ $gym->created_at->format('d - M - Y') }}</td>
                                     <td class="project-state">
-                                        <img alt="Avatar" class="table-avatar" src="{{ $gym->cover_image }}">
+                                        <img alt="Avatar" class="table-avatar" src="{{asset( $gym->cover_image )}}">
+                                        
                                     </td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-info btn-sm" href="#">
+                                        <a class="btn btn-info btn-sm" href="{{ route('gym.show', $gym['id']) }}">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                              <a class="btn btn-warning btn-sm text-white"

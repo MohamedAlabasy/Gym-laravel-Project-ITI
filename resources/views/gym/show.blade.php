@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Show</h1>
+                    <h1>Show {{$singleGym->id}}</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -34,11 +34,11 @@
                     </div>
                     <div class="col-12 col-sm-6 d-flex  align-items-center">
                         <div>
-                            <p class="my-3">id</p>
-                            <p class="my-3">Gyms Name</p>
-                            <p class="my-3">Gym City</p>
-                            <p class="my-3">Created at</p>
-                            <p class="my-3">Gyms Cover Image</p>
+                            <p class="my-3">{{$singleGym->id}}</p>
+                            <p class="my-3">{{$singleGym->name}}</p>
+                            <p class="my-3">{{$singleGym->city->name}}</p>
+                            <p class="my-3">{{$singleGym->created_at}}</p>
+                            <p><img alt="Avatar" class="table-avatar" src="{{$singleGym->cover_image}}"></p>
                         <div class="project-actions mt-5">
                                 <a class="btn btn-info btn-sm" href="#">
                                     <i class="fa fa-eye"></i>
@@ -46,7 +46,7 @@
                                 <a class="btn btn-warning btn-sm text-white" href="">
                                     <i class="fas fa-pencil-alt"></i></a>
                                 <a href="javascript:void(0)" onclick="deleteGym({{$singleGym->id}})"
-                                    class="btn btn-danger">Delete</a>
+                                    class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                             </div>
                         </div>
                     </div>
