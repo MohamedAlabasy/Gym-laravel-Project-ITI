@@ -75,7 +75,7 @@
                 <div class="col-6 bg-light small-box media text-center">
                     <div>
                         <div class="inner p-2">
-                            <figure>
+                            <figure class="mt-3">
                                 @if ($citiesManagers->profile_image == null)
                                     <i class="fas fa-user-tie " style="font-size: 100px !important"></i>
                                 @else
