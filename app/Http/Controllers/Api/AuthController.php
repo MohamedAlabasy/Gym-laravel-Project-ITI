@@ -103,7 +103,7 @@ class AuthController extends Controller
         $user->birth_date=$request->birth_date ? $request->birth_date:$user->birth_date;
         $user->password=$request->password ? $request->bcrypt($request->password):$user->password;
         $user->profile_image=$request->profile_image;
-        $user->update();
+        $user->save();
         return response()->json([
             'message' => 'Successfully update'
         ]);

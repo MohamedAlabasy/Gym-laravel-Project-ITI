@@ -3,6 +3,7 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper pb-4">
+      
         @if ($errors->any())
             <div class="alert bg-danger">
                 <ul>
