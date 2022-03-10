@@ -28,16 +28,13 @@
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <h6 class="d-inline-block d-sm-none">Coach Name</h6>
-                        <div class="col-12">
-                            <img src="../../dist/img/prod-1.jpg" class="product-image" alt="Product Image">
-                        </div>
                     </div>
                     <div class="col-12 col-sm-6 d-flex  align-items-center">
                         <div>
                             <p class="my-3">{{$singleCoach->id}}</p>
                             <p class="my-3">{{$singleCoach->name}}</p>
                             <p class="my-3">{{$singleCoach->email}}</p>
-                            <p class="my-3">{{$singleCoach->city}}</p>
+                            <p class="my-3">{{$singleCoach->city->name}}</p>
                             <p class="my-3">{{$singleCoach->created_at}}</p>
                             <p class="my-3">{{$singleCoach->profile_image}}</p>
                         
