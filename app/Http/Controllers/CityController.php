@@ -28,7 +28,6 @@ class CityController extends Controller
     public function show($cityID)
     {
         $totalRevenue = 0;
-        $citiesManagers = "";
         $gymsManagers = 0;
         $coaches = 0;
         $users = 0;

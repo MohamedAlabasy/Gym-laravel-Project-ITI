@@ -20,17 +20,17 @@
                 {{-- # ======================================= # Cities # ======================================= # --}}
                 @role('admin')
                     <div class="col-lg-3 col-6">
-                        {{-- <a href="{{ route('') }}"> --}}
-                        <div class="small-box bg-success">
-                            <div class="inner">
-                                <h3>{{ $cities }}</h3>
-                                <p>Cities</p>
+                        <a href="{{ route('city.list') }}">
+                            <div class="small-box bg-success">
+                                <div class="inner">
+                                    <h3>{{ $cities }}</h3>
+                                    <p>Cities</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fas fa-city text-white" style="font-size: 50px !important"></i>
+                                </div>
                             </div>
-                            <div class="icon">
-                                <i class="fas fa-city text-white" style="font-size: 50px !important"></i>
-                            </div>
-                        </div>
-                        {{-- </a> --}}
+                        </a>
                     </div>
                     {{-- # ======================================= # Cities Managers # ======================================= # --}}
                     <div class="col-lg-3 col-6">
