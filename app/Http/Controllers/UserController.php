@@ -122,7 +122,7 @@ class UserController extends Controller
             'comment' => 'كيفي كدا',
             'expired_at' => '+3 month',
         ]);
-        return back();
+        return response()->json(['success' => 'Record deleted successfully!']);
     }
 
     #=======================================================================================#
