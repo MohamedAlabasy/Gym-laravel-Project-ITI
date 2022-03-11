@@ -61,7 +61,7 @@
                                     </td>
                                     <td class="project-actions text-center">
                                         <a href="javascript:void(0)" onclick="unBanUsers({{ $user->id }})"
-                                            class="btn btn-dark btn-sm"><i class="fa fa-user-lock"></i></a>
+                                            class="btn btn-dark btn-sm"><i class="fas fa-unlock"></i></a>
 
                                     </td>
                                 </tr>

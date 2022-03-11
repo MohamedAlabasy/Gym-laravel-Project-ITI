@@ -50,9 +50,10 @@
                             <td class="project-state">{{ $city->name }}</td>
                             <td class="project-state">{{ $city->deleted_at->format('d - M - Y') }}</td>
                             <td class="project-actions project-state">
-                                <a class="btn btn-danger btn-sm" href="{{ route('city.restored', $city->id) }}" data-toggle="modal" data-target="#modal-danger">
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
                                     <i class="fas fa-unlock"></i>
-                                </a>
+                                </button>
                             </td>
                         </tr>
                         @endforeach
@@ -61,35 +62,38 @@
             </div>
             <!-- /.card-body -->
         </div>
-        <!-- /.card -->
 
-    </section>
-</div>
-<!-- /.content-wrapper -->
-<div class="modal fade" id="modal-danger">
-    <div class="modal-dialog">
-        <div class="modal-content bg-danger">
-            <div class="modal-header">
-                <h4 class="modal-title">Danger Modal</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Are you shure you want to delete this item??</p>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-outline-light">Save changes</button>
+        <!-- /.card -->
+        <!-- ##################################Start Modal ##################################-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content bg-danger">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Deleting</h4>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you shure you want to delete this item??</p>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-outline-light" data-dismiss="modal">Close</button>
+                            <a href="{{ route('city.restored', $city->id) }}" class="btn btn-outline-light">Delete</a>
+                        </div>
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
             </div>
         </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
+        <!-- ##################################Start Modal ##################################-->
+    </section>
+
 </div>
+<!-- /.content-wrapper -->
 @endsection
-
-
 <!-- <script>
     function deleteGym(id) {
         if (confirm("Do you want to delete this record?")) {
