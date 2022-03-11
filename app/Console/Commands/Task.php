@@ -6,8 +6,8 @@ use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Notifications\MissUserNotification;
-
-class TaskSchedualing extends Command implements ShouldQueue
+use Carbon\Carbon;
+class Task extends Command implements ShouldQueue
 
 {
     /**
@@ -42,15 +42,17 @@ class TaskSchedualing extends Command implements ShouldQueue
      *
      * @return int
      */
+
     public function handle()
     {
         $users=User::whereDate('last_login_at' ,'<' ,Carbon::now()->subDays(30)->toDateTimeString())->get();
-        //convert date time to string //to compare //carbon work to get time // to get date and time now
 
         foreach ($users as $user ) {
             $user->notify(new MissUserNotification($user));
+
         }
 
 
     }
+
 }

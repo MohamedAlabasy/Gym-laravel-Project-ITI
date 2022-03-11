@@ -355,29 +355,11 @@
                         </li>
                         {{-- # ======================================= # Attendance # ======================================= # --}}
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/listHistory" class="nav-link">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p> Attendance </p>
-                                <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="pages/mailbox/mailbox.html" class="nav-link">
-                                        <p>Inbox</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/mailbox/compose.html" class="nav-link">
-                                        <p>Compose</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/mailbox/read-mail.html" class="nav-link">
-                                        <p>Read</p>
-                                    </a>
-                                </li>
-                            </ul>
                             </a>
                         </li>
                         {{-- # ======================================= # Banned Users # ======================================= # --}}

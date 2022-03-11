@@ -17,7 +17,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|string|unique:users',
+            'email' => 'required|email|unique:users',
             'gender' => 'required',
             'birth_date' => 'required',
             'profile_image' => 'required|image|mimes:jpg,jpeg',
@@ -89,6 +89,15 @@ class AuthController extends Controller
             //we put here nullable cause user dosn't need to update his pasword every time
         ]);
         if ($request->hasFile('profile_image')) {
+            if($request->hasFile('profile_image')){
+                $image=$request->file('profile_image');
+                $name=time().\Str::random(30).'.'.$image->getClientOriginalExtension();
+                $destinationPath=public_path('/imgs');
+                $image->move($destinationPath,$name);
+                $imageName='imgs/'.$name;
+                if($user->profile_image)
+                    File::delete(public_path('imgs/' . $user->profile_image));
+                $user->profile_image=$imageName;
 
             $image = $request->file('profile_image');
             $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();

@@ -12,17 +12,72 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
+                @role('admin')
                 <div class="row mb-2">
+
                     <div class="col-sm-6">
                         <h4>Admin Profile</h4>
                     </div>
+
+
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Profile City Manger</li>
+                            <li class="breadcrumb-item active"> Admin Profile</li>
                         </ol>
                     </div>
+
                 </div>
+                @endrole
+                @role('cityManager')
+                <div class="row mb-2">
+
+                    <div class="col-sm-6">
+                        <h4>City Manager Profile</h4>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active"> City Manager Profile</li>
+                        </ol>
+                    </div>
+
+                </div>
+                @endrole
+                @role('gymManager')
+                <div class="row mb-2">
+
+                    <div class="col-sm-6">
+                        <h4>Gym Manager Profile</h4>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active"> Gym Manager Profile</li>
+                        </ol>
+                    </div>
+                    @endrole
+                @role('coach')
+                <div class="row mb-2">
+
+                    <div class="col-sm-6">
+                        <h4>coach Profile</h4>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active"> coach Profile</li>
+                        </ol>
+                    </div>
+
+                </div>
+                @endrole
             </div><!-- /.container-fluid -->
         </section>
         <!-- Main content -->
