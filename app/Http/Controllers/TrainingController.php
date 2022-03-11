@@ -90,7 +90,6 @@ class TrainingController extends Controller
             ->orwhereRaw("starts_at > '$request->starts_at' and starts_at < '$request->finishes_at'")
             ->orwhereRaw("finishes_at > '$request->starts_at' and finishes_at < '$request->finishes_at'")
             ->orwhereRaw("starts_at > '$request->starts_at' and finishes_at < '$request->finishes_at'");
-                    ->orwhereRaw("starts_at > '$request->starts_at' and finishes_at < '$request->finishes_at'");
             })->get()->toArray();
 
 
