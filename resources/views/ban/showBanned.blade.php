@@ -62,10 +62,7 @@
                                     <td class="project-actions text-center">
                                         <a href="javascript:void(0)" onclick="unBanUsers({{ $user->id }})"
                                             class="btn btn-dark btn-sm"><i class="fas fa-unlock"></i></a>
-<<<<<<< HEAD
 
-=======
->>>>>>> beb12e7056120268c2737de59488326255ab6d71
                                     </td>
                                 </tr>
                             @endforeach
