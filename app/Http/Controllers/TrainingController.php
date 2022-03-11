@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\TrainingSession;
 use App\Models\User;
 use Yajra\DataTables\Facades\DataTables;
-use Session;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
+
 
 
 class TrainingController extends Controller
@@ -21,12 +21,10 @@ class TrainingController extends Controller
     public function index()
     {
         $trainingSessions = TrainingSession::all();
-      
         if (count($trainingSessions) <= 0) { //for empty statement
             return view('empty');
         }
-
-        return view('TrainingSessions.listSessions', ['trainingSessions' => $trainingSessions ]);
+        return view('TrainingSessions.listSessions', ['trainingSessions' => $trainingSessions]);
     }
 
     // public function getSession(Request $request) {
@@ -71,45 +69,45 @@ class TrainingController extends Controller
     #=======================================================================================#
     public function store(Request $request)
     {
+        //  dd($request->id);
+        // DB::table('training_session_user')->insert($request->user_id,);
 
-        // $user = User::find($request->coach_id);
-       dd($request);
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
-            'day' => ['required','date','after_or_equal:today'],
+            'day' => ['required', 'date', 'after_or_equal:today'],
             'starts_at' => ['required'],
             'finishes_at' => ['required'],
-
 
         ]);
 
 
-        $validate_old_seesions=TrainingSession::where('day', '=', $request->day)->where("starts_at","!=",null)->
-        where("finishes_at","!=",null) ->where(function($q) use ($request){
-            $q->whereRaw("starts_at = '$request->starts_at' and finishes_at ='$request->finishes_at'")
-		->orwhereRaw("starts_at < '$request->starts_at' and finishes_at > '$request->finishes_at'")
-            ->orwhereRaw("starts_at > '$request->starts_at' and starts_at < '$request->finishes_at'")
-            ->orwhereRaw("finishes_at > '$request->starts_at' and finishes_at < '$request->finishes_at'")
 
-            ->orwhereRaw("starts_at > '$request->starts_at' and finishes_at < '$request->finishes_at'");
-
-        })->get()->toArray();
+        $validate_old_seesions = TrainingSession::where('day', '=', $request->day)->where("starts_at", "!=", null)->where("finishes_at", "!=", null)->where(function ($q) use ($request) {
+                $q->whereRaw("starts_at = '$request->starts_at' and finishes_at ='$request->finishes_at'")
+                    ->orwhereRaw("starts_at < '$request->starts_at' and finishes_at > '$request->finishes_at'")
+                    ->orwhereRaw("starts_at > '$request->starts_at' and starts_at < '$request->finishes_at'")
+                    ->orwhereRaw("finishes_at > '$request->starts_at' and finishes_at < '$request->finishes_at'")
+                    ->orwhereRaw("starts_at > '$request->starts_at' and finishes_at < '$request->finishes_at'");
+            })->get()->toArray();
 
 
-        if(count($validate_old_seesions) > 0)
-            dd($validate_old_seesions);
+        if (count($validate_old_seesions) > 0)
+            return back()->withErrors("please check your time")->withInput();
         $requestData = request()->all();
-        // $user = User::findOrFail($request->coach_id);
-        // $user->TrainingSessions()->attach($request->training_session_id); 
-        TrainingSession::create($requestData);
-        return redirect()->route('TrainingSessions.listSessions');
+        $session = TrainingSession::create($requestData);
+        $user_id = $request->input('user_id');
+        $id = $session->id;
+        $data = array('user_id' => $user_id, "training_session_id" => $id);
+        DB::table('training_session_user')->insert($data);
 
+        return redirect()->route('TrainingSessions.listSessions');
     }
     #=======================================================================================#
     #			                             show                                         	#
     #=======================================================================================#
     public function show($id)
     {
+
         $trainingSession = TrainingSession::findorfail($id);
         return view('TrainingSessions.show_training_session', ['trainingSession' => $trainingSession]);
     }
@@ -141,6 +139,21 @@ class TrainingController extends Controller
 
         ]);
 
+        $validate_old_seesions=TrainingSession::where('day', '=', $request->day)->where("starts_at","!=",null)->
+        where("finishes_at","!=",null) ->where(function($q) use ($request){
+            $q->whereRaw("starts_at = '$request->starts_at' and finishes_at ='$request->finishes_at'")
+		    ->orwhereRaw("starts_at < '$request->starts_at' and finishes_at > '$request->finishes_at'")
+            ->orwhereRaw("starts_at > '$request->starts_at' and starts_at < '$request->finishes_at'")
+            ->orwhereRaw("finishes_at > '$request->starts_at' and finishes_at < '$request->finishes_at'")
+            ->orwhereRaw("starts_at > '$request->starts_at' and finishes_at < '$request->finishes_at'");
+
+
+        })->where('id','!=',$id)->get()->toArray();
+
+        if(count($validate_old_seesions) > 0)
+            return back()->withErrors("Time invalid")->withInput();
+
+
 
         TrainingSession::where('id', $id)->update([
 
@@ -159,8 +172,22 @@ class TrainingController extends Controller
     #=======================================================================================#
     public function deleteSession($id)
     {
-        $trainingSession = TrainingSession::findorfail($id);
-        $trainingSession->delete();
-        return response()->json(['success' => 'Record deleted successfully!']);
+        // $session = TrainingSession::find($cityID);
+
+         if (count(DB::select("select * from training_session_user where training_session_id = $id")) == 0) {
+            $trainingSession = TrainingSession::findorfail($id);
+            $trainingSession->delete();
+            return response()->json([
+                'success' => '1'
+            ]);
+          } else {
+            return response()->json(['failed' => '0']);
+
+          }
+
+
+
+       
     }
 }
+

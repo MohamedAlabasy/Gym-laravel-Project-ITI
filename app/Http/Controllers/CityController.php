@@ -79,7 +79,7 @@ class CityController extends Controller
     public function store(CityRequest $request)
     {
         $requestData = request()->all();
-        if ($requestData['manager_id'] == 0) {
+        if ($requestData['manager_id'] == 'optional') {
             City::create([
                 'name' => $requestData['name'],
             ]);
@@ -92,7 +92,6 @@ class CityController extends Controller
     #			                          edit Function                                     #
     #=======================================================================================#
     public function edit($cityID)
-    // (CityRequest $request)
     {
         $cityData = City::find($cityID);
         $cityManagers = $this->selectCityManagers();
@@ -106,13 +105,43 @@ class CityController extends Controller
         $fetchData = request()->all();
         $flight = City::find($cityID);
         $flight->name = $fetchData['name'];
-        if ($fetchData['manager_id'] == 'null') {
+        if ($fetchData['manager_id'] == 'optional')
             $flight->manager_id = null;
-        }
-        $flight->manager_id = $fetchData['manager_id'];
+        else
+            $flight->manager_id = $fetchData['manager_id'];
         $flight->save();
         return $this->list();
     }
+
+    #=======================================================================================#
+    #			                          destroy Function                                  #
+    #=======================================================================================#
+    public function destroy($cityID)
+    {
+        $city = City::find($cityID);
+        $city->delete($cityID);
+        return $this->list();
+    }
+    #=======================================================================================#
+    #			                 restored deleted Cities Function                           #
+    #=======================================================================================#
+    public function showDeleted()
+    {
+        $deletedCity = City::onlyTrashed()->get();
+        if (count($deletedCity) <= 0) { //for empty statement
+            return view('empty');
+        }
+        return view('city.showDeleted', ['deletedCity' => $deletedCity]);
+    }
+    #=======================================================================================#
+    #			                 restore deleted Cities Function                            #
+    #=======================================================================================#
+    public function restore($cityID)
+    {
+        City::withTrashed()->find($cityID)->restore();
+        return $this->showDeleted();
+    }
+
     #=======================================================================================#
     #			            private Function used in this controller                        #
     #=======================================================================================#

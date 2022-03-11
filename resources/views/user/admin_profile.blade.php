@@ -12,17 +12,72 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
+
                 <div class="row mb-2">
+
                     <div class="col-sm-6">
-                        <h4>Admin Profile</h4>
+                        <h4>Profile</h4>
                     </div>
+
+
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Profile City Manger</li>
+                            <li class="breadcrumb-item active"> Admin Profile</li>
                         </ol>
                     </div>
+
                 </div>
+              
+                @role('cityManager')
+                <div class="row mb-2">
+
+                    <div class="col-sm-6">
+                        <h4>City Manager Profile</h4>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active"> City Manager Profile</li>
+                        </ol>
+                    </div>
+
+                </div>
+                @endrole
+                @role('gymManager')
+                <div class="row mb-2">
+
+                    <div class="col-sm-6">
+                        <h4>Gym Manager Profile</h4>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active"> Gym Manager Profile</li>
+                        </ol>
+                    </div>
+                    @endrole
+                @role('coach')
+                <div class="row mb-2">
+
+                    <div class="col-sm-6">
+                        <h4>coach Profile</h4>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active"> coach Profile</li>
+                        </ol>
+                    </div>
+
+                </div>
+                @endrole
             </div><!-- /.container-fluid -->
         </section>
         <!-- Main content -->
@@ -32,7 +87,9 @@
                 <div class="card-body box-profile">
                     <div class="text-center">
                         <img class="profile-user-img img-fluid img-circle"
-                            src="{{ asset(auth()->user()->profile_image) }}" alt="User profile picture">
+                            src="{{ auth()->user()->profileImageFile }}" alt="User profile picture">
+
+
                     </div>
 
                     <h3 class="profile-username text-center">{{ auth()->user()->name }}</h3>

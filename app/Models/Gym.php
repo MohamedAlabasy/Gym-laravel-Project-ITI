@@ -17,7 +17,6 @@ class Gym extends Model
         'cover_image',
         'city_id',
     ];
-
     public function city()
     {
         return $this->belongsTo(City::class);

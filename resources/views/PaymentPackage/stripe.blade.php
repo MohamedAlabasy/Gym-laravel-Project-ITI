@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Buy Package</title>
-    <link rel="stylesheet"
+@extends('layouts.user-layout')
+@section('stripeStyle')
+    {{-- <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> --}}
     <style type="text/css">
-        .container {
+        /* .container {
             margin-top: 40px;
-        }
+            margin-right: 80px;
+
+        } */
 
         .panel-heading {
             display: inline;
@@ -30,12 +29,14 @@
             width: 55%;
         }
     </style>
-</head>
+    @endsection
 
-<body>
 
-    <div class="container">
-        <div class="row">
+@section('content')
+    {{-- @dd($data) --}}
+    @role('admin|cityManager|gymManager')
+    <div class="container ">
+        <div class="mb-2 d-flex justify-content-center align-items-center">
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -59,13 +60,6 @@
 
                             <div class='form-row row'>
                                 <div class='col-xs-12 form-group required'>
-                                    <label class='control-label'>Name on Card</label> <input class='form-control'
-                                        size='4' type='text'>
-                                </div>
-                            </div>
-
-                            <div class='form-row row'>
-                                <div class='col-xs-12 form-group card required'>
                                     <label class='control-label'>Card Number</label> <input autocomplete='off'
                                         class='form-control card-num' size='20' type='text'>
                                 </div>
@@ -85,7 +79,7 @@
                                     <option value="{{ $package->id  }} | {{  $package->price }}">{{ $package->name }} -
                                         {{ $package->price / 100 }}$
 
-                                    </option>
+                                </option>
 
 
                                     @endforeach
@@ -121,7 +115,7 @@
                             </div>
 
                             <div class='form-row row'>
-                                <div class='col-md-12 hide error form-group'>
+                                <div class='col-md-12 error d-none form-group'>
                                     <div class='alert-danger alert'>Fix the errors before you begin.</div>
                                 </div>
                             </div>
@@ -138,9 +132,16 @@
             </div>
         </div>
     </div>
+@endrole
 
-</body>
+@role('coach')
+<div class='col-md-12 error form-group'>
+    <div class='alert-danger alert'>You can't access this</div>
+</div>
+@endrole
+@endsection
 
+@section('stripeScript')
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 <script type="text/javascript">
@@ -155,14 +156,14 @@
                 , $inputs = $form.find('.required').find(inputVal)
                 , $errorStatus = $form.find('div.error')
                 , valid = true;
-            $errorStatus.addClass('hide');
+            $errorStatus.addClass('d-none');
 
             $('.has-error').removeClass('has-error');
             $inputs.each(function(i, el) {
                 var $input = $(el);
                 if ($input.val() === '') {
                     $input.parent().addClass('has-error');
-                    $errorStatus.removeClass('hide');
+                    $errorStatus.removeClass('d-none');
                     e.preventDefault();
                 }
             });
@@ -197,5 +198,4 @@
     });
 
 </script>
-
-</html>
+@endsection

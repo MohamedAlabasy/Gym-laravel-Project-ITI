@@ -29,10 +29,10 @@ class StoreRequest extends FormRequest
 
             'name' => ['required', 'min:5', ],
             'email' => 'required|string|unique:users,email,' . $user->id,
-            'profile_image' => ['required', 'mimes:jpg,jpeg'],
+            'profile_image' => ['nullable','image' ,'mimes:jpg,jpeg'],
 
 
-           
+
 
 
         ];

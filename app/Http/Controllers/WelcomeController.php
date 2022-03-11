@@ -21,7 +21,6 @@ class WelcomeController extends Controller
     {
         $this->userID = Auth::id();
         $this->userData = User::find($this->userID);
-        // dd($this->userData['city_id']);
         $this->userRole = Auth::user()->getRoleNames();
 
 
@@ -81,8 +80,6 @@ class WelcomeController extends Controller
                 break;
             case 'coach':
                 $userOfGym = User::with(['trainingSessions'])->where('id', $this->userID)->first();
-                // dd($userOfGym);
-                // dd($userOfGym->trainingSessions);
                 if (count($userOfGym->trainingSessions) <= 0) { //for empty statement
                     return view('empty');
                 }
@@ -91,17 +88,6 @@ class WelcomeController extends Controller
                 ]);
                 break;
         }
-        // dd(
-        //     "id = $this->userID",
-        //     $this->userRole['0'],
-        //     "cities Number = $this->cities",
-        //     "citiesManagers Number = $this->citiesManagers",
-        //     "gyms Number= $this->gyms",
-        //     "gymsManagers Number =$this->gymsManagers",
-        //     "coaches Number=$this->coaches",
-        //     "users = $this->users",
-        //     "revenueInDollars =$this->revenueInDollars"
-        // );
 
         return view("welcome", [
             'cities' => $this->cities,
