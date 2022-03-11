@@ -102,7 +102,7 @@
         function deletecityManager(id) {
             if (confirm("Do you want to delete this record?")) {
                 $.ajax({
-                    url: '/cityManager/' + id,
+                    url: '/allUsers/' + id,
                     type: 'DELETE',
                     data: {
                         _token: $("input[name=_token]").val()
