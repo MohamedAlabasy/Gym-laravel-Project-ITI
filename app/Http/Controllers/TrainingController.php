@@ -85,16 +85,15 @@ class TrainingController extends Controller
         $validate_old_seesions=TrainingSession::where('day', '=', $request->day)->where("starts_at","!=",null)->
         where("finishes_at","!=",null) ->where(function($q) use ($request){
             $q->whereRaw("starts_at = '$request->starts_at' and finishes_at ='$request->finishes_at'")
-		->orwhereRaw("starts_at < '$request->starts_at' and finishes_at > '$request->finishes_at'")
+		    ->orwhereRaw("starts_at < '$request->starts_at' and finishes_at > '$request->finishes_at'")
             ->orwhereRaw("starts_at > '$request->starts_at' and starts_at < '$request->finishes_at'")
             ->orwhereRaw("finishes_at > '$request->starts_at' and finishes_at < '$request->finishes_at'")
-
             ->orwhereRaw("starts_at > '$request->starts_at' and finishes_at < '$request->finishes_at'");
 
         })->get()->toArray();
 
         if(count($validate_old_seesions) > 0)
-        return back()->withErrors("please check your time")->withInput();
+            return back()->withErrors("please check your time")->withInput();
      $requestData = request()->all();
      $session = TrainingSession::create($requestData);
     //  dd($session);
