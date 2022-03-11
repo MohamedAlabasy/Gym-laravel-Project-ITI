@@ -47,12 +47,12 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" id="name" class="form-control" value="" name="name">
+                                <input type="text" id="name" class="form-control"  name="name">
                             </div>
 
                             <div class="form-group">
                                 <label for="name">Day</label>
-                                <input type="date" id="name" class="form-control" value="" name="day">
+                                <input type="date" id="name" class="form-control" name="day">
                             </div>
                             <div class="form-group">
                                 <label for="coach">Coach</label>
@@ -64,11 +64,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="starts_at">Starts At</label>
-                                <input type="time" id="starts_at" class="form-control" value="" name="starts_at">
+                                <input type="time" id="starts_at" class="form-control"  name="starts_at">
                             </div>
                             <div class="form-group">
                                 <label for="finishes_at">Finishes At</label>
-                                <input type="time" id="finishes_at" class="form-control" value="" name="finishes_at">
+                                <input type="time" id="finishes_at" class="form-control"  name="finishes_at">
                             </div>
                                 {{-- <input type="hidden"  value="{{  }}" name="id"> --}}
 
