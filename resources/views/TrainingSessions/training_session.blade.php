@@ -3,7 +3,7 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper pb-4">
-    @if ($errors->any())
+@if ($errors->any())
     <div class="alert bg-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -17,7 +17,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>New Training Session</h1>
+                    <h4>New Training Session</h4>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
