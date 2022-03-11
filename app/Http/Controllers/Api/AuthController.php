@@ -14,7 +14,7 @@ class AuthController extends Controller
     public function signup(Request $request){
         $request->validate([
             'name' => 'required',
-            'email' => 'required|string|unique:users',
+            'email' => 'required|email|unique:users',
             'gender' => 'required',
             'birth_date'=> 'required',
             'profile_image'=> 'required|image|mimes:jpg,jpeg',
