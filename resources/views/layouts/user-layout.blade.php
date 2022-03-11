@@ -87,7 +87,7 @@ body {
         <ul class="navbar-nav ml-auto">
             <li class="dropdown user user-menu" style="cursor:pointer;">
                 <div class="media align-items-center">
-                    <img src="{{ asset(auth()->user()->profile_image) }}" alt="User Avatar"
+                    <img src="{{ auth()->user()->profileImageFile }}" alt="User Avatar"
                         class="mr-2 mt-1 img-size-32 img-circle mr-2">
                     <div class="media-body">
                         <h6 class="dropdown-item-title text-dark" style="font-size: 14px">
@@ -98,7 +98,7 @@ body {
                 <ul class="dropdown-menu" style="width:200px">
                     <li class="user-header mb-1" style="height: 140px;">
                         <img class="profile-user-img img-fluid img-circle"
-                            src="{{ asset(auth()->user()->profile_image) }}" alt="User profile picture">
+                            src="{{ auth()->user()->profileImageFile }}" alt="User profile picture">
                         <p class="mb-0">
                             {{ auth()->user()->name }}
                         </p>
@@ -128,23 +128,26 @@ body {
     <!-- /.navbar -->
     <!-- Main Sidebar Container -->
     @role('admin|cityManager|gymManager')
-    <aside class="main-sidebar sidebar-dark-primary elevation-4" style="font-size: 14px;width: 200px;">
-        <!-- Brand Logo -->
-        <a href="{{ route('welcome') }}" class="brand-link px-2">
-            <span class="brand-text font-weight-light px-4">Gym System</span>
-        </a>
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="{{ asset(auth()->user()->profile_image) }}" class="img-circle elevation-2"
-                        alt="User Image">
-                </div>
-                <div class="info">
-                    <a href="{{ route('user.admin_profile', auth()->user()->id) }}" class="d-block">
-                        {{ auth()->user()->name }}
-                    </a>
+
+        <aside class="main-sidebar sidebar-dark-primary elevation-4" style="font-size: 14px;width: 200px;">
+            <!-- Brand Logo -->
+            <a href="{{ route('welcome') }}" class="brand-link px-2">
+                <span class="brand-text font-weight-light px-4">Gym System</span>
+            </a>
+            <!-- Sidebar -->.
+            <div class="sidebar">
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="{{ auth()->user()->profileImageFile }}" class="img-circle elevation-2"
+                            alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="{{ route('user.admin_profile', auth()->user()->id) }}" class="d-block">
+                            {{ auth()->user()->name }}
+                        </a>
+                    </div>
+
                 </div>
             </div>
             <!-- Sidebar Menu -->

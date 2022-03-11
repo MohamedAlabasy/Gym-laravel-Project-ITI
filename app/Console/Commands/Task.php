@@ -45,12 +45,13 @@ class Task extends Command implements ShouldQueue
 
     public function handle()
     {
-        $users=User::whereDate('last_login_at' ,'<' ,Carbon::now()->subDays(30)->toDateTimeString())->get();
-
+        $users=User::whereDate('last_login_at' ,'<=' ,Carbon::now()->subDays(30)->toDateTimeString())->get();
+        //  dd($users->toArray());
         foreach ($users as $user ) {
             $user->notify(new MissUserNotification($user));
 
         }
+
 
 
     }
