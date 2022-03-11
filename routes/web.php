@@ -14,6 +14,7 @@ use App\Http\Controllers\EmptyController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\StripeController;
 use App\Http\Controllers\TrainingPackagesController;
+use App\Http\Controllers\AttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -185,6 +186,10 @@ Route::put('/cities/{cityID}', [CityController::class, 'update'])->name('city.up
 Route::delete('/cities/{cityID}', [CityController::class, 'destroy'])->name('city.destroy')->middleware('auth')->middleware('logs-out-banned-user');
 Route::get('/restoredCities', [CityController::class, 'showDeleted'])->name('city.showDeleted')->middleware('auth');
 Route::get('/restoredCities/{postID}', [CityController::class, 'restore'])->name('city.restored')->middleware('auth');
+#=======================================================================================#
+#			                           Attendance route                                  #
+#=======================================================================================#
+Route::get('/listHistory', [AttendanceController::class, 'listHistory'])->name('attendance')->middleware('auth')->middleware('logs-out-banned-user');
 #=======================================================================================#
 #			                            empty statement                                 #
 #=======================================================================================#
