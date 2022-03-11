@@ -31,7 +31,7 @@ use App\Http\Controllers\AttendanceController;
 #=======================================================================================#
 Route::get('/PaymentPackage/stripe', [StripeController::class, 'stripe'])->name('PaymentPackage.stripe')->middleware('auth')->middleware('logs-out-banned-user');
 Route::post('/PaymentPackage/stripe', [StripeController::class, 'stripePost'])->name('stripe.post')->middleware('auth')->middleware('logs-out-banned-user');
-Route::post('/PaymentPackage/purchase_history', [StripeController::class, 'view'])->name('PaymentPackage.purchase_history')->middleware('auth')->middleware('logs-out-banned-user');
+Route::get('/PaymentPackage/purchase_history', [StripeController::class, 'index'])->name('PaymentPackage.purchase_history')->middleware('auth')->middleware('logs-out-banned-user');
 
 Route::get('/', [WelcomeController::class, 'index'])->name('welcome')->middleware('auth')->middleware('logs-out-banned-user');
 #=======================================================================================#

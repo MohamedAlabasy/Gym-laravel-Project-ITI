@@ -43,6 +43,7 @@
                                 <th>Package Name</th>
                                 <th>Amount</th>
                                 <th>Gym Name</th>
+                                @role('cityManager')
                                 <th>City Name</th>
                                 <th class="text-center">Actions </th>
 
@@ -50,7 +51,7 @@
                         </thead>
                         <tbody>
                             
-                            @foreach ($boughtPackages as $boughtPackage)
+                            {{-- @foreach ($boughtPackages as $boughtPackage)
                                 <tr id="did{{ $package->id }}">
                                     <td>{{ $package->id }}</td>
                                     <td>{{ $package->name }} </td>
@@ -74,7 +75,7 @@
 
                                     </td>
                                 </tr>
-                            @endforeach
+                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>

@@ -59,8 +59,7 @@ class StripeController extends Controller
         Session::flash('success', 'Payment successful!');
         Revenue::create([
             'price' => $price,
-            'payment_id' => $training_package_id +1,
-            // 'statuses' => 'paid',
+            'payment_id' => $training_package_id +$user_id,
             'visa_number' => '4242 4242 4242 4242',
             'payment_method' => 'stripe',
             'user_id' => $user_id,
@@ -79,5 +78,10 @@ class StripeController extends Controller
         // dd($data, $this->mahmoud);
         //return to the view
     // }
+    public function index()
+    {
+      return view('PaymentPackage.purchase_history');
+    
+    }
     
 }
