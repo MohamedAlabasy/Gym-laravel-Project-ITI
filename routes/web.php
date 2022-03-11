@@ -71,10 +71,12 @@ Route::controller(CoachController::class)->group(function () {
 #=======================================================================================#
 #			                          Admin Routes                                  	#
 #=======================================================================================#
+Route::group(['middleware' => ['auth','logs-out-banned-user']], function () {
+    Route::get('/user/show-profile', [UserController::class, 'show_profile'])->name('user.admin_profile');
+    Route::get('/user/edit-profile', [UserController::class, 'edit_profile'])->name('user.edit_admin_profile');
+    Route::get('/gym/training_session', [TrainingController::class, 'create'])->name('gym.training_session');
+});
 
-Route::get('/user/show-profile', [UserController::class, 'show_profile'])->name('user.admin_profile')->middleware('auth')->middleware('logs-out-banned-user');
-Route::get('/user/edit-profile', [UserController::class, 'edit_profile'])->name('user.edit_admin_profile')->middleware('auth')->middleware('logs-out-banned-user');
-Route::get('/gym/training_session', [TrainingController::class, 'create'])->name('gym.training_session')->middleware('auth')->middleware('logs-out-banned-user');
 
 #=======================================================================================#
 #			                         Training Routes                                  	#
