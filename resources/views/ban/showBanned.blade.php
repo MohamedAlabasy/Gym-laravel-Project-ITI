@@ -48,8 +48,7 @@
                         </thead>
                         <tbody>
                             @foreach ($banUsers as $user)
-                                {{-- @dd($coach->banned_at) --}}
-                                <tr>
+                                <tr id="cid{{ $user->id }}">
                                     <th class="project-state" scope="row">{{ $user->id }}</th>
                                     <td class="project-state">
                                         <span>{{ $user->name }}</span>
@@ -61,17 +60,9 @@
                                         <img alt="Avatar" class="table-avatar" src="{{ $user->profile_image }}">
                                     </td>
                                     <td class="project-actions text-center">
-                                        <a class="btn btn-dark btn-sm" href=" {{ route('user.unBan', $user->id) }}">
-                                            <i class="fa fa-user-lock"></i>
-                                        </a>
-                                        {{-- <form id="myform" action="{{ route('user.unBan', $user->id) }}" method="POST"
-                                            style="display:inline;"
-                                            onsubmit="return confirm('Are you sure you want to delete it ?');">
-                                            @csrf-
-                                            @method('PATCH')
-                                            <input type="submit" class="btn btn-dark delete  fas fa-trash btn-sm"
-                                                value="unban" title='unban'>
-                                        </form> --}}
+                                        <a href="javascript:void(0)" onclick="unBanUsers({{ $user->id }})"
+                                            class="btn btn-dark btn-sm"><i class="fa fa-user-lock"></i></a>
+
                                     </td>
                                 </tr>
                             @endforeach
@@ -85,5 +76,20 @@
 
         </section>
     </div>
-    <!-- /.content-wrapper -->
+    <script>
+        function unBanUsers(id) {
+            if (confirm("Do you want to unban this user?")) {
+                $.ajax({
+                    url: '/unBan/' + id,
+                    type: 'PATCH',
+                    data: {
+                        _token: $("input[name=_token]").val()
+                    },
+                    success: function(response) {
+                        $("#cid" + id).remove();
+                    }
+                });
+            }
+        }
+    </script>
 @endsection

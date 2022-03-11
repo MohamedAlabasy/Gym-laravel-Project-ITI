@@ -155,7 +155,7 @@ class UserController extends Controller
     #=======================================================================================#
     public function unBan($userID)
     {
-        User::find($userID)->unban();
+        $x = User::find($userID)->unban();
         return $this->listBanned();
     }
 }
