@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\TrainingPackage;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class TrainingPackagesController extends Controller
 {
@@ -71,22 +73,23 @@ class TrainingPackagesController extends Controller
             
 
         ]);
+        
         // $requestData = request()->all();
         // TrainingPackage::create($requestData);
-        $package = new TrainingPackage();
-        // dd($request);
+        // $package = new TrainingPackage();
+        // dd($package->id);
 
-    	$package->name = $request->get('name');
-    	$package->price = $request->get('price') * 100;
-    	$package->sessions_number = $request->get('sessions_number');
-        $package->user_id = auth()->user()->id;
+    	// $package->name = $request->get('name');
+    	// $package->price = $request->get('price') * 100;
+    	// $package->sessions_number = $request->get('sessions_number');
+        // $package->user_id = auth()->user()->id;
         //  $x = $package->save();
         //  dd($x);
-        dd($package->id);
-        $newPackage = $package->toArray();
+        // dd($package->id);
+        // $newPackage = $package->toArray();
         //  gyms_training_packages;
-        dd($newPackage);
-         TrainingPackage::create($newPackage);
+        // dd($newPackage);
+        //  TrainingPackage::create($newPackage);
          //  dd($session);
         //  $y = $x->toArray();
         //  dd($y);
@@ -100,6 +103,21 @@ class TrainingPackagesController extends Controller
      
         //  dd($package);
         // $package->user()->attach($package);
+        $requestData = request()->all();
+        $package = TrainingPackage::create($requestData);
+        // dd($package);
+       //  dd($session);
+       //  DB::table('student_details')->insert($data);
+        //    $package = $request->input('user_id');
+           $id = $package->id;
+        //    dd($id);
+        // dd($request);
+           
+           
+           $data = array('gym_id' => $request->gym_id , "training_package_id" => $id);
+           // DB::table('student_details')->insert($data);
+           DB::table('gyms_training_packages')->insert($data);
+   
 
 
         return redirect()->route('trainingPackeges.listPackeges');

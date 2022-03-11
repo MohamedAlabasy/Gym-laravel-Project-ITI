@@ -90,7 +90,6 @@ class TrainingController extends Controller
             ->orwhereRaw("starts_at > '$request->starts_at' and starts_at < '$request->finishes_at'")
             ->orwhereRaw("finishes_at > '$request->starts_at' and finishes_at < '$request->finishes_at'")
             ->orwhereRaw("starts_at > '$request->starts_at' and finishes_at < '$request->finishes_at'");
-                    ->orwhereRaw("starts_at > '$request->starts_at' and finishes_at < '$request->finishes_at'");
             })->get()->toArray();
 
 
@@ -100,7 +99,7 @@ class TrainingController extends Controller
      $session = TrainingSession::create($requestData);
     //  dd($session);
     //  DB::table('student_details')->insert($data);
- $user_id = $request->input('user_id');
+        $user_id = $request->input('user_id');
         $id = $session->id;
         $data = array('user_id' => $user_id, "training_session_id" => $id);
         // DB::table('student_details')->insert($data);
