@@ -83,6 +83,3 @@ class SessionsController extends Controller
     }
 
 }
-// User will have endpoint to show his attendance history , and the
-// json object will be array that contains (training session name , gym
-// name , attendance date , attendance time
