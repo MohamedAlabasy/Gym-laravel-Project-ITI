@@ -38,7 +38,7 @@
                     <table class="table table-striped projects" id="proj">
                         <thead>
                             <tr>
-                                <th> id</th>
+                                <th class="project-state"> id</th>
                                 <th class="project-state">Coach Name</th>
                                 <th class="project-state">Coach Email</th>
                                 <th class="project-state">Coach City</th>
@@ -52,7 +52,6 @@
                                 <tr id="cid{{ $coach->id }}">
                                     <td class="project-state">{{ $coach->id }}</td>
                                     <td class="project-state">{{ $coach->name }}</td>
-
                                     <td class="project-state">
                                         <span class="project-state">{{ $coach->email }}</span>
                                     </td>
@@ -63,8 +62,6 @@
                                         @else
                                             <span class="project-state">{{ $coach->city->name }}</span>
                                         @endif
-
-
                                     </td>
                                     <td class="project-state">{{ $coach->created_at->format('d - M - Y') }}</td>
                                     <td class="project-state">
@@ -77,10 +74,11 @@
                                         <a class="btn btn-warning btn-sm text-white"
                                             href="{{ route('coach.edit', $coach['id']) }}">
                                             <i class="fas fa-pencil-alt"></i></a>
-
-
-                                        <a href="javascript:void(0)" onclick="deleteCoach({{ $coach->id }})"
+                                            <a href="javascript:void(0)" onclick="deleteCoach({{ $coach->id }})"
                                             class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                            <a class="btn btn-dark btn-sm" href=" {{ route('user.banUser', $coach->id) }}">
+                                            <i class="fa fa-user-lock"></i>
+                                        </a>
 
                                         <a href="javascript:void(0)" onclick="banUser({{ $coach->id }})"
                                             class="btn btn-dark btn-sm"><i class="fa fa-user-lock"></i></a>

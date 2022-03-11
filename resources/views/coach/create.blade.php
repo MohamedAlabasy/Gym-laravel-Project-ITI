@@ -17,10 +17,7 @@
                             </ul>
                         </div>
                     @endif
-
-
-
-                    <div class="col-sm-6">
+                     <div class="col-sm-6">
                         <h1>New Coach</h1>
                     </div>
                     <div class="col-sm-6">
@@ -56,12 +53,10 @@
                                     <label for="name">Name</label>
                                     <input autofocus required minlength="3" maxlength="50" type="text" id="name"
                                         class="form-control" value="" name="name">
-
                                 </div>
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <input required type="email" id="email" class="form-control" value="" name="email">
-
                                 </div>
                                 <div class="form-group">
                                     <label for="city">City</label>
@@ -72,8 +67,6 @@
                                             @endforeach
                                         </optgroup>
                                     </select>
-
-                                    {{-- <input type="text" id="city" class="form-control" value="" name="city"> --}}
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label" for="image">Image Cover</label>

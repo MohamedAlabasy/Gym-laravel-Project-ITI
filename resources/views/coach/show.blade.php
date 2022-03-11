@@ -28,6 +28,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-6">
                         <h6 class="d-inline-block d-sm-none">Coach Name</h6>
+                        <img class="img-fluid" src="{{$singleCoach->profile_image}}">
                     </div>
                     <div class="col-12 col-sm-6 d-flex  align-items-center">
                         <div>
@@ -36,17 +37,7 @@
                             <p class="my-3">{{$singleCoach->email}}</p>
                             <p class="my-3">{{$singleCoach->city->name}}</p>
                             <p class="my-3">{{$singleCoach->created_at}}</p>
-                            <p class="my-3">{{$singleCoach->profile_image}}</p>
-                        
-                            <div class="project-actions mt-5">
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                                <a class="btn btn-warning btn-sm text-white" href="">
-                                    <i class="fas fa-pencil-alt"></i></a>
-                                <a href="javascript:void(0)" onclick="deleteGym({{$singleCoach->id}})"
-                                    class="btn btn-danger">Delete</a>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

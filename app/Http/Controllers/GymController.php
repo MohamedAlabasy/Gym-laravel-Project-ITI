@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\GymRequest;
 use App\Http\Requests\UpdateGymRequest;
 use App\Models\Gym;
+use App\Models\City;
 use App\Models\User;
 use Illuminate\Support\Facades\File;
 class GymController extends Controller
@@ -37,9 +38,15 @@ class GymController extends Controller
     #=======================================================================================#
     public function create()
     {
+        
+        $gyms =  User::role('gymManager')->withoutBanned()->get();
+        //$coachesFromDB =  User::role('coach')->withoutBanned()->get();
+        $cities = City::all();
         return view('gym.create', [
-            'users' => User::all(),
+            'users' => $gyms,
+            'cities' => $cities,
         ]);
+        
     }
     #=======================================================================================#
     #			                           Store Function                                 	#
