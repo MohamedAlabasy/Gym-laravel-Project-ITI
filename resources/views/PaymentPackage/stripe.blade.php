@@ -4,11 +4,11 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> --}}
     <style type="text/css">
-        .container {
+        /* .container {
             margin-top: 40px;
             margin-right: 80px;
 
-        }
+        } */
 
         .panel-heading {
             display: inline;
@@ -35,8 +35,8 @@
 @section('content')
     {{-- @dd($data) --}}
     @role('admin|cityManager|gymManager')
-    <div class="container mb-4">
-        <div class="row justify-content-center align-items-center">
+    <div class="container ">
+        <div class="mb-2 d-flex justify-content-center align-items-center">
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
