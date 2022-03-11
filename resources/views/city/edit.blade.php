@@ -56,9 +56,9 @@
                                             <option value="{{ $cityData->manager->id }}">
                                                 {{ $cityData->manager->name }}
                                             </option>
-                                            <option value='null'>Remove City Manager</option>
+                                            <option value='optional'>Remove City Manager</option>
                                         @else
-                                            <option value='null' hidden>Optional</option>
+                                            <option value='optional' hidden>optional</option>
                                         @endif
                                         <optgroup label="Available City Managers">
                                             @foreach ($cityManagers as $manager)
