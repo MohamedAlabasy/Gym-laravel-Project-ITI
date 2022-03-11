@@ -122,7 +122,7 @@ class UserController extends Controller
             'comment' => 'كيفي كدا',
             'expired_at' => '+3 month',
         ]);
-        return back();
+        return response()->json(['success' => 'Record deleted successfully!']);
     }
 
     #=======================================================================================#
@@ -155,7 +155,7 @@ class UserController extends Controller
     #=======================================================================================#
     public function unBan($userID)
     {
-        User::find($userID)->unban();
+        $x = User::find($userID)->unban();
         return $this->listBanned();
     }
 }

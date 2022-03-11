@@ -21,6 +21,7 @@
     <!-- Main content -->
     <section class="content">
 
+
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
@@ -60,12 +61,19 @@
                             <td> {{ $revenue->user->name }}</td>
                             <td> {{ $revenue->trainingPackage->name }}</td>
                             <td> {{ $revenue->price / 100 }} $</td>
+                              @role('admin')
                             <td>{{ $revenue->user->gym->name }}</td>
                             <td>{{ $revenue->user->city->name }}</td>
+                             @endrole
+                               @role('cityManager')
+                                    <td>{{ $revenue->user->gym->name }}</td>
+
+                                @endrole
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+
             </div>
             <!-- /.card-body -->
         </div>

@@ -87,6 +87,7 @@ class StripeController extends Controller
         //   'price' => $price,
        'revenues' => $revenues,
       ]);
+
     
     }
     
