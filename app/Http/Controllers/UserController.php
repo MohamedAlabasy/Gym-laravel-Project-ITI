@@ -131,9 +131,8 @@ class UserController extends Controller
     public function listBanned()
     {
         $userRole = Auth::user()->getRoleNames();
-        dd($userRole, User::role(['gymManager', 'cityManager'])->onlyBanned()->get());
         $allBannedUser = 0;
-        switch ($this->userRole['0']) {
+        switch ($userRole['0']) {
             case 'admin':
                 $allBannedUser = User::role(['cityManager', 'gymManager', 'coach', 'user'])->onlyBanned()->get();
                 break;
