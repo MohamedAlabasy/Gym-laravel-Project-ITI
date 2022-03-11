@@ -364,17 +364,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="pages/mailbox/mailbox.html" class="nav-link">
-                                        <p>Inbox</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/mailbox/compose.html" class="nav-link">
-                                        <p>Compose</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="pages/mailbox/read-mail.html" class="nav-link">
-                                        <p>Read</p>
+                                        <p>Purchase history</p>
                                     </a>
                                 </li>
                             </ul>

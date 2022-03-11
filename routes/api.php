@@ -47,7 +47,7 @@ Route::get('email/verify/{id}', [EmailVerificationController::class, 'verify'])-
 Route::get('sessions',[SessionsController::class,'index'])->middleware('auth:sanctum');
 Route::get('sessions/{session}',[SessionsController::class,'showSession'])->middleware('auth:sanctum');
 Route::get('remaining_sessions',[SessionsController::class,'remaining_training_sessions'])->middleware('auth:sanctum');
-Route::post('attendSession',[SessionsController::class,'attend_training_session'])->middleware('auth:sanctum');
+Route::post('attendSession/{session}',[SessionsController::class,'attend_training_session'])->middleware('auth:sanctum');
 
 
 //Traning Packages Routes
