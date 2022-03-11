@@ -92,7 +92,6 @@ class CityController extends Controller
     #			                          edit Function                                     #
     #=======================================================================================#
     public function edit($cityID)
-    // (CityRequest $request)
     {
         $cityData = City::find($cityID);
         $cityManagers = $this->selectCityManagers();
@@ -120,9 +119,6 @@ class CityController extends Controller
     public function destroy($cityID)
     {
         $city = City::find($cityID);
-        if ($city->manager_id > 0) {
-            dd("can not delete this city");
-        }
         $city->delete($cityID);
         return $this->list();
     }
