@@ -58,6 +58,7 @@ class User extends Authenticatable implements BannableContract, MustVerifyEmail
     {
         return $this->belongsToMany(TrainingSession::class);
     }
+    
 
     /**
      * The attributes that should be hidden for serialization.

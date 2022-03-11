@@ -46,7 +46,8 @@
                         </thead>
                         <tbody>
                             @foreach ($allCities as $city)
-                                <tr>
+                                <tr id="cid{{ $city->id }}">
+
                                     <td class="project-state">{{ $city->id }}</td>
                                     <td class="project-state">{{ $city->name }}</td>
                                     @if ($city->manager == null)
@@ -62,13 +63,10 @@
                                         <a class="btn btn-warning btn-sm text-white"
                                             href="{{ route('city.edit', $city->id) }}">
                                             <i class="fas fa-pencil-alt"></i></a>
-                                        {{-- <a href="javascript:void(0)" onclick="deleteGym({{ $gym->id }})"
-                                            class="btn btn-danger">Delete</a> --}}
-                                        <form method="post" action="{{ route('city.destroy', $city->id) }}">
-                                            @csrf
-                                            @method('delete')
-                                            <input type='submit' class='btn btn-danger' />
-                                        </form>
+
+                                        <a href="javascript:void(0)"
+                                            onclick="deleteCity({{ $city->id }},{{ $city->manager_id }})"
+                                            class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -78,26 +76,28 @@
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
         </section>
     </div>
     <!-- /.content-wrapper -->
-@endsection
-
-
-<!-- <script>
-    function deleteGym(id) {
-        if (confirm("Do you want to delete this record?")) {
-            $.ajax({
-                url: '/gym/' + id,
-                type: 'DELETE',
-                data: {
-                    _token: $("input[name=_token]").val()
-                },
-                success: function(response) {
-                    $("#gid" + id).remove();
+    <script>
+        function deleteCity(id, manager) {
+            if (manager > 0) {
+                alert('This city has a manager so it can\'t be deleted')
+            } else {
+                if (confirm("Do you want to delete this record?")) {
+                    $.ajax({
+                        url: '/cities/' + id,
+                        type: 'DELETE',
+                        data: {
+                            _token: $("input[name=_token]").val()
+                        },
+                        success: function(response) {
+                            $("#cid" + id).remove();
+                        }
+                    });
                 }
-            });
+            }
+
         }
-    }
-</script> -->
+    </script>
+@endsection
