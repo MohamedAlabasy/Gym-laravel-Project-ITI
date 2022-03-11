@@ -27,24 +27,15 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 col-sm-6">
-                        <h6 class="d-inline-block d-sm-none">Coach Name</h6>
-                    </div>
+                        <h6 class="d-inline-block d-sm-none">gym Name</h6>
+                        <img class="img-fluid" src="{{$singleGym->cover_image}}">
+                       </div>
                     <div class="col-12 col-sm-6 d-flex  align-items-center">
                         <div>
                             <p class="my-3">{{$singleGym->id}}</p>
                             <p class="my-3">{{$singleGym->name}}</p>
                             <p class="my-3">{{$singleGym->city->name}}</p>
                             <p class="my-3">{{$singleGym->created_at}}</p>
-                            <p><img alt="Avatar" src="{{$singleGym->cover_image}}"></p>
-                        <div class="project-actions mt-5">
-                                <a class="btn btn-info btn-sm" href="#">
-                                    <i class="fa fa-eye"></i>
-                                </a>
-                                <a class="btn btn-warning btn-sm text-white" href="">
-                                    <i class="fas fa-pencil-alt"></i></a>
-                                <a href="javascript:void(0)" onclick="deleteGym({{$singleGym->id}})"
-                                    class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
-                            </div>
                         </div>
                     </div>
                 </div>

@@ -37,14 +37,11 @@ Route::get('/', [WelcomeController::class, 'index'])->name('welcome')->middlewar
 #			                        Gym Controller Routes                              	#
 #=======================================================================================#
 Route::controller(GymController::class)->group(function () {
-
     Route::get('/gym/create', 'create')->name('gym.create')->middleware('auth');
     Route::post('/gym/store', 'store')->name('gym.store')->middleware('auth');
     Route::get('/gym/edit/{gym}', 'edit')->name('gym.edit')->middleware('auth');
     Route::put('/gym/update/{gym}', 'update')->name('gym.update')->middleware('auth');
-
     Route::delete('/gym/{id}', 'deleteGym')->name('gym.delete')->middleware('auth');
-
     Route::get('/gym/list', 'list')->name('gym.list')->middleware('auth');
     Route::get('/gym/show/{id}', 'show')->name('gym.show')->middleware('auth');
 });
@@ -61,9 +58,7 @@ Route::controller(CoachController::class)->group(function () {
     Route::post('/coach/store', 'store')->name('coach.store')->middleware('auth');
     Route::get('/coach/edit/{coach}', 'edit')->name('coach.edit')->middleware('auth');
     Route::put('/coach/update/{coach}', 'update')->name('coach.update')->middleware('auth');
-
     Route::delete('/coach/{id}', 'deleteCoach')->name('coach.delete')->middleware('auth');
-
     Route::get('/coach/list', 'list')->name('coach.list')->middleware('auth');
     Route::get('/coach/show/{coach}', 'show')->name('coach.show')->middleware('auth');
 });
