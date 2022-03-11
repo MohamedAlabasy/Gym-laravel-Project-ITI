@@ -1,3 +1,4 @@
+<?php use Carbon\Carbon;?>
 @extends('layouts.user-layout')
 @section('content')
     <!-- Content Wrapper. Contains page content -->
@@ -41,8 +42,8 @@
                                 <th class="project-state"> Training session name</th>
                                 <th class="project-state">Attendance time</th>
                                 <th class="project-state">Attendance date</th>
-                                <th class="project-state">Gym</th>
-                                <th class="project-state">City</th>
+                                @role('admin|cityManager')<th class="project-state">Gym</th>@endrole
+                                @role('admin')<th class="project-state">City</th>@endrole
                             </tr>
                         </thead>
                         <tbody>
@@ -50,11 +51,11 @@
                                 <tr id="did{{ $attendance->id }}">
                                     <td class="project-state">{{ $attendance->name }}</td>
                                     <td class="project-state">{{ $attendance->email }} </td>
-                                    <td class="project-state">{{ $attendance->session_name }} </td>
-                                    <td class="project-state">{{ $attendance->attendance_at }} </td>
-                                    <td class="project-state">{{ $attendance->attendance_at }} </td>
-                                    <td class="project-state">{{ $attendance->gym }}</td>
-                                    <td class="project-state">{{ $attendance->city }}</td>
+                                    <td class="project-state">{{ $attendance->training_session_name}} </td>
+                                    <td class="project-state">{{ $attendance->attendance_time }} </td>
+                                    <td class="project-state">{{ Carbon::parse($attendance->attendance_at)->format('Y-m-d') }} </td>
+                                    @role('admin|cityManager')<td class="project-state">{{ $attendance->gym_name }}</td>@endrole
+                                    @role('admin')<td class="project-state">{{ $attendance->gym_city }}</td>@endrole
                                 </tr>
                             @endforeach
                         </tbody>
