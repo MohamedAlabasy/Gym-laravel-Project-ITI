@@ -59,6 +59,7 @@
     }
 
 </style>
+@yield('stripeStyle')
 
 <body class="sidebar-collapse">
     <!-- Preloader -->
@@ -422,5 +423,5 @@
     </script>
     @yield('dataTableScript')
 </body>
-
+@yield('stripeScript')
 </html>
