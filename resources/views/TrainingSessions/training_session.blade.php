@@ -70,7 +70,7 @@
                                 <label for="finishes_at">Finishes At</label>
                                 <input type="time" id="finishes_at" class="form-control" value="" name="finishes_at">
                             </div>
-
+                                {{-- <input type="hidden"  value="{{  }}" name="id"> --}}
 
                         </div>
                     </div>

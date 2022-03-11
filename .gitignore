@@ -18,3 +18,4 @@ yarn-error.log
 .pdf
 .zip
 .png
+/public/imgs
