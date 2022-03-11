@@ -74,11 +74,30 @@ class TrainingPackagesController extends Controller
         // $requestData = request()->all();
         // TrainingPackage::create($requestData);
         $package = new TrainingPackage();
+        // dd($request);
+
     	$package->name = $request->get('name');
     	$package->price = $request->get('price') * 100;
     	$package->sessions_number = $request->get('sessions_number');
         $package->user_id = auth()->user()->id;
-         $package->save();
+        //  $x = $package->save();
+        //  dd($x);
+        dd($package->id);
+        $newPackage = $package->toArray();
+        //  gyms_training_packages;
+        dd($newPackage);
+         TrainingPackage::create($newPackage);
+         //  dd($session);
+        //  $y = $x->toArray();
+        //  dd($y);
+         //  DB::table('student_details')->insert($data);
+    //   $user_id = $request->input('user_id');
+            //  $id = $session->id;
+            //  $data=array('user_id'=>$user_id,"training_session_id"=>$id);
+             // DB::table('student_details')->insert($data);
+        //   DB::table('training_session_user')->insert($data);
+         
+     
         //  dd($package);
         // $package->user()->attach($package);
 
@@ -109,13 +128,13 @@ class TrainingPackagesController extends Controller
     #=======================================================================================#
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'min:2'],
-            'price' => ['required'],
-            'session_number' => ['required'],
+        // $request->validate([
+        //     'name' => ['required', 'string', 'min:2'],
+        //     'price' => ['required'],
+        //     'session_number' => ['required'],
             
 
-        ]);
+        // ]);
 
 
         TrainingPackage::where('id', $id)->update([

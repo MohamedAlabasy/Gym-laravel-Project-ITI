@@ -72,41 +72,39 @@ class TrainingController extends Controller
         //  dd($request->id);
         // DB::table('training_session_user')->insert($request->user_id,);
 
-        
+
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
-            'day' => ['required','date','after_or_equal:today'],
+            'day' => ['required', 'date', 'after_or_equal:today'],
             'starts_at' => ['required'],
             'finishes_at' => ['required'],
 
         ]);
 
 
-        $validate_old_seesions=TrainingSession::where('day', '=', $request->day)->where("starts_at","!=",null)->
-        where("finishes_at","!=",null) ->where(function($q) use ($request){
-            $q->whereRaw("starts_at = '$request->starts_at' and finishes_at ='$request->finishes_at'")
-		->orwhereRaw("starts_at < '$request->starts_at' and finishes_at > '$request->finishes_at'")
-            ->orwhereRaw("starts_at > '$request->starts_at' and starts_at < '$request->finishes_at'")
-            ->orwhereRaw("finishes_at > '$request->starts_at' and finishes_at < '$request->finishes_at'")
+        $validate_old_seesions = TrainingSession::where('day', '=', $request->day)->where("starts_at", "!=", null)->where("finishes_at", "!=", null)->where(function ($q) use ($request) {
+                $q->whereRaw("starts_at = '$request->starts_at' and finishes_at ='$request->finishes_at'")
+                    ->orwhereRaw("starts_at < '$request->starts_at' and finishes_at > '$request->finishes_at'")
+                    ->orwhereRaw("starts_at > '$request->starts_at' and starts_at < '$request->finishes_at'")
+                    ->orwhereRaw("finishes_at > '$request->starts_at' and finishes_at < '$request->finishes_at'")
 
-            ->orwhereRaw("starts_at > '$request->starts_at' and finishes_at < '$request->finishes_at'");
+                    ->orwhereRaw("starts_at > '$request->starts_at' and finishes_at < '$request->finishes_at'");
+            })->get()->toArray();
 
-        })->get()->toArray();
-
-        if(count($validate_old_seesions) > 0)
-        return back()->withErrors("please check your time")->withInput();
-     $requestData = request()->all();
-     $session = TrainingSession::create($requestData);
-    //  dd($session);
-    //  DB::table('student_details')->insert($data);
- $user_id = $request->input('user_id');
+        if (count($validate_old_seesions) > 0)
+            return back()->withErrors("please check your time")->withInput();
+        $requestData = request()->all();
+        $session = TrainingSession::create($requestData);
+        //  dd($session);
+        //  DB::table('student_details')->insert($data);
+        $user_id = $request->input('user_id');
         $id = $session->id;
-        $data=array('user_id'=>$user_id,"training_session_id"=>$id);
+        $data = array('user_id' => $user_id, "training_session_id" => $id);
         // DB::table('student_details')->insert($data);
-     DB::table('training_session_user')->insert($data);
-    
-     return redirect()->route('TrainingSessions.listSessions');
- }
+        DB::table('training_session_user')->insert($data);
+
+        return redirect()->route('TrainingSessions.listSessions');
+    }
     #=======================================================================================#
     #			                             show                                         	#
     #=======================================================================================#
@@ -164,13 +162,13 @@ class TrainingController extends Controller
     {
         // $session = TrainingSession::find($cityID);
 
-    //  if (count(DB::select("select * from training_session_user where training_session_id = $id") == 0)) {
-    //     return response()->json(['success' => 0]);
-    //  }
+        //  if (count(DB::select("select * from training_session_user where training_session_id = $id") == 0)) {
+        //     return response()->json(['success' => 0]);
+        //  }
         $trainingSession = TrainingSession::findorfail($id);
         $trainingSession->delete();
         return response()->json([
             'message' => 'Data deleted successfully!'
-          ]);        
+        ]);
     }
 }
