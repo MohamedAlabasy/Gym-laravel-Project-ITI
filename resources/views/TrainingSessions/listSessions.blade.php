@@ -20,7 +20,7 @@
     </section>
     <!-- Main content -->
     <section class="content">
-
+     @dd($price)
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
