@@ -79,7 +79,7 @@ class CityController extends Controller
     public function store(CityRequest $request)
     {
         $requestData = request()->all();
-        if ($requestData['manager_id'] == 0) {
+        if ($requestData['manager_id'] == 'optional') {
             City::create([
                 'name' => $requestData['name'],
             ]);
@@ -106,7 +106,7 @@ class CityController extends Controller
         $fetchData = request()->all();
         $flight = City::find($cityID);
         $flight->name = $fetchData['name'];
-        if ($fetchData['manager_id'] == 'null')
+        if ($fetchData['manager_id'] == 'optional')
             $flight->manager_id = null;
         else
             $flight->manager_id = $fetchData['manager_id'];
