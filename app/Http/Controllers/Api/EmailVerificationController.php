@@ -42,6 +42,7 @@ class EmailVerificationController extends Controller
             $user->markEmailAsVerified();
             $token = $user->createToken('GymProjectToken')->plainTextToken;
             $user->notify(new WelcomeEmailNotification($user));
+            $user->update(['is_verifications' => 1]);
             return response()->json([
                 'token'=> $token,
                 'message'=> 'check your mail for greeting message'
