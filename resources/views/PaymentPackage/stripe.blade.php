@@ -7,7 +7,7 @@
         .container {
             margin-top: 40px;
             margin-right: 80px;
-            
+
         }
 
         .panel-heading {
@@ -35,8 +35,8 @@
 @section('content')
     {{-- @dd($data) --}}
     @role('admin|cityManager|gymManager')
-    <div class="container">
-        <div class="row">
+    <div class="container mb-4">
+        <div class="row justify-content-center align-items-center">
             <div class="col-md-6 col-md-offset-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
