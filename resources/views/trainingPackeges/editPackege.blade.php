@@ -10,12 +10,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Edit Session</h1>
+                    <h1>Edit Package</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Edit Session</li>
+                        <li class="breadcrumb-item active">Edit Package</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,7 @@
     <!-- Main content -->
     <section class="content">
     
-        <form action="{{route('TrainingSessions.update_session',[$trainingSession['id']])}}" method="post" enctype="multipart/form-data" class="w-75 m-auto">
+        <form action="{{route('trainingPackeges.update_package',[$package['id']])}}" method="POST" enctype="multipart/form-data" class="w-75 m-auto">
             @csrf
             @method('PUT')
             <div class="row">
@@ -41,14 +41,12 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" id="name" class="form-control" value="{{$trainingSession->name}}" name="name">
-                                <label for="day">Day</label>
-                                <input type="date" id="day" class="form-control" value="{{$trainingSession->day}}" name="day">
-                                <label for="starts_at">Starts At</label>
-                                <input type="time" id="starts_at" class="form-control" value="{{$trainingSession->starts_at}}" name="starts_at">
+                                <input type="text" id="name" class="form-control" value="{{$package->name}}" name="name">
+                                <label for="day">Price</label>
+                                <input type="text" id="price" class="form-control" value="{{$package->price}}" name="price">
+                                <label for="sessions">Sessions Number</label>
+                                <input type="text" id="sessions" class="form-control" value="{{$package->sessions_number}}" name="sessions_number">
 
-                                <label for="finishes_at">Finishes At</label>
-                                <input type="timet" id="finishes_at" class="form-control" value="{{$trainingSession->finishes_at}}" name="finishes_at">
                                 @if ($errors->any())
                             <div class="w-4/8 m-auto text-center">
                                 @foreach ($errors->all() as $error)

@@ -71,10 +71,12 @@ Route::controller(CoachController::class)->group(function () {
 #=======================================================================================#
 #			                          Admin Routes                                  	#
 #=======================================================================================#
+Route::group(['middleware' => ['auth','logs-out-banned-user']], function () {
+    Route::get('/user/show-profile', [UserController::class, 'show_profile'])->name('user.admin_profile');
+    Route::get('/user/edit-profile', [UserController::class, 'edit_profile'])->name('user.edit_admin_profile');
+    Route::get('/gym/training_session', [TrainingController::class, 'create'])->name('gym.training_session');
+});
 
-Route::get('/user/show-profile', [UserController::class, 'show_profile'])->name('user.admin_profile')->middleware('auth')->middleware('logs-out-banned-user');
-Route::get('/user/edit-profile', [UserController::class, 'edit_profile'])->name('user.edit_admin_profile')->middleware('auth')->middleware('logs-out-banned-user');
-Route::get('/gym/training_session', [TrainingController::class, 'create'])->name('gym.training_session')->middleware('auth')->middleware('logs-out-banned-user');
 
 #=======================================================================================#
 #			                         Training Routes                                  	#
@@ -97,7 +99,7 @@ Route::post('/trainingPackeges/package', [TrainingPackagesController::class, 'st
 Route::get('/trainingPackeges/package/{session}', [TrainingPackagesController::class, 'show'])->name('trainingPackeges.show_training_package')->middleware('auth')->middleware('logs-out-banned-user');
 Route::get('/trainingPackeges/{package}/edit', [TrainingPackagesController::class, 'edit'])->name('trainingPackeges.editPackege')->middleware('auth')->middleware('logs-out-banned-user');
 Route::delete('/trainingPackeges/{package}  ', [TrainingPackagesController::class, 'deletePackage'])->name('trainingPackeges.delete_package')->middleware('auth')->middleware('logs-out-banned-user');
-Route::put('/trainingPackeges/{package]}', [TrainingPackagesController::class, 'update'])->name('trainingPackeges.update_package')->middleware('auth')->middleware('logs-out-banned-user');
+Route::put('/trainingPackeges/{package}', [TrainingPackagesController::class, 'update'])->name('trainingPackeges.update_package')->middleware('auth')->middleware('logs-out-banned-user');
 
 
 #=======================================================================================#

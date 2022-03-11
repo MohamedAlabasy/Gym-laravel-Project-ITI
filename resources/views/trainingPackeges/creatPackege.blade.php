@@ -36,6 +36,8 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
+                                {{-- <input type="hidden" id="id" class="form-control" value="" name="id"> --}}
+
                                 <label for="name">Name</label>
                                 <input type="text" id="name" class="form-control" value="" name="name">
                             </div>
@@ -44,9 +46,18 @@
                                 <input type="text" id="price" class="form-control" value="" name="price">
                             </div>
                             <div class="form-group">
-                                <label for="sessions_number">Number of Sessions</label>
-                                <input type="text" id="email" class="form-control" value="" name="sessions_number">
+                                <label class="form-label">Gym</label>
+                                <select class="form-control" name="gym_id">
+                                    @foreach(App\Models\Gym::get() as $gym)
+                                <option value="{{$gym->id}}">{{$gym->name}}</option>
+                                @endforeach
+                                </select>
                             </div>
+                            <div class="form-group">
+                                <label for="sessions_number">Number of Sessions</label>
+                                <input type="text" id="sessions_number" class="form-control" value="" name="sessions_number">
+                            </div>
+
 
                         </div>
                     </div>
