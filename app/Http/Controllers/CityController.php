@@ -106,13 +106,46 @@ class CityController extends Controller
         $fetchData = request()->all();
         $flight = City::find($cityID);
         $flight->name = $fetchData['name'];
-        if ($fetchData['manager_id'] == 'null') {
+        if ($fetchData['manager_id'] == 'null')
             $flight->manager_id = null;
-        }
-        $flight->manager_id = $fetchData['manager_id'];
+        else
+            $flight->manager_id = $fetchData['manager_id'];
         $flight->save();
         return $this->list();
     }
+
+    #=======================================================================================#
+    #			                          destroy Function                                  #
+    #=======================================================================================#
+    public function destroy($cityID)
+    {
+        $city = City::find($cityID);
+        if ($city->manager_id > 0) {
+            dd("can not delete this city");
+        }
+        $city->delete($cityID);
+        return $this->list();
+    }
+    #=======================================================================================#
+    #			                 restored deleted Cities Function                           #
+    #=======================================================================================#
+    public function showDeleted()
+    {
+        $deletedCity = City::onlyTrashed()->get();
+        if (count($deletedCity) <= 0) { //for empty statement
+            return view('empty');
+        }
+        return view('city.showDeleted', ['deletedCity' => $deletedCity]);
+    }
+    #=======================================================================================#
+    #			                 restore deleted Cities Function                            #
+    #=======================================================================================#
+    public function restore($cityID)
+    {
+        City::withTrashed()->find($cityID)->restore();
+        return $this->showDeleted();
+    }
+
     #=======================================================================================#
     #			            private Function used in this controller                        #
     #=======================================================================================#

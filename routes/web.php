@@ -182,8 +182,9 @@ Route::get('/cities/{cityID}/edit', [CityController::class, 'edit'])->name('city
 Route::put('/cities/{cityID}', [CityController::class, 'update'])->name('city.update')->middleware('auth')->middleware('logs-out-banned-user');
 
 //DELETE 	/city/{cityID} 	destroy 	city.destroy
-// Route::delete('/cities/{cityID}', [CityController::class, 'destroy'])->name('city.destroy')->middleware('auth')->middleware('logs-out-banned-user');
-
+Route::delete('/cities/{cityID}', [CityController::class, 'destroy'])->name('city.destroy')->middleware('auth')->middleware('logs-out-banned-user');
+Route::get('/restoredCities', [CityController::class, 'showDeleted'])->name('city.showDeleted')->middleware('auth');
+Route::get('/restoredCities/{postID}', [CityController::class, 'restore'])->name('city.restored')->middleware('auth');
 #=======================================================================================#
 #			                            empty statement                                 #
 #=======================================================================================#

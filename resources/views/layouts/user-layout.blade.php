@@ -182,6 +182,12 @@
                                             <p> Add New </p>
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('city.showDeleted') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p> Restore Deleted </p>
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
                             {{-- # ======================================= # City Managers # ======================================= # --}}

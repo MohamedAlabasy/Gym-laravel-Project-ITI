@@ -63,7 +63,12 @@
                                             href="{{ route('city.edit', $city->id) }}">
                                             <i class="fas fa-pencil-alt"></i></a>
                                         {{-- <a href="javascript:void(0)" onclick="deleteGym({{ $gym->id }})"
-                                        class="btn btn-danger">Delete</a> --}}
+                                            class="btn btn-danger">Delete</a> --}}
+                                        <form method="post" action="{{ route('city.destroy', $city->id) }}">
+                                            @csrf
+                                            @method('delete')
+                                            <input type='submit' class='btn btn-danger' />
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

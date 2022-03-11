@@ -39,8 +39,8 @@
                         <thead>
                             <tr>
                                 <th> id</th>
-                                <th class="project-state"> Coach Name</th>
-                                <th class="project-state"> Coach Email</th>
+                                <th class="project-state">Coach Name</th>
+                                <th class="project-state">Coach Email</th>
                                 <th class="project-state">Coach City</th>
                                 <th class="project-state">Created at</th>
                                 <th class="project-state">Coach Image</th>
@@ -57,11 +57,13 @@
                                         <span class="project-state">{{ $coach->email }}</span>
                                     </td>
                                     <td class="project-state">
+
                                         @if ($coach->city == null)
                                             <span class="project-state">this coach has no city</span>
                                         @else
                                             <span class="project-state">{{ $coach->city->name }}</span>
                                         @endif
+
 
                                     </td>
                                     <td class="project-state">{{ $coach->created_at->format('d - M - Y') }}</td>

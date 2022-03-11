@@ -37,27 +37,26 @@
             <div class="card-body p-0">
                 <table class="table table-striped projects" id="proj">
                     <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>ID</th>
                             <th> Session Name</th>
                             <th>Day</th>
                             <th>Starts At</th>
                             <th>Finishes At</th>
-                            <th>Coach</th>
-                            <th>Actions </th>
+                            <th >Actions </th>
 
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($trainingSessions as $trainingSession)
-                        <tr id="did{{ $trainingSession->id }}">
+                        <tr id="did{{ $trainingSession->id }}" class="text-center">
                             <td>{{ $trainingSession->id }}</td>
                             <td>{{ $trainingSession->name }} </td>
                             <td>{{ $trainingSession->day }} </td>
                             <td>{{ $trainingSession->starts_at }}</td>
                             <td>{{ $trainingSession->finishes_at }}</td>
 
-                            <td class="project-actions text-right">
+                            <td class="project-actions text-center">
                                 <a class="btn btn-info btn-sm" href="{{ route('TrainingSessions.show_training_session', $trainingSession['id']) }}">
 
                                     <i class="fa fa-eye"></i>
@@ -91,6 +90,7 @@
                     _token: $("input[name=_token]").val()
                 }
                 , success: function(response) {
+                    
                     $("#did" + id).remove();
                 }
             });
