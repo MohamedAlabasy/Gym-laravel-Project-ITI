@@ -1,5 +1,6 @@
 @extends('layouts.user-layout')
 @section('content')
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -20,7 +21,7 @@
     </section>
     <!-- Main content -->
     <section class="content">
-     @dd($price)
+        {{-- @dd($price) --}}
         <!-- Default box -->
         <div class="card">
             <div class="card-header">
@@ -43,7 +44,7 @@
                             <th>Day</th>
                             <th>Starts At</th>
                             <th>Finishes At</th>
-                            <th >Actions </th>
+                            <th>Actions </th>
 
                         </tr>
                     </thead>
@@ -57,14 +58,17 @@
                             <td>{{ $trainingSession->finishes_at }}</td>
 
                             <td class="project-actions text-center">
-                                <a class="btn btn-info btn-sm" href="{{ route('TrainingSessions.show_training_session', $trainingSession['id']) }}">
+                                <a class="btn btn-info btn-sm"
+                                    href="{{ route('TrainingSessions.show_training_session', $trainingSession['id']) }}">
 
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a class="btn btn-warning btn-sm text-white" href="{{ route('TrainingSessions.edit_training_session', $trainingSession['id']) }}">
+                                <a class="btn btn-warning btn-sm text-white"
+                                    href="{{ route('TrainingSessions.edit_training_session', $trainingSession['id']) }}">
                                     <i class="fas fa-pencil-alt"></i></a>
 
-                                <a href="javascript:void(0)" onclick="deleteSession({{ $trainingSession->id }})" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                <a href="javascript:void(0)" onclick="deleteSession({{ $trainingSession->id }})"
+                                    class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
 
 
                             </td>
@@ -82,17 +86,31 @@
 <!-- /.content-wrapper -->
 <script>
     function deleteSession(id) {
+
         if (confirm("Do you want to delete this record?")) {
             $.ajax({
+
                 url: '/TrainingSessions/' + id
                 , type: 'DELETE'
                 , data: {
+
                     _token: $("input[name=_token]").val()
+
                 }
                 , success: function(response) {
-                    
-                    $("#did" + id).remove();
+                    if(response.success == 0) {
+                        console.log(response);
+
+                        $("#did" + id).remove();
+                    } else {
+                        console.log(response);
+
+                        console.log("a");
+                    }
+
+
                 }
+
             });
         }
     }
