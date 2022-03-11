@@ -74,5 +74,9 @@ class Kernel extends HttpKernel
         //for ban users
         'logs-out-banned-user' => \Cog\Laravel\Ban\Http\Middleware\LogsOutBannedUser::class,
         'forbid-banned-user' => \Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser::class,
+
+        //for make user not login in gym system
+        'isUser' =>  \App\Http\Middleware\UsersNotLogin::class,
+
     ];
 }
