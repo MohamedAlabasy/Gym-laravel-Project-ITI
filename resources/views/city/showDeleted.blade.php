@@ -94,7 +94,6 @@
     </div> --}}
             <!-- ##################################Start Modal ##################################-->
         </section>
-
         <script>
             function restoredCity(id) {
                 if (confirm("Do you want to delete this record?")) {
