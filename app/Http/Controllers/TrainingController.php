@@ -170,14 +170,14 @@ class TrainingController extends Controller
     {
         // $session = TrainingSession::find($cityID);
 
-         if (count(DB::select("select * from training_session_user where training_session_id = $id") == 0)) {
+         if (count(DB::select("select * from training_session_user where training_session_id = $id")) == 0) {
             $trainingSession = TrainingSession::findorfail($id);
             $trainingSession->delete();
             return response()->json([
-                'success' => 0
+                'success' => '1'
             ]);
           } else {
-            return response()->json(['success' => '1']);
+            return response()->json(['failed' => '0']);
 
           }
 

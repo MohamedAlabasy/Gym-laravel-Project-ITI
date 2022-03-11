@@ -88,7 +88,9 @@
     function deleteSession(id) {
 
         if (confirm("Do you want to delete this record?")) {
+
             $.ajax({
+
 
                 url: '/TrainingSessions/' + id
                 , type: 'DELETE'
@@ -97,21 +99,25 @@
                     _token: $("input[name=_token]").val()
 
                 }
+
                 , success: function(response) {
-                    if(response.success == 0) {
-                        console.log(response);
-
+                    if (response.success) {
                         $("#did" + id).remove();
-                    } else {
-                        console.log(response);
 
-                        console.log("a");
+                        
+                    } else {
+                        alert("You can't delete the session");
                     }
 
 
+                  
+
+
                 }
+               
 
             });
+
         }
     }
 
