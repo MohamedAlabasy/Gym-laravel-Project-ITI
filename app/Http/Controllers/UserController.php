@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Auth;
+// use App\Http\Controllers\Auth;
 use App\Http\Requests\StoreRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
+
+
 
 
 class UserController extends Controller
@@ -62,18 +65,18 @@ class UserController extends Controller
     public function update(StoreRequest $request, $user_id)
     {
 
-        $user=User::find($user_id);
-        $user->name=$request->name;
-        $user->email=$request->email;
-        if($request->hasFile('profile_image')){
-            $image=$request->file('profile_image');
-            $name=time().\Str::random(30).'.'.$image->getClientOriginalExtension();
-            $destinationPath=public_path('/imgs');
-            $image->move($destinationPath,$name);
-            $imageName='imgs/'.$name;
-            if($user->profile_image)
+        $user = User::find($user_id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        if ($request->hasFile('profile_image')) {
+            $image = $request->file('profile_image');
+            $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/imgs');
+            $image->move($destinationPath, $name);
+            $imageName = 'imgs/' . $name;
+            if ($user->profile_image)
                 File::delete(public_path('imgs/' . $user->profile_image));
-            $user->profile_image=$imageName;
+            $user->profile_image = $imageName;
         }
         $user->save();
         return redirect()->route('user.admin_profile', auth()->user()->id)->with('success', 'Your data successfully updated');
@@ -121,9 +124,26 @@ class UserController extends Controller
         ]);
         return back();
     }
+
+    #=======================================================================================#
+    #			                            listBanned                             	        #
+    #=======================================================================================#
     public function listBanned()
     {
-        $allBannedUser = User::onlyBanned()->get();
+        $userRole = Auth::user()->getRoleNames();
+        dd($userRole, User::role(['gymManager', 'cityManager'])->onlyBanned()->get());
+        $allBannedUser = 0;
+        switch ($this->userRole['0']) {
+            case 'admin':
+                $allBannedUser = User::role(['cityManager', 'gymManager', 'coach', 'user'])->onlyBanned()->get();
+                break;
+            case 'cityManager':
+                $allBannedUser = User::role(['gymManager', 'coach', 'user'])->onlyBanned()->get();
+                break;
+            case 'gymManager':
+                $allBannedUser = User::role(['coach', 'user'])->onlyBanned()->get();
+                break;
+        }
         if (count($allBannedUser) <= 0) { //for empty statement
             return view('empty');
         }
@@ -131,7 +151,9 @@ class UserController extends Controller
             'banUsers' => $allBannedUser,
         ]);
     }
-
+    #=======================================================================================#
+    #			                                unBan                             	        #
+    #=======================================================================================#
     public function unBan($userID)
     {
         User::find($userID)->unban();
