@@ -67,12 +67,6 @@
                                         <a href="javascript:void(0)"
                                             onclick="deleteCity({{ $city->id }},{{ $city->manager_id }})"
                                             class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
-
-                                        {{-- <form method="post" action="{{ route('city.destroy', $city->id) }}">
-                                            @csrf
-                                            @method('delete')
-                                            <input type='submit' class='btn btn-danger' />
-                                        </form> --}}
                                     </td>
                                 </tr>
                             @endforeach
@@ -82,7 +76,6 @@
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
         </section>
     </div>
     <!-- /.content-wrapper -->
