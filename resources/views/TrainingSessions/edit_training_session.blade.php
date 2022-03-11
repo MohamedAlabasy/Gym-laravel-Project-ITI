@@ -57,32 +57,16 @@
                                 <input type="time" id="starts_at" class="form-control" value="{{$trainingSession->starts_at}}" name="starts_at">
 
                                 <label for="finishes_at">Finishes At</label>
-                                <input type="timet" id="finishes_at" class="form-control" value="{{$trainingSession->finishes_at}}" name="finishes_at">
-                                @if ($errors->any())
-                            <div class="w-4/8 m-auto text-center">
-                                @foreach ($errors->all() as $error)
-                                    <li class="text-red-500 list-none">
-                                        {{$error}}
-                                    </li>
-                                @endforeach
-
+                                <input type="time" id="finishes_at" class="form-control" value="{{$trainingSession->finishes_at}}" name="finishes_at">
+                           
                             </div>
-                                @endif
-                            </div>
-
-
-
-
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12">
-                    <a href="#" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ route('TrainingSessions.listSessions')}}" class="btn btn-secondary">Cancel</a>
                     <input type="submit" value="Update" class="btn btn-success float-right">
                 </div>
             </div>

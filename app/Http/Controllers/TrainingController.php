@@ -21,7 +21,7 @@ class TrainingController extends Controller
     public function index()
     {
         $trainingSessions = TrainingSession::all();
-        if (count($trainingSessions) <= 0) { //for empty statement
+        if (count($trainingSessions) <= 0) { 
             return view('empty');
         }
         return view('TrainingSessions.listSessions', ['trainingSessions' => $trainingSessions]);
@@ -69,8 +69,6 @@ class TrainingController extends Controller
     #=======================================================================================#
     public function store(Request $request)
     {
-        //  dd($request->id);
-        // DB::table('training_session_user')->insert($request->user_id,);
 
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
@@ -150,8 +148,14 @@ class TrainingController extends Controller
 
         })->where('id','!=',$id)->get()->toArray();
 
-        if(count($validate_old_seesions) > 0)
+        if(count($validate_old_seesions) > 0) 
             return back()->withErrors("Time invalid")->withInput();
+
+
+        if(count(DB::select("select * from training_session_user where training_session_id = $id")) != 0) {
+            return back()->withErrors("You can't edit this session because there are users in it!")->withInput();
+
+        } 
 
 
 
@@ -172,7 +176,6 @@ class TrainingController extends Controller
     #=======================================================================================#
     public function deleteSession($id)
     {
-        // $session = TrainingSession::find($cityID);
 
          if (count(DB::select("select * from training_session_user where training_session_id = $id")) == 0) {
             $trainingSession = TrainingSession::findorfail($id);

@@ -21,8 +21,6 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        {{-- @dd($price) --}}
-        <!-- Default box -->
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Projects</h3>
@@ -40,7 +38,7 @@
                     <thead>
                         <tr class="text-center">
                             <th>ID</th>
-                            <th> Session Name</th>
+                            <th>Session Name</th>
                             <th>Day</th>
                             <th>Starts At</th>
                             <th>Finishes At</th>
@@ -108,11 +106,6 @@
                     } else {
                         alert("You can't delete the session");
                     }
-
-
-                  
-
-
                 }
                
 
