@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\TrainingSession;
 use App\Models\User;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\DB;
+
 
 
 class TrainingController extends Controller
@@ -67,6 +69,10 @@ class TrainingController extends Controller
     #=======================================================================================#
     public function store(Request $request)
     {
+        //  dd($request->id);
+        // DB::table('training_session_user')->insert($request->user_id,);
+
+        
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
             'day' => ['required','date','after_or_equal:today'],
@@ -90,7 +96,15 @@ class TrainingController extends Controller
         if(count($validate_old_seesions) > 0)
         return back()->withErrors("please check your time")->withInput();
      $requestData = request()->all();
-     TrainingSession::create($requestData);
+     $session = TrainingSession::create($requestData);
+    //  dd($session);
+    //  DB::table('student_details')->insert($data);
+ $user_id = $request->input('user_id');
+        $id = $session->id;
+        $data=array('user_id'=>$user_id,"training_session_id"=>$id);
+        // DB::table('student_details')->insert($data);
+     DB::table('training_session_user')->insert($data);
+    
      return redirect()->route('TrainingSessions.listSessions');
  }
     #=======================================================================================#
@@ -98,6 +112,7 @@ class TrainingController extends Controller
     #=======================================================================================#
     public function show($id)
     {
+
         $trainingSession = TrainingSession::findorfail($id);
         return view('TrainingSessions.show_training_session', ['trainingSession' => $trainingSession]);
     }
@@ -147,8 +162,15 @@ class TrainingController extends Controller
     #=======================================================================================#
     public function deleteSession($id)
     {
+        // $session = TrainingSession::find($cityID);
+
+    //  if (count(DB::select("select * from training_session_user where training_session_id = $id") == 0)) {
+    //     return response()->json(['success' => 0]);
+    //  }
         $trainingSession = TrainingSession::findorfail($id);
         $trainingSession->delete();
-        return response()->json(['success' => 'Record deleted successfully!']);
+        return response()->json([
+            'message' => 'Data deleted successfully!'
+          ]);        
     }
 }

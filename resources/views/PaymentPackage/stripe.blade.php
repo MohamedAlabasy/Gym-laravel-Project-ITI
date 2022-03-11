@@ -33,7 +33,7 @@
 </head>
 
 <body>
-
+    {{-- @dd($data) --}}
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
@@ -85,7 +85,7 @@
                                     <option value="{{ $package->id  }} | {{  $package->price }}">{{ $package->name }} -
                                         {{ $package->price / 100 }}$
 
-                                    </option>
+                                </option>
 
 
                                     @endforeach
