@@ -99,7 +99,7 @@ class TrainingController extends Controller
      $session = TrainingSession::create($requestData);
     //  dd($session);
     //  DB::table('student_details')->insert($data);
- $user_id = $request->input('user_id');
+        $user_id = $request->input('user_id');
         $id = $session->id;
         $data = array('user_id' => $user_id, "training_session_id" => $id);
         // DB::table('student_details')->insert($data);
