@@ -89,34 +89,35 @@ class AuthController extends Controller
             //we put here nullable cause user dosn't need to update his pasword every time
         ]);
         if ($request->hasFile('profile_image')) {
-            if($request->hasFile('profile_image')){
-                $image=$request->file('profile_image');
-                $name=time().\Str::random(30).'.'.$image->getClientOriginalExtension();
-                $destinationPath=public_path('/imgs');
-                $image->move($destinationPath,$name);
-                $imageName='imgs/'.$name;
-                if($user->profile_image)
+            if ($request->hasFile('profile_image')) {
+                $image = $request->file('profile_image');
+                $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
+                $destinationPath = public_path('/imgs');
+                $image->move($destinationPath, $name);
+                $imageName = 'imgs/' . $name;
+                if ($user->profile_image)
                     File::delete(public_path('imgs/' . $user->profile_image));
-                $user->profile_image=$imageName;
+                $user->profile_image = $imageName;
 
-            $image = $request->file('profile_image');
-            $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/imgs');
-            $image->move($destinationPath, $name);
-            $imageName = 'imgs/' . $name;
-            if ($user->profile_image)
-                File::delete(public_path('imgs/' . $user->profile_image));
-            $user->profile_image = $imageName;
+                $image = $request->file('profile_image');
+                $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
+                $destinationPath = public_path('/imgs');
+                $image->move($destinationPath, $name);
+                $imageName = 'imgs/' . $name;
+                if ($user->profile_image)
+                    File::delete(public_path('imgs/' . $user->profile_image));
+                $user->profile_image = $imageName;
+            }
+            $user->name = $request->name ? $request->name : $user->name;
+            $user->email = $request->email ? $request->email : $user->email;
+            $user->gender = $request->gender ? $request->gender : $user->gender;
+            $user->birth_date = $request->birth_date ? $request->birth_date : $user->birth_date;
+            $user->password = $request->password ? $request->bcrypt($request->password) : $user->password;
+            $user->profile_image = $request->profile_image;
+            $user->save();
+            return response()->json([
+                'message' => 'Successfully update'
+            ]);
         }
-        $user->name = $request->name ? $request->name : $user->name;
-        $user->email = $request->email ? $request->email : $user->email;
-        $user->gender = $request->gender ? $request->gender : $user->gender;
-        $user->birth_date = $request->birth_date ? $request->birth_date : $user->birth_date;
-        $user->password = $request->password ? $request->bcrypt($request->password) : $user->password;
-        $user->profile_image = $request->profile_image;
-        $user->save();
-        return response()->json([
-            'message' => 'Successfully update'
-        ]);
     }
 }
