@@ -77,4 +77,15 @@ class User extends Authenticatable implements BannableContract, MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getProfileImageFileAttribute()
+    {
+        if ($this->attributes['profile_image']) {
+            return asset('/imgs/' . $this->attributes['profile_image']);
+        } else {
+            return asset('avatar.png');
+        }
+    }
+
+
 }

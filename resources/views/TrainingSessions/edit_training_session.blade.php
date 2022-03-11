@@ -5,6 +5,15 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper pb-4">
+    @if ($errors->any())
+    <div class="alert bg-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
@@ -23,7 +32,7 @@
     </section>
     <!-- Main content -->
     <section class="content">
-    
+
         <form action="{{route('TrainingSessions.update_session',[$trainingSession['id']])}}" method="post" enctype="multipart/form-data" class="w-75 m-auto">
             @csrf
             @method('PUT')
@@ -60,13 +69,13 @@
                             </div>
                                 @endif
                             </div>
-                           
-
-                         
 
 
 
-                          
+
+
+
+
                         </div>
                     </div>
                 </div>
