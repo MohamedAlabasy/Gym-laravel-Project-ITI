@@ -64,13 +64,24 @@ class GymController extends Controller
         }
 
 
-        $gym = new Gym();
-        $user = new User();
-        $gym->name = $request->name;
-        $user->city_id = $request->city_id;
-        $user->user_id = $request->user_id;
-        $gym->cover_image = $imageName;
-        $gym->save();
+        // $gym = new Gym();
+        // $user = new User();
+        $requestData = request()->all();
+        // Gym::create($requestData);
+        Gym::create([
+            'name' => $requestData['name'],
+            'city_id' => $requestData['city_id'],
+            'cover_image' => $imageName,
+        ]);
+        // $gym->name = $request->name;
+        // $gym->name = $request->city_id;
+        // $gym->cover_image = $imageName;
+
+        // $user->user_id = $request->user_id;
+        // $user->city_id = $request->city_id;
+
+        // $user->save();
+        // $gym->save();
         return redirect()->route('gym.list');
     }
 
@@ -95,7 +106,7 @@ class GymController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:20',
             'city_id' => 'required',
-            'cover_image' => 'required|image|mimes:jpg,jpeg',
+            'cover_image' => 'nullable|image|mimes:jpg,jpeg',
         ]);
 
 

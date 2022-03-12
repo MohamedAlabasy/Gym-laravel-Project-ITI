@@ -16,7 +16,7 @@ class CoachController extends Controller
     public function list()
     {
         $coachesFromDB = User::role('coach')->withoutBanned()->get();
-        if (count($coachesFromDB) <= 0) { 
+        if (count($coachesFromDB) <= 0) {
             return view('empty');
         }
         return view("coach.list", ['coaches' => $coachesFromDB]);
@@ -92,7 +92,7 @@ class CoachController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:50',
             'email' => 'required|string|unique:users,email,' . $user->id,
-            'profile_image' => 'mimes:jpg,jpeg',
+            'profile_image' => 'nullable|mimes:jpg,jpeg',
         ]);
 
         $user->name = $request->name;

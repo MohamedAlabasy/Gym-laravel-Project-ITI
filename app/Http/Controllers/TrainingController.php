@@ -9,6 +9,8 @@ use App\Models\TrainingSession;
 use App\Models\User;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 
 
@@ -85,6 +87,8 @@ class TrainingController extends Controller
                 ->orwhereRaw("starts_at < '$request->starts_at' and finishes_at > '$request->finishes_at'")
                 ->orwhereRaw("starts_at > '$request->starts_at' and starts_at < '$request->finishes_at'")
                 ->orwhereRaw("finishes_at > '$request->starts_at' and finishes_at < '$request->finishes_at'")
+                ->orwhereRaw("'$request->starts_at' > '$request->finishes_at'")
+                ->orwhereRaw("'starts_at' > 'finishes_at'")
                 ->orwhereRaw("starts_at > '$request->starts_at' and finishes_at < '$request->finishes_at'");
         })->get()->toArray();
 
@@ -105,6 +109,17 @@ class TrainingController extends Controller
     #=======================================================================================#
     public function show($id)
     {
+        $userId = DB::select("select user_id from training_session_user where training_session_id = $id");
+
+        $user = User::find($userId);
+        
+
+
+        // if ($user->hasRole('coach')) {
+        //     dd('kd');
+        // }else {
+        //     dd('k');
+        // }
 
         $trainingSession = TrainingSession::findorfail($id);
         return view('TrainingSessions.show_training_session', ['trainingSession' => $trainingSession]);
@@ -173,6 +188,7 @@ class TrainingController extends Controller
     public function deleteSession($id)
     {
 
+       
         if (count(DB::select("select * from training_session_user where training_session_id = $id")) == 0) {
             $trainingSession = TrainingSession::findorfail($id);
             $trainingSession->delete();
