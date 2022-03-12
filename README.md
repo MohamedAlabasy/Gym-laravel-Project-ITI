@@ -65,12 +65,12 @@ The Simple Gym Management System In Laravel/MySQL is a mini project for keeping 
 OR you can shorten the previous two steps (5 , 6) by using this command ` $ php artisan migrate:fresh --seed `.  
 
 
-Now `226` Accounts have been created on the system, distributed as follows :  
-1- The first two accounts are for `admin`.    
-2- From 3 to 26 are `cityManager`.  
-2- From 27 to 66 are `gymManager`.  
-2- From 67 to 126 are `coach`.  
-2- From 127 to 226 are `user`.  
+- Now `226` Accounts have been created on the system, distributed as follows :  
+The first two accounts are for `admin`.    
+From 3 to 26 are `cityManager`.  
+From 27 to 66 are `gymManager`.  
+From 67 to 126 are `coach`.  
+From 127 to 226 are `user`.  
 All created accounts have a unified password `123456`.  
 
 
