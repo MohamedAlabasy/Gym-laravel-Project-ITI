@@ -46,8 +46,7 @@ The Simple Gym Management System In Laravel/MySQL is a mini project for keeping 
 `Step 3` :  
 &nbsp; &nbsp; &nbsp; &nbsp; Create database call `gym` .  
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-`To help you understand the project databases, see the following ERF`
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; `To help you understand the project databases, see the following ERF`
 <h3 align="center"> DataBase ERD </h3>
 <p align="center">
    <img src="https://user-images.githubusercontent.com/93389016/157979950-d67cd8ca-0e50-4ca0-9c6c-263883ad1a73.jpg" alt="Build Status">
@@ -76,7 +75,7 @@ All created accounts have a unified password `123456`.
 
 `Step 7`:    
 &nbsp; &nbsp; &nbsp; &nbsp; To create a new admin account use a command  
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ` $ php artisan create:admin --email=admin2@admin.com --password=123456 `.  
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ` $ php artisan create:admin --email=admin2@admin.com --password=123456 `.  
 
 ## Contributors
 <table>
