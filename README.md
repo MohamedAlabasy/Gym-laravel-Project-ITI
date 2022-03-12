@@ -1,10 +1,81 @@
-# DataBase ERD :
-![Gym-DataBase-ERD-Project-ITI](https://user-images.githubusercontent.com/93389016/157979950-d67cd8ca-0e50-4ca0-9c6c-263883ad1a73.jpg)
+<h1 align="center"> Simple Gym System </h1>
+<p align="center">
+   <img src="https://user-images.githubusercontent.com/93389016/157983116-9feca44c-b9c1-43a0-97f3-e40fb90d685f.png" alt="Build Status">
+</p>
 
-## Databas Permissions  					
-![image](https://user-images.githubusercontent.com/93389016/156779278-58d23b62-21df-436d-a271-da2c5ad33c5d.png)
+## Description:
+ 
+The Simple Gym Management System In Laravel/MySQL is a mini project for keeping records of members in the gym. Talking about the project, it contains an admin side from where can manage all the timetables and records of the gym users easily.  
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; `The administration part consists of 4 types of managers who can enter the system`  
+
+1- `Admin`  :    
+&nbsp; &nbsp; &nbsp; &nbsp; Admin will have access to everything in the system,he can see any links or make any action Gym Manager and City Manager can do with  
+&nbsp; &nbsp; &nbsp; &nbsp; these extra functionalities  
+
+2- `City Manager` :    
+&nbsp; &nbsp; &nbsp; &nbsp; City Manager can do what Gym Manager do with extra functionalities … like he can see all gyms in his city and make CRUD on any gym or   
+&nbsp; &nbsp; &nbsp; &nbsp; gym manager in his city.  
+
+3- `Gym Managers` :  
+&nbsp; &nbsp; &nbsp; &nbsp; Gym Manager can CRUD training sessions and assign coaches to these sessions, also he can buy training package for a user through   
+&nbsp; &nbsp; &nbsp; &nbsp; stripe.  
+
+4- `coach` :  
+&nbsp; &nbsp; &nbsp; &nbsp; Can only see the sessions in which he trains.  
+
+5- `User` (It will be API only) :  
+&nbsp; &nbsp; &nbsp; &nbsp; Cann't access the system because it is for the administration only, but there is an endpoint (API) for the user.   
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+`Each manager has Permissions that can be found in the following table`
+<h3 align="center"> Databas Permissions </h3>  					
+<p align="center">
+   <img src="https://user-images.githubusercontent.com/93389016/156779278-58d23b62-21df-436d-a271-da2c5ad33c5d.png" alt="Build Status">
+</p>
+
+## To run this project  
+
+`Step 1` :  
+&nbsp; &nbsp; &nbsp; &nbsp; You must have installed virtual server i.e XAMPP on your PC (for Windows). This System in PHP with source code is   
+&nbsp; &nbsp; &nbsp; &nbsp; free to download, Use for educational purposes only! .  
+
+`Step 2` :  
+&nbsp; &nbsp; &nbsp; &nbsp; Download the source code .
+
+`Step 3` :  
+&nbsp; &nbsp; &nbsp; &nbsp; Create database call `gym` .  
+
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+`To help you understand the project databases, see the following ERF`
+<h3 align="center"> DataBase ERD </h3>
+<p align="center">
+   <img src="https://user-images.githubusercontent.com/93389016/157979950-d67cd8ca-0e50-4ca0-9c6c-263883ad1a73.jpg" alt="Build Status">
+</p>
+
+`Step 4` :    
+&nbsp; &nbsp; &nbsp; &nbsp; update composer by use a command ` $ composer update `.  
+
+`Step 5` :    
+&nbsp; &nbsp; &nbsp; &nbsp; Run migration to create dababas tables use a command ` $ php artisan migrate `.
+
+`Step 6` :    
+&nbsp; &nbsp; &nbsp; &nbsp; Run data seed to create fake data in your database use a command ` $ php artisan db:seed `.  
+
+OR you can shorten the previous two steps (5 , 6) by using this command ` $ php artisan migrate:fresh --seed `.  
 
 
+Now `226` Accounts have been created on the system, distributed as follows :  
+1- The first two accounts are for `admin`.    
+2- From 3 to 26 are `cityManager`.  
+2- From 27 to 66 are `gymManager`.  
+2- From 67 to 126 are `coach`.  
+2- From 127 to 226 are `user`.  
+All created accounts have a unified password `123456`.  
+
+
+`Step 7`:    
+&nbsp; &nbsp; &nbsp; &nbsp; To create a new admin account use a command ` $ php artisan create:admin --email=admin2@admin.com --password=123456 `.  
 
 ## Contributors
 <table>
