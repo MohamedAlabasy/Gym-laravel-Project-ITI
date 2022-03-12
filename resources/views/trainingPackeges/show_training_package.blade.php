@@ -34,7 +34,7 @@
                             {{-- <td>{{$package->id}}</td> --}}
                             <td>{{$package->name}} </td>
                             <td>{{$package->price}} </td>
-                            <td>{{$package->session_number}} </td>
+                            <td>{{$package->sessions_number}} </td>
                             {{-- <td>{{$package->finishes_at}} </td> --}}
                         </tr>
                     </tbody>
