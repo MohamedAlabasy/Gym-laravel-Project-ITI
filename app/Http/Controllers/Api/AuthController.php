@@ -24,14 +24,20 @@ class AuthController extends Controller
             'password' => 'required|min:6',
             'password_confirmation' => 'required|same:password'
         ]);
-
+        if ($request->hasFile('profile_image')) {
+            $image = $request->file('profile_image');
+            $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/imgs');
+            $image->move($destinationPath, $name);
+            $imageName = 'imgs/' . $name;
+        }
         $user = new User([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'gender' => $request->gender,
             'birth_date' => $request->birth_date,
-            'profile_image' => $request->profile_image
+            'profile_image' => $imageName
         ]);
         $user->assignRole('user');
         $user->save();

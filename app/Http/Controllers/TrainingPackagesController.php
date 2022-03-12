@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class TrainingPackagesController extends Controller
 {
-    //
-      #=======================================================================================#
+    #=======================================================================================#
     #			                             index                                         	#
     #=======================================================================================#
     public function index()
@@ -49,10 +48,10 @@ class TrainingPackagesController extends Controller
     {
         $packages = TrainingPackage::all();
 
-        
+
         return view('trainingPackeges.creatPackege', [
             'packages' => $packages,
-            
+
         ]);
     }
     #=======================================================================================#
@@ -62,19 +61,19 @@ class TrainingPackagesController extends Controller
     {
         $request->validate([
             'name' => ['required'],
-           'price' => ['required', 'numeric', 'min:10', 'max:90'],
-           'sessions_number' => ['required', 'numeric', 'min:1', 'max:40'],
+            'price' => ['required', 'numeric', 'min:10', 'max:90'],
+            'sessions_number' => ['required', 'numeric', 'min:1', 'max:40'],
         ]);
-        
+
         $requestData = request()->all();
         $package = TrainingPackage::create($requestData);
-       
-           $id = $package->id;
-      
-           
-           $data = array('gym_id' => $request->gym_id , "training_package_id" => $id);
-           DB::table('gyms_training_packages')->insert($data);
-   
+
+        $id = $package->id;
+
+
+        $data = array('gym_id' => $request->gym_id, "training_package_id" => $id);
+        DB::table('gyms_training_packages')->insert($data);
+
 
 
         return redirect()->route('trainingPackeges.listPackeges');
@@ -105,8 +104,8 @@ class TrainingPackagesController extends Controller
     {
         $request->validate([
             'name' => ['required'],
-           'price' => ['required', 'numeric', 'min:10', 'max:4000'],
-           'sessions_number' => ['required', 'numeric', 'min:1', 'max:60']
+            'price' => ['required', 'numeric', 'min:10', 'max:4000'],
+            'sessions_number' => ['required', 'numeric', 'min:1', 'max:60']
         ]);
 
 
@@ -115,7 +114,7 @@ class TrainingPackagesController extends Controller
             'name' => $request->all()['name'],
             'price' => $request->price * 100,
             'sessions_number' => $request->sessions_number,
-           
+
 
 
 
