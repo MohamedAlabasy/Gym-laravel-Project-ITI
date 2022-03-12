@@ -41,6 +41,7 @@ class CityManagerController extends Controller
                 $destinationPath = public_path('/imgs');
                 $image->move($destinationPath, $name);
                 $imageName = 'imgs/' . $name;
+                //00
             }
         
             $user=new User();
