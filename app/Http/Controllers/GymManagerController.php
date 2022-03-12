@@ -45,17 +45,17 @@ class GymManagerController extends Controller
             $image->move($destinationPath, $name);
             $imageName = 'imgs/' . $name;
         }
-    
-        $user=new User();
-        $user->name=$request->name;
-        $user->email=$request->email;
-        $user->password=$request->password;
-        $user->profile_image=$imageName;
-        $user->national_id=$request->national_id;
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->profile_image = $imageName;
+        $user->national_id = $request->national_id;
         $user->assignRole('gymManager');
         $user->save();
-        
-    return redirect()->route('gymManager.list');
+
+        return redirect()->route('gymManager.list');
     }
 
     #=======================================================================================#
@@ -94,7 +94,7 @@ class GymManagerController extends Controller
     #=======================================================================================#
     public function update(Request $request, $id)
     {
-        $user=User::find($id);
+        $user = User::find($id);
         $validated = $request->validate([
             'name' => 'required|max:20',
             'password' => 'required |min:6',
@@ -102,6 +102,7 @@ class GymManagerController extends Controller
             'national_id' =>'digits_between:10,17|numeric|unique:users,national_id,' . $user->id,
             'profile_image' => 'nullable|image|mimes:jpg,jpeg',
         ]);
+
        
         $user->name=$request->name;
         $user->password=$request->password;
@@ -118,11 +119,11 @@ class GymManagerController extends Controller
                   File::delete(public_path('imgs/' . $user->profile_image));
                 $user->profile_image=$imageName;
             
+
+
         }
         $user->save();
         return redirect()->route('gymManager.list');
-
-        
     }
     #=======================================================================================#
     #			                           Delete Function                                	#

@@ -33,38 +33,46 @@ class SessionsController extends Controller
         $user_id=Auth()->user()->id;
         $session=TrainingSession::find($sessionId);
         $user=user::find($user_id);
-        $remain_session=Auth()->user()->remain_session;
-        $attendTime=Carbon::parse($request->attendance_at)->format('Y-m-d');
-
-        if($attendTime !== $session->day){
-            $response=['Sorry, you can attend a session that it’s date not before today or after today'];
+        $number=count(DB::select("select * from attendances where user_id = $user_id"));
+        if($number >= 1){
+            $response=['Sorry, you are already attend this session'];
             return response($response ,200);
         }
+        else if($number == 0){
+                $remain_session=Auth()->user()->remain_session;
+                $attendTime=Carbon::parse($request->attendance_at)->format('Y-m-d');
 
-        if($remain_session>=1 ){
-            $request->validate([
-                'attendance_at' => 'required',
-            ]);
+                if($attendTime !== $session->day){
+                    $response=['Sorry, you can attend a session that it’s date not before today or after today'];
+                    return response($response ,200);
+                }
 
-            $attend = new Attendance([
-                'attendance_at' => $request->attendance_at,
-                'user_id' => $user_id,
-                'training_session_id'=>$sessionId
-            ]);
-            $attend->save();
-            $remain_session--;
-            $user->update(['remain_session' => $remain_session]);
+                if($remain_session>=1 ){
+                    $request->validate([
+                        'attendance_at' => 'required',
+                    ]);
 
-            $response=[
-                'user'=>$user,
-                'session'=>$session,
-            ];
-            return response($response ,200);
-        }
-        else{
-            $response=['Sorry, you need to buy training sessions in order to attend'];
-            return response($response ,200);
-        }
+                    $attend = new Attendance([
+                        'attendance_at' => $request->attendance_at,
+                        'user_id' => $user_id,
+                        'training_session_id'=>$sessionId
+                    ]);
+                    $attend->save();
+                    $remain_session--;
+                    $user->update(['remain_session' => $remain_session]);
+
+                    $response=[
+                        'user'=>$user,
+                        'session'=>$session,
+                    ];
+                    return response($response ,200);
+                }
+                else{
+                    $response=['Sorry, you need to buy training sessions in order to attend'];
+                    return response($response ,200);
+                }
+            }
+
     }
 
     public function getSessionsForUser(Request $request){

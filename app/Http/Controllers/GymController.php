@@ -9,6 +9,7 @@ use App\Models\Gym;
 use App\Models\City;
 use App\Models\User;
 use Illuminate\Support\Facades\File;
+
 class GymController extends Controller
 {
     #=======================================================================================#
@@ -28,7 +29,7 @@ class GymController extends Controller
 
     public function show($id)
     {
-        $singleGym = User::find($id);
+        $singleGym = Gym::find($id);
         return view("gym.show", ['singleGym' => $singleGym]);
     }
     #=======================================================================================#
@@ -36,14 +37,13 @@ class GymController extends Controller
     #=======================================================================================#
     public function create()
     {
-        
+
         $gyms =  User::role('gymManager')->withoutBanned()->get();
         $cities = City::all();
         return view('gym.create', [
             'users' => $gyms,
             'cities' => $cities,
         ]);
-        
     }
     #=======================================================================================#
     #			                           Store Function                                 	#
@@ -52,18 +52,17 @@ class GymController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
-            'cover_image' =>['required|image|mimes:jpg,jpeg'],
+            'cover_image' => ['required', 'mimes:jpg,jpeg'],
             'city_id' => ['required'],
-            //'user->id'=>['required'],
-            ]);
-            if ($request->hasFile('cover_image')) {
-                $image = $request->file('cover_image');
-                $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
-                $destinationPath = public_path('/imgs');
-                $image->move($destinationPath, $name);
-                $imageName = 'imgs/' . $name;
-            }
-        
+        ]);
+        if ($request->hasFile('cover_image')) {
+            $image = $request->file('cover_image');
+            $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/imgs');
+            $image->move($destinationPath, $name);
+            $imageName = 'imgs/' . $name;
+        }
+
 
         $gym = new Gym();
         $user = new User();
@@ -85,43 +84,38 @@ class GymController extends Controller
         $users = User::role('gymManager')->withoutBanned()->get();
         $cities = City::all();
         $singleGym = Gym::find($id);
-        return view("gym.edit", ['gym' => $singleGym, 'users' => $users,'cities' => $cities,]);
-        
+        return view("gym.edit", ['gym' => $singleGym, 'users' => $users, 'cities' => $cities,]);
     }
-    
+
 
     //Update Function
     public function update(Request $request, $id)
     {
-        $gym=Gym::find($id);
+        $gym = Gym::find($id);
         $validated = $request->validate([
             'name' => 'required|max:20',
-           
+            'city_id' => 'required',
             'cover_image' => 'required|image|mimes:jpg,jpeg',
         ]);
 
-       
-        $gym->name=$request->name;
-       
-       
-    
 
-        if($request->hasFile('cover_image')){
-            $image=$request->file('cover_image');
-            $name=time().\Str::random(30).'.'.$image->getClientOriginalExtension();
-            $destinationPath=public_path('/imgs');
-            $image->move($destinationPath,$name);
-            $imageName='imgs/'.$name;
-            if(isset( $gym->cover_image))
-                  File::delete(public_path('imgs/' . $gym->cover_image));
-                $gym->cover_image=$imageName;
-            
+        $gym->name = $request->name;
+
+
+
+
+        if ($request->hasFile('cover_image')) {
+            $image = $request->file('cover_image');
+            $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/imgs');
+            $image->move($destinationPath, $name);
+            $imageName = 'imgs/' . $name;
+            if (isset($gym->cover_image))
+                File::delete(public_path('imgs/' . $gym->cover_image));
+            $gym->cover_image = $imageName;
         }
         $gym->save();
         return redirect()->route('gym.list');
-
-
-        
     }
 
     //Delete Function

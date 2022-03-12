@@ -37,26 +37,26 @@
             <div class="card-body p-0">
                 <table class="table table-striped projects" id="proj">
                     <thead>
-                        <tr>
+                        <tr class="text-center">
                             <th>Package Id</th>
                             <th>Package Name</th>
                             <th>Price</th>
                             <th>Number of sessions</th>
                             <th>Creator</th>
-                            <th class="text-center">Actions </th>
+                            <th>Actions </th>
 
                         </tr>
                     </thead>
                     <tbody>
 
                         @foreach ($packages as $package)
-                        <tr id="did{{ $package->id }}">
+                        <tr id="did{{ $package->id }}" class="text-center">
                             <td>{{ $package->id }}</td>
                             <td>{{ $package->name }} </td>
                             <td>{{ ($package->price) / 100 }} $ </td>
                             <td>{{ $package->sessions_number }}</td>
                             <td>{{$package->user? $package->user->name: "Not found"}}</td>
-                            <td class="project-actions text-right">
+                            <td class="project-actions">
                                 <a class="btn btn-info btn-sm"
                                     href="{{ route('trainingPackeges.show_training_package', $package['id']) }}">
 

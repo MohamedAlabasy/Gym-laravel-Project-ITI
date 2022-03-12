@@ -37,6 +37,7 @@
                             <td>{{$trainingSession->day}} </td>
                             <td>{{$trainingSession->starts_at}} </td>
                             <td>{{$trainingSession->finishes_at}} </td>
+                            <td>{{$trainingSession->users->name}} </td>
                         </tr>
                     </tbody>
                     <tbody>
