@@ -16,7 +16,7 @@ class GymController extends Controller
     #=======================================================================================#
     public function list()
     {
-        $gymsFromDB = Gym::all();//role('cityManager')->withoutBanned()->get();
+        $gymsFromDB = Gym::all();
         if (count($gymsFromDB) <= 0) { //for gym empty statement
             return view('empty');
         }
@@ -40,7 +40,6 @@ class GymController extends Controller
     {
         
         $gyms =  User::role('gymManager')->withoutBanned()->get();
-        //$coachesFromDB =  User::role('coach')->withoutBanned()->get();
         $cities = City::all();
         return view('gym.create', [
             'users' => $gyms,
@@ -55,7 +54,9 @@ class GymController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
+            
             'cover_image' =>'required|image|mimes:jpg,jpeg',
+            'city_id' => ['required'],
             ]);
             if ($request->hasFile('cover_image')) {
                 $image = $request->file('cover_image');
@@ -68,6 +69,7 @@ class GymController extends Controller
 
         $gym = new Gym();
         $gym->name = $request->name;
+        $user->city_id = $request->city_id;
         $gym->cover_image = $imageName;
         $gym->save();
         return redirect()->route('gym.list');
@@ -80,9 +82,10 @@ class GymController extends Controller
     public function edit($id)
 
     {
-        $users = User::all();
+        $users = User::role('gymManager')->withoutBanned()->get();
+        $cities = City::all();
         $singleGym = Gym::find($id);
-        return view("gym.edit", ['gym' => $singleGym, 'users' => $users]);
+        return view("gym.edit", ['gym' => $singleGym, 'users' => $users,'cities' => $cities,]);
         
     }
     

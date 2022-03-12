@@ -15,8 +15,8 @@ class CoachController extends Controller
     #=======================================================================================#
     public function list()
     {
-        $coachesFromDB =  User::role('coach')->withoutBanned()->get();
-        if (count($coachesFromDB) <= 0) { //for empty statement
+        $coachesFromDB = User::role('coach')->withoutBanned()->get();
+        if (count($coachesFromDB) <= 0) { 
             return view('empty');
         }
         return view("coach.list", ['coaches' => $coachesFromDB]);
@@ -51,6 +51,7 @@ class CoachController extends Controller
             'name' => ['required', 'string', 'min:2'],
             'email' => ['required'],
             'profile_image' => ['required', 'mimes:jpg,jpeg'],
+            'city_id' => ['required'],
         ]);
 
         if ($request->hasFile('profile_image')) {
@@ -64,9 +65,9 @@ class CoachController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        //$user->city = $request->name;
+        $user->city_id = $request->city_id;
         $user->profile_image = $imageName;
-        //$user->assignRole('coach');
+        $user->assignRole('coach');
         $user->save();
         return redirect()->route('coach.list');
     }
