@@ -74,6 +74,7 @@ All created accounts have a unified password `123456`.
 
 `Step 7`:    
 &nbsp; &nbsp; &nbsp; &nbsp; To create a new admin account use a command  
+
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ` $ php artisan create:admin --email=admin2@admin.com --password=123456 `.  
 
 ## Contributors
