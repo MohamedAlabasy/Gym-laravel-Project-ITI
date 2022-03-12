@@ -49,13 +49,7 @@ class TrainingPackagesController extends Controller
     {
         $packages = TrainingPackage::all();
 
-        // $users = User::all();
-        // $post->user? $post->user->name
-        // foreach ($users as $user) {
-        //     if ($user->hasRole('coach')) {
-        //         $coaches[] = $user;
-        //     }
-        // }
+        
         return view('trainingPackeges.creatPackege', [
             'packages' => $packages,
             
@@ -67,55 +61,18 @@ class TrainingPackagesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'min:2'],
-            'price' => ['required'],
-            'sessions_number' => ['required'],
-            
-
+            'name' => ['required'],
+           'price' => ['required', 'numeric', 'min:10', 'max:90'],
+           'sessions_number' => ['required', 'numeric', 'min:1', 'max:40'],
         ]);
         
-        // $requestData = request()->all();
-        // TrainingPackage::create($requestData);
-        // $package = new TrainingPackage();
-        // dd($package->id);
-
-    	// $package->name = $request->get('name');
-    	// $package->price = $request->get('price') * 100;
-    	// $package->sessions_number = $request->get('sessions_number');
-        // $package->user_id = auth()->user()->id;
-        //  $x = $package->save();
-        //  dd($x);
-        // dd($package->id);
-        // $newPackage = $package->toArray();
-        //  gyms_training_packages;
-        // dd($newPackage);
-        //  TrainingPackage::create($newPackage);
-         //  dd($session);
-        //  $y = $x->toArray();
-        //  dd($y);
-         //  DB::table('student_details')->insert($data);
-    //   $user_id = $request->input('user_id');
-            //  $id = $session->id;
-            //  $data=array('user_id'=>$user_id,"training_session_id"=>$id);
-             // DB::table('student_details')->insert($data);
-        //   DB::table('training_session_user')->insert($data);
-         
-     
-        //  dd($package);
-        // $package->user()->attach($package);
         $requestData = request()->all();
         $package = TrainingPackage::create($requestData);
-        // dd($package);
-       //  dd($session);
-       //  DB::table('student_details')->insert($data);
-        //    $package = $request->input('user_id');
+       
            $id = $package->id;
-        //    dd($id);
-        // dd($request);
-           
+      
            
            $data = array('gym_id' => $request->gym_id , "training_package_id" => $id);
-           // DB::table('student_details')->insert($data);
            DB::table('gyms_training_packages')->insert($data);
    
 
@@ -146,19 +103,17 @@ class TrainingPackagesController extends Controller
     #=======================================================================================#
     public function update(Request $request, $id)
     {
-        // $request->validate([
-        //     'name' => ['required', 'string', 'min:2'],
-        //     'price' => ['required'],
-        //     'session_number' => ['required'],
-            
-
-        // ]);
+        $request->validate([
+            'name' => ['required'],
+           'price' => ['required', 'numeric', 'min:10', 'max:4000'],
+           'sessions_number' => ['required', 'numeric', 'min:1', 'max:60']
+        ]);
 
 
         TrainingPackage::where('id', $id)->update([
 
             'name' => $request->all()['name'],
-            'price' => $request->price,
+            'price' => $request->price * 100,
             'sessions_number' => $request->sessions_number,
            
 
