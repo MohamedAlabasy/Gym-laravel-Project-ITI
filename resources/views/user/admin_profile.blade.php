@@ -28,7 +28,7 @@
                     </div>
 
                 </div>
-              
+
                 @role('cityManager')
                 <div class="row mb-2">
 
@@ -87,7 +87,7 @@
                 <div class="card-body box-profile">
                     <div class="text-center">
                         <img class="profile-user-img img-fluid img-circle"
-                            src="{{ auth()->user()->profileImageFile }}" alt="User profile picture">
+                            src="{{asset(auth()->user()->profileImageFile)}}" alt="User profile picture">
 
 
                     </div>
