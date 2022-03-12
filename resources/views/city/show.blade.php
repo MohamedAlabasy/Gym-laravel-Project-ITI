@@ -19,17 +19,17 @@
                         </div>
                         {{-- # ======================================= # Gyms # ======================================= # --}}
                         <div class="col-6">
-                            <a href="{{ route('gym.list') }}">
-                                <div class="small-box bg-danger">
-                                    <div class="inner">
-                                        <h3>{{ $gyms }}</h3>
-                                        <p>Gyms</p>
-                                    </div>
-                                    <div class="icon">
-                                        <i class="fas fa-dumbbell text-white" style="font-size: 50px !important"></i>
-                                    </div>
+                            {{-- <a href="{{ route('gym.list') }}"> --}}
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3>{{ $gyms }}</h3>
+                                    <p>Gyms</p>
                                 </div>
-                            </a>
+                                <div class="icon">
+                                    <i class="fas fa-dumbbell text-white" style="font-size: 50px !important"></i>
+                                </div>
+                            </div>
+                            {{-- </a> --}}
                         </div>
                         {{-- # ======================================= # Gyms Managers # ======================================= # --}}
                         <div class="col-6">
@@ -45,7 +45,7 @@
                         </div>
                         {{-- # ======================================= # Coaches # ======================================= # --}}
                         <div class="col-6">
-                            <a href="{{ route('coach.list') }}">
+                            {{-- <a href="{{ route('coach.list') }}"> --}}
                                 <div class="small-box bg-success">
                                     <div class="inner">
                                         <h3>{{ $coaches }}<sup style="font-size: 20px"></sup></h3>
@@ -55,7 +55,7 @@
                                         <i class="fas fa-user-ninja text-white" style="font-size: 50px !important"></i>
                                     </div>
                                 </div>
-                            </a>
+                            {{-- </a> --}}
                         </div>
                         {{-- # ======================================= # Users # ======================================= # --}}
                         <div class="col-6">
