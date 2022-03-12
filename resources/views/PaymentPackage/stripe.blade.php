@@ -33,7 +33,6 @@
 
 
 @section('content')
-    {{-- @dd($data) --}}
     @role('admin|cityManager|gymManager')
     <div class="container ">
         <div class="mb-2 d-flex justify-content-center align-items-center">
@@ -52,7 +51,7 @@
                             <p>{{ Session::get('success') }}</p>
                         </div>
                         @endif
-
+                      
                         <form role="form" action="{{ route('stripe.post') }}" method="post" class="validation"
                             data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
                             id="payment-form">
