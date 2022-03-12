@@ -89,5 +89,4 @@ class User extends Authenticatable implements BannableContract, MustVerifyEmail
     }
 
 
-
 }
