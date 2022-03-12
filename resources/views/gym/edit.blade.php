@@ -52,13 +52,23 @@
 
         
                            <div class="form-group">
-                                <label class="form-label">User</label>
+                                <label class="form-label">Gym Manger</label>
                                 <select class="form-control" name="user_id">
                                      @foreach($users as $user) 
                                 <option value="{{$user->id}}" @if($user->id ==$gym->user_id) selected @endif >{{$user->name}}</option>
                                  @endforeach 
                                 </select>
                             </div> 
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <select required class=" form-control" name="city_id" id="city">
+                                    <optgroup label="Available City">
+                                        @foreach ($cities as $city)
+                                            <option value={{ $city->id }}>{{ $city->name }}</option>
+                                        @endforeach
+                                    </optgroup>
+                                </select>
+                            </div>
 
 
 
