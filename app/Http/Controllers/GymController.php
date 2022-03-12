@@ -52,10 +52,12 @@ class GymController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
-            'cover_image' => ['required', 'mimes:jpg,jpeg'],
+            'cover_image' => ['nullable', 'mimes:jpg,jpeg'],
             'city_id' => ['required'],
         ]);
-        if ($request->hasFile('cover_image')) {
+        if ($request->hasFile('cover_image') == null) {
+            $imageName = 'imgs/defaultImg.jpg';
+        } else {
             $image = $request->file('cover_image');
             $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
             $destinationPath = public_path('/imgs');
@@ -64,24 +66,12 @@ class GymController extends Controller
         }
 
 
-        // $gym = new Gym();
-        // $user = new User();
         $requestData = request()->all();
-        // Gym::create($requestData);
         Gym::create([
             'name' => $requestData['name'],
             'city_id' => $requestData['city_id'],
             'cover_image' => $imageName,
         ]);
-        // $gym->name = $request->name;
-        // $gym->name = $request->city_id;
-        // $gym->cover_image = $imageName;
-
-        // $user->user_id = $request->user_id;
-        // $user->city_id = $request->city_id;
-
-        // $user->save();
-        // $gym->save();
         return redirect()->route('gym.list');
     }
 
@@ -108,6 +98,7 @@ class GymController extends Controller
             'city_id' => 'required',
             'cover_image' => 'nullable|image|mimes:jpg,jpeg',
         ]);
+
 
 
         $gym->name = $request->name;

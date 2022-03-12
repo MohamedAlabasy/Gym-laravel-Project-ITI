@@ -31,31 +31,29 @@ class GymManagerController extends Controller
             'name' => 'required|max:20',
             'password' => 'required |min:6',
             'email' => 'required|string|unique:users,email,',
-            'national_id' =>'digits_between:10,17|required|numeric|unique:users',
+            'national_id' => 'digits_between:10,17|required|numeric|unique:users',
             'profile_image' => 'nullable|image|mimes:jpg,jpeg',
         ]);
-        if($request->hasFile('profile_image')== null)
-        {
-            $imageName = 'imgs/defaultImg.jpg' ;
-        }
-        else {
+        if ($request->hasFile('profile_image') == null) {
+            $imageName = 'imgs/defaultImg.jpg';
+        } else {
             $image = $request->file('profile_image');
             $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
             $destinationPath = public_path('/imgs');
             $image->move($destinationPath, $name);
             $imageName = 'imgs/' . $name;
         }
-    
-        $user=new User();
-        $user->name=$request->name;
-        $user->email=$request->email;
-        $user->password=$request->password;
-        $user->profile_image=$imageName;
-        $user->national_id=$request->national_id;
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->profile_image = $imageName;
+        $user->national_id = $request->national_id;
         $user->assignRole('gymManager');
         $user->save();
-        
-    return redirect()->route('gymManager.list');
+
+        return redirect()->route('gymManager.list');
     }
 
     #=======================================================================================#
@@ -64,8 +62,6 @@ class GymManagerController extends Controller
     public function list()
     {
         $usersFromDB =  User::role('gymManager')->withoutBanned()->get();
-        // $usersFromDB = User::all();
-        // $usersFromDB =  User::role('gymManager')->get();
         if (count($usersFromDB) <= 0) { //for empty statement
             return view('empty');
         }
@@ -84,7 +80,7 @@ class GymManagerController extends Controller
     #=======================================================================================#
     public function edit($id)
     {
-      
+
         $singleUser = User::find($id);
         return view("gymManager.edit", ['singleUser' => $singleUser]);
     }
@@ -94,51 +90,38 @@ class GymManagerController extends Controller
     #=======================================================================================#
     public function update(Request $request, $id)
     {
-        $user=User::find($id);
+        $user = User::find($id);
         $validated = $request->validate([
             'name' => 'required|max:20',
             'password' => 'required |min:6',
             'email' => 'required|string|unique:users,email,' . $user->id,
-            'national_id' =>'digits_between:10,17|numeric|unique:users,national_id,' . $user->id,
+            'national_id' => 'digits_between:10,17|numeric|unique:users,national_id,' . $user->id,
             'profile_image' => 'nullable|image|mimes:jpg,jpeg',
         ]);
-       
-        $user->name=$request->name;
-        $user->password=$request->password;
-        $user->email=$request->email;
-        $user->national_id=$request->national_id;
-    
-        if($request->hasFile('profile_image')){
-            $image=$request->file('profile_image');
-            $name=time().\Str::random(30).'.'.$image->getClientOriginalExtension();
-            $destinationPath=public_path('/imgs');
-            $image->move($destinationPath,$name);
-            $imageName='imgs/'.$name;
-            if(isset( $user->profile_image))
-                  File::delete(public_path('imgs/' . $user->profile_image));
-                $user->profile_image=$imageName;
-            
+
+        $user->name = $request->name;
+        $user->password = $request->password;
+        $user->email = $request->email;
+        $user->national_id = $request->national_id;
+
+        if ($request->hasFile('profile_image')) {
+            $image = $request->file('profile_image');
+            $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/imgs');
+            $image->move($destinationPath, $name);
+            $imageName = 'imgs/' . $name;
+            if (isset($user->profile_image))
+                File::delete(public_path('imgs/' . $user->profile_image));
+            $user->profile_image = $imageName;
         }
         $user->save();
         return redirect()->route('gymManager.list');
-
-        
     }
     #=======================================================================================#
     #			                           Delete Function                                	#
     #=======================================================================================#
-    // public function delete($id){
-    //     $singleUser=User::findorfail($id);
-    //     $singleUser->delete();
-    //     return redirect()->route('gymManager.list');
-
-    // }
-
-
-    // using Ajax 
     public function deletegymManager($id)
     {
-
         $singleUser = User::findorfail($id);
         $singleUser->delete();
         return response()->json(['success' => 'Record deleted successfully!']);

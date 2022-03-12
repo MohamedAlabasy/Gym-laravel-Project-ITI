@@ -29,24 +29,6 @@ class TrainingController extends Controller
         return view('TrainingSessions.listSessions', ['trainingSessions' => $trainingSessions]);
     }
 
-    // public function getSession(Request $request) {
-    //     if($request->ajax()) {
-    //         $data = TrainingSession::latest()->get();
-    //         return DataTables::of($data)
-    //         ->addIndexColumn()
-    //         ->addColumn('action', function() {
-    //             $actionBtn = '<div class = "text-center">
-    //             <a href="#" class = "btn btn-danger">Delete</a>
-    //             <a href="#" class = "btn btn-info">View</a>
-    //             <a href="#" class = "btn btn-success">Update</a>
-    //             </div>'
-    //            ;
-    //             return $actionBtn;
-    //         })
-    //         ->rawColumns(['action'])
-    //         ->make(true);
-    //     }
-    // }
     #=======================================================================================#
     #			                             create                                        	#
     #=======================================================================================#
@@ -112,14 +94,6 @@ class TrainingController extends Controller
         $userId = DB::select("select user_id from training_session_user where training_session_id = $id");
 
         $user = User::find($userId);
-        
-
-
-        // if ($user->hasRole('coach')) {
-        //     dd('kd');
-        // }else {
-        //     dd('k');
-        // }
 
         $trainingSession = TrainingSession::findorfail($id);
         return view('TrainingSessions.show_training_session', ['trainingSession' => $trainingSession]);
@@ -153,12 +127,12 @@ class TrainingController extends Controller
         ]);
 
         $validate_old_seesions = TrainingSession::where('day', '=', $request->day)->where("starts_at", "!=", null)->where("finishes_at", "!=", null)->where(function ($q) use ($request) {
-                $q->whereRaw("starts_at = '$request->starts_at' and finishes_at ='$request->finishes_at'")
-                    ->orwhereRaw("starts_at < '$request->starts_at' and finishes_at > '$request->finishes_at'")
-                    ->orwhereRaw("starts_at > '$request->starts_at' and starts_at < '$request->finishes_at'")
-                    ->orwhereRaw("finishes_at > '$request->starts_at' and finishes_at < '$request->finishes_at'")
-                    ->orwhereRaw("starts_at > '$request->starts_at' and finishes_at < '$request->finishes_at'");
-            })->where('id', '!=', $id)->get()->toArray();
+            $q->whereRaw("starts_at = '$request->starts_at' and finishes_at ='$request->finishes_at'")
+                ->orwhereRaw("starts_at < '$request->starts_at' and finishes_at > '$request->finishes_at'")
+                ->orwhereRaw("starts_at > '$request->starts_at' and starts_at < '$request->finishes_at'")
+                ->orwhereRaw("finishes_at > '$request->starts_at' and finishes_at < '$request->finishes_at'")
+                ->orwhereRaw("starts_at > '$request->starts_at' and finishes_at < '$request->finishes_at'");
+        })->where('id', '!=', $id)->get()->toArray();
 
         if (count($validate_old_seesions) > 0)
             return back()->withErrors("Time invalid")->withInput();
@@ -188,7 +162,7 @@ class TrainingController extends Controller
     public function deleteSession($id)
     {
 
-       
+
         if (count(DB::select("select * from training_session_user where training_session_id = $id")) == 0) {
             $trainingSession = TrainingSession::findorfail($id);
             $trainingSession->delete();

@@ -14,8 +14,6 @@ class AllUsersController extends Controller
     public function list()
     {
         $usersFromDB =  User::role('user')->withoutBanned()->get();
-        // $usersFromDB = User::all();
-        // $usersFromDB =  User::role('user')->get();
         if (count($usersFromDB) <= 0) { //for empty statement
             return view('empty');
         }
@@ -33,12 +31,6 @@ class AllUsersController extends Controller
     #=======================================================================================#
     #			                           Delete Function                                	#
     #=======================================================================================#
-    // public function delete($id){
-    //     $singleUser=User::findorfail($id);
-    //     $singleUser->delete();
-    //     return redirect()->route('gymManager.list');
-
-    // }
     public function deleteUser($id)
     {
         $singleUser = User::findorfail($id);
@@ -47,8 +39,8 @@ class AllUsersController extends Controller
     }
 
 
-#=======================================================================================#
-    #			                             Assign Gym To User                                         	#
+    #=======================================================================================#
+    #			                        Assign Gym To User                              	#
     #=======================================================================================#
     public function addGym($id)
     {
@@ -70,5 +62,4 @@ class AllUsersController extends Controller
         $usersFromDB =  User::role('user')->withoutBanned()->get();
         return view("allUsers.list", ['users' => $usersFromDB]);
     }
-
 }

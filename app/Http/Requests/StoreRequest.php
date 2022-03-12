@@ -24,17 +24,12 @@ class StoreRequest extends FormRequest
      */
     public function rules()
     {
-        $user=auth()->user();
+        $user = auth()->user();
         return [
 
-            'name' => ['required', 'min:5', ],
+            'name' => ['required', 'min:5',],
             'email' => 'required|string|unique:users,email,' . $user->id,
-            'profile_image' => ['nullable','image' ,'mimes:jpg,jpeg'],
-
-
-
-
-
+            'profile_image' => ['nullable', 'image', 'mimes:jpg,jpeg'],
         ];
     }
 
@@ -43,7 +38,6 @@ class StoreRequest extends FormRequest
         return [
             // 'name.required' => 'Overrided required msg',
             // 'name.min' => 'min rule msg changed',
-
         ];
     }
 }

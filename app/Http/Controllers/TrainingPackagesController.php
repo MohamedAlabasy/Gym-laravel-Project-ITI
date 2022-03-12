@@ -22,25 +22,6 @@ class TrainingPackagesController extends Controller
         }
         return view('trainingPackeges.listPackeges', ['packages' => $packages]);
     }
-
-    // public function getSession(Request $request) {
-    //     if($request->ajax()) {
-    //         $data = TrainingSession::latest()->get();
-    //         return DataTables::of($data)
-    //         ->addIndexColumn()
-    //         ->addColumn('action', function() {
-    //             $actionBtn = '<div class = "text-center">
-    //             <a href="#" class = "btn btn-danger">Delete</a>
-    //             <a href="#" class = "btn btn-info">View</a>
-    //             <a href="#" class = "btn btn-success">Update</a>
-    //             </div>'
-    //            ;
-    //             return $actionBtn;
-    //         })
-    //         ->rawColumns(['action'])
-    //         ->make(true);
-    //     }
-    // }
     #=======================================================================================#
     #			                             create                                        	#
     #=======================================================================================#

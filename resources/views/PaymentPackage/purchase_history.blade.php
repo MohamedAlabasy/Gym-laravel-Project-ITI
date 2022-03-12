@@ -39,17 +39,17 @@
                     <table class="table table-striped projects" id="proj">
                         <thead>
                             <tr>
-                                <th class="project-state">User ID</th>
-                                <th class="project-state">User Email</th>
-                                <th class="project-state">User Name</th>
-                                <th class="project-state">Package Name</th>
-                                <th class="project-state">Amount</th>
+                                <th>User ID</th>
+                                <th>User Email</th>
+                                <th>User Name</th>
+                                <th>Package Name</th>
+                                <th>Amount</th>
                                 @role('admin')
-                                    <th class="project-state">Gym Name</th>
-                                    <th class="project-state">City Name</th>
+                                    <th>Gym Name</th>
+                                    <th>City Name</th>
                                 @endrole
                                 @role('cityManager')
-                                    <th class="project-state">Gym Name</th>
+                                    <th>Gym Name</th>
                                 @endrole
 
                             </tr>
@@ -58,21 +58,21 @@
 
                             @foreach ($revenues as $revenue)
                                 <tr>
-                                    <td class="project-state">{{ $revenue->user->id }}</td>
-                                    <td class="project-state">{{ $revenue->user->email }}</td>
-                                    <td class="project-state"> {{ $revenue->user->name }}</td>
-                                    @if ($revenue->trainingPackage == null)
-                                        <td class="project-state">there is no training Package name </td>
+                                    <td>{{ $revenue->user->id }}</td>
+                                    <td>{{ $revenue->user->email }}</td>
+                                    <td> {{ $revenue->user->name }}</td>
+                                    @if ($revenue->trainingPackage->name == null)
+                                        <td>there is no training Package name </td>
                                     @else
-                                        <td class="project-state"> {{ $revenue->trainingPackage->name }}</td>
+                                        <td> {{ $revenue->trainingPackage->name }}</td>
                                     @endif
-                                    <td class="project-state"> {{ $revenue->price / 100 }} $</td>
+                                    <td> {{ $revenue->price / 100 }} $</td>
                                     @role('admin')
-                                        <td class="project-state">{{ $revenue->user->gym->name }}</td>
-                                        <td class="project-state">{{ $revenue->user->city->name }}</td>
+                                        <td>{{ $revenue->user->gym->name }}</td>
+                                        <td>{{ $revenue->user->city->name }}</td>
                                     @endrole
                                     @role('cityManager')
-                                        <td class="project-state">{{ $revenue->user->gym->name }}</td>
+                                        <td>{{ $revenue->user->gym->name }}</td>
                                     @endrole
                                 </tr>
                             @endforeach

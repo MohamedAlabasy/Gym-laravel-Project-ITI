@@ -17,7 +17,7 @@
                             </ul>
                         </div>
                     @endif
-                     <div class="col-sm-6">
+                    <div class="col-sm-6">
                         <h1>New Coach</h1>
                     </div>
                     <div class="col-sm-6">

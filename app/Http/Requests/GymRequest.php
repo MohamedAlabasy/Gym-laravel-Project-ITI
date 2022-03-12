@@ -26,7 +26,6 @@ class GymRequest extends FormRequest
         return [
             //  'user_id' => 'required|exists:users,id',
             //  'name' => ['required','string', 'min:2'],
-            
         ];
     }
 }
