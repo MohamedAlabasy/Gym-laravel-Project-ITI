@@ -28,9 +28,7 @@ class GymController extends Controller
 
     public function show($id)
     {
-
-        $singleGym = Gym::find($id);
-
+        $singleGym = User::find($id);
         return view("gym.show", ['singleGym' => $singleGym]);
     }
     #=======================================================================================#
@@ -54,9 +52,9 @@ class GymController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
-            
-            'cover_image' =>'required|image|mimes:jpg,jpeg',
+            'cover_image' =>['required|image|mimes:jpg,jpeg'],
             'city_id' => ['required'],
+            //'user->id'=>['required'],
             ]);
             if ($request->hasFile('cover_image')) {
                 $image = $request->file('cover_image');
@@ -68,8 +66,10 @@ class GymController extends Controller
         
 
         $gym = new Gym();
+        $user = new User();
         $gym->name = $request->name;
         $user->city_id = $request->city_id;
+        $user->user_id = $request->user_id;
         $gym->cover_image = $imageName;
         $gym->save();
         return redirect()->route('gym.list');
