@@ -49,23 +49,25 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" id="name" class="form-control" name="name">
+                                <input type="text" id="name" class="form-control" name="name" value="{{old('name')}}">
                             </div>
                             <div class="form-group">
                                 <label for="pass">Password</label>
-                                <input type="password" id="pass" class="form-control" name="password">
+                                <input type="password" id="pass" class="form-control" name="password" value="{{old('password')}}">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" class="form-control" name="email">
+                                <input type="email" id="email" class="form-control" name="email" value="{{old('email')}}" >
                             </div>
-                            <div class="form-group">
-                                <label for="N-id">National Id</label>
-                                <input type="text" id="N-id" class="form-control"  name="national_id">
-                            </div>
+
                             <div class="form-group">
                                 <label class="form-label" for="image">Upload Image</label>
-                                <input type="file" class="form-control" id="image" name="profile_image">
+                                <input type="file" class="form-control" id="image" name="profile_image" value="{{old('profile_image')}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="N-id">National Id</label>
+                                <input type="text" id="N-id" class="form-control"  name="national_id" value="{{old('national_id')}}">
                             </div>
                             
                         </div>
