@@ -27,8 +27,7 @@ The Simple Gym Management System In Laravel/MySQL is a mini project for keeping 
 5- `User` (It will be API only) :  
 &nbsp; &nbsp; &nbsp; &nbsp; Cann't access the system because it is for the administration only, but there is an endpoint (API) for the user.   
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-`Each manager has Permissions that can be found in the following table`
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; `Each manager has Permissions that can be found in the following table`
 <h3 align="center"> Databas Permissions </h3>  					
 <p align="center">
    <img src="https://user-images.githubusercontent.com/93389016/156779278-58d23b62-21df-436d-a271-da2c5ad33c5d.png" alt="Build Status">
@@ -46,7 +45,7 @@ The Simple Gym Management System In Laravel/MySQL is a mini project for keeping 
 `Step 3` :  
 &nbsp; &nbsp; &nbsp; &nbsp; Create database call `gym` .  
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; `To help you understand the project databases, see the following ERF`
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  `To help you understand the project databases, see the following ERF`
 <h3 align="center"> DataBase ERD </h3>
 <p align="center">
    <img src="https://user-images.githubusercontent.com/93389016/157979950-d67cd8ca-0e50-4ca0-9c6c-263883ad1a73.jpg" alt="Build Status">
@@ -75,7 +74,7 @@ All created accounts have a unified password `123456`.
 
 `Step 7`:    
 &nbsp; &nbsp; &nbsp; &nbsp; To create a new admin account use a command  
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ` $ php artisan create:admin --email=admin2@admin.com --password=123456 `.  
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ` $ php artisan create:admin --email=admin2@admin.com --password=123456 `.  
 
 ## Contributors
 <table>
