@@ -30,7 +30,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    
+
                         <tr>
                             <td>{{$trainingSession->id}}</td>
                             <td>{{$trainingSession->name}} </td>
@@ -41,7 +41,7 @@
                     </tbody>
                     <tbody>
 
-                       
+
                     </tbody>
                 </table>
             </div>
