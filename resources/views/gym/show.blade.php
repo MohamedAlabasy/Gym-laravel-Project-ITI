@@ -34,7 +34,15 @@
                         <div>
                             <p class="my-3">{{$singleGym->id}}</p>
                             <p class="my-3">{{$singleGym->name}}</p>
-                            <p class="my-3">{{$singleGym->city->name}}</p>
+                            <td class="project-state">
+                                        
+                                @if ($singleGym->city == null)
+                                <span class="project-state">this gym has no city</span>
+                            @else
+                                <span class="project-state">{{ $singleGym->city->name }}</span>
+                            @endif
+                            </td>
+                            {{-- <p class="my-3">{{$singleGym->city->name}}</p> --}}
                             <p class="my-3">{{$singleGym->created_at}}</p>
                         </div>
                     </div>
