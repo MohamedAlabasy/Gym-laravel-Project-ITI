@@ -87,7 +87,7 @@ body {
         <ul class="navbar-nav ml-auto">
             <li class="dropdown user user-menu" style="cursor:pointer;">
                 <div class="media align-items-center">
-                    <img src="{{ auth()->user()->profileImageFile }}" alt="User Avatar"
+                    <img src="{{asset(auth()->user()->profileImageFile)}}" alt="User Avatar"
                         class="mr-2 mt-1 img-size-32 img-circle mr-2">
                     <div class="media-body">
                         <h6 class="dropdown-item-title text-dark" style="font-size: 14px">
@@ -98,7 +98,7 @@ body {
                 <ul class="dropdown-menu" style="width:200px">
                     <li class="user-header mb-1" style="height: 140px;">
                         <img class="profile-user-img img-fluid img-circle"
-                            src="{{ auth()->user()->profileImageFile }}" alt="User profile picture">
+                            src="{{asset(auth()->user()->profileImageFile)}}" alt="User profile picture">
                         <p class="mb-0">
                             {{ auth()->user()->name }}
                         </p>
@@ -139,7 +139,7 @@ body {
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ auth()->user()->profileImageFile }}" class="img-circle elevation-2"
+                        <img src="{{asset(auth()->user()->profileImageFile)}}" class="img-circle elevation-2"
                             alt="User Image">
                     </div>
                     <div class="info">

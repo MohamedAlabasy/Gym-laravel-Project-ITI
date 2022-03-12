@@ -58,7 +58,7 @@ class User extends Authenticatable implements BannableContract, MustVerifyEmail
     {
         return $this->belongsToMany(TrainingSession::class);
     }
-    
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -82,11 +82,10 @@ class User extends Authenticatable implements BannableContract, MustVerifyEmail
     public function getProfileImageFileAttribute()
     {
         if ($this->attributes['profile_image']) {
-            return asset('/imgs/' . $this->attributes['profile_image']);
+            return $this->attributes['profile_image'];
         } else {
-            return asset('avatar.png');
+            return 'avatar.png';
         }
     }
 
 
-}
