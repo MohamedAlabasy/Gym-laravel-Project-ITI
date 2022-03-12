@@ -7,7 +7,7 @@
  
 The Simple Gym Management System In Laravel/MySQL is a mini project for keeping records of members in the gym. Talking about the project, it contains an admin side from where can manage all the timetables and records of the gym users easily.  
 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; `The administration part consists of 4 types of managers who can enter the system`  
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; `The administration part consists of 4 types of managers who can enter the system`  
 
 1- `Admin`  :    
 &nbsp; &nbsp; &nbsp; &nbsp; Admin will have access to everything in the system,he can see any links or make any action Gym Manager   
@@ -76,7 +76,7 @@ All created accounts have a unified password `123456`.
 
 `Step 7`:    
 &nbsp; &nbsp; &nbsp; &nbsp; To create a new admin account use a command  
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ` $ php artisan create:admin --email=admin2@admin.com --password=123456 `.  
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ` $ php artisan create:admin --email=admin2@admin.com --password=123456 `.  
 
 ## Contributors
 <table>
