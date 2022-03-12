@@ -10,16 +10,16 @@ The Simple Gym Management System In Laravel/MySQL is a mini project for keeping 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; `The administration part consists of 4 types of managers who can enter the system`  
 
 1- `Admin`  :    
-&nbsp; &nbsp; &nbsp; &nbsp; Admin will have access to everything in the system,he can see any links or make any action Gym Manager and City Manager can do with  
-&nbsp; &nbsp; &nbsp; &nbsp; these extra functionalities  
+&nbsp; &nbsp; &nbsp; &nbsp; Admin will have access to everything in the system,he can see any links or make any action Gym Manager 
+&nbsp; &nbsp; &nbsp; &nbsp; and City Manager can do with these extra functionalities.    
 
 2- `City Manager` :    
-&nbsp; &nbsp; &nbsp; &nbsp; City Manager can do what Gym Manager do with extra functionalities … like he can see all gyms in his city and make CRUD on any gym or   
-&nbsp; &nbsp; &nbsp; &nbsp; gym manager in his city.  
+&nbsp; &nbsp; &nbsp; &nbsp; City Manager can do what Gym Manager do with extra functionalities … like he can see all gyms in his city and  
+&nbsp; &nbsp; &nbsp; &nbsp; make CRUD on any gym or gym manager in his city.  
 
 3- `Gym Managers` :  
-&nbsp; &nbsp; &nbsp; &nbsp; Gym Manager can CRUD training sessions and assign coaches to these sessions, also he can buy training package for a user through   
-&nbsp; &nbsp; &nbsp; &nbsp; stripe.  
+&nbsp; &nbsp; &nbsp; &nbsp; Gym Manager can CRUD training sessions and assign coaches to these sessions, also he can buy training  
+&nbsp; &nbsp; &nbsp; &nbsp; package for a user through stripe.  
 
 4- `coach` :  
 &nbsp; &nbsp; &nbsp; &nbsp; Can only see the sessions in which he trains.  
@@ -37,8 +37,8 @@ The Simple Gym Management System In Laravel/MySQL is a mini project for keeping 
 ## To run this project  
 
 `Step 1` :  
-&nbsp; &nbsp; &nbsp; &nbsp; You must have installed virtual server i.e XAMPP on your PC (for Windows). This System in PHP with source code is   
-&nbsp; &nbsp; &nbsp; &nbsp; free to download, Use for educational purposes only! .  
+&nbsp; &nbsp; &nbsp; &nbsp; You must have installed virtual server i.e XAMPP on your PC (for Windows). This System in PHP with source code   
+&nbsp; &nbsp; &nbsp; &nbsp; is free to download, Use for educational purposes only! .  
 
 `Step 2` :  
 &nbsp; &nbsp; &nbsp; &nbsp; Download the source code .
@@ -75,7 +75,8 @@ All created accounts have a unified password `123456`.
 
 
 `Step 7`:    
-&nbsp; &nbsp; &nbsp; &nbsp; To create a new admin account use a command ` $ php artisan create:admin --email=admin2@admin.com --password=123456 `.  
+&nbsp; &nbsp; &nbsp; &nbsp; To create a new admin account use a command  
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ` $ php artisan create:admin --email=admin2@admin.com --password=123456 `.  
 
 ## Contributors
 <table>
