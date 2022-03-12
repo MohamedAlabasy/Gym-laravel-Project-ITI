@@ -99,14 +99,7 @@ class AuthController extends Controller
                     File::delete(public_path('imgs/' . $user->profile_image));
                 $user->profile_image = $imageName;
 
-                $image = $request->file('profile_image');
-                $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
-                $destinationPath = public_path('/imgs');
-                $image->move($destinationPath, $name);
-                $imageName = 'imgs/' . $name;
-                if ($user->profile_image)
-                    File::delete(public_path('imgs/' . $user->profile_image));
-                $user->profile_image = $imageName;
+
             }
             $user->name = $request->name ? $request->name : $user->name;
             $user->email = $request->email ? $request->email : $user->email;
