@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Http\Requests\GymRequest;
 use App\Http\Requests\UpdateGymRequest;
@@ -28,7 +27,7 @@ class GymController extends Controller
 
     public function show($id)
     {
-        $singleGym = User::find($id);
+        $singleGym = Gym::find($id);
         return view("gym.show", ['singleGym' => $singleGym]);
     }
     #=======================================================================================#
@@ -52,9 +51,8 @@ class GymController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
-            'cover_image' =>['required|image|mimes:jpg,jpeg'],
+            'cover_image' =>['required', 'mimes:jpg,jpeg'],
             'city_id' => ['required'],
-            //'user->id'=>['required'],
             ]);
             if ($request->hasFile('cover_image')) {
                 $image = $request->file('cover_image');
@@ -96,7 +94,7 @@ class GymController extends Controller
         $gym=Gym::find($id);
         $validated = $request->validate([
             'name' => 'required|max:20',
-           
+            'city_id' => 'required',
             'cover_image' => 'required|image|mimes:jpg,jpeg',
         ]);
 
