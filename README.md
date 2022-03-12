@@ -77,6 +77,15 @@ All created accounts have a unified password `123456`.
 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ` $ php artisan create:admin --email=admin2@admin.com --password=123456 `.  
 
+`Step 8`:    
+&nbsp; &nbsp; &nbsp; &nbsp; Run schedule use a command `php artisan schedule:work` 
+&nbsp; &nbsp; &nbsp; &nbsp; then use a command `php artisan notify:users-not-logged-in-for-month`
+
+
+
+
+
+
 ## Contributors
 <table>
    <tr>
