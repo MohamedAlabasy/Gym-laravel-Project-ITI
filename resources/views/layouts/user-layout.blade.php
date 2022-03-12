@@ -331,6 +331,12 @@ body {
                                     <p> Buy Package </p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('PaymentPackage.purchase_history') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p> Purchases </p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     {{-- # ======================================= # Training Session # ======================================= # --}}

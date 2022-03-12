@@ -88,14 +88,4 @@ class User extends Authenticatable implements BannableContract, MustVerifyEmail
         }
     }
 
-    // public function getProfileImageAttribute()
-    //  {
-    //       if ($this->attributes['profile_image']) {
-    //            $this->attributes['profile_image'];
-    //       } else {
-    //               'avatar.png';
-    //   }
-    //   }
 
-
-}
