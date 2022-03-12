@@ -103,6 +103,7 @@ class AuthController extends Controller
                 if ($user->profile_image)
                     File::delete(public_path('imgs/' . $user->profile_image));
                 $user->profile_image = $imageName;
+
             }
 
             $user->name = $request->name ? $request->name : $user->name;
@@ -117,4 +118,6 @@ class AuthController extends Controller
             ]);
         }
     }
+}
+
 
