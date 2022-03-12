@@ -70,7 +70,6 @@
                                 <label for="finishes_at">Finishes At</label>
                                 <input type="time" id="finishes_at" class="form-control"  name="finishes_at">
                             </div>
-                                {{-- <input type="hidden"  value="{{  }}" name="id"> --}}
 
                         </div>
                     </div>
@@ -78,7 +77,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <a href="#" class="btn btn-secondary">Cancel</a>
+                    <a href="{{ route('TrainingSessions.listSessions') }}" class="btn btn-secondary">Cancel</a>
                     <input type="submit" value="Save Changes" class="btn btn-success float-right">
                 </div>
             </div>
