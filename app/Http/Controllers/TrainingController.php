@@ -91,9 +91,9 @@ class TrainingController extends Controller
     #=======================================================================================#
     public function show($id)
     {
-        // $userId = DB::select("select user_id from training_session_user where training_session_id = $id");
-
-        // $user = User::find($userId);
+        $userId = DB::select("select user_id from training_session_user where training_session_id = $id");
+        $user = User::find($userId);
+        
         
         
         $trainingSession = TrainingSession::findorfail($id);
