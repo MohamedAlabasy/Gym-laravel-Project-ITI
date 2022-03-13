@@ -87,12 +87,10 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'nullable',
             'email' => 'nullable|string|unique:users,email,' . $user->id,
-            //accept any  request id apply this validation on it/except it
             'gender' => 'nullable',
             'birth_date' => 'nullable',
             'profile_image' => 'nullable|image|mimes:jpg,jpeg',
             'password' => 'nullable|min:6',
-            //we put here nullable cause user dosn't need to update his pasword every time
         ]);
         if ($request->hasFile('profile_image')) {
             if ($request->hasFile('profile_image')) {

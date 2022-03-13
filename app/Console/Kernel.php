@@ -21,11 +21,6 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('notify:users-not-logged-in-for-month')->everyMinute();
 
-       
-
-
-
-
 
     }
 

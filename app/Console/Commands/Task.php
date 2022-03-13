@@ -7,6 +7,7 @@ use Illuminate\Console\Command;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Notifications\MissUserNotification;
 use Carbon\Carbon;
+
 class Task extends Command implements ShouldQueue
 
 {
@@ -45,15 +46,9 @@ class Task extends Command implements ShouldQueue
 
     public function handle()
     {
-        $users=User::whereDate('last_login_at' ,'<=' ,Carbon::now()->subDays(30)->toDateTimeString())->get();
-        //  dd($users->toArray());
-        foreach ($users as $user ) {
+        $users = User::whereDate('last_login_at', '<=', Carbon::now()->subDays(30)->toDateTimeString())->get();
+        foreach ($users as $user) {
             $user->notify(new MissUserNotification($user));
-
         }
-
-
-
     }
-
 }
