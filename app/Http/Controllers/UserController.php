@@ -104,7 +104,7 @@ class UserController extends Controller
     public function banUser($userID)
     {
         User::find($userID)->ban([
-            'comment' => 'كيفي كدا',
+            'comment' => 'كيفي كدا والى اقوله هنمشيه',
             'expired_at' => '+3 month',
         ]);
         return response()->json(['success' => 'Record deleted successfully!']);
