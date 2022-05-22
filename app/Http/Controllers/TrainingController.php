@@ -92,9 +92,16 @@ class TrainingController extends Controller
     public function show($id)
     {
         $userId = DB::select("select user_id from training_session_user where training_session_id = $id");
+<<<<<<< HEAD
+        $user = User::find($userId);
+        
+        
+        
+=======
 
         $user = User::find($userId);
 
+>>>>>>> bed3766c69d9da895c706c6b5d753cf47a4df4f2
         $trainingSession = TrainingSession::findorfail($id);
         return view('TrainingSessions.show_training_session', ['trainingSession' => $trainingSession]);
     }
@@ -162,7 +169,11 @@ class TrainingController extends Controller
     public function deleteSession($id)
     {
 
+<<<<<<< HEAD
+       
+=======
 
+>>>>>>> bed3766c69d9da895c706c6b5d753cf47a4df4f2
         if (count(DB::select("select * from training_session_user where training_session_id = $id")) == 0) {
             $trainingSession = TrainingSession::findorfail($id);
             $trainingSession->delete();

@@ -92,7 +92,6 @@ class AuthController extends Controller
             'profile_image' => 'nullable|image|mimes:jpg,jpeg',
             'password' => 'nullable|min:6',
         ]);
-        if ($request->hasFile('profile_image')) {
             if ($request->hasFile('profile_image')) {
                 $image = $request->file('profile_image');
                 $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
@@ -103,15 +102,8 @@ class AuthController extends Controller
                     File::delete(public_path('imgs/' . $user->profile_image));
                 $user->profile_image = $imageName;
 
-                $image = $request->file('profile_image');
-                $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
-                $destinationPath = public_path('/imgs');
-                $image->move($destinationPath, $name);
-                $imageName = 'imgs/' . $name;
-                if ($user->profile_image)
-                    File::delete(public_path('imgs/' . $user->profile_image));
-                $user->profile_image = $imageName;
             }
+
             $user->name = $request->name ? $request->name : $user->name;
             $user->email = $request->email ? $request->email : $user->email;
             $user->gender = $request->gender ? $request->gender : $user->gender;
@@ -124,4 +116,3 @@ class AuthController extends Controller
             ]);
         }
     }
-}

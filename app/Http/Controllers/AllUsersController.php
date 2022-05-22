@@ -57,8 +57,12 @@ class AllUsersController extends Controller
         $request->validate([
             'gym_id' => 'required',
         ]);
-        $user->gym_id = $request->gym_id;
+        $gym = Gym::find($request->gym_id);
+        $city=$gym->city_id;
+
         $user->update(['gym_id' => $request->gym_id]);
+        $user->update(['city_id' =>  $city]);
+
         $usersFromDB =  User::role('user')->withoutBanned()->get();
         return view("allUsers.list", ['users' => $usersFromDB]);
     }

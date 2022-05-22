@@ -82,13 +82,59 @@
                 </div>
                 <!-- /.card-body -->
             </div>
-            <!-- /.card -->
+            <div class="card-body p-0">
+                <table class="table table-striped projects" id="proj">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Package Id</th>
+                            <th>Package Name</th>
+                            <th>Price</th>
+                            <th>Number of sessions</th>
+                            <th>Creator</th>
+                            <th>Actions </th>
 
-        </section>
-    </div>
-    <!-- /.content-wrapper -->
-    <script>
-        function deletePackage(id) {
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach ($packages as $package)
+                        <tr id="did{{ $package->id }}" class="text-center">
+                            <td>{{ $package->id }}</td>
+                            <td>{{ $package->name }} </td>
+                            <td>{{ ($package->price) / 100 }} $ </td>
+                            <td>{{ $package->sessions_number }}</td>
+                            <td>{{$package->user? $package->user->name: "Not found"}}</td>
+                            <td class="project-actions">
+                                <a class="btn btn-info btn-sm"
+                                    href="{{ route('trainingPackeges.show_training_package', $package['id']) }}">
+
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                                <a class="btn btn-warning btn-sm text-white"
+                                    href="{{ route('trainingPackeges.editPackege', $package['id']) }}">
+                                    <i class="fas fa-pencil-alt"></i></a>
+                                <a href="{{ route('PaymentPackage.stripe') }}" class="btn btn-info btn-sm">Buy </a>
+                                @role('admin')
+                                <a href="javascript:void(0)" onclick="deletePackage({{ $package->id }})"
+                                    class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                @endrole
+
+
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </section>
+</div>
+<!-- /.content-wrapper -->
+<script>
+    function deletePackage(id) {
             if (confirm("Do you want to delete this record?")) {
                 $.ajax({
                     url: '/trainingPackeges/' + id,
