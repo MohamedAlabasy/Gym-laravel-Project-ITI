@@ -74,7 +74,5 @@ class StripeController extends Controller
         return view('PaymentPackage.purchase_history', [
             'revenues' => $revenues,
         ]);
-
     }
-
 }

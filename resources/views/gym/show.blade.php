@@ -35,11 +35,8 @@
                                 <p class="my-3">{{ $singleGym->id }}</p>
                                 <p class="my-3">{{ $singleGym->name }}</p>
 
-                                @if ($singleGym->city == null)
-                                    <p class="my-3">this gym has no city</p>
-                                @else
+                              
                                     <p class="my-3">{{ $singleGym->city->name }}</p>
-                                @endif
                                 <p class="my-3">{{ $singleGym->created_at }}</p>
                             </div>
                         </div>

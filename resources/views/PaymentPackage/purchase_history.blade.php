@@ -61,7 +61,7 @@
                                     <td>{{ $revenue->user->id }}</td>
                                     <td>{{ $revenue->user->email }}</td>
                                     <td> {{ $revenue->user->name }}</td>
-                                    @if ($revenue->trainingPackage == null)
+                                    @if ($revenue->trainingPackage->name == null)
                                         <td>there is no training Package name </td>
                                     @else
                                         <td> {{ $revenue->trainingPackage->name }}</td>

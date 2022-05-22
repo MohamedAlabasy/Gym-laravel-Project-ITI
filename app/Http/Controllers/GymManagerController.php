@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\File;
 
 
 
-
 class GymManagerController extends Controller
 {
     #=======================================================================================#
@@ -29,14 +28,15 @@ class GymManagerController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required|unique:users|max:20',
+            'name' => 'required|max:20',
             'password' => 'required |min:6',
             'email' => 'required|string|unique:users,email,',
             'national_id' => 'digits_between:10,17|required|numeric|unique:users',
-            'profile_image' => 'required|image|mimes:jpg,jpeg',
+            'profile_image' => 'nullable|image|mimes:jpg,jpeg',
         ]);
-
-        if ($request->hasFile('profile_image')) {
+        if ($request->hasFile('profile_image') == null) {
+            $imageName = 'imgs/defaultImg.jpg';
+        } else {
             $image = $request->file('profile_image');
             $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
             $destinationPath = public_path('/imgs');
@@ -62,8 +62,6 @@ class GymManagerController extends Controller
     public function list()
     {
         $usersFromDB =  User::role('gymManager')->withoutBanned()->get();
-        // $usersFromDB = User::all();
-        // $usersFromDB =  User::role('gymManager')->get();
         if (count($usersFromDB) <= 0) { //for empty statement
             return view('empty');
         }
@@ -82,11 +80,9 @@ class GymManagerController extends Controller
     #=======================================================================================#
     public function edit($id)
     {
-        $users = User::all();
 
         $singleUser = User::find($id);
-
-        return view("gymManager.edit", ['singleUser' => $singleUser, 'users' => $users]);
+        return view("gymManager.edit", ['singleUser' => $singleUser]);
     }
 
     #=======================================================================================#
@@ -99,14 +95,14 @@ class GymManagerController extends Controller
             'name' => 'required|max:20',
             'password' => 'required |min:6',
             'email' => 'required|string|unique:users,email,' . $user->id,
-            'profile_image' => 'required|image|mimes:jpg,jpeg',
+            'national_id' => 'digits_between:10,17|numeric|unique:users,national_id,' . $user->id,
+            'profile_image' => 'nullable|image|mimes:jpg,jpeg',
         ]);
-
 
         $user->name = $request->name;
         $user->password = $request->password;
         $user->email = $request->email;
-
+        $user->national_id = $request->national_id;
 
         if ($request->hasFile('profile_image')) {
             $image = $request->file('profile_image');
@@ -124,18 +120,8 @@ class GymManagerController extends Controller
     #=======================================================================================#
     #			                           Delete Function                                	#
     #=======================================================================================#
-    // public function delete($id){
-    //     $singleUser=User::findorfail($id);
-    //     $singleUser->delete();
-    //     return redirect()->route('gymManager.list');
-
-    // }
-
-
-    // using Ajax 
     public function deletegymManager($id)
     {
-
         $singleUser = User::findorfail($id);
         $singleUser->delete();
         return response()->json(['success' => 'Record deleted successfully!']);

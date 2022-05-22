@@ -16,7 +16,7 @@ class CoachController extends Controller
     public function list()
     {
         $coachesFromDB = User::role('coach')->withoutBanned()->get();
-        if (count($coachesFromDB) <= 0) { 
+        if (count($coachesFromDB) <= 0) {
             return view('empty');
         }
         return view("coach.list", ['coaches' => $coachesFromDB]);
@@ -50,11 +50,13 @@ class CoachController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'min:2'],
             'email' => ['required'],
-            'profile_image' => ['required', 'mimes:jpg,jpeg'],
+            'profile_image' => ['nullable', 'mimes:jpg,jpeg'],
             'city_id' => ['required'],
         ]);
 
-        if ($request->hasFile('profile_image')) {
+        if ($request->hasFile('profile_image') == null) {
+            $imageName = 'imgs/defaultImg.jpg';
+        } else {
             $image = $request->file('profile_image');
             $name = time() . \Str::random(30) . '.' . $image->getClientOriginalExtension();
             $destinationPath = public_path('/imgs');

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
-// use App\Http\Controllers\Auth;
 use App\Http\Requests\StoreRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
@@ -17,14 +16,13 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
 
+    #=======================================================================================#
+    #			                             create                                         #
+    #=======================================================================================#
     public function unAuth()
     {
         return view('500');
     }
-    #=======================================================================================#
-    #			                             create                                         #
-    #=======================================================================================#
-
 
     #=======================================================================================#
     #			                             index                                         	#
@@ -80,8 +78,6 @@ class UserController extends Controller
         }
         $user->save();
         return redirect()->route('user.admin_profile', auth()->user()->id)->with('success', 'Your data successfully updated');
-
-        // return redirect()->route('user.admin_profile', auth()->user()->id)back()->withErrors(['msg' => 'The Message']);
     }
     #=======================================================================================#
     #			                             store                                         	#
@@ -90,9 +86,6 @@ class UserController extends Controller
     {
         $requestData = request()->all();
         User::create($requestData);
-
-
-
         return redirect()->route('user.admin_profile');
     }
 
@@ -104,14 +97,6 @@ class UserController extends Controller
     {
         return redirect()->route('');
     }
-
-
-
-
-
-
-
-
 
     #=======================================================================================#
     #			                            Ban User                              	        #

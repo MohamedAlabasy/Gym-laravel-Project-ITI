@@ -25,10 +25,10 @@ class UpdateGymRequest extends FormRequest
     {
         return [
 
-            
+
             // 'name' => ['required','string', 'min:2'],
             // 'user_id' => 'required|exists:users,id',
-            
+
         ];
     }
 }

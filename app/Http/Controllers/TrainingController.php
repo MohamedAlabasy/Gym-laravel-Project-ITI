@@ -92,10 +92,16 @@ class TrainingController extends Controller
     public function show($id)
     {
         $userId = DB::select("select user_id from training_session_user where training_session_id = $id");
+<<<<<<< HEAD
         $user = User::find($userId);
         
         
         
+=======
+
+        $user = User::find($userId);
+
+>>>>>>> bed3766c69d9da895c706c6b5d753cf47a4df4f2
         $trainingSession = TrainingSession::findorfail($id);
         return view('TrainingSessions.show_training_session', ['trainingSession' => $trainingSession]);
     }
@@ -128,12 +134,12 @@ class TrainingController extends Controller
         ]);
 
         $validate_old_seesions = TrainingSession::where('day', '=', $request->day)->where("starts_at", "!=", null)->where("finishes_at", "!=", null)->where(function ($q) use ($request) {
-                $q->whereRaw("starts_at = '$request->starts_at' and finishes_at ='$request->finishes_at'")
-                    ->orwhereRaw("starts_at < '$request->starts_at' and finishes_at > '$request->finishes_at'")
-                    ->orwhereRaw("starts_at > '$request->starts_at' and starts_at < '$request->finishes_at'")
-                    ->orwhereRaw("finishes_at > '$request->starts_at' and finishes_at < '$request->finishes_at'")
-                    ->orwhereRaw("starts_at > '$request->starts_at' and finishes_at < '$request->finishes_at'");
-            })->where('id', '!=', $id)->get()->toArray();
+            $q->whereRaw("starts_at = '$request->starts_at' and finishes_at ='$request->finishes_at'")
+                ->orwhereRaw("starts_at < '$request->starts_at' and finishes_at > '$request->finishes_at'")
+                ->orwhereRaw("starts_at > '$request->starts_at' and starts_at < '$request->finishes_at'")
+                ->orwhereRaw("finishes_at > '$request->starts_at' and finishes_at < '$request->finishes_at'")
+                ->orwhereRaw("starts_at > '$request->starts_at' and finishes_at < '$request->finishes_at'");
+        })->where('id', '!=', $id)->get()->toArray();
 
         if (count($validate_old_seesions) > 0)
             return back()->withErrors("Time invalid")->withInput();
@@ -163,7 +169,11 @@ class TrainingController extends Controller
     public function deleteSession($id)
     {
 
+<<<<<<< HEAD
        
+=======
+
+>>>>>>> bed3766c69d9da895c706c6b5d753cf47a4df4f2
         if (count(DB::select("select * from training_session_user where training_session_id = $id")) == 0) {
             $trainingSession = TrainingSession::findorfail($id);
             $trainingSession->delete();
