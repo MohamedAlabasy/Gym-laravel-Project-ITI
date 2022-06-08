@@ -15,3 +15,5 @@ yarn-error.log
 /.vscode
 
 /public/imgs/*
+
+!avatar.png
